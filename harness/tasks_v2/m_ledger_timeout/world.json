@@ -1,0 +1,37 @@
+[
+ {
+  "tool": "tracklet_get_issue",
+  "match": {
+   "issue_key": "QM-510"
+  },
+  "response": {
+   "key": "QM-510",
+   "title": "Align ledger client timeout",
+   "description": "LEDGER_TIMEOUT_MS in ledger/client.py must equal the production value of the config key ledger.client.timeout_ms."
+  }
+ },
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "ledger.client.timeout_ms",
+   "env": "prod"
+  },
+  "response": {
+   "key": "ledger.client.timeout_ms",
+   "environment": "prod",
+   "value": 2500
+  }
+ },
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "ledger.client.timeout_ms",
+   "env": "staging"
+  },
+  "response": {
+   "key": "ledger.client.timeout_ms",
+   "environment": "staging",
+   "value": 5000
+  }
+ }
+]

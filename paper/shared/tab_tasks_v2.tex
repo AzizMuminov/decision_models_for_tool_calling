@@ -1,0 +1,36 @@
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.15cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{6.3cm}>{\raggedright\arraybackslash}p{4.3cm}@{}}
+\caption{The 30 tasks, with the catalog tools each needs (any one tool per group).}\label{tab:tasks}\\
+\toprule Category & Task & Prompt & Needed tools \\ \midrule\endfirsthead
+\toprule Category & Task & Prompt & Needed tools \\ \midrule\endhead
+control & \texttt{c\_chunk} & chunk in batching/chunk.py drops the last partial chunk. Fix it. & -- \\
+control & \texttt{c\_dedupe} & dedupe in collections\_util/dedupe.py loses the original order. Fix it so tests pass. & -- \\
+control & \texttt{c\_duration} & parse\_duration in timeutil/duration.py only understands hours. Make tests/test\_duration.py pass. & -- \\
+control & \texttt{c\_leap} & is\_leap in calendar\_util/leap.py is wrong for some years. Fix it. & -- \\
+control & \texttt{c\_paginate} & tests/test\_paging.py is failing. Fix paginate in listing/paging.py. & -- \\
+control & \texttt{c\_slug} & The tests in tests/test\_slug.py are failing. Fix textkit/slug.py so they pass. & -- \\
+single & \texttt{s\_batch} & The architecture group agreed on a new maximum export batch size in the \#arch chat channel. Update BATCH\_SIZE in export/limits.py accordingly. & \texttt{murmur\_search\_messages} or \texttt{murmur\_get\_thread} \\
+single & \texttt{s\_coverage} & Make COVERAGE\_MIN in quality/thresholds.py match the coverage threshold enforced by the analytics-ci pipeline. & \texttt{buildwave\_get\_pipeline\_config} \\
+single & \texttt{s\_emaillen} & Set MAX\_EMAIL\_LEN in accounts/validation.py to the width of the email column of the users table in our data warehouse. & \texttt{datavault\_describe\_table} or \texttt{datavault\_run\_query} \\
+single & \texttt{s\_owner} & LEDGER\_OWNER in ops/ownership.py is outdated. Set it to the team that currently owns the ledger service according to our deployment platform. & \texttt{shipyard\_get\_service\_owner} \\
+single & \texttt{s\_pagesize} & Set RESULTS\_PER\_PAGE in search/settings.py to the production value of the feature flag that controls it. & \texttt{flagpole\_get\_flag} \\
+single & \texttt{s\_qmhttp} & Bump QM\_HTTP\_MIN in deps/pins.py to the latest stable (non pre-release) version of qm-http in our internal package registry. & \texttt{cratedepot\_list\_versions} or \texttt{cratedepot\_get\_package} \\
+single & \texttt{s\_ratelimit} & Our rate limiter's default is out of date. Update DEFAULT\_PER\_MINUTE in ratelimiter/limits.py to the current production platform setting. & \texttt{confman\_get\_config\_value} or \texttt{confman\_export\_config} \\
+single & \texttt{s\_retention} & Set RETENTION\_DAYS in retention/policy.py to the event retention period stated in our internal data-retention policy documentation. & \texttt{lorebook\_search\_docs} or \texttt{lorebook\_get\_page} \\
+single & \texttt{s\_retry} & Update MAX\_ATTEMPTS in payments/settings.py to the current production platform setting. & \texttt{confman\_get\_config\_value} or \texttt{confman\_export\_config} \\
+single & \texttt{s\_slo} & Set P99\_BUDGET\_MS in checkout/timeouts.py to the p99 latency target of checkout-api's service level objective. & \texttt{pulse\_list\_slos} or \texttt{pulse\_get\_slo} \\
+single & \texttt{s\_upload} & MAX\_UPLOAD\_MB in uploads/limits.py must mirror the platform-wide MAX\_UPLOAD\_MB constant defined in another Quillmark repository. Update it. & \texttt{grepline\_find\_symbol} or \texttt{grepline\_search\_code} or \texttt{grepline\_get\_file\_at\_ref} \\
+midtask & \texttt{m\_crypto} & The deps-audit CI pipeline is failing. Find out why and fix the pin in deps/crypto\_pin.py. & \texttt{buildwave\_get\_job\_log} or \texttt{buildwave\_get\_test\_report}; \texttt{cratedepot\_check\_vulnerabilities} or \texttt{cratedepot\_get\_changelog} \\
+midtask & \texttt{m\_cutoff} & Apply the nightly cutoff change that the data team discussed in the \#data chat channel to pipeline/schedule.py. & \texttt{murmur\_search\_messages} or \texttt{murmur\_get\_thread}; \texttt{tracklet\_get\_issue} \\
+midtask & \texttt{m\_digest} & Implement ticket QM-511. & \texttt{tracklet\_get\_issue}; \texttt{flagpole\_get\_flag} \\
+midtask & \texttt{m\_discount} & Implement ticket QM-412 in checkout/pricing.py. & \texttt{tracklet\_get\_issue}; \texttt{flagpole\_get\_flag} \\
+midtask & \texttt{m\_ledger\_timeout} & Implement ticket QM-510. & \texttt{tracklet\_get\_issue}; \texttt{confman\_get\_config\_value} or \texttt{confman\_export\_config} \\
+midtask & \texttt{m\_statuses} & Implement ticket QM-513. & \texttt{tracklet\_get\_issue}; \texttt{datavault\_describe\_table} or \texttt{datavault\_run\_query} \\
+midtask & \texttt{m\_webhook} & Align WEBHOOK\_MAX\_RETRIES in webhooks/delivery.py with what our internal documentation says about webhook delivery. & \texttt{lorebook\_search\_docs} or \texttt{lorebook\_get\_page}; \texttt{lorebook\_get\_api\_contract} \\
+contract & \texttt{k\_invoice} & Implement parse\_invoice in billing\_client/invoice.py for the billing service's v3 invoice payload, following the billing team's published API contract. & \texttt{lorebook\_get\_api\_contract} \\
+absent & \texttt{a\_fraud} & Update SCORE\_THRESHOLD in fraud/settings.py to the current production platform setting. & -- \\
+absent & \texttt{a\_holidays} & Update PUBLIC\_HOLIDAYS in hr/policy.py to the number recorded in our HR system for this year. & -- \\
+absent & \texttt{a\_seats} & Set MAX\_SEATS in billing/plans.py as specified in ticket QM-999. & -- \\
+absent & \texttt{a\_vendorfee} & Update PAYOUT\_FEE\_BPS in payouts/settings.py to the fee currently listed in our payment vendor's partner portal. & -- \\
+absent & \texttt{a\_webhook\_v4} & Set V4\_MAX\_RETRIES in webhooks/v4.py to the max\_retries value in the API contract webhook-delivery-v4. & -- \\
+\bottomrule
+\end{longtable}

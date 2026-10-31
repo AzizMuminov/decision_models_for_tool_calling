@@ -1,0 +1,36 @@
+[
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "payments.retry.max_attempts",
+   "env": "prod"
+  },
+  "response": {
+   "key": "payments.retry.max_attempts",
+   "environment": "prod",
+   "value": 7
+  }
+ },
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "payments.retry.max_attempts",
+   "env": "staging"
+  },
+  "response": {
+   "key": "payments.retry.max_attempts",
+   "environment": "staging",
+   "value": 3
+  }
+ },
+ {
+  "tool": "confman_export_config",
+  "match": {
+   "environment": "prod"
+  },
+  "response": {
+   "payments.retry.max_attempts": 7,
+   "payments.retry.backoff_ms": 400
+  }
+ }
+]

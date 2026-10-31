@@ -1,0 +1,45 @@
+output_dir: results/swe_replay_v1
+trajectories: data/swe/resolved_sample_seed0.jsonl
+seed: 0
+steps_per_traj: 5
+concurrency: 6
+budget_usd: 9
+context:
+  k_last: 6
+  system_chars: 3000
+  issue_chars: 4000
+  msg_chars: 1500
+llms:
+  sonnet:
+    kind: openai_compat
+    model: anthropic/claude-sonnet-5.5
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: null
+    extra_body:
+      reasoning:
+        effort: low
+    max_tokens: 2048
+  deepseek:
+    kind: openai_compat
+    model: deepseek/deepseek-v4.1-flash-1017
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: 0.0
+    extra_body:
+      reasoning:
+        effort: low
+    max_tokens: 2048
+dms:
+  jev:
+    kind: openrouter
+    model: typesafe/jev-1.14
+  msd1:
+    kind: openrouter
+    model: microsoft/microsoft-decision-1
+run_llms:
+- sonnet
+- deepseek
+run_dms:
+- jev
+- msd1

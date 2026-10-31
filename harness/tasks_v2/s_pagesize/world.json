@@ -1,0 +1,27 @@
+[
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "results_per_page",
+   "env": "prod"
+  },
+  "response": {
+   "flag": "search.results_per_page",
+   "environment": "prod",
+   "value": 25
+  }
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "results_per_page"
+  },
+  "response": {
+   "flag": "search.results_per_page",
+   "values": {
+    "prod": 25,
+    "staging": 50
+   }
+  }
+ }
+]

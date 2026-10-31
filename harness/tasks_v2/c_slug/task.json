@@ -1,0 +1,6 @@
+{
+ "id": "c_slug",
+ "category": "control",
+ "prompt": "The tests in tests/test_slug.py are failing. Fix textkit/slug.py so they pass.",
+ "needs": []
+}

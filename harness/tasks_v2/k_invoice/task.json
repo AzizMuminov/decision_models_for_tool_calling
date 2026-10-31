@@ -1,0 +1,10 @@
+{
+ "id": "k_invoice",
+ "category": "contract",
+ "prompt": "Implement parse_invoice in billing_client/invoice.py for the billing service's v3 invoice payload, following the billing team's published API contract.",
+ "needs": [
+  [
+   "lorebook_get_api_contract"
+  ]
+ ]
+}

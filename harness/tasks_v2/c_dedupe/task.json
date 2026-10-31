@@ -1,0 +1,6 @@
+{
+ "id": "c_dedupe",
+ "category": "control",
+ "prompt": "dedupe in collections_util/dedupe.py loses the original order. Fix it so tests pass.",
+ "needs": []
+}

@@ -1,0 +1,55 @@
+data: data/synth_confirm
+output_dir: results/synth_confirm
+seed: 0
+concurrency: 6
+sizes:
+- 25
+- null
+taus:
+- 0.5
+- 0.15
+max_options: 255
+tourney_group: 50
+judge_model: openai/gpt-6.1-sol
+llms:
+  deepseek:
+    kind: openai_compat
+    model: deepseek/deepseek-v4.1-flash-1017
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: 0.0
+    max_tokens: 2048
+    extra_body:
+      reasoning:
+        effort: low
+  mimo:
+    kind: openai_compat
+    model: xiaomi/mimo-v2.6-pro
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: null
+    max_tokens: 2048
+    extra_body:
+      reasoning:
+        effort: low
+  glm:
+    kind: openai_compat
+    model: z-ai/glm-5.3
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: null
+    max_tokens: 2048
+    extra_body:
+      reasoning:
+        effort: low
+dms:
+  jev:
+    kind: openrouter
+    model: typesafe/jev-1.14
+  msd1:
+    kind: openrouter
+    model: microsoft/microsoft-decision-1
+llm_scope:
+  deepseek: {}
+  mimo: {}
+  glm: {}

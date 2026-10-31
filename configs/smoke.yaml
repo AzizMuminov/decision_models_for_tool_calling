@@ -1,0 +1,29 @@
+# Offline smoke test: lexical DM + oracle "LLM". Needs no API keys.
+# Expected: llm_native/oracle_select ~100% on AST categories (checker integration works);
+# DM conditions show what a bag-of-words router gets.
+output_dir: results/smoke
+seed: 0
+limit_per_category: 25
+concurrency: 4
+when2call_path: data/When2Call/data/test/when2call_test_mcq.jsonl
+
+benchmarks:
+  bfcl: [simple_python, multiple, parallel_multiple, live_multiple, irrelevance, live_relevance]
+  when2call: [all]
+
+llms:
+  oracle: {kind: oracle}
+dms:
+  lexical: {kind: lexical}
+judge: oracle
+
+pipeline: {gate_threshold: 0.5, cascade_threshold: 0.8, select_mode: choice, top_k: 1}
+
+runs:
+  - conditions: [llm_native, oracle_select]
+    llm: [oracle]
+  - conditions: [dm_gate, dm_select, dm_gate_select, cascade]
+    llm: [oracle]
+    dm: [lexical]
+  - conditions: [dm_full]
+    dm: [lexical]

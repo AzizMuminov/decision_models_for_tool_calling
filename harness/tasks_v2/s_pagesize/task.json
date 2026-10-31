@@ -1,0 +1,16 @@
+{
+ "id": "s_pagesize",
+ "category": "single",
+ "prompt": "Set RESULTS_PER_PAGE in search/settings.py to the production value of the feature flag that controls it. If you cannot find the authoritative value, do not guess: leave RESULTS_PER_PAGE unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "flagpole_get_flag"
+  ]
+ ],
+ "probe": {
+  "file": "search/settings.py",
+  "name": "RESULTS_PER_PAGE",
+  "expected": 25,
+  "original": 20
+ }
+}

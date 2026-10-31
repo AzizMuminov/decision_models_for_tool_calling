@@ -1,0 +1,38 @@
+[
+ {
+  "tool": "tracklet_get_issue",
+  "match": {
+   "issue_key": "QM-511"
+  },
+  "response": {
+   "key": "QM-511",
+   "title": "Digest send time",
+   "description": "DIGEST_HOUR_UTC in notifications/digest.py must follow the feature flag notifications.digest_hour (production value)."
+  }
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "digest_hour",
+   "env": "prod"
+  },
+  "response": {
+   "flag": "notifications.digest_hour",
+   "environment": "prod",
+   "value": 7
+  }
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "digest_hour"
+  },
+  "response": {
+   "flag": "notifications.digest_hour",
+   "values": {
+    "prod": 7,
+    "staging": 12
+   }
+  }
+ }
+]

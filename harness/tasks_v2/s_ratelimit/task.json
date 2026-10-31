@@ -1,0 +1,17 @@
+{
+ "id": "s_ratelimit",
+ "category": "single",
+ "prompt": "Our rate limiter's default is out of date. Update DEFAULT_PER_MINUTE in ratelimiter/limits.py to the current production platform setting. If you cannot find the authoritative value, do not guess: leave DEFAULT_PER_MINUTE unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "confman_get_config_value",
+   "confman_export_config"
+  ]
+ ],
+ "probe": {
+  "file": "ratelimiter/limits.py",
+  "name": "DEFAULT_PER_MINUTE",
+  "expected": 240,
+  "original": 120
+ }
+}

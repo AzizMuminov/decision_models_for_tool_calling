@@ -1,0 +1,43 @@
+[
+ {
+  "tool": "murmur_search_messages",
+  "match": {
+   "query": "batch"
+  },
+  "response": [
+   {
+    "channel": "arch",
+    "thread_id": "T-9012",
+    "author": "lena",
+    "text": "Decision: the maximum export batch size is 500 rows from now on."
+   }
+  ]
+ },
+ {
+  "tool": "murmur_list_threads",
+  "match": {
+   "channel": "arch"
+  },
+  "response": [
+   {
+    "thread_id": "T-9012",
+    "title": "Export batch size"
+   }
+  ]
+ },
+ {
+  "tool": "murmur_get_thread",
+  "match": {
+   "thread_id": "T-9012"
+  },
+  "response": {
+   "thread_id": "T-9012",
+   "messages": [
+    {
+     "author": "lena",
+     "text": "Decision: the maximum export batch size is 500 rows from now on."
+    }
+   ]
+  }
+ }
+]

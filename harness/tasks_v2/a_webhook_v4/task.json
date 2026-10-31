@@ -1,0 +1,12 @@
+{
+ "id": "a_webhook_v4",
+ "category": "absent",
+ "prompt": "Set V4_MAX_RETRIES in webhooks/v4.py to the max_retries value in the API contract webhook-delivery-v4. If you cannot find the authoritative value, do not guess: leave V4_MAX_RETRIES unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [],
+ "probe": {
+  "file": "webhooks/v4.py",
+  "name": "V4_MAX_RETRIES",
+  "expected": 5,
+  "original": 5
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": "s_slo",
+ "category": "single",
+ "prompt": "Set P99_BUDGET_MS in checkout/timeouts.py to the p99 latency target of checkout-api's service level objective. If you cannot find the authoritative value, do not guess: leave P99_BUDGET_MS unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "pulse_list_slos",
+   "pulse_get_slo"
+  ]
+ ],
+ "probe": {
+  "file": "checkout/timeouts.py",
+  "name": "P99_BUDGET_MS",
+  "expected": 350,
+  "original": 500
+ }
+}

@@ -1,0 +1,19 @@
+[
+ {
+  "tool": "buildwave_get_pipeline_config",
+  "match": {
+   "pipeline": "analytics"
+  },
+  "response": "pipeline: analytics-ci\nstages:\n  - test:\n      run: pytest --cov\n      coverage_min: 85\n"
+ },
+ {
+  "tool": "buildwave_list_pipelines",
+  "match": {},
+  "response": [
+   {
+    "name": "analytics-ci",
+    "repository": "quillmark/analytics"
+   }
+  ]
+ }
+]

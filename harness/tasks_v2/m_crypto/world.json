@@ -1,0 +1,88 @@
+[
+ {
+  "tool": "buildwave_list_pipeline_runs",
+  "match": {
+   "pipeline": "deps"
+  },
+  "response": [
+   {
+    "run_id": "run-61200",
+    "pipeline": "deps-audit",
+    "status": "failed"
+   }
+  ]
+ },
+ {
+  "tool": "buildwave_get_pipeline_run",
+  "match": {
+   "run_id": "run-612"
+  },
+  "response": {
+   "run_id": "run-61200",
+   "jobs": [
+    {
+     "name": "audit",
+     "status": "failed"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "buildwave_get_job_log",
+  "match": {
+   "run_id": "run-612"
+  },
+  "response": "audit: qm-crypto 1.4.0 is affected by advisory QMSA-2026-17. Upgrade to a fixed version (see the package registry)."
+ },
+ {
+  "tool": "buildwave_get_test_report",
+  "match": {
+   "run_id": "run-612"
+  },
+  "response": {
+   "failed": [
+    "audit"
+   ],
+   "message": "qm-crypto 1.4.0 affected by QMSA-2026-17"
+  }
+ },
+ {
+  "tool": "cratedepot_check_vulnerabilities",
+  "match": {
+   "package": "qm-crypto"
+  },
+  "response": {
+   "package": "qm-crypto",
+   "version": "1.4.0",
+   "advisories": [
+    {
+     "id": "QMSA-2026-17",
+     "fixed_in": "1.4.3"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "cratedepot_get_changelog",
+  "match": {
+   "package": "qm-crypto"
+  },
+  "response": "1.4.3: fix QMSA-2026-17 (timing leak)\n1.4.2: docs\n1.4.1: build fix"
+ },
+ {
+  "tool": "cratedepot_list_versions",
+  "match": {
+   "package": "qm-crypto"
+  },
+  "response": {
+   "package": "qm-crypto",
+   "versions": [
+    "1.4.0",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3",
+    "1.5.0-beta"
+   ]
+  }
+ }
+]

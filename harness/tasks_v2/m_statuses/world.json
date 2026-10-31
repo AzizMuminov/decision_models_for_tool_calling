@@ -1,0 +1,32 @@
+[
+ {
+  "tool": "tracklet_get_issue",
+  "match": {
+   "issue_key": "QM-513"
+  },
+  "response": {
+   "key": "QM-513",
+   "title": "Accept all order statuses",
+   "description": "VALID_STATUSES in orders/statuses.py must list exactly the values allowed by the status column of the orders table in the data warehouse, as a tuple in alphabetical order."
+  }
+ },
+ {
+  "tool": "datavault_describe_table",
+  "match": {
+   "table": "orders"
+  },
+  "response": {
+   "table": "orders",
+   "columns": [
+    {
+     "name": "id",
+     "type": "bigint"
+    },
+    {
+     "name": "status",
+     "type": "enum('pending','paid','refunded','void')"
+    }
+   ]
+  }
+ }
+]

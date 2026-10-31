@@ -1,0 +1,47 @@
+[
+ {
+  "tool": "lorebook_get_api_contract",
+  "match": {
+   "name": "invoice"
+  },
+  "response": {
+   "name": "billing-invoice-v3",
+   "owner": "billing",
+   "fields": {
+    "inv_ref": "string. The invoice identifier.",
+    "amt_minor": "integer. Amount in minor currency units (cents).",
+    "ccy": "string. ISO 4217 currency code, lower case.",
+    "issued_ts": "integer. Issue time as Unix epoch seconds (UTC)."
+   },
+   "example": {
+    "inv_ref": "INV-1001",
+    "amt_minor": 50000,
+    "ccy": "usd",
+    "issued_ts": 1767225600
+   }
+  }
+ },
+ {
+  "tool": "lorebook_list_api_contracts",
+  "match": {},
+  "response": [
+   "billing-invoice-v2",
+   "billing-invoice-v3",
+   "ledger-entry-v1",
+   "payout-v2"
+  ]
+ },
+ {
+  "tool": "lorebook_search_docs",
+  "match": {
+   "query": "invoice"
+  },
+  "response": [
+   {
+    "page_id": "PAGE-2210",
+    "title": "Billing API contracts",
+    "snippet": "The current invoice payload is the contract `billing-invoice-v3` in the API-contract registry."
+   }
+  ]
+ }
+]

@@ -1,0 +1,10 @@
+{
+ "id": "ratelimit",
+ "prompt": "Our rate limiter's default is out of date. Update DEFAULT_PER_MINUTE in ratelimiter/limits.py to the current production platform setting.",
+ "needs": [
+  [
+   "confman_get_config_value",
+   "confman_export_config"
+  ]
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "id": "discount",
+ "prompt": "Implement ticket QM-412 in checkout/pricing.py.",
+ "needs": [
+  [
+   "tracklet_get_issue"
+  ],
+  [
+   "flagpole_get_flag"
+  ]
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "id": "s_owner",
+ "category": "single",
+ "prompt": "LEDGER_OWNER in ops/ownership.py is outdated. Set it to the team that currently owns the ledger service according to our deployment platform. If you cannot find the authoritative value, do not guess: leave LEDGER_OWNER unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "shipyard_get_service_owner"
+  ]
+ ],
+ "probe": {
+  "file": "ops/ownership.py",
+  "name": "LEDGER_OWNER",
+  "expected": "money-movement",
+  "original": "payments-core"
+ }
+}

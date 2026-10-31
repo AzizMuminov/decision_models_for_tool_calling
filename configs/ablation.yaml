@@ -1,0 +1,52 @@
+# Full ablation grid. Fill in API keys via env vars (see README) and adjust models/prices.
+output_dir: results/ablation_v1
+seed: 0
+limit_per_category: 200   # null = full split
+concurrency: 8
+when2call_path: data/When2Call/data/test/when2call_test_mcq.jsonl
+
+benchmarks:
+  bfcl: [simple_python, multiple, parallel, parallel_multiple,
+         live_simple, live_multiple, irrelevance, live_irrelevance, live_relevance]
+  when2call: [all]
+
+llms:
+  opus:   {kind: anthropic, model: claude-opus-5-5, effort: low}
+  haiku:  {kind: anthropic, model: claude-haiku-5-5, effort: low}
+  # A small open model served locally, e.g. `vllm serve Qwen/Qwen3-8B --enable-auto-tool-choice --tool-call-parser hermes`
+  small:  {kind: openai_compat, model: Qwen/Qwen3-8B, base_url: "http://localhost:8000/v1", api_key_env: VLLM_API_KEY}
+
+dms:
+  jev:      {kind: typesafe, model: jev-latest}                       # TYPESAFE_API_KEY
+  d1:       {kind: typesafe, model: "d1:free", base_url: "https://api.liquid.ai/decisions", api_key_env: LIQUID_API_KEY}
+  d1_ultra: {kind: typesafe, model: d1-ultra, base_url: "https://api.liquid.ai/decisions", api_key_env: LIQUID_API_KEY}
+  lexical:  {kind: lexical}                                           # non-neural control
+
+# Classifies text replies into When2Call labels (evaluation cost, not counted toward systems).
+judge: haiku
+
+pipeline:
+  gate_threshold: 0.5
+  cascade_threshold: 0.8
+  select_mode: choice      # or multi_noul (one yes/no per tool; better for parallel_multiple)
+  top_k: 1
+  max_candidates: 120
+
+runs:
+  - conditions: [llm_native, oracle_select]
+    llm: [opus, haiku, small]
+  - conditions: [dm_gate, dm_select, dm_gate_select, cascade]
+    llm: [opus, haiku, small]
+    dm: [jev, d1, d1_ultra, lexical]
+  - conditions: [dm_full]
+    dm: [jev, d1, d1_ultra, lexical]
+
+# USD. Verify against current price pages before reporting cost numbers.
+prices:
+  opus:  {input_per_mtok: 4.00, output_per_mtok: 20.00}
+  haiku: {input_per_mtok: 0.10, output_per_mtok: 0.50}
+  small: {input_per_mtok: 0.0,  output_per_mtok: 0.0}
+  jev:      {input_per_mtok: 0.0, per_request: 0.0}   # TODO: fill from TypeSafe pricing
+  d1:       {input_per_mtok: 0.0, per_request: 0.0}   # free tier
+  d1_ultra: {input_per_mtok: 0.0, per_request: 0.0}   # TODO: fill from Liquid pricing
+  lexical:  {}

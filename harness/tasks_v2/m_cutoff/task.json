@@ -1,0 +1,20 @@
+{
+ "id": "m_cutoff",
+ "category": "midtask",
+ "prompt": "Apply the nightly cutoff change that the data team discussed in the #data chat channel to pipeline/schedule.py. If you cannot find the authoritative value, do not guess: leave NIGHTLY_CUTOFF_HOUR unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "murmur_search_messages",
+   "murmur_get_thread"
+  ],
+  [
+   "tracklet_get_issue"
+  ]
+ ],
+ "probe": {
+  "file": "pipeline/schedule.py",
+  "name": "NIGHTLY_CUTOFF_HOUR",
+  "expected": 3,
+  "original": 2
+ }
+}

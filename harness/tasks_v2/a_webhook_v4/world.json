@@ -1,0 +1,21 @@
+[
+ {
+  "tool": "lorebook_list_api_contracts",
+  "match": {},
+  "response": [
+   "webhook-delivery-v1",
+   "webhook-delivery-v2",
+   "billing-invoice-v3"
+  ]
+ },
+ {
+  "tool": "lorebook_get_api_contract",
+  "match": {
+   "name": "webhook-delivery-v2"
+  },
+  "response": {
+   "name": "webhook-delivery-v2",
+   "max_retries": 8
+  }
+ }
+]

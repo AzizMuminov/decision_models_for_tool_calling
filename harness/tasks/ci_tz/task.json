@@ -1,0 +1,10 @@
+{
+ "id": "ci_tz",
+ "prompt": "The nightly CI pipeline for the reports package is failing, but the tests pass on my machine. Find out why and fix the code.",
+ "needs": [
+  [
+   "buildwave_get_job_log",
+   "buildwave_get_test_report"
+  ]
+ ]
+}

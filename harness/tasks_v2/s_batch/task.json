@@ -1,0 +1,17 @@
+{
+ "id": "s_batch",
+ "category": "single",
+ "prompt": "The architecture group agreed on a new maximum export batch size in the #arch chat channel. Update BATCH_SIZE in export/limits.py accordingly. If you cannot find the authoritative value, do not guess: leave BATCH_SIZE unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "murmur_search_messages",
+   "murmur_get_thread"
+  ]
+ ],
+ "probe": {
+  "file": "export/limits.py",
+  "name": "BATCH_SIZE",
+  "expected": 500,
+  "original": 1000
+ }
+}

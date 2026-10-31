@@ -1,0 +1,17 @@
+{
+ "id": "s_retention",
+ "category": "single",
+ "prompt": "Set RETENTION_DAYS in retention/policy.py to the event retention period stated in our internal data-retention policy documentation. If you cannot find the authoritative value, do not guess: leave RETENTION_DAYS unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "lorebook_search_docs",
+   "lorebook_get_page"
+  ]
+ ],
+ "probe": {
+  "file": "retention/policy.py",
+  "name": "RETENTION_DAYS",
+  "expected": 395,
+  "original": 365
+ }
+}

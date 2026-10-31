@@ -1,0 +1,26 @@
+[
+ {
+  "tool": "lorebook_search_docs",
+  "match": {
+   "query": "retention"
+  },
+  "response": [
+   {
+    "page_id": "PAGE-3301",
+    "title": "Data retention policy",
+    "snippet": "Raw events are retained for 395 days, then deleted."
+   }
+  ]
+ },
+ {
+  "tool": "lorebook_get_page",
+  "match": {
+   "page_id": "PAGE-3301"
+  },
+  "response": {
+   "page_id": "PAGE-3301",
+   "title": "Data retention policy",
+   "body": "Raw events are retained for 395 days, then deleted. Aggregates are kept indefinitely."
+  }
+ }
+]

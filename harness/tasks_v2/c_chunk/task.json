@@ -1,0 +1,6 @@
+{
+ "id": "c_chunk",
+ "category": "control",
+ "prompt": "chunk in batching/chunk.py drops the last partial chunk. Fix it.",
+ "needs": []
+}

@@ -1,0 +1,61 @@
+[
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "api.rate_limit.per_minute",
+   "env": "prod"
+  },
+  "response": {
+   "key": "api.rate_limit.per_minute",
+   "environment": "prod",
+   "value": 240,
+   "updated_at": "2026-09-30T12:00:00Z"
+  }
+ },
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "api.rate_limit.per_minute",
+   "env": "staging"
+  },
+  "response": {
+   "key": "api.rate_limit.per_minute",
+   "environment": "staging",
+   "value": 300
+  }
+ },
+ {
+  "tool": "confman_get_config_value",
+  "match": {
+   "key": "api.rate_limit.per_minute",
+   "env": "dev"
+  },
+  "response": {
+   "key": "api.rate_limit.per_minute",
+   "environment": "dev",
+   "value": 1000
+  }
+ },
+ {
+  "tool": "confman_list_config_keys",
+  "match": {
+   "prefix": "api"
+  },
+  "response": [
+   "api.rate_limit.per_minute",
+   "api.rate_limit.burst",
+   "api.timeout_ms"
+  ]
+ },
+ {
+  "tool": "confman_export_config",
+  "match": {
+   "environment": "prod"
+  },
+  "response": {
+   "api.rate_limit.per_minute": 240,
+   "api.rate_limit.burst": 40,
+   "api.timeout_ms": 3000
+  }
+ }
+]

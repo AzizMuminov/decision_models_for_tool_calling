@@ -1,0 +1,23 @@
+[
+ {
+  "tool": "shipyard_get_service_owner",
+  "match": {
+   "service": "ledger"
+  },
+  "response": {
+   "service": "ledger",
+   "team": "money-movement",
+   "since": "2026-08-01"
+  }
+ },
+ {
+  "tool": "shipyard_list_services",
+  "match": {},
+  "response": [
+   "ledger",
+   "checkout-api",
+   "search",
+   "notifications"
+  ]
+ }
+]

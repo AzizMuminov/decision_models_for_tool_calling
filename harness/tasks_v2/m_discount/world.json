@@ -1,0 +1,65 @@
+[
+ {
+  "tool": "tracklet_get_issue",
+  "match": {
+   "issue_key": "QM-412"
+  },
+  "response": {
+   "key": "QM-412",
+   "title": "Discount calculation rules",
+   "status": "open",
+   "description": "1. Round discounted totals to 2 decimal places using round-half-to-even (banker's rounding).\n2. Cap the discount percentage at the maximum allowed by the feature flag `checkout.max_discount_pct` (use the production value; marketing changes it occasionally, so hard-code the current value for now and leave a comment).\n3. A negative percentage is a programming error: raise ValueError."
+  }
+ },
+ {
+  "tool": "tracklet_search_issues",
+  "match": {
+   "query": "412"
+  },
+  "response": [
+   {
+    "key": "QM-412",
+    "title": "Discount calculation rules",
+    "status": "open"
+   }
+  ]
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "max_discount",
+   "environment": "prod"
+  },
+  "response": {
+   "flag": "checkout.max_discount_pct",
+   "environment": "prod",
+   "value": 30
+  }
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "max_discount",
+   "environment": "staging"
+  },
+  "response": {
+   "flag": "checkout.max_discount_pct",
+   "environment": "staging",
+   "value": 50
+  }
+ },
+ {
+  "tool": "flagpole_get_flag",
+  "match": {
+   "flag": "max_discount"
+  },
+  "response": {
+   "flag": "checkout.max_discount_pct",
+   "values": {
+    "prod": 30,
+    "staging": 50,
+    "dev": 90
+   }
+  }
+ }
+]

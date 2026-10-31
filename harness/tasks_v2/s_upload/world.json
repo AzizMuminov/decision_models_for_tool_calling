@@ -1,0 +1,30 @@
+[
+ {
+  "tool": "grepline_find_symbol",
+  "match": {
+   "symbol": "MAX_UPLOAD_MB"
+  },
+  "response": [
+   {
+    "repository": "quillmark/platform",
+    "path": "platform/limits.py",
+    "line": 12,
+    "text": "MAX_UPLOAD_MB = 64"
+   }
+  ]
+ },
+ {
+  "tool": "grepline_search_code",
+  "match": {
+   "query": "MAX_UPLOAD_MB"
+  },
+  "response": [
+   {
+    "repository": "quillmark/platform",
+    "path": "platform/limits.py",
+    "line": 12,
+    "text": "MAX_UPLOAD_MB = 64"
+   }
+  ]
+ }
+]

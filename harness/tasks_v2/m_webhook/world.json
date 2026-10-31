@@ -1,0 +1,45 @@
+[
+ {
+  "tool": "lorebook_search_docs",
+  "match": {
+   "query": "webhook"
+  },
+  "response": [
+   {
+    "page_id": "PAGE-4410",
+    "title": "Webhook delivery",
+    "snippet": "Retry behaviour is defined by the API contract webhook-delivery-v2."
+   }
+  ]
+ },
+ {
+  "tool": "lorebook_get_page",
+  "match": {
+   "page_id": "PAGE-4410"
+  },
+  "response": {
+   "page_id": "PAGE-4410",
+   "body": "Retry behaviour (number of retries, backoff) is defined by the API contract webhook-delivery-v2 in the contract registry."
+  }
+ },
+ {
+  "tool": "lorebook_get_api_contract",
+  "match": {
+   "name": "webhook-delivery-v2"
+  },
+  "response": {
+   "name": "webhook-delivery-v2",
+   "max_retries": 8,
+   "backoff": "exponential, base 2s"
+  }
+ },
+ {
+  "tool": "lorebook_list_api_contracts",
+  "match": {},
+  "response": [
+   "webhook-delivery-v1",
+   "webhook-delivery-v2",
+   "billing-invoice-v3"
+  ]
+ }
+]

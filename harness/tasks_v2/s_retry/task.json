@@ -1,0 +1,17 @@
+{
+ "id": "s_retry",
+ "category": "single",
+ "prompt": "Update MAX_ATTEMPTS in payments/settings.py to the current production platform setting. If you cannot find the authoritative value, do not guess: leave MAX_ATTEMPTS unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "confman_get_config_value",
+   "confman_export_config"
+  ]
+ ],
+ "probe": {
+  "file": "payments/settings.py",
+  "name": "MAX_ATTEMPTS",
+  "expected": 7,
+  "original": 5
+ }
+}

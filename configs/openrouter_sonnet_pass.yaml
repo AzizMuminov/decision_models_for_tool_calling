@@ -1,0 +1,66 @@
+output_dir: results/openrouter_v1
+seed: 0
+limit_per_category: null
+concurrency: 6
+budget_usd: null
+when2call_path: data/When2Call/data/test/when2call_test_mcq.jsonl
+benchmarks:
+  bfcl:
+    simple_python: 100
+    multiple: 100
+    live_simple: 100
+    live_multiple: 250
+    parallel_multiple: 60
+    irrelevance: 100
+    live_irrelevance: 150
+  when2call:
+    all: 300
+llms:
+  sonnet:
+    kind: openai_compat
+    model: anthropic/claude-sonnet-5.5
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: null
+    extra_body:
+      reasoning:
+        effort: low
+    max_tokens: 2048
+  deepseek:
+    kind: openai_compat
+    model: deepseek/deepseek-v4.1-flash-1017
+    base_url: https://openrouter.ai/api/v1
+    api_key_env: OPENROUTER_API_KEY
+    temperature: 0.0
+    extra_body:
+      reasoning:
+        effort: low
+    max_tokens: 2048
+dms:
+  jev:
+    kind: openrouter
+    model: typesafe/jev-1.14
+  msd1:
+    kind: openrouter
+    model: microsoft/microsoft-decision-1
+  lexical:
+    kind: lexical
+judge: deepseek
+pipeline:
+  gate_threshold: 0.5
+  cascade_threshold: 0.8
+  select_mode: choice
+  top_k: 1
+  max_candidates: 120
+runs:
+- conditions:
+  - dm_gate
+  - dm_select
+  - dm_gate_select
+  llm:
+  - sonnet
+  dm:
+  - jev
+  - msd1
+  - lexical
+prices: {}

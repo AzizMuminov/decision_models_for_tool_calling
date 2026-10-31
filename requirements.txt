@@ -1,0 +1,11 @@
+typesafe-sdk==0.7.5
+anthropic>=2.0
+openai>=1.86
+pyyaml
+numpy
+scipy
+tqdm
+pytest
+# install separately with --no-deps (see README): bfcl-eval==2026.3.23
+jsonschema
+httpx

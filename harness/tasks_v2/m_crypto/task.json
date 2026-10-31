@@ -1,0 +1,21 @@
+{
+ "id": "m_crypto",
+ "category": "midtask",
+ "prompt": "The deps-audit CI pipeline is failing. Find out why and fix the pin in deps/crypto_pin.py. If you cannot find the authoritative value, do not guess: leave QM_CRYPTO_VERSION unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "buildwave_get_job_log",
+   "buildwave_get_test_report"
+  ],
+  [
+   "cratedepot_check_vulnerabilities",
+   "cratedepot_get_changelog"
+  ]
+ ],
+ "probe": {
+  "file": "deps/crypto_pin.py",
+  "name": "QM_CRYPTO_VERSION",
+  "expected": "1.4.3",
+  "original": "1.4.0"
+ }
+}

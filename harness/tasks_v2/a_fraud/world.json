@@ -1,0 +1,12 @@
+[
+ {
+  "tool": "confman_list_config_keys",
+  "match": {
+   "prefix": "fraud"
+  },
+  "response": [
+   "fraud.velocity.window_s",
+   "fraud.review.queue"
+  ]
+ }
+]

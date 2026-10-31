@@ -1,0 +1,19 @@
+{
+ "id": "m_digest",
+ "category": "midtask",
+ "prompt": "Implement ticket QM-511. If you cannot find the authoritative value, do not guess: leave DIGEST_HOUR_UTC unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "tracklet_get_issue"
+  ],
+  [
+   "flagpole_get_flag"
+  ]
+ ],
+ "probe": {
+  "file": "notifications/digest.py",
+  "name": "DIGEST_HOUR_UTC",
+  "expected": 7,
+  "original": 9
+ }
+}

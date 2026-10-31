@@ -1,0 +1,17 @@
+{
+ "id": "s_qmhttp",
+ "category": "single",
+ "prompt": "Bump QM_HTTP_MIN in deps/pins.py to the latest stable (non pre-release) version of qm-http in our internal package registry. If you cannot find the authoritative value, do not guess: leave QM_HTTP_MIN unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "cratedepot_list_versions",
+   "cratedepot_get_package"
+  ]
+ ],
+ "probe": {
+  "file": "deps/pins.py",
+  "name": "QM_HTTP_MIN",
+  "expected": "4.2.1",
+  "original": "4.0.0"
+ }
+}

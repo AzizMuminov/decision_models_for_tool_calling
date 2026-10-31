@@ -1,0 +1,34 @@
+[
+ {
+  "tool": "pulse_list_slos",
+  "match": {
+   "service": "checkout"
+  },
+  "response": [
+   {
+    "slo_id": "SLO-77",
+    "service": "checkout-api",
+    "name": "p99 latency",
+    "target_ms": 350
+   },
+   {
+    "slo_id": "SLO-78",
+    "service": "checkout-api",
+    "name": "availability",
+    "target": "99.9%"
+   }
+  ]
+ },
+ {
+  "tool": "pulse_get_slo",
+  "match": {
+   "slo_id": "SLO-77"
+  },
+  "response": {
+   "slo_id": "SLO-77",
+   "service": "checkout-api",
+   "objective": "p99 latency below 350 ms over 28 days",
+   "target_ms": 350
+  }
+ }
+]

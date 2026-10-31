@@ -1,0 +1,35 @@
+[
+ {
+  "tool": "datavault_describe_table",
+  "match": {
+   "table": "users"
+  },
+  "response": {
+   "table": "users",
+   "columns": [
+    {
+     "name": "id",
+     "type": "bigint"
+    },
+    {
+     "name": "email",
+     "type": "varchar(320)"
+    },
+    {
+     "name": "created_at",
+     "type": "timestamp"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "datavault_list_tables",
+  "match": {},
+  "response": [
+   "users",
+   "orders",
+   "orders_daily",
+   "events"
+  ]
+ }
+]

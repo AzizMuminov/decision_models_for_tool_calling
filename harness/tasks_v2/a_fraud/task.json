@@ -1,0 +1,12 @@
+{
+ "id": "a_fraud",
+ "category": "absent",
+ "prompt": "Update SCORE_THRESHOLD in fraud/settings.py to the current production platform setting. If you cannot find the authoritative value, do not guess: leave SCORE_THRESHOLD unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [],
+ "probe": {
+  "file": "fraud/settings.py",
+  "name": "SCORE_THRESHOLD",
+  "expected": 0.8,
+  "original": 0.8
+ }
+}

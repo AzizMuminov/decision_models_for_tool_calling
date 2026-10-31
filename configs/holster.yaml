@@ -1,0 +1,30 @@
+# Large tool holsters: choose 1 tool out of K. Via OpenRouter (OPENROUTER_API_KEY).
+output_dir: results/holster_v1
+seed: 0
+concurrency: 4
+taus: [0.5, 0.15]          # DM gate thresholds, fixed in advance (0.15 = best on phase 1, not tuned here)
+max_options: 255           # both DMs reject a Choice with more options; larger holsters use the tournament
+tourney_group: 50
+
+bfcl_pad:                  # BFCL items padded with random distractors from ~1,270 distinct BFCL tools
+  n_pos: 150               # single-call items that should call (simple/multiple, live_simple/live_multiple)
+  n_neg: 50                # irrelevance items: nothing should be called
+  sizes: [25, 100, 200]
+metatool:                  # MetaTool/ToolE single-tool queries over all 199 tools (MIT; HF copy: Youcef-213/ToolE)
+  path: data/metatool
+  n: 200
+  neg_frac: 0.25           # 25% negatives: the gold tool is removed from the holster
+
+llms:
+  sonnet:   {kind: openai_compat, model: anthropic/claude-sonnet-5.5, base_url: "https://openrouter.ai/api/v1",
+             api_key_env: OPENROUTER_API_KEY, temperature: null, max_tokens: 2048, extra_body: {reasoning: {effort: low}}}
+  deepseek: {kind: openai_compat, model: deepseek/deepseek-v4.1-flash-1017, base_url: "https://openrouter.ai/api/v1",
+             api_key_env: OPENROUTER_API_KEY, temperature: 0.0, max_tokens: 2048, extra_body: {reasoning: {effort: low}}}
+dms:
+  jev:  {kind: openrouter, model: typesafe/jev-1.14}
+  msd1: {kind: openrouter, model: microsoft/microsoft-decision-1}
+
+llm_scope:                 # which items each LLM runs on (Sonnet costs ~$0.04-0.09 per call at 100-200 tools)
+  deepseek: {}
+  sonnet: {src: [bfcl_pad, metatool], K: [100, 198, 199, 200], frac: 0.5}
+fill_llm: deepseek         # dm+fill: DM picks the tool, DeepSeek writes arguments seeing only that tool

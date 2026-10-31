@@ -1,0 +1,78 @@
+[
+ {
+  "tool": "buildwave_list_pipeline_runs",
+  "match": {
+   "pipeline": "report"
+  },
+  "response": [
+   {
+    "run_id": "run-50117",
+    "pipeline": "reports-nightly",
+    "status": "failed",
+    "started_at": "2026-10-27T02:00:00Z"
+   },
+   {
+    "run_id": "run-50094",
+    "pipeline": "reports-nightly",
+    "status": "failed",
+    "started_at": "2026-10-26T02:00:00Z"
+   }
+  ]
+ },
+ {
+  "tool": "buildwave_list_pipelines",
+  "match": {},
+  "response": [
+   {
+    "name": "reports-nightly",
+    "repository": "quillmark/reports"
+   },
+   {
+    "name": "checkout-ci",
+    "repository": "quillmark/checkout"
+   }
+  ]
+ },
+ {
+  "tool": "buildwave_get_pipeline_run",
+  "match": {
+   "run_id": "run-50"
+  },
+  "response": {
+   "run_id": "run-50117",
+   "status": "failed",
+   "jobs": [
+    {
+     "name": "lint",
+     "status": "success"
+    },
+    {
+     "name": "unit-tests",
+     "status": "failed"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "buildwave_get_job_log",
+  "match": {
+   "run_id": "run-50"
+  },
+  "response": "runner: nz-akl-04  env: TZ=Pacific/Auckland PYTHONHASHSEED=0\n$ python -m pytest -q\nF\nFAILED tests/test_buckets.py::test_bucket - AssertionError: assert '2023-11-15' == '2023-11-14'\n1 failed in 0.03s\nnote: reporting days are defined as UTC calendar days (see reports README in Lorebook)."
+ },
+ {
+  "tool": "buildwave_get_test_report",
+  "match": {
+   "run_id": "run-50"
+  },
+  "response": {
+   "failed": [
+    "tests/test_buckets.py::test_bucket"
+   ],
+   "message": "assert '2023-11-15' == '2023-11-14'",
+   "runner_env": {
+    "TZ": "Pacific/Auckland"
+   }
+  }
+ }
+]

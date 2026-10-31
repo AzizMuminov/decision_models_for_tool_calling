@@ -1,0 +1,16 @@
+{
+ "id": "s_coverage",
+ "category": "single",
+ "prompt": "Make COVERAGE_MIN in quality/thresholds.py match the coverage threshold enforced by the analytics-ci pipeline. If you cannot find the authoritative value, do not guess: leave COVERAGE_MIN unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "buildwave_get_pipeline_config"
+  ]
+ ],
+ "probe": {
+  "file": "quality/thresholds.py",
+  "name": "COVERAGE_MIN",
+  "expected": 85,
+  "original": 80
+ }
+}

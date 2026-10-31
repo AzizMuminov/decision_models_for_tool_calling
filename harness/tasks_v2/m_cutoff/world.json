@@ -1,0 +1,53 @@
+[
+ {
+  "tool": "murmur_search_messages",
+  "match": {
+   "query": "cutoff"
+  },
+  "response": [
+   {
+    "channel": "data",
+    "thread_id": "T-7710",
+    "author": "omar",
+    "text": "We're moving the nightly cutoff; the agreed value is in ticket QM-512."
+   }
+  ]
+ },
+ {
+  "tool": "murmur_get_thread",
+  "match": {
+   "thread_id": "T-7710"
+  },
+  "response": {
+   "messages": [
+    {
+     "author": "omar",
+     "text": "We're moving the nightly cutoff; the agreed value is in ticket QM-512."
+    }
+   ]
+  }
+ },
+ {
+  "tool": "murmur_list_threads",
+  "match": {
+   "channel": "data"
+  },
+  "response": [
+   {
+    "thread_id": "T-7710",
+    "title": "Nightly cutoff"
+   }
+  ]
+ },
+ {
+  "tool": "tracklet_get_issue",
+  "match": {
+   "issue_key": "QM-512"
+  },
+  "response": {
+   "key": "QM-512",
+   "title": "Move nightly cutoff",
+   "description": "Set the nightly cutoff hour to 3 (UTC)."
+  }
+ }
+]

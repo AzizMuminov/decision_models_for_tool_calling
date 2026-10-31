@@ -1,0 +1,20 @@
+{
+ "id": "m_webhook",
+ "category": "midtask",
+ "prompt": "Align WEBHOOK_MAX_RETRIES in webhooks/delivery.py with what our internal documentation says about webhook delivery. If you cannot find the authoritative value, do not guess: leave WEBHOOK_MAX_RETRIES unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "lorebook_search_docs",
+   "lorebook_get_page"
+  ],
+  [
+   "lorebook_get_api_contract"
+  ]
+ ],
+ "probe": {
+  "file": "webhooks/delivery.py",
+  "name": "WEBHOOK_MAX_RETRIES",
+  "expected": 8,
+  "original": 5
+ }
+}

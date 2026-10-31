@@ -1,0 +1,20 @@
+{
+ "id": "m_ledger_timeout",
+ "category": "midtask",
+ "prompt": "Implement ticket QM-510. If you cannot find the authoritative value, do not guess: leave LEDGER_TIMEOUT_MS unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "tracklet_get_issue"
+  ],
+  [
+   "confman_get_config_value",
+   "confman_export_config"
+  ]
+ ],
+ "probe": {
+  "file": "ledger/client.py",
+  "name": "LEDGER_TIMEOUT_MS",
+  "expected": 2500,
+  "original": 3000
+ }
+}

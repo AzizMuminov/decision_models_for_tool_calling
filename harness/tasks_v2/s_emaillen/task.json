@@ -1,0 +1,17 @@
+{
+ "id": "s_emaillen",
+ "category": "single",
+ "prompt": "Set MAX_EMAIL_LEN in accounts/validation.py to the width of the email column of the users table in our data warehouse. If you cannot find the authoritative value, do not guess: leave MAX_EMAIL_LEN unchanged and add a comment line containing `TODO: value not found`.",
+ "needs": [
+  [
+   "datavault_describe_table",
+   "datavault_run_query"
+  ]
+ ],
+ "probe": {
+  "file": "accounts/validation.py",
+  "name": "MAX_EMAIL_LEN",
+  "expected": 320,
+  "original": 254
+ }
+}

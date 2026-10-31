@@ -1,0 +1,29 @@
+[
+ {
+  "tool": "cratedepot_list_versions",
+  "match": {
+   "package": "qm-http"
+  },
+  "response": {
+   "package": "qm-http",
+   "versions": [
+    "4.0.0",
+    "4.1.0",
+    "4.2.0",
+    "4.2.1",
+    "4.3.0-rc1"
+   ]
+  }
+ },
+ {
+  "tool": "cratedepot_get_package",
+  "match": {
+   "package": "qm-http"
+  },
+  "response": {
+   "package": "qm-http",
+   "latest": "4.3.0-rc1",
+   "latest_stable": "4.2.1"
+  }
+ }
+]
