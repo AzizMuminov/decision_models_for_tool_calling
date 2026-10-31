@@ -333,8 +333,22 @@ discordant runs, $p=1$).
 
 \textbf{The DM was not the bottleneck.} Its top three contained a needed tool for 86--95\% of
 \texttt{find\_tool} calls at 300 tools (87--91\% at 100), despite the near-duplicate services; agents that missed
-searched again. In earlier experiments outside the agent loop (in the artifact), \msd{} picked the right tool
-among 200 BFCL tools for 94.7\% of items against 86.0\% for an LLM, at about a tenth of the cost.
+searched again. The same holds outside the agent loop (Fig.~\ref{fig:scaling}). We padded 150 single-call
+BFCL items~\cite{patil2025bfcl} with random distractors from the $\approx$1,270 distinct BFCL tools to 25, 100
+and 200 tools. With 200 tools, \msd{} chose the right tool for 94.7\% of items and Jev for 95.3\%, against
+86.0\% for DeepSeek ($p=0.004$ vs.\ \msd{}); on an 81-item subset Claude Sonnet~5.5 reached 91.4\%, with no
+detectable difference from the DMs. The DMs' top five always contained the right tool. The selecting call cost
+\$0.53 per thousand requests for \msd{}, \$4.58 for DeepSeek and \$88.9 for Sonnet, whose requests reached about
+63k input tokens.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{../figures/fig_scaling.pdf}
+\caption{Tool selection outside the agent loop: single-call BFCL items padded with random distractor tools.
+(a) Right tool chosen ($n=150$ per point; Sonnet on an 81-item subset at $K\ge100$). (b) Cost of the selecting
+call (log scale).}
+\label{fig:scaling}
+\end{figure*}
 
 %=====================================================================
 \section{What Breaks the Universal Tool?}\label{sec:breaks}
