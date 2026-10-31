@@ -15,7 +15,7 @@
 \usepackage[hidelinks]{hyperref}
 
 \newif\ifanon
-\anontrue
+\ifdefined\camera\anonfalse\else\anontrue\fi  % build the named version with: pdflatex -jobname=agent2027_camera "\def\camera{}\input{agent2027}"
 \newcommand{\msd}{MSD1}
 \newcommand{\artifact}{\ifanon\url{https://anonymous.4open.science/r/XXXX}\else\url{https://github.com/AzizMuminov/decision_models_for_tool_calling}\fi}
 \let\oldus\_\renewcommand{\_}{\oldus\discretionary{}{}{}}
@@ -49,7 +49,7 @@ replaces the catalog.
 \end{abstract}
 
 \begin{IEEEkeywords}
-coding agents, tool calling, decision models, Model Context Protocol, context efficiency, LLM agents
+coding agents, tool calling, decision models, Model Context Protocol
 \end{IEEEkeywords}
 
 %=====================================================================
@@ -296,8 +296,7 @@ absent (5) & 1.00 & 1.00 & 1.00 & 1.00 & 1.00 \\
 %=====================================================================
 \section{Does It Hold as the Catalog Grows?}\label{sec:scale}
 %=====================================================================
-The argument for a universal tool rests on large catalogs, and a larger catalog with near-duplicate services is
-also harder for the DM. Table~\ref{tab:sweep} compares the 300-tool runs with the 100-tool runs of the same
+A larger catalog with near-duplicate services is harder for the DM. Table~\ref{tab:sweep} compares the 300-tool runs with the 100-tool runs of the same
 repeats.
 
 \begin{table}[t]
@@ -384,7 +383,7 @@ had not.
 %=====================================================================
 \section{Can the Decision Model Make the Calls Itself?}\label{sec:calls}
 %=====================================================================
-In the universal tool the DM only selects. Could it go further and choose the agent's next tool? We replayed
+Could the DM also choose the agent's next tool? We replayed
 the 395 tool decisions of the session of Section~\ref{sec:overhead}: at each decision \msd{} and a second DM
 (TypeSafe Jev~1.14~\cite{typesafejev}) saw the user's latest request and the agent's last eight steps, about
 2,000 tokens against the agent's median of 340,000, and chose among the 38 tools the agent could call
@@ -420,7 +419,7 @@ Jev & 0.597 & 0.389 & 0.267 & 0.957 \\
 Decision models do not replace the agent's own calls, but they can replace the part of tool calling that grows
 with an organization: knowing every tool that exists. Selection is a choice among described options, which is
 what a DM is trained for, and its cost does not grow with the catalog the way the prompt does: about
-\$0.0001--0.0004 per search. For practitioners building coding agents on large MCP catalogs we suggest:
+\$0.0001--0.0004 per search. We suggest:
 (1)~keep the core coding tools native; (2)~put the catalog behind \texttt{find\_tool} and \texttt{call\_tool},
 resolved at the moment of need; (3)~tell the agent, in one line per service, what the catalog covers; (4)~do
 not preselect tools from the task text alone; (5)~run agents that reach internal services inside an
@@ -450,8 +449,7 @@ told which services exist. They do not replace the agent's own tool calls, which
 
 \section*{Data Availability}
 The harness (catalog generator, MCP server, LLM proxy, sandbox setup, runner), the 30 tasks with hidden tests
-and reference solutions, and the analysis scripts are available at \artifact. The experiments cost about \$19
-in API fees.
+and reference solutions, and the analysis scripts are available at \artifact.
 
 \section*{Use of Generative AI}
 Claude Code, Anthropic's coding agent, helped throughout this work: it wrote the harness, catalog, tasks and
