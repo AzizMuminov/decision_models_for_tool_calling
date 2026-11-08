@@ -1,0 +1,228 @@
+\begin{thebibliography}{30}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Anthropic}(2025{\natexlab{a}})]{anthropic2025skills}
+{Anthropic}.
+\newblock Agent skills overview ({Claude} platform documentation).
+\newblock
+  \url{https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview},
+  2025{\natexlab{a}}.
+\newblock Accessed 6 November 2026.
+
+\bibitem[{Anthropic}(2025{\natexlab{b}})]{anthropic2025toolsearch}
+{Anthropic}.
+\newblock Tool search tool ({Claude} platform documentation; regex and {BM25}
+  variants).
+\newblock
+  \url{https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool},
+  2025{\natexlab{b}}.
+\newblock Accessed 6 November 2026.
+
+\bibitem[{Anthropic}(2026)]{claudecode}
+{Anthropic}.
+\newblock Claude code documentation: Scale with {MCP} tool search.
+\newblock \url{https://code.claude.com/docs/en/mcp}, 2026.
+\newblock Accessed 6 November 2026.
+
+\bibitem[{Artificial Analysis}(2026)]{aa2026decisionindex}
+{Artificial Analysis}.
+\newblock Artificial analysis decision index.
+\newblock
+  \url{https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index},
+  2026.
+\newblock Accessed 6 November 2026.
+
+\bibitem[Bandi et~al.(2026)]{mcpatlas2026}
+Chaithanya Bandi et~al.
+\newblock {MCP-Atlas}: A large-scale benchmark for tool-use competency with
+  real {MCP} servers.
+\newblock \emph{arXiv preprint arXiv:2602.00933}, 2026.
+
+\bibitem[{Block}(2025)]{goose}
+{Block}.
+\newblock goose: Tool selection strategy (vector and {LLM}-based tool routers,
+  preview feature).
+\newblock
+  \url{https://web.archive.org/web/20251031035432/https://block.github.io/goose/docs/guides/managing-tools/tool-router/},
+  2025.
+\newblock Preview in 2025. The vector strategy was removed in
+  \url{https://github.com/block/goose/pull/3933} (August 2025), the {LLM}-based
+  strategy and its documentation in
+  \url{https://github.com/block/goose/pull/6250} (December 2025).
+
+\bibitem[Chen et~al.(2026)Chen, Liu, Jiang, He, and Liu]{oats2026}
+Huamin Chen, Xunzhuo Liu, Junchen Jiang, Bowei He, and Xue Liu.
+\newblock Outcome-aware tool selection for semantic routers:
+  Latency-constrained learning without {LLM} inference.
+\newblock \emph{arXiv preprint arXiv:2603.13426}, 2026.
+
+\bibitem[{DeepSeek}(2026)]{deepseekv41}
+{DeepSeek}.
+\newblock {DeepSeek V4.1 Flash}.
+\newblock \url{https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017}, 2026.
+\newblock OpenRouter model page; model identifier
+  \texttt{deepseek/deepseek-v4.1-flash-1017}.
+
+\bibitem[Du et~al.(2024)Du, Wei, and Zhang]{du2024anytool}
+Yu~Du, Fangyun Wei, and Hongyang Zhang.
+\newblock {AnyTool}: Self-reflective, hierarchical agents for large-scale {API}
+  calls.
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{PMLR}, pages 11812--11829, 2024.
+\newblock arXiv:2402.04253.
+
+\bibitem[Fei et~al.(2025)Fei, Zheng, and Feng]{fei2025mcpzero}
+Xiang Fei, Xiawu Zheng, and Hao Feng.
+\newblock {MCP-Zero}: Active tool discovery for autonomous {LLM} agents.
+\newblock \emph{arXiv preprint arXiv:2506.01056}, 2025.
+
+\bibitem[Gan and Sun(2025)]{gan2025ragmcp}
+Tiantian Gan and Qiyao Sun.
+\newblock {RAG-MCP}: Mitigating prompt bloat in {LLM} tool selection via
+  retrieval-augmented generation.
+\newblock \emph{arXiv preprint arXiv:2505.03275}, 2025.
+
+\bibitem[Gustin(2025)]{arcade2025toolsearch}
+Eric Gustin.
+\newblock We threw 4,000 tools at {Anthropic}'s new tool search. {Here's} what
+  happened.
+\newblock
+  \url{https://www.arcade.dev/blog/anthropic-tool-search-4000-tools-test/},
+  December 2025.
+\newblock Arcade.dev blog, 3 December 2025.
+
+\bibitem[Lee(2026)]{selection2026retrieval}
+Janghoon Lee.
+\newblock Selection is retrieval, abstention is not: On-device tool routing
+  over 70 {Korean-English} actions.
+\newblock \emph{arXiv preprint arXiv:2609.18672}, 2026.
+
+\bibitem[Li et~al.(2026)]{toolathlon2025}
+Junlong Li et~al.
+\newblock The tool decathlon: Benchmarking language agents for diverse,
+  realistic, and long-horizon task execution.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2026.
+\newblock arXiv:2510.25726.
+
+\bibitem[{Microsoft}(2026{\natexlab{a}})]{copilotvirtualtools}
+{Microsoft}.
+\newblock Use tools with agents ({Visual Studio Code} documentation: 128-tool
+  limit and virtual tools).
+\newblock \url{https://code.visualstudio.com/docs/copilot/agents/agent-tools},
+  2026{\natexlab{a}}.
+\newblock Accessed 6 November 2026.
+
+\bibitem[{Microsoft}(2026{\natexlab{b}})]{msd1}
+{Microsoft}.
+\newblock Not every decision needs an {LLM}: Getting started with
+  {Microsoft-Decision-1}.
+\newblock
+  \url{https://techcommunity.microsoft.com/blog/educatordeveloperblog/not-every-decision-needs-an-llm-getting-started-with-microsoft-decision-1/4563468},
+  October 2026{\natexlab{b}}.
+\newblock Microsoft Community Hub, Educator Developer Blog.
+
+\bibitem[Mo et~al.(2025)Mo, Zhong, Chen, Yuan, Chen, Lu,
+  et~al.]{mo2025livemcpbench}
+Guozhao Mo, Wenliang Zhong, Jiawei Chen, Qianhao Yuan, Xuanang Chen, Yaojie Lu,
+  et~al.
+\newblock {LiveMCPBench}: Can agents navigate an ocean of {MCP} tools?
+\newblock \emph{arXiv preprint arXiv:2508.01780}, 2025.
+
+\bibitem[{Model Context Protocol}(2025)]{mcp}
+{Model Context Protocol}.
+\newblock Model context protocol specification.
+\newblock \url{https://modelcontextprotocol.io/specification/2025-06-18}, 2025.
+
+\bibitem[Mudunuri et~al.(2026)Mudunuri, Wan, Qin, and
+  Manoharan]{mudunuri2026semantic}
+Sarat Mudunuri, Jian Wan, Ally Qin, and Srinivasan Manoharan.
+\newblock Semantic tool discovery for large language models: A vector-based
+  approach to {MCP} tool selection.
+\newblock \emph{arXiv preprint arXiv:2603.20313}, 2026.
+
+\bibitem[{Nous Research}(2026)]{hermesagent}
+{Nous Research}.
+\newblock Hermes agent.
+\newblock \url{https://github.com/NousResearch/hermes-agent}, version 0.19.0
+  (PyPI), 2026.
+
+\bibitem[Olson(2026)]{olson2026decision}
+Randal~S. Olson.
+\newblock When to use a decision model instead of an {LLM}.
+\newblock Blog post, 15 October 2026,
+  \url{https://www.randalolson.com/2026/10/14/when-to-use-a-decision-model-instead-of-an-llm/},
+  2026.
+
+\bibitem[{OpenAI}(2026)]{codexcli}
+{OpenAI}.
+\newblock Codex {CLI}.
+\newblock \url{https://github.com/openai/codex}, 2026.
+\newblock MCP tool search with BM25 in
+  \texttt{codex-rs/core/src/tools/handlers/tool\_search.rs}; source checked 6
+  November 2026.
+
+\bibitem[{opencode contributors}(2026)]{opencode}
+{opencode contributors}.
+\newblock opencode: an open-source coding agent.
+\newblock \url{https://opencode.ai}, version 1.19.4, 2026.
+
+\bibitem[{OpenRouter}(2026)]{openrouterdecisions}
+{OpenRouter}.
+\newblock Decisions {API} reference.
+\newblock
+  \url{https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request},
+  2026.
+\newblock Accessed 6 November 2026.
+
+\bibitem[Qin et~al.(2024)]{qin2023toolllm}
+Yujia Qin et~al.
+\newblock {ToolLLM}: Facilitating large language models to master 16000+
+  real-world {APIs}.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+\newblock arXiv:2307.16789.
+
+\bibitem[Robertson and Zaragoza(2009)]{robertson2009bm25}
+Stephen Robertson and Hugo Zaragoza.
+\newblock The probabilistic relevance framework: {BM25} and beyond.
+\newblock \emph{Foundations and Trends in Information Retrieval}, 3\penalty0
+  (4):\penalty0 333--389, 2009.
+
+\bibitem[Shi et~al.(2025)Shi, Wang, Yan, Ren, Wang, Yin, and
+  Ren]{shi2025toolret}
+Zhengliang Shi, Yuhan Wang, Lingyong Yan, Pengjie Ren, Shuaiqiang Wang, Dawei
+  Yin, and Zhaochun Ren.
+\newblock Retrieval models aren't tool-savvy: Benchmarking tool retrieval for
+  large language models.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2025}, pages 24497--24524, 2025.
+\newblock arXiv:2503.01763.
+
+\bibitem[{Stacklok}(2025)]{stacklok2025optimizer}
+{Stacklok}.
+\newblock Stacklok's {MCP} optimizer vs {Anthropic}'s tool search tool: A
+  head-to-head comparison.
+\newblock
+  \url{https://stacklok.com/blog/stackloks-mcp-optimizer-vs-anthropics-tool-search-tool-a-head-to-head-comparison/},
+  2025.
+
+\bibitem[{TypeSafe AI}(2026)]{typesafejev}
+{TypeSafe AI}.
+\newblock Jev 1.14 decision model.
+\newblock \url{https://typesafe.ai}; served via OpenRouter as
+  \texttt{typesafe/jev-1.14}, \url{https://openrouter.ai/typesafe/jev-1.14},
+  2026.
+
+\bibitem[Wu et~al.(2025)Wu, Liu, Zhang, Chen, Meng, Du, et~al.]{wu2025mcpmark}
+Zijian Wu, Xiangyan Liu, Xinyuan Zhang, Lingjun Chen, Fanqing Meng, Lingxiao
+  Du, et~al.
+\newblock {MCPMark}: A benchmark for stress-testing realistic and comprehensive
+  {MCP} use.
+\newblock \emph{arXiv preprint arXiv:2509.24002}, 2025.
+
+\end{thebibliography}
