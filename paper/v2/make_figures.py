@@ -39,15 +39,14 @@ def task_boot(lr):
 
 
 # ---------------------------------------------------------------- Hermes runs: per-slot token ratios
-KEEP = {tuple(x) for x in json.load(open(RES / "final_franken_sol" / "deepseek_subsample_slots.json"))}  # 5 of 15 repeats, seed 20261108
-rows = [("GPT-6.1 Sol\n5 repeats, 185 slots", slots("final_franken_sol")),
-        ("DeepSeek V4.1 Flash\n5 repeats, 185 slots", {k: v for k, v in slots("final_franken").items() if k in KEEP})]
+rows = [("DeepSeek V4.1 Flash\n15 repeats, 555 pairs", slots("final_franken")),
+        ("GPT-6.1 Sol\n5 repeats, 185 pairs", slots("final_franken_sol"))]
 fig, ax = plt.subplots(figsize=(6.4, 2.1))
 jit = random.Random(0)
 for i, (lab, lr) in enumerate(rows):
     gm, lo, hi, per = task_boot(lr)
     ax.scatter([math.exp(v) for v in lr.values()], [i + jit.uniform(-0.28, 0.28) for _ in lr], s=5, color=GRAY,
-               alpha=0.45, linewidths=0, zorder=2, label="single slot" if i == 0 else None)
+               alpha=0.45, linewidths=0, zorder=2, label="single pair" if i == 0 else None)
     tms = [math.exp(sum(v) / len(v)) for v in per.values()]
     ax.scatter(tms, [i - 0.36] * len(tms), s=9, marker="|", color=INK, linewidths=0.8, zorder=3,
                label="task geometric mean" if i == 0 else None)
@@ -61,7 +60,7 @@ ax.set_xticks([0.125, 0.25, 0.5, 1, 2, 4, 8], ["1/8", "1/4", "1/2", "1", "2", "4
 ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
 ax.set_yticks(range(len(rows)), [lab for lab, _ in rows])
 ax.set_ylim(len(rows) - 0.5, -0.6)
-ax.set_xlabel("tokens per run with selector F relative to BM25 in the same slot")
+ax.set_xlabel("tokens per run with selector F relative to BM25 in the same pair")
 ax.legend(frameon=False, fontsize=7.5, loc="lower left", ncol=3, bbox_to_anchor=(0.0, 1.0), handletextpad=0.3)
 fig.tight_layout()
 fig.savefig(OUT / "fig_tokens.pdf")

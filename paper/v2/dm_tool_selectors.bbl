@@ -1,25 +1,17 @@
-\begin{thebibliography}{31}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[{Anthropic}(2025{\natexlab{a}})]{anthropic2025skills}
-{Anthropic}.
-\newblock Agent skills overview ({Claude} platform documentation).
-\newblock
-  \url{https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview},
-  2025{\natexlab{a}}.
-\newblock Accessed 6 November 2026.
-
-\bibitem[{Anthropic}(2025{\natexlab{b}})]{anthropic2025toolsearch}
+\bibitem[{Anthropic}(2025)]{anthropic2025toolsearch}
 {Anthropic}.
 \newblock Tool search tool ({Claude} platform documentation; regex and {BM25}
   variants).
 \newblock
   \url{https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool},
-  2025{\natexlab{b}}.
+  2025.
 \newblock Accessed 6 November 2026.
 
 \bibitem[{Anthropic}(2026)]{claudecode}
@@ -173,11 +165,6 @@ Randal~S. Olson.
 \newblock MCP tool search with BM25 in
   \texttt{codex-rs/core/src/tools/handlers/tool\_search.rs}; source checked 6
   November 2026.
-
-\bibitem[{opencode contributors}(2026)]{opencode}
-{opencode contributors}.
-\newblock opencode: an open-source coding agent.
-\newblock \url{https://opencode.ai}, version 1.19.4, 2026.
 
 \bibitem[{OpenRouter}(2026)]{openrouterdecisions}
 {OpenRouter}.
