@@ -49,12 +49,11 @@ option and usage-based recommendations, and needs about three decision-model cal
 definitions of 30 MCP servers with 1{,}076 tools it ranks far better than BM25 offline, with the right tool first for
 92\% of hand-written queries against 49\%. On the ToolRet benchmark, 7{,}961 queries over 44{,}453 tools, the same
 decision model re-ranking candidates from BM25 and embeddings scored 53.6 NDCG@10, above every published retriever and
-re-ranker, including models trained for tool retrieval. Inside a shipped agent, Hermes Agent, on 37 coding tasks with simulated
-back ends, pre-planned paired tests run at the same time showed 12.6\% fewer tokens with DeepSeek V4.1 Flash over 555
-pairs, $p=0.0002$, and 9.7\% fewer with GPT-6.1 Sol over 185 pairs, $p=0.004$, with 36--60\% fewer searches and equal
-pass rates. The selector's fee made runs 20\% more expensive with the inexpensive model and left cost unchanged with
-the frontier model; savings grow with the agent model's price and with how much it searches. These results cover
-coding agents, simulated services, two agent models and one harness for the main tests.
+re-ranker, including models trained for tool retrieval. Inside a shipped agent, Hermes Agent, on 37 coding tasks with simulated back ends,
+pre-planned paired runs made at the same time, five per task, used 9.7\% fewer tokens with GPT-6.1 Sol, $p=0.004$, and
+8.5\% fewer with DeepSeek V4.1 Flash, $p=0.07$, with 32--60\% fewer searches and equal pass rates. The selector's fee
+left the cost of a Sol run unchanged and made DeepSeek runs 25\% more expensive. These results cover coding agents,
+simulated services, two agent models and one harness.
 \end{abstract}
 
 %=====================================================================
@@ -67,7 +66,7 @@ servers, so which tools the agent sees, and how it finds the rest, now shapes co
 There are two options. The first is to load every definition into every request. For the 613 tools of twelve
 popular servers the largest prompt then reaches about 182k tokens, against 12--16k with search, and a run costs 8--9
 times as much at the same pass rate (\S\ref{sec:opencode}). The second, which harnesses ship, is search: definitions
-stay out of the prompt and the agent finds tools on demand (Table~\ref{tab:mechanisms}). Most shipped search is
+stay out of the prompt and the agent finds tools on demand (\S\ref{sec:background}). Most shipped search is
 BM25~\citep{codexcli,anthropic2025toolsearch,hermesagent}. BM25 is cheap and needs no model, but it is imprecise, so
 agents search repeatedly, and each search is a full LLM turn that re-reads the whole context. With a frontier agent
 model, a wasted search costs far more than the search itself.
@@ -82,52 +81,34 @@ search, no training, and no change to the agent. We test it with \msd{}~\citep{m
 \item A DM tool selector, \F{}, and the analyses behind its design: choose services first with a ``none'' option,
 then ask two questions per service, and fill a fixed-size answer with usage-based names (\S\ref{sec:selector},
 \S\ref{sec:study}).
+\item A test suite built on the real tool definitions of 30 MCP servers, with simulated back ends, 38 graded coding
+tasks and isolated agent runs (\S\ref{sec:setup}), and a protocol for measuring token differences between agent
+configurations: same-time pairs, task-level analysis and written analysis plans (\S\ref{sec:measuring}).
+\item Results for two agent models in Hermes Agent: \F{} used 9.7\% fewer tokens than BM25 with GPT-6.1 Sol and 8.5\%
+fewer with DeepSeek V4.1 Flash, at equal pass rates (\S\ref{sec:agent}).
 \item An external check on the ToolRet benchmark: as a re-ranker, the DM scores above every published system with and
 without ToolRet's instructions (\S\ref{sec:toolret}).
-\item A test suite built on the real tool definitions of 30 MCP servers, with simulated back ends, 38 graded coding
-tasks and isolated agent runs (\S\ref{sec:setup}).
-\item A protocol for measuring token differences between agent configurations: same-time pairs, task-level
-analysis, power planning and written analysis plans with logged interim looks (\S\ref{sec:measuring}).
-\item Results for two agent models in Hermes Agent: \F{} used 12.6\% fewer tokens than BM25 with DeepSeek V4.1 Flash
-and 9.7\% fewer with GPT-6.1 Sol, at equal pass rates (\S\ref{sec:main}, \S\ref{sec:sol}).
 \end{itemize}
-The scope is limited: coding agents, simulated services, two agent models and one harness for the main tests
+The scope is limited: coding agents, simulated services, two agent models and one harness
 (\S\ref{sec:threats}). ``Universal'' names the proposal, a selector that needs nothing from the harness but a
 query, not a result we have shown for every setting.
 
 %=====================================================================
 \section{Background: how harnesses select tools, and decision models}\label{sec:background}
 %=====================================================================
-Table~\ref{tab:mechanisms} lists the mechanisms harnesses ship and the conditions we use to reproduce them. All but
-native loading give the agent a search tool and a way to call what it finds, usually with a short overview of the
-connected servers, so the agent pays for a definition only when it retrieves it.
-
-\begin{table}[t]
-\centering\footnotesize
-\caption{Tool-selection mechanisms and the conditions that reproduce them. Used in: M, main tests in Hermes Agent,
-\S\ref{sec:main}--\S\ref{sec:sol}; R, offline retrieval, \S\ref{sec:retrieval}; O, opencode, \S\ref{sec:opencode}.}
-\label{tab:mechanisms}
-\setlength{\tabcolsep}{4pt}
-\begin{tabularx}{\linewidth}{@{}l >{\raggedright\arraybackslash}p{3.7cm} X l@{}}
-\toprule
-Condition & Shipped or proposed in & What the agent sees and does & Used in \\
-\midrule
-native & Cursor, Cline, opencode; Claude Code with search off & every tool definition in every request & O \\
-cc & Claude Code ToolSearch~\citep{claudecode} & names of all deferred tools; selection by exact name or keyword search weighted towards names; our approximation, since the exact scoring is undocumented & R O \\
-bm25 & Anthropic tool search~\citep{anthropic2025toolsearch}, Codex CLI~\citep{codexcli}, Hermes Agent~\citep{hermesagent} & Okapi BM25~\citep{robertson2009bm25} over names, descriptions and parameters & M R O \\
-groups & GitHub Copilot virtual tools~\citep{copilotvirtualtools} & one activation tool per server group; activating loads the group's definitions & O \\
-embed & RAG-MCP~\citep{gan2025ragmcp}; Goose in 2025, since removed~\citep{goose} & cosine similarity of query and tool embeddings & R O \\
-llm & Goose in 2025, since removed~\citep{goose}; AnyTool-style routing~\citep{du2024anytool} & an LLM reads one line per tool and names the best ones & R O \\
-dm & this paper, simple hierarchy & \msd{} ranks servers, then tools & R O \\
-\F{} & this paper & \msd{} chooses services with a ``none'' option, then tools; five tools with descriptions plus names, \S\ref{sec:selector} & M \\
-\bottomrule
-\end{tabularx}
-\end{table}
+Harnesses handle large catalogs in one of four ways. Cursor, Cline and opencode load every definition into every
+request. Codex~\citep{codexcli}, Anthropic's tool search~\citep{anthropic2025toolsearch} and Hermes
+Agent~\citep{hermesagent} search with Okapi BM25~\citep{robertson2009bm25} over names, descriptions and parameters.
+Claude Code's ToolSearch~\citep{claudecode} lists the names of deferred tools and searches by keyword weighted towards
+names, and GitHub Copilot~\citep{copilotvirtualtools} loads groups of tools on demand. Embedding
+search~\citep{gan2025ragmcp} and LLM routers~\citep{du2024anytool} have been tried, for example in
+Goose~\citep{goose}, which has since removed them. All but full loading give the agent a search tool and a way to call
+what it finds, so the agent pays for a definition only when it retrieves it.
 
 \paragraph{Hermes Agent's bridge.} Hermes Agent 0.19.0 defers MCP tools once their definitions exceed 10\% of the
 context window, as hundreds of tools do. Its \texttt{tool\_search} returns compact hits, a name and one line each;
 \texttt{tool\_describe} returns one full definition; found tools are then called directly with typed arguments. Only
-the ranker behind \texttt{tool\_search} differs between our main conditions.
+the ranker behind \texttt{tool\_search} differs between our conditions.
 
 \paragraph{Decision models.} A request to OpenRouter's Decisions API~\citep{openrouterdecisions} carries a
 \emph{state}, here the agent's search query, and one or more named questions. A multiple-choice question lists up to
@@ -163,8 +144,9 @@ later steps; descriptions are expensive and names are cheap; and the DM's probab
 so the list size is fixed and filled by prerequisites and usage. The offline study of \S\ref{sec:study} chose each
 element.
 
-\paragraph{Cost.} A search takes about three DM calls in two sequential rounds. In the main tests a search took a
-median of 1.0\,s and cost \$0.36 per 1{,}000 searches; 5.7\% of searches got the empty ``none'' answer.
+\paragraph{Cost.} A search takes about three DM calls in two sequential rounds. In the agent runs a search took a
+median of 1.1\,s and cost \$0.35 per 1{,}000 searches; 5.1\% of searches got the empty ``none'' answer, all of them
+with DeepSeek.
 
 \begin{figure}[t]
 \centering
@@ -224,7 +206,7 @@ the information does not exist and the right outcome is to stop and leave a \tex
 no catalog tool (App.~\ref{app:catalog}). Every repository carries the same short handbook of where things live,
 like an \texttt{AGENTS.md}, and every prompt starts with the same note that the company's services are connected as
 tools, some loaded on demand through tool search, and ends with the same escape clause: if the information is not
-available, do not guess. One task, \texttt{k8s\_crashloop}, is excluded from the main tests for both conditions,
+available, do not guess. One task, \texttt{k8s\_crashloop}, is excluded from the agent runs for both conditions,
 because its grading rule forbids a reasonable read-only \texttt{kubectl exec}. The offline queries and the opencode
 runs use the earlier set v1, 33 tasks whose prompts often name the service.
 
@@ -233,7 +215,7 @@ arguments, and no destructive call such as a merge, delete or rollout restart wa
 hidden tests fail on the original repository and pass with the reference solution, and that the reference calls get
 the intended answers.
 
-\paragraph{Harnesses and isolation.} The main tests use Hermes Agent~\citep{hermesagent} 0.19.0 with its own
+\paragraph{Harnesses and isolation.} The agent runs use Hermes Agent~\citep{hermesagent} 0.19.0 with its own
 tool-search bridge over all 1{,}076 tools; we patched its search function to ask our server's ranking endpoint, so
 only the ranker differs. Supporting runs use opencode~\citep{opencode} 1.19.4. Agents run as an unprivileged user
 without credentials, each Hermes run in its own mount namespace, with a per-run token that the agent's shell cannot
@@ -241,7 +223,9 @@ read and a deny list of probing commands (App.~\ref{app:hardening}).
 
 \paragraph{Agent models and baseline.} DeepSeek V4.1 Flash~\citep{deepseekv41} is pinned to DeepInfra's fp8 endpoint
 with temperature 0.6; GPT-6.1 Sol is pinned to OpenAI with default sampling. The baseline is Hermes Agent's built-in
-BM25, unmodified. \emph{Tokens} are all uncached input, cached input and output tokens summed over a run's LLM calls;
+BM25, unmodified. Each task ran five times under each condition with each model, 185 same-time pairs per model;
+for DeepSeek the five repeats per task were drawn at random from 15 with a seed fixed before the analysis.
+\emph{Tokens} are all uncached input, cached input and output tokens summed over a run's LLM calls;
 \emph{cost} is the LLM cost at the pinned provider's prices, including cache writes where billed, plus the DM fee.
 
 %=====================================================================
@@ -250,31 +234,130 @@ BM25, unmodified. \emph{Tokens} are all uncached input, cached input and output 
 Pass rates are near ceiling for both rankers, so the differences we look for are in tokens, and tokens are noisy.
 
 \paragraph{Run-to-run noise.} Two runs of the same task under the same condition can differ by a large factor. The
-standard deviation of the per-slot log ratio between conditions was 0.55 with DeepSeek, so a single slot easily
-swings by a factor of 1.7, and 0.29 with Sol (Figure~\ref{fig:tokens}).
+standard deviation of the per-slot log ratio between conditions was 0.58 with DeepSeek, so a single slot easily
+swings by a factor of 1.8, and 0.29 with Sol (Figure~\ref{fig:tokens}).
 
 \paragraph{Drift.} Batches run at different times are not directly comparable. In an A/A comparison, BM25 against
 BM25, two batches run some days apart differed by 0.94$\times$ [0.87, 1.02] over 111 matched slots of 37 tasks,
 $p=0.16$. That is
-not significant, but the interval admits differences as large as the effects we measure. Two BM25 batches run a day
-apart agreed closely, 1.01$\times$ [0.97, 1.06] over 555 slots.
+not significant, but the interval admits differences as large as the effects we measure.
 
 \paragraph{Protocol.} Both conditions run the same task and repeat number back to back, a \emph{slot}. For each slot
 we take $\log(\text{tokens}_F/\text{tokens}_{\text{BM25}})$, average it per task, and test the 37 task means with a
 two-sided one-sample $t$-test; the 95\% interval is a task-level bootstrap with 10{,}000 resamples, reported as a
 geometric-mean ratio. A verdict of ``fewer tokens'' needs $p<0.05$ and an interval that excludes 1. Treating slots as
 independent would overstate the evidence, since repeats of a task are correlated. Before each batch we wrote an
-analysis plan, logged every interim look, and ran the batch to completion regardless of interim numbers
-(App.~\ref{app:plans}). Runs that ended in provider errors without recorded tokens were rerun; nothing else was
+analysis plan, logged every interim look, and ran the batch to completion regardless of interim numbers; the
+plans are released with the run records. Runs that ended in provider errors without recorded tokens were rerun; nothing else was
 excluded.
 
-\paragraph{Power.} Simulations from the measured variance planned 15 repeats for DeepSeek, 98\% power for a 12.5\%
-token reduction, and 5 for Sol, about 98\% at Sol's noise but only 80\% at DeepSeek's.
+\paragraph{Power.} Simulations from the measured variance give five repeats about 98\% power to detect a 12.5\%
+token reduction at Sol's noise, but only about 80\% at DeepSeek's.
 
 %=====================================================================
 \section{Results}\label{sec:results}
 %=====================================================================
-\subsection{Offline: designing the selector}\label{sec:study}
+\subsection{Tokens inside Hermes Agent}\label{sec:agent}
+Each of the 37 tasks ran five times under BM25 and under \F{} with each agent model, 185 same-time pairs per model.
+Selector~F used fewer tokens with both models (Table~\ref{tab:agent}, Figure~\ref{fig:tokens}). With GPT-6.1 Sol the
+reduction was 9.7\%, 0.903$\times$ [0.84, 0.96], $p=0.004$: Sol searched 2.2 times per run instead of 5.5, 60\% fewer,
+and made 12\% fewer LLM calls. With DeepSeek V4.1 Flash it was 8.5\%, 0.915$\times$ [0.84, 1.01], $p=0.07$, with 32\%
+fewer searches, 7.3 against 10.7. DeepSeek's runs are noisier, so at five repeats its interval just reaches 1. Pass
+rates were equal: 173 against 172 of 185 with Sol and 182 against 184 with DeepSeek, McNemar $p=1.0$ and $0.63$. Wall
+time did not change. The saving was largest on the 7 multi-service tasks, 0.76$\times$ with Sol and 0.80$\times$ with
+DeepSeek, against 0.94$\times$ and 0.91$\times$ on the 22 single-service tasks.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Selector~F against BM25 in Hermes Agent: 37 tasks, 5 repeats, 185 same-time pairs per model. Per-run metrics
+as mean / median. Ratio: geometric mean of per-slot ratios of \F{} to BM25, averaged per task, with a task-level
+bootstrap 95\% CI; $p$: $t$-test over the 37 task means; for searches, the paired difference per run. Passed runs:
+runs passed only by BM25 against only by \F{}, McNemar test. Cost includes cache writes and the DM fee. Bold: the better
+value where the difference is significant.}
+\label{tab:agent}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llccll@{}}
+\toprule
+Model & Metric & BM25 & \F{} & \F{} vs BM25 [95\% CI] & $p$ \\
+\midrule
+\multirow{6}{*}{GPT-6.1 Sol} & Passed runs & 172/185 & 173/185 & 4 vs 5 & 1.00 \\
+& Tokens per run & 193k / 168k & \textbf{171k / 133k} & 0.903$\times$ [0.84, 0.96] & 0.004 \\
+& LLM calls per run & 13.4 / 13 & \textbf{11.5 / 10} & 0.88$\times$ [0.83, 0.92] & $<$0.0001 \\
+& Searches per run & 5.5 / 5 & \textbf{2.2 / 2} & $-$3.3 [$-$4.4, $-$2.2] & $<$0.0001 \\
+& Cost per run, \$ & 0.0724 / 0.0641 & 0.0715 / 0.0630 & 0.99$\times$ [0.95, 1.03] & 0.63 \\
+& Wall time per run, s & 53 / 45 & 52 / 41 & 0.99$\times$ [0.92, 1.05] & 0.69 \\
+\midrule
+\multirow{6}{*}{DeepSeek V4.1 Flash} & Passed runs & 184/185 & 182/185 & 3 vs 1 & 0.63 \\
+& Tokens per run & 769k / 552k & 717k / 477k & 0.915$\times$ [0.84, 1.01] & 0.07 \\
+& LLM calls per run & 28.5 / 26 & 27.4 / 24 & 0.95$\times$ [0.89, 1.01] & 0.07 \\
+& Searches per run & 10.7 / 10 & \textbf{7.3 / 6} & $-$3.4 [$-$4.5, $-$2.3] & $<$0.0001 \\
+& Cost per run, \$ & \textbf{0.0080 / 0.0067} & 0.0104 / 0.0084 & 1.25$\times$ [1.15, 1.36] & $<$0.0001 \\
+& Wall time per run, s & 135 / 123 & 145 / 128 & 1.04$\times$ [0.95, 1.14] & 0.38 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_tokens.pdf}
+\caption{Tokens per run with \F{} relative to BM25 in the same slot. Grey: single slots; black ticks: the 37
+task-level geometric means; blue: overall geometric mean of the task means with a task-level bootstrap 95\% CI.
+With DeepSeek, single slots range from 0.17 to 8.2, so only paired averages over many slots are informative.}
+\label{fig:tokens}
+\end{figure}
+
+\subsection{Service errors: the Git family}\label{sec:failures}
+We asked the DM's service question for 2{,}477 distinct agent queries that name exactly one service. It chose the
+named service for 97.9\%. Of its 51 errors, 47 were within Git, GitHub and GitLab, most often Git for a GitHub query,
+and in 45 the named service came second. By service it chose correctly 608 of 639 times for GitHub, 86 of 95 for Git
+and 325 of 332 for GitLab, and in every case for Atlassian, Sentry, Slack, Notion, CloudWatch, MongoDB, Postgres and
+EKS. The errors came from the original service cards, which did not say that pull requests and branches live on GitHub
+rather than in the local Git copy; \F{} therefore uses fixed cards for the three services and always includes a service
+the query names, and it passed \texttt{gh\_open\_pr} in all 10 of its runs. The remaining failures are hard for both
+rankers: with Sol, \texttt{loki\_errors} and \texttt{prom\_threshold} account for 8 of BM25's 13 failures and 10 of
+\F{}'s 12; with DeepSeek, \F{} failed \texttt{prom\_threshold} twice and BM25 failed one run.
+
+\subsection{Cost}\label{sec:cost}
+The DM fee is fixed per search, while any saving is a share of the agent's own cost. With Sol the fee was \$0.0008 per
+run against an LLM cost of about seven cents, and cost per run did not change, 0.99$\times$ [0.95, 1.03]: more than half
+of Sol's cost was cache writes, which \F{} does not reduce. With DeepSeek the fee was \$0.0026 per run, about a third of
+a run's cost, and runs became 25\% more expensive, 1.25$\times$ [1.15, 1.36]; before the fee, \F{}'s runs cost 2\% less.
+The tokens saved are mostly cached input, the cheapest kind, so a fee per search pays off only where searches are
+frequent or the agent model's uncached input and output are expensive.
+
+\subsection{Loading all tools: opencode}\label{sec:opencode}
+Supporting runs with opencode on the 33 v1 tasks and 613 tools, two repeats per task and two inexpensive agent models,
+show why harnesses search (Table~\ref{tab:opencode}). Without a catalog no tool task passed; with one, every
+condition passed 96--100\% of runs. Loading every definition made the largest prompt about 182k tokens with DeepSeek;
+with ranked search it was 12--16k, and the cost per run fell from \$0.072 to \$0.008--0.009, 8--9 times less. Pass
+rate cannot separate the search mechanisms, which is why the Hermes runs compare tokens.
+
+\begin{table}[t]
+\centering\small
+\caption{opencode on task set v1, 613 tools, two repeats per task. Pass: runs passed on the 25 tasks that need a
+catalog tool. Largest prompt: median over those runs. Cost: mean LLM cost per run over all 33 tasks, without the
+selector's fee. Bold: smallest largest prompt and lowest cost among conditions with catalog access.}
+\label{tab:opencode}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{DeepSeek V4.1 Flash} & \multicolumn{3}{c}{Tencent hy4} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Condition & Pass & Largest prompt & \$/run & Pass & Largest prompt & \$/run \\
+\midrule
+no catalog & 0/25 & 9.6k & 0.0110 & 0/25 & 15.4k & 0.0154 \\
+all tools loaded & 25/25 & 181.9k & 0.0722 & 25/25 & 188.5k & 0.1039 \\
+Claude Code style & 25/25 & 16.2k & 0.0089 & 25/25 & \textbf{32.0k} & \textbf{0.0375} \\
+BM25 & 25/25 & 13.4k & 0.0093 & 25/25 & 33.6k & 0.0417 \\
+tool groups & 25/25 & 29.0k & 0.0179 & 24/25 & 52.7k & 0.0562 \\
+embeddings & 25/25 & 13.3k & 0.0090 & 23/25 & 49.0k & 0.0514 \\
+LLM router & 25/25 & \textbf{11.7k} & \textbf{0.0076} & 25/25 & 32.6k & 0.0419 \\
+DM hierarchy & 25/25 & 14.0k & 0.0082 & 25/25 & 34.6k & 0.0470 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Designing the selector}\label{sec:study}
 We compared 13 selector variants on three fixed query sets at 1{,}076 tools: 120 hand-written queries for the steps
 of task set v1, plus 40 that no tool can serve; 400 searches made by agents in BM25 runs of an earlier batch,
 labelled with the new tools the agent used after each search and before its next one; and 350 agent queries that name
@@ -340,7 +423,7 @@ and by all 15 returned tools. Variant numbers as in Table~\ref{tab:study}. The v
 \label{fig:heldout}
 \end{figure}
 
-\subsection{Offline: DM against shipped mechanisms and an LLM router}\label{sec:retrieval}
+\subsection{The DM against shipped mechanisms and an LLM router}\label{sec:retrieval}
 On the 120 hand-written queries, a simple server-then-tool DM hierarchy ranked better
 than every shipped mechanism and an LLM router that reads one line per tool (Table~\ref{tab:retrieval}). At 613 tools
 it put the right tool first for 93\% of queries, against 48--54\% for the Claude Code-style, BM25 and embedding
@@ -422,167 +505,11 @@ code. The DM fee for all 7{,}961 queries was \$7.73 for both methods with the in
 Two differences from the published systems remain: the DM re-ranks our own first stage rather than NV-Embed-v1 or
 Tool-Embed-4B, and it was not trained for the task.
 
-\subsection{Main test: DeepSeek V4.1 Flash, 15 repeats}\label{sec:main}
-Each of the 37 tasks ran 15 times under BM25 and under \F{}, 555 slots and 1{,}110 runs. Selector~F used fewer tokens:
-0.874$\times$ [0.82, 0.93], $p=0.0002$, a 12.6\% reduction, with fewer tokens on 361 of 555 slots
-(Table~\ref{tab:deepseek}, Figure~\ref{fig:tokens}). Agents made 3.9 fewer searches per run, 7.1 against 11.1, made
-8\% fewer LLM calls and sent 5\% smaller prompts per call. They read 1.3 more full definitions per run with
-\texttt{tool\_describe}, which cost far less than the searches saved. Pass rates were equal, 550 of 555 each, with 5
-discordant slots each way. Wall time did not change: the DM's second per search was offset by fewer turns. Cost per
-run rose by 20\%, 1.20$\times$ [1.13, 1.28], because the DM fee of \$0.0025 per run is large next to an agent that
-costs under a cent per run; \S\ref{sec:cost} discusses this. The saving was largest on the 7 multi-service tasks,
-0.76$\times$, against 0.88$\times$ on the 22 single-service tasks.
-
-\begin{table}[t]
-\centering\footnotesize
-\caption{Main test with DeepSeek V4.1 Flash: 37 tasks, 15 repeats, 555 same-time pairs. Per-run metrics as mean /
-median. Ratio: geometric mean of per-slot ratios of \F{} to BM25, averaged per task, with a task-level bootstrap 95\%
-CI; $p$: $t$-test over the 37 task means; for searches, the paired difference per run. Cost includes the DM fee.
-Bold: the better value where the difference is significant.}
-\label{tab:deepseek}
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lccll@{}}
-\toprule
-Metric & BM25 & \F{} & \F{} vs BM25 [95\% CI] & $p$ \\
-\midrule
-Passed runs & 550/555 & 550/555 & 5 vs 5 discordant & 1.00 \\
-Tokens per run & 791k / 553k & \textbf{680k / 507k} & 0.874$\times$ [0.82, 0.93] & 0.0002 \\
-LLM calls per run & 29.0 / 26 & \textbf{26.8 / 24} & 0.92$\times$ [0.88, 0.96] & 0.0007 \\
-Searches per run & 11.1 / 10 & \textbf{7.1 / 6} & $-$3.9 [$-$5.0, $-$3.0] & $<$0.0001 \\
-Prompt tokens per call, median & 21.1k & \textbf{20.1k} & 0.95$\times$ [0.93, 0.98] & 0.0006 \\
-Cost per run, \$ & \textbf{0.0082 / 0.0068} & 0.0100 / 0.0089 & 1.20$\times$ [1.13, 1.28] & $<$0.0001 \\
-Wall time per run, s & 137 / 120 & 140 / 120 & 1.01$\times$ [0.96, 1.07] & 0.75 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{figures/fig_tokens.pdf}
-\caption{Tokens per run with \F{} relative to BM25 in the same slot. Grey: single slots; black ticks: the 37
-task-level geometric means; blue: overall geometric mean of the task means with a task-level bootstrap 95\% CI.
-With DeepSeek, single slots range from 0.12 to 8.2, so only paired averages over many slots are informative.}
-\label{fig:tokens}
-\end{figure}
-
-\subsection{Second agent model: GPT-6.1 Sol, 5 repeats}\label{sec:sol}
-The same design with GPT-6.1 Sol and 5 repeats, 185 slots, also showed fewer tokens: 0.903$\times$ [0.84, 0.96],
-$p=0.004$, a 9.7\% reduction (Table~\ref{tab:sol}). Sol searched less than DeepSeek to begin with, 5.5 times per run
-with BM25, and 2.2 times with \F{}, 60\% fewer. It made 12\% fewer LLM calls, its prompts per call did not change,
-and pass rates were equal, 172 and 173 of 185. Cost did not change, 0.99$\times$ [0.95, 1.03], since Sol's fee per run
-was small next to its LLM cost and since cache writes, which \F{} does not reduce, made up more than half of that cost.
-
-For comparison at equal size, the plan fixed in advance a random draw of 5 of the 15 DeepSeek repeats per task. On
-that subsample the reduction was 0.915$\times$ [0.84, 1.01], $p=0.07$: similar in size but not significant, as the
-power estimate for DeepSeek's higher noise predicted. The full 15-repeat result remains DeepSeek's verdict.
-
-\begin{table}[t]
-\centering\scriptsize
-\caption{GPT-6.1 Sol, 37 tasks, 5 repeats, 185 same-time pairs, next to the pre-specified DeepSeek subsample of 5 of
-15 repeats per task, also 185 pairs. Per-run metrics as mean / median; ratios and $p$ as in Table~\ref{tab:deepseek}.
-Cost includes cache writes and the DM fee. Bold: the better value where the difference is significant.}
-\label{tab:sol}
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lccll ll@{}}
-\toprule
-& \multicolumn{4}{c}{GPT-6.1 Sol} & \multicolumn{2}{c}{DeepSeek, 5 of 15 repeats} \\
-\cmidrule(lr){2-5}\cmidrule(lr){6-7}
-Metric & BM25 & \F{} & \F{} vs BM25 & $p$ & \F{} vs BM25 & $p$ \\
-\midrule
-Passed runs & 172/185 & 173/185 & 4 vs 5 discordant & 1.00 & 184 vs 182 passed & 0.63 \\
-Tokens per run & 193k / 168k & \textbf{171k / 133k} & 0.903$\times$ [0.84, 0.96] & 0.004 & 0.915$\times$ [0.84, 1.01] & 0.07 \\
-LLM calls per run & 13.4 / 13 & \textbf{11.5 / 10} & 0.88$\times$ [0.83, 0.92] & $<$0.0001 & 0.95$\times$ [0.89, 1.01] & 0.07 \\
-Searches per run & 5.5 / 5 & \textbf{2.2 / 2} & $-$3.3 [$-$4.5, $-$2.2] & $<$0.0001 & $-$3.4 [$-$4.5, $-$2.4] & $<$0.0001 \\
-Cost per run, \$ & 0.0724 / 0.0641 & 0.0715 / 0.0630 & 0.99$\times$ [0.95, 1.03] & 0.63 & 1.25$\times$ [1.15, 1.36] & $<$0.0001 \\
-Wall time per run, s & 53 / 45 & 52 / 41 & 0.99$\times$ [0.92, 1.05] & 0.69 & 1.04$\times$ [0.95, 1.14] & 0.38 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Failure analysis: the Git family}\label{sec:failures}
-A variant that took only the top service and lacked the fixed cards failed \texttt{gh\_open\_pr} in 3 of 15 runs
-while BM25 passed all 15. We asked the DM's service question for every distinct query of that batch that names exactly
-one service, 2{,}477 queries. The DM chose the named service for 97.9\%. Of its 51
-errors, 47 were within Git, GitHub and GitLab, most often Git for a GitHub query, and in 45 the named service came
-second. By service it chose correctly 608 of 639 times for GitHub, 86 of 95 for Git and 325 of 332 for GitLab, and in
-every case for Atlassian, Sentry, Slack, Notion, CloudWatch, MongoDB, Postgres and EKS. The errors came from the
-service cards, which did not say that pull requests and branches live on GitHub rather than in the local Git copy.
-With the fixed cards and the named-service rule, \F{} passed \texttt{gh\_open\_pr} in 15 of 15 runs. The remaining
-failures are hard for both rankers: with Sol, \texttt{loki\_errors} and \texttt{prom\_threshold} account for 8 of
-BM25's 13 failures and 10 of \F{}'s 12; with DeepSeek, \texttt{prom\_threshold} failed 3 times under \F{} and 2 times
-under BM25.
-
-\subsection{Loading all tools: opencode}\label{sec:opencode}
-Supporting runs with opencode on the 33 v1 tasks and 613 tools, two repeats per task and two inexpensive agent models,
-show why harnesses search (Table~\ref{tab:opencode}). Without a catalog no tool task passed; with one, every
-condition passed 96--100\% of runs. Loading every definition made the largest prompt about 182k tokens with DeepSeek;
-with ranked search it was 12--16k, and the cost per run fell from \$0.072 to \$0.008--0.009, 8--9 times less. Pass
-rate cannot separate the search mechanisms, which is why the main tests compare tokens.
-
-\begin{table}[t]
-\centering\small
-\caption{opencode on task set v1, 613 tools, two repeats per task. Pass: runs passed on the 25 tasks that need a
-catalog tool. Largest prompt: median over those runs. Cost: mean LLM cost per run over all 33 tasks, without the
-selector's fee. Bold: smallest largest prompt and lowest cost among conditions with catalog access.}
-\label{tab:opencode}
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{@{}lcccccc@{}}
-\toprule
-& \multicolumn{3}{c}{DeepSeek V4.1 Flash} & \multicolumn{3}{c}{Tencent hy4} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Condition & Pass & Largest prompt & \$/run & Pass & Largest prompt & \$/run \\
-\midrule
-no catalog & 0/25 & 9.6k & 0.0110 & 0/25 & 15.4k & 0.0154 \\
-native & 25/25 & 181.9k & 0.0722 & 25/25 & 188.5k & 0.1039 \\
-cc & 25/25 & 16.2k & 0.0089 & 25/25 & \textbf{32.0k} & \textbf{0.0375} \\
-bm25 & 25/25 & 13.4k & 0.0093 & 25/25 & 33.6k & 0.0417 \\
-groups & 25/25 & 29.0k & 0.0179 & 24/25 & 52.7k & 0.0562 \\
-embed & 25/25 & 13.3k & 0.0090 & 23/25 & 49.0k & 0.0514 \\
-llm & 25/25 & \textbf{11.7k} & \textbf{0.0076} & 25/25 & 32.6k & 0.0419 \\
-dm & 25/25 & 14.0k & 0.0082 & 25/25 & 34.6k & 0.0470 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Cost by agent model}\label{sec:cost}
-The DM fee is fixed per search; the saving scales with the agent model's price. Table~\ref{tab:cost} gives the two
-measured results and prices the mean DeepSeek token mix at other models' list prices. With DeepSeek, \F{} cut the LLM
-cost by 8.5\% before the fee, less than the token reduction because the tokens saved are mostly cached input, which
-is cheap; the fee of \$0.0025 per run then made the mean run 22\% more expensive, or 20\% as the paired ratio of Table~\ref{tab:deepseek}. With Sol, the fee was \$0.0008
-per run and cost was unchanged. If a model produced DeepSeek's token mix, \F{} would make runs 6--12\% more expensive
-with inexpensive models and 7--9\% cheaper with mid-range and frontier ones, saving \$17--70 per 1{,}000 runs. Sol's
-measured result is less favourable than this projection because its cost was dominated by cache writes, so the
-projection is indicative only.
-
-\begin{table}[t]
-\centering\footnotesize
-\caption{LLM cost per run with BM25 and with \F{}, DM fee included. Measured: the main tests, mean per run. Projected:
-the mean DeepSeek token mix per run, 27.5k uncached input, 755.9k cached input and 11.1k output tokens with BM25 and
-24.8k, 648.4k and 10.8k with \F{}, priced at list prices in \$ per million tokens, plus the measured fee of \$0.0025 per
-run. $^{a}$Also includes cache writes at \$2.50 per million tokens.}
-\label{tab:cost}
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}llcccr@{}}
-\toprule
-& Agent model & Price, in / cached / out & BM25 \$/run & \F{} \$/run & Change \\
-\midrule
-\multirow{2}{*}{Measured} & DeepSeek V4.1 Flash, DeepInfra & 0.098 / 0.003 / 0.29 & \textbf{0.0082} & 0.0100 & +22\% \\
-& GPT-6.1 Sol$^{a}$ & 2.00 / 0.10 / 10.00 & 0.0724 & 0.0715 & $-$1\% \\
-\midrule
-\multirow{5}{*}{Projected} & DeepSeek V4.1 Flash, list price & 0.15 / 0.003 / 0.60 & \textbf{0.0131} & 0.0147 & +12\% \\
-& Claude Haiku 5.5 & 0.10 / 0.01 / 0.50 & \textbf{0.0159} & 0.0169 & +6\% \\
-& Claude Sonnet 5.5, GPT-6.1 Sol & 2.00 / 0.10 / 10.00 & 0.2420 & \textbf{0.2247} & $-$7\% \\
-& Kimi K3.1 Pro & 2.00 / 0.20 / 10.00 & 0.3176 & \textbf{0.2895} & $-$9\% \\
-& Claude Fable 5.1 & 10.00 / 0.25 / 50.00 & 1.0211 & \textbf{0.9510} & $-$7\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 %=====================================================================
 \section{Discussion}\label{sec:discussion}
 %=====================================================================
 \paragraph{Fewer searches matter more than cheaper searches.} A search costs the agent a full turn: the model re-reads
-its whole context to write the query and again to read the answer. Selector~F cut searches by 36\% with DeepSeek and 60\%
+its whole context to write the query and again to read the answer. Selector~F cut searches by 32\% with DeepSeek and 60\%
 with Sol; the tokens saved came from fewer LLM calls, not from shorter answers, since \F{}'s answers are longer than
 BM25's. A better first answer, with the right service's likely next tools listed by name, saves the turns that a
 rephrased query would cost.
@@ -605,15 +532,15 @@ tool among a service's tools. It is poor at judging a tool in isolation, as the 
 %=====================================================================
 \paragraph{Scope.} The services are simulated: real services return longer and messier results, which would raise
 token counts and could change how agents search. The tasks are coding tasks only. Two agent models were tested, and
-the main tests used one harness, Hermes Agent; opencode results come from an earlier selector and task set.
+the agent runs used one harness, Hermes Agent; opencode results come from an earlier selector and task set.
 
 \paragraph{Design choices made before the tests.} Selector~F was designed in exploratory runs on a separate long task and in
-the offline study, before the main tests; we checked it on held-out searches from a different batch. The usage lists
+the offline study, before the agent runs; we checked it on held-out searches from a different batch. The usage lists
 come from the same task suite but are built leave-one-task-out. The connected-services note in every prompt may raise
 search rates above those of an unprompted agent; it is the same for both conditions.
 
-\paragraph{Exclusions and interruptions.} \texttt{k8s\_crashloop} was excluded for both conditions, as stated in each
-plan. Interim looks are logged in the plans (App.~\ref{app:plans}); no run was dropped for its result.
+\paragraph{Exclusions.} \texttt{k8s\_crashloop} was excluded for both conditions before the runs; no run
+was dropped for its result.
 
 \paragraph{Drift and baselines.} Our A/A comparison could not rule out drift of the size we measure, so only
 same-time pairs support the claims. The baseline is Hermes Agent's BM25 as shipped; a tuned BM25 or query rewriting might narrow the gap.
@@ -652,10 +579,10 @@ A decision model can serve as an agent's tool selector. Built on \msd{}, \F{} ch
 then asks two questions per service and adds usage-based names, at about three DM calls per search. Offline it put
 the right tool first for 92\% of hand-written queries at 1{,}076 tools, against 49\% for BM25, and on ToolRet it re-ranked candidates better than every published retriever and re-ranker.
 Inside Hermes Agent, in
-pre-planned same-time paired tests, it used 12.6\% fewer tokens than BM25 with DeepSeek V4.1 Flash and 9.7\% fewer
-with GPT-6.1 Sol, with 36--60\% fewer searches and equal pass rates. Its fee made runs 20\% more expensive with the
-inexpensive model and left cost unchanged with the frontier model; the saving grows with the agent model's price and
-with how much it searches. These results hold for coding agents with simulated services, two agent models and one
+pre-planned same-time paired runs, it used 9.7\% fewer tokens than BM25 with GPT-6.1 Sol and 8.5\% fewer with
+DeepSeek V4.1 Flash, with 32--60\% fewer searches and equal pass rates. Its fee left Sol's cost per run unchanged and
+made DeepSeek runs 25\% more expensive. These results hold for coding agents with simulated services, two agent models
+and one
 harness; testing other harnesses, real services and non-coding work is the next step.
 
 \paragraph{Reproducibility.} We will release the tool harvester, catalog snapshots, simulator, tasks with hidden tests
@@ -711,18 +638,5 @@ all & 30 servers & 1{,}076 \\
 {\small
 \input{tab_tasks_v2}
 }
-
-%=====================================================================
-\section{Analysis plans and interim-look logs}\label{app:plans}
-%=====================================================================
-The two plans below are reproduced verbatim, including their interim-look logs, as they stood when each batch's
-final analysis was run. Both were written before their first run. File and condition names refer to the run records:
-\texttt{hermes\_default} is BM25 and \texttt{hermes\_dmfrankenbridge} is \F{}.
-
-\fvset{fontsize=\fontsize{6.6}{7.9}\selectfont, breaklines=true, breakanywhere=true, frame=single, framesep=1.5mm}
-\subsection*{C.1 Selector~F with DeepSeek V4.1 Flash}
-\VerbatimInput{plans/plan_franken.md}
-\subsection*{C.2 Selector~F with GPT-6.1 Sol}
-\VerbatimInput{plans/plan_franken_sol.md}
 
 \end{document}

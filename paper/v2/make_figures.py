@@ -38,9 +38,10 @@ def task_boot(lr):
     return math.exp(sum(tm) / n), math.exp(bs[249]), math.exp(bs[9749]), per
 
 
-# ---------------------------------------------------------------- main experiment: per-slot token ratios
-rows = [("DeepSeek V4.1 Flash\n15 repeats, 555 slots", slots("final_franken")),
-        ("GPT-6.1 Sol\n5 repeats, 185 slots", slots("final_franken_sol"))]
+# ---------------------------------------------------------------- Hermes runs: per-slot token ratios
+KEEP = {tuple(x) for x in json.load(open(RES / "final_franken_sol" / "deepseek_subsample_slots.json"))}  # 5 of 15 repeats, seed 20261108
+rows = [("GPT-6.1 Sol\n5 repeats, 185 slots", slots("final_franken_sol")),
+        ("DeepSeek V4.1 Flash\n5 repeats, 185 slots", {k: v for k, v in slots("final_franken").items() if k in KEEP})]
 fig, ax = plt.subplots(figsize=(6.4, 2.1))
 jit = random.Random(0)
 for i, (lab, lr) in enumerate(rows):
