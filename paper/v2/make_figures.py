@@ -69,7 +69,7 @@ plt.close(fig)
 # ---------------------------------------------------------------- selector study, held-out agent searches
 ho = {d["variant"].split()[0]: d for d in json.load(open(RES / "selector_study" / "results_1_3_5b_F_R_B.json"))}
 order = [("B", "BM25"), ("1", "1: top service"), ("3", "3: nucleus,\nfixed cards"), ("5b", "5: 3 + none"),
-         ("R", "R: earlier\ndesign"), ("F", "F: selector F")]
+         ("F", "F: selector F")]
 fig, ax = plt.subplots(figsize=(6.4, 2.0))
 xs = range(len(order))
 c5 = [ho[k]["agent_cov5"] for k, _ in order]; c15 = [ho[k]["agent_cov15"] for k, _ in order]

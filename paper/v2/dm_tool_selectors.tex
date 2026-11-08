@@ -47,7 +47,9 @@ is a full agent turn. We propose decision models, which return a probability per
 general-purpose tool selectors. Our selector, built on \msd{}, chooses the service, then the tools, with a ``none''
 option and usage-based recommendations, and needs about three decision-model calls per search. On the real tool
 definitions of 30 MCP servers with 1{,}076 tools it ranks far better than BM25 offline, with the right tool first for
-92\% of hand-written queries against 49\%. Inside a shipped agent, Hermes Agent, on 37 coding tasks with simulated
+92\% of hand-written queries against 49\%. On the ToolRet benchmark, 7{,}961 queries over 44{,}453 tools, the same
+decision model re-ranking candidates from BM25 and embeddings scored 53.6 NDCG@10, above every published retriever and
+re-ranker, including models trained for tool retrieval. Inside a shipped agent, Hermes Agent, on 37 coding tasks with simulated
 back ends, pre-planned paired tests run at the same time showed 12.6\% fewer tokens with DeepSeek V4.1 Flash over 555
 pairs, $p=0.0002$, and 9.7\% fewer with GPT-6.1 Sol over 185 pairs, $p=0.004$, with 36--60\% fewer searches and equal
 pass rates. The selector's fee made runs 20\% more expensive with the inexpensive model and left cost unchanged with
@@ -80,6 +82,8 @@ search, no training, and no change to the agent. We test it with \msd{}~\citep{m
 \item A DM tool selector, \F{}, and the analyses behind its design: choose services first with a ``none'' option,
 then ask two questions per service, and fill a fixed-size answer with usage-based names (\S\ref{sec:selector},
 \S\ref{sec:study}).
+\item An external check on the ToolRet benchmark: as a re-ranker, the DM scores above every published system with and
+without ToolRet's instructions (\S\ref{sec:toolret}).
 \item A test suite built on the real tool definitions of 30 MCP servers, with simulated back ends, 38 graded coding
 tasks and isolated agent runs (\S\ref{sec:setup}).
 \item A protocol for measuring token differences between agent configurations: same-time pairs, task-level
@@ -101,8 +105,7 @@ connected servers, so the agent pays for a definition only when it retrieves it.
 \begin{table}[t]
 \centering\footnotesize
 \caption{Tool-selection mechanisms and the conditions that reproduce them. Used in: M, main tests in Hermes Agent,
-\S\ref{sec:main}--\S\ref{sec:sol}; R, offline retrieval, \S\ref{sec:retrieval}; O, opencode, \S\ref{sec:opencode};
-E, the earlier six-ranker run, App.~\ref{app:sixrank}.}
+\S\ref{sec:main}--\S\ref{sec:sol}; R, offline retrieval, \S\ref{sec:retrieval}; O, opencode, \S\ref{sec:opencode}.}
 \label{tab:mechanisms}
 \setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{@{}l >{\raggedright\arraybackslash}p{3.7cm} X l@{}}
@@ -110,12 +113,12 @@ E, the earlier six-ranker run, App.~\ref{app:sixrank}.}
 Condition & Shipped or proposed in & What the agent sees and does & Used in \\
 \midrule
 native & Cursor, Cline, opencode; Claude Code with search off & every tool definition in every request & O \\
-cc & Claude Code ToolSearch~\citep{claudecode} & names of all deferred tools; selection by exact name or keyword search weighted towards names; our approximation, since the exact scoring is undocumented & R O E \\
-bm25 & Anthropic tool search~\citep{anthropic2025toolsearch}, Codex CLI~\citep{codexcli}, Hermes Agent~\citep{hermesagent} & Okapi BM25~\citep{robertson2009bm25} over names, descriptions and parameters & M R O E \\
+cc & Claude Code ToolSearch~\citep{claudecode} & names of all deferred tools; selection by exact name or keyword search weighted towards names; our approximation, since the exact scoring is undocumented & R O \\
+bm25 & Anthropic tool search~\citep{anthropic2025toolsearch}, Codex CLI~\citep{codexcli}, Hermes Agent~\citep{hermesagent} & Okapi BM25~\citep{robertson2009bm25} over names, descriptions and parameters & M R O \\
 groups & GitHub Copilot virtual tools~\citep{copilotvirtualtools} & one activation tool per server group; activating loads the group's definitions & O \\
-embed & RAG-MCP~\citep{gan2025ragmcp}; Goose in 2025, since removed~\citep{goose} & cosine similarity of query and tool embeddings & R O E \\
+embed & RAG-MCP~\citep{gan2025ragmcp}; Goose in 2025, since removed~\citep{goose} & cosine similarity of query and tool embeddings & R O \\
 llm & Goose in 2025, since removed~\citep{goose}; AnyTool-style routing~\citep{du2024anytool} & an LLM reads one line per tool and names the best ones & R O \\
-dm & this paper, first version & \msd{} ranks servers, then tools & R O E \\
+dm & this paper, simple hierarchy & \msd{} ranks servers, then tools & R O \\
 \F{} & this paper & \msd{} chooses services with a ``none'' option, then tools; five tools with descriptions plus names, \S\ref{sec:selector} & M \\
 \bottomrule
 \end{tabularx}
@@ -251,8 +254,8 @@ standard deviation of the per-slot log ratio between conditions was 0.55 with De
 swings by a factor of 1.7, and 0.29 with Sol (Figure~\ref{fig:tokens}).
 
 \paragraph{Drift.} Batches run at different times are not directly comparable. In an A/A comparison, BM25 against
-BM25, the runs of the recommendations batch of App.~\ref{app:rec} used 0.94$\times$ the tokens of BM25 runs made for
-the first version of this paper some days earlier, [0.87, 1.02] over 111 matched slots of 37 tasks, $p=0.16$. That is
+BM25, two batches run some days apart differed by 0.94$\times$ [0.87, 1.02] over 111 matched slots of 37 tasks,
+$p=0.16$. That is
 not significant, but the interval admits differences as large as the effects we measure. Two BM25 batches run a day
 apart agreed closely, 1.01$\times$ [0.97, 1.06] over 555 slots.
 
@@ -273,7 +276,7 @@ token reduction, and 5 for Sol, about 98\% at Sol's noise but only 80\% at DeepS
 %=====================================================================
 \subsection{Offline: designing the selector}\label{sec:study}
 We compared 13 selector variants on three fixed query sets at 1{,}076 tools: 120 hand-written queries for the steps
-of task set v1, plus 40 that no tool can serve; 400 searches made by agents in the BM25 runs of App.~\ref{app:rec},
+of task set v1, plus 40 that no tool can serve; 400 searches made by agents in BM25 runs of an earlier batch,
 labelled with the new tools the agent used after each search and before its next one; and 350 agent queries that name
 exactly one service, 200 of them Git, GitHub or GitLab. Table~\ref{tab:study} gives the results.
 
@@ -324,7 +327,7 @@ tools needed five calls and cost about 18 times as much. Service-based variants 
 \paragraph{Selector~F combines the winners and was checked on held-out searches.} Selector~F is variant 3 with the ``none''
 option of variant 5, the named-service rule of variant 6, the ``expert first'' question for prerequisites as names, and
 usage lists; its first five tools come from the same question as variants 3--6, so its hit@1 on hand-written queries
-is 0.92. On 500 held-out agent searches from the runs of the first version of this paper, \F{} covered the most next
+is 0.92. On 500 held-out agent searches from a different batch, \F{} covered the most next
 tools within 15, 0.845, with all next tools covered for 79\% of searches, against 0.806 and 75\% for BM25; within the
 first five it covered 0.79 against 0.71, and it ranked the named service first for 99.7\% of named queries against
 85\% for BM25 (Figure~\ref{fig:heldout}). It needs about three DM calls per search.
@@ -333,13 +336,12 @@ first five it covered 0.79 against 0.71, and it ranked the named service first f
 \centering
 \includegraphics[width=\linewidth]{figures/fig_selector_heldout.pdf}
 \caption{Held-out check on 500 agent searches from a different batch: share of the next tools covered by the first 5
-and by all 15 returned tools. Variant numbers as in Table~\ref{tab:study}; R is the earlier recommendations design of
-App.~\ref{app:rec}. The vertical axis starts at 0.65.}
+and by all 15 returned tools. Variant numbers as in Table~\ref{tab:study}. The vertical axis starts at 0.65.}
 \label{fig:heldout}
 \end{figure}
 
 \subsection{Offline: DM against shipped mechanisms and an LLM router}\label{sec:retrieval}
-On the 120 hand-written queries, a server-then-tool DM hierarchy, the first version of our selector, ranked better
+On the 120 hand-written queries, a simple server-then-tool DM hierarchy ranked better
 than every shipped mechanism and an LLM router that reads one line per tool (Table~\ref{tab:retrieval}). At 613 tools
 it put the right tool first for 93\% of queries, against 48--54\% for the Claude Code-style, BM25 and embedding
 mechanisms and 86\% for the router, which cost three times as much per query and took 2.4 times as long. Adding 463
@@ -369,6 +371,56 @@ DM hierarchy & \textbf{0.93} & 0.97 & \textbf{0.88} & 0.97 & 0.15 & 0.54 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{External benchmark: ToolRet}\label{sec:toolret}
+To compare the DM with published tool retrievers, we ran the full ToolRet benchmark~\citep{shi2025toolret}: 7{,}961
+queries over 44{,}453 tools drawn from 35 datasets, with the original documentation, the paper's metric NDCG@10, and its
+average, the mean of the web, code and customized categories, each the mean of its tasks. ToolRet's tools have no
+services, so the DM re-ranks candidates instead of choosing services first: the union of the top 50 tools from BM25 and
+from text-embedding-3-small, 100 in all. Method A asks one multiple-choice question over the 100 candidates with short
+cards. Method E shows each tool's documentation, up to 1{,}500 characters, in four parallel questions of 25 tools and a
+final question over the six best of each. Both ask ``A retrieval system is ranking tools for a user's task. Which tool
+is most relevant to it?''. ToolRet reports two settings: with an instruction, a sentence of about 20 words that GPT-4o
+wrote for each query with the target tools in view, and without it, the query alone. The methods were fixed on a
+385-query pilot and the analysis plan was written before the run. Our BM25 reproduced the paper's, 36.37 against 36.46
+with the instruction and 22.23 against 22.32 without, and no DM call failed.
+
+\begin{table}[t]
+\centering\small
+\caption{ToolRet, all 7{,}961 queries: NDCG@10 averaged over the three categories as in ToolRet. Published rows are
+quoted from ToolRet~\citep{shi2025toolret} and, for Tool-Embed, Tool-Rank and Qwen3, from
+Tool-REX~\citep{lu2026toolrex}, which reports only the setting with instruction. The DM rows re-rank the union of BM25
+and embedding candidates; the published re-rankers re-rank the top 100 of NV-Embed-v1 or Tool-Embed-4B.}
+\label{tab:toolret}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+System & with instruction & without instruction \\
+\midrule
+\textbf{DM, method E} & \textbf{53.6} & -- \\
+\textbf{DM, method A} & 51.5 & \textbf{41.0} \\
+Tool-Embed-4B + Tool-Rank-4B, trained on ToolRet's documents & 51.2 & -- \\
+Tool-Embed-4B, trained & 49.2 & -- \\
+bge-reranker-v2-gemma & 47.5 & 35.5 \\
+jina-reranker-v2-base & 47.2 & 33.6 \\
+Qwen3-Embedding-8B & 46.2 & -- \\
+NV-Embed-v1 & 42.7 & 33.8 \\
+gpt-3.5-turbo-1106 as re-ranker & 38.8 & 30.8 \\
+text-embedding-3-small, our first stage & 38.1 & 24.7 \\
+BM25 & 36.4 & 22.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The DM was best in both settings (Table~\ref{tab:toolret}). With the instruction, method E scored 53.6, 2.3 points
+above the best published system, a re-ranker and a retriever both trained for tool retrieval, and 6.0 above the best
+re-ranker in ToolRet. Without the instruction, the setting closest to an agent's own query, method A scored 41.0
+against 35.5, and its gain over BM25 grew from 15 to 19 points. On the 7{,}576 queries outside the pilot the DM scored
+53.8 and 51.9 with the instruction and 41.6 without, so choosing the methods on the pilot did not inflate the result.
+Full documentation helped most where tools differ in detail: E beat A by 3.4 points on customized apps and by 1.0 on
+code. The DM fee for all 7{,}961 queries was \$7.73 for both methods with the instruction and \$1.16 for A without it.
+Two differences from the published systems remain: the DM re-ranks our own first stage rather than NV-Embed-v1 or
+Tool-Embed-4B, and it was not trained for the task.
 
 \subsection{Main test: DeepSeek V4.1 Flash, 15 repeats}\label{sec:main}
 Each of the 37 tasks ran 15 times under BM25 and under \F{}, 555 slots and 1{,}110 runs. Selector~F used fewer tokens:
@@ -448,9 +500,9 @@ Wall time per run, s & 53 / 45 & 52 / 41 & 0.99$\times$ [0.92, 1.05] & 0.69 & 1.
 \end{table}
 
 \subsection{Failure analysis: the Git family}\label{sec:failures}
-An earlier design, which took only the top service and lacked the fixed cards, failed \texttt{gh\_open\_pr} in 3 of
-15 runs while BM25 passed all 15 (App.~\ref{app:rec}). We asked the DM's service question for every distinct query
-from that batch that names exactly one service, 2{,}477 queries. The DM chose the named service for 97.9\%. Of its 51
+A variant that took only the top service and lacked the fixed cards failed \texttt{gh\_open\_pr} in 3 of 15 runs
+while BM25 passed all 15. We asked the DM's service question for every distinct query of that batch that names exactly
+one service, 2{,}477 queries. The DM chose the named service for 97.9\%. Of its 51
 errors, 47 were within Git, GitHub and GitLab, most often Git for a GitHub query, and in 45 the named service came
 second. By service it chose correctly 608 of 639 times for GitHub, 86 of 95 for Git and 325 of 332 for GitLab, and in
 every case for Atlassian, Sentry, Slack, Notion, CloudWatch, MongoDB, Postgres and EKS. The errors came from the
@@ -546,9 +598,7 @@ and the catalog; it worked unchanged with two agent models and slots into any ha
 not shown that it helps in every harness, catalog or kind of task.
 
 \paragraph{What the DM is good and bad at.} The DM is good at comparing options: choosing a service among cards or a
-tool among a service's tools. It is poor at judging a tool in isolation, as the yes/no variants showed, and at
-predicting the next step of an agent, where always choosing the shell did better (App.~\ref{app:session}). Its
-answers depend on the option texts: the Git-family errors came from service cards, not from the model.
+tool among a service's tools. It is poor at judging a tool in isolation, as the yes/no variants showed. Its answers depend on the option texts: the Git-family errors came from service cards, not from the model.
 
 %=====================================================================
 \section{Threats to validity}\label{sec:threats}
@@ -563,12 +613,10 @@ come from the same task suite but are built leave-one-task-out. The connected-se
 search rates above those of an unprompted agent; it is the same for both conditions.
 
 \paragraph{Exclusions and interruptions.} \texttt{k8s\_crashloop} was excluded for both conditions, as stated in each
-plan. Interim looks, container restarts and reruns after rate-limit errors are logged in the plans
-(App.~\ref{app:plans}); no run was dropped for its result.
+plan. Interim looks are logged in the plans (App.~\ref{app:plans}); no run was dropped for its result.
 
 \paragraph{Drift and baselines.} Our A/A comparison could not rule out drift of the size we measure, so only
-same-time pairs support the claims; the earlier six-ranker comparison of App.~\ref{app:sixrank} does not meet this
-standard. The baseline is Hermes Agent's BM25 as shipped; a tuned BM25 or query rewriting might narrow the gap.
+same-time pairs support the claims. The baseline is Hermes Agent's BM25 as shipped; a tuned BM25 or query rewriting might narrow the gap.
 
 %=====================================================================
 \section{Related work}\label{sec:related}
@@ -579,7 +627,8 @@ hierarchy of LLM agents, category first and tool second, and MCP-Zero~\citep{fei
 server-then-tool idea to MCP; \F{} applies the same hierarchy with a decision model instead of an LLM.
 RAG-MCP~\citep{gan2025ragmcp} retrieves MCP tool descriptions with embeddings to reduce prompt bloat, and
 \citet{mudunuri2026semantic} select among 121 tools of five MCP servers with embeddings, without agent runs. ToolRet
-finds that general-purpose embedding retrievers do poorly on tool retrieval~\citep{shi2025toolret}, and
+finds that general-purpose embedding retrievers do poorly on tool retrieval~\citep{shi2025toolret}; Tool-REX expands
+ToolRet's documents with an LLM and trains a retriever and a re-ranker on them~\citep{lu2026toolrex}, and
 \citet{selection2026retrieval} find that selecting a tool is largely retrieval. Agent skills~\citep{anthropic2025skills}
 apply progressive disclosure to instructions; our service cards and handbook play this role for the catalog.
 
@@ -601,7 +650,8 @@ inside agents as the tool selector and measure its effect on whole runs.
 %=====================================================================
 A decision model can serve as an agent's tool selector. Built on \msd{}, \F{} chooses services with a ``none'' option,
 then asks two questions per service and adds usage-based names, at about three DM calls per search. Offline it put
-the right tool first for 92\% of hand-written queries at 1{,}076 tools, against 49\% for BM25. Inside Hermes Agent, in
+the right tool first for 92\% of hand-written queries at 1{,}076 tools, against 49\% for BM25, and on ToolRet it re-ranked candidates better than every published retriever and re-ranker.
+Inside Hermes Agent, in
 pre-planned same-time paired tests, it used 12.6\% fewer tokens than BM25 with DeepSeek V4.1 Flash and 9.7\% fewer
 with GPT-6.1 Sol, with 36--60\% fewer searches and equal pass rates. Its fee made runs 20\% more expensive with the
 inexpensive model and left cost unchanged with the frontier model; the saving grows with the agent model's price and
@@ -665,74 +715,14 @@ all & 30 servers & 1{,}076 \\
 %=====================================================================
 \section{Analysis plans and interim-look logs}\label{app:plans}
 %=====================================================================
-The three plans below are reproduced verbatim, including their interim-look logs, as they stood when each batch's
-final analysis was run. File and condition names refer to the run records: \texttt{hermes\_default} is BM25,
-\texttt{hermes\_dmfrankenbridge} is \F{} and \texttt{hermes\_dmrec510bridge} is the recommendations design of
-App.~\ref{app:rec}. The first plan was written after an interim look, which it records; the other two were written
-before their first run.
+The two plans below are reproduced verbatim, including their interim-look logs, as they stood when each batch's
+final analysis was run. Both were written before their first run. File and condition names refer to the run records:
+\texttt{hermes\_default} is BM25 and \texttt{hermes\_dmfrankenbridge} is \F{}.
 
 \fvset{fontsize=\fontsize{6.6}{7.9}\selectfont, breaklines=true, breakanywhere=true, frame=single, framesep=1.5mm}
-\subsection*{C.1 Recommendations design with DeepSeek V4.1 Flash}
-\VerbatimInput{plans/plan_rec510.md}
-\subsection*{C.2 Selector~F with DeepSeek V4.1 Flash}
+\subsection*{C.1 Selector~F with DeepSeek V4.1 Flash}
 \VerbatimInput{plans/plan_franken.md}
-\subsection*{C.3 Selector~F with GPT-6.1 Sol}
+\subsection*{C.2 Selector~F with GPT-6.1 Sol}
 \VerbatimInput{plans/plan_franken_sol.md}
-
-%=====================================================================
-\section{An earlier design: recommendations}\label{app:rec}
-%=====================================================================
-Before \F{} we tested a recommendations design under the same protocol: only the top service, with the original
-cards; its five best tools with one-line descriptions; and up to ten names from the DM's next-best tools and the
-service's most-used tools. With DeepSeek V4.1 Flash, 37 tasks and 15 repeats, 555 same-time pairs, it used
-0.910$\times$ the tokens of BM25 [0.85, 0.97], $p=0.009$, a second, independent confirmation of a token reduction
-with a DM selector. Searches fell from 11.5 to 7.4 per run and LLM calls by 6\%, 0.94$\times$ [0.90, 0.98]. Cost per
-run rose by 8.5\%, 1.085$\times$ [1.02, 1.16], and wall time did not change, 1.04$\times$ [0.97, 1.11]. It passed 549
-runs against 552 for BM25, with 6 and 3 discordant slots, McNemar $p=0.51$; three of its failures were
-\texttt{gh\_open\_pr}, which led to the analysis of \S\ref{sec:failures}. Its 400 BM25-run searches are the agent set
-of the offline study, and its BM25 runs the A/A comparison of \S\ref{sec:measuring}.
-
-%=====================================================================
-\section{The six-ranker comparison of the first version}\label{app:sixrank}
-%=====================================================================
-The first version of this paper compared six rankers inside Hermes Agent's bridge with DeepSeek V4.1 Flash on all
-38 tasks, three repeats each, 114 runs per ranker (Table~\ref{tab:sixrank}). Two caveats apply. Three repeats give too
-few pairs for effects of 10\%, and only BM25, DM and random ran back to back in each slot, while the other three ran
-later in separate batches, so their differences from BM25 are within the drift we later measured
-(\S\ref{sec:measuring}). The robust finding is that ranking matters: random ranking used 1.57$\times$ the tokens of
-BM25. All rankers, random included, passed 96.5--100\% of runs.
-
-\begin{table}[ht]
-\centering\small
-\caption{Six rankers in Hermes Agent's bridge, first version: 38 tasks, three repeats, 114 runs per ranker. Tokens:
-median per run. Ratio: geometric mean of per-slot token ratios against BM25 with a task-level bootstrap 95\% CI. LLM
-calls and searches: mean per run. DM with ``none'' is the DM ranker with a ``none'' option. Not same-time for the last
-three rows.}
-\label{tab:sixrank}
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}lccccc@{}}
-\toprule
-Ranker & pass@1 & Tokens & Ratio [95\% CI] & LLM calls & Searches \\
-\midrule
-BM25 & 0.991 & 558k & -- & 29.0 & 11.4 \\
-DM & 0.991 & 480k & 0.93 [0.82, 1.04] & 27.9 & 9.7 \\
-random & 1.000 & 1{,}051k & 1.57 [1.38, 1.79] & 34.9 & 12.8 \\
-DM with ``none'' & 0.991 & 459k & 0.88 [0.78, 0.98] & 27.4 & 10.1 \\
-embeddings & 0.965 & 562k & 0.91 [0.81, 1.03] & 27.9 & 11.1 \\
-Claude Code style & 0.991 & 576k & 1.02 [0.89, 1.16] & 23.2 & 6.0 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-%=====================================================================
-\section{Next-tool prediction in a real session}\label{app:session}
-%=====================================================================
-This experiment motivates using the DM to select tools rather than to call them. We took the 395 tool decisions of one
-real coding session and asked each model to predict the next tool among the 38 available. \msd{} reached an accuracy
-of 0.49 and TypeSafe Jev~\citep{typesafejev} 0.60, both below always choosing the shell at 0.75, although the DMs'
-top five contained the right tool 94--96\% of the time. In that session 51 always-loaded tool definitions took about
-59k tokens, 93\% of the first request and 16\% of all context tokens read. Most tool choices in a coding session are
-easy and the LLM must write every call's arguments; the DM is useful where the choice is hard, among hundreds of
-rarely used catalog tools.
 
 \end{document}
