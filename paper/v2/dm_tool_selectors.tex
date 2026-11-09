@@ -182,8 +182,7 @@ input and output tokens summed over a run's LLM calls.
 %=====================================================================
 Pass rates are near ceiling for both rankers, so we compare tokens, and tokens are noisy: the standard deviation of
 the per-run log ratio between conditions was 0.55 with DeepSeek and 0.29 with Sol, so a single pair can swing by a
-factor of 1.7. Batches made at different times also drift: two BM25 batches a few days apart differed by
-0.94$\times$ [0.87, 1.02]. We therefore run both conditions on the same task and repeat back to back, a \emph{pair},
+factor of 1.7. Batches made at different times also drift: two BM25 batches a few days apart differed by 6\%, with an interval from $-$13\% to $+$2\%. We therefore run both conditions on the same task and repeat back to back, a \emph{pair},
 take the log ratio of their tokens, average it per task, and test the 37 task means with a two-sided $t$-test, with a
 task-level bootstrap 95\% interval. A verdict of ``fewer tokens'' needs $p<0.05$ and an interval that excludes 1.
 Before each batch we wrote an analysis plan and ran the batch to completion regardless of interim numbers. Planned
@@ -199,23 +198,29 @@ Selector~F used fewer tokens than BM25 with both agent models (Table~\ref{tab:ag
 DeepSeek V4.1 Flash over 15 repeats the reduction was 12.6\%, $p=0.0002$; at five repeats, DeepSeek's higher noise
 leaves the interval just reaching 1. With GPT-6.1 Sol it was 9.7\%, $p=0.004$. The saving came from fewer turns: agents
 searched 36\% less with DeepSeek and 60\% less with Sol, and made 8\% and 12\% fewer LLM calls. Pass rates were equal
-with both models. The saving was largest on the 7 multi-service tasks, 0.76$\times$ with both models, against
-0.88$\times$ with DeepSeek and 0.94$\times$ with Sol on the 22 single-service tasks.
+with both models. The saving was largest on the 7 multi-service tasks, 24\% with both models, against 12\%
+with DeepSeek and 6\% with Sol on the 22 single-service tasks.
 
 \begin{table}[t]
-\centering\small
-\caption{Selector~F against BM25 in Hermes Agent, 37 tasks, same-time pairs. Tokens: geometric mean of per-pair ratios
-of \F{} to BM25, averaged per task, with a task-level bootstrap 95\% CI; $p$: $t$-test over the 37 task means. Passed runs, searches
-and LLM calls are given as BM25 / \F{}, the last two as means per run. The last DeepSeek row is a random five of its 15 repeats per task.}
+\centering\footnotesize
+\caption{Hermes Agent with its built-in BM25 and with \F{}, 37 tasks, same-time pairs. Tokens, searches and LLM calls
+per run; tokens as mean / median. Change: \F{} against BM25 in the same pairs, geometric mean of per-pair ratios averaged
+per task, with a task-level bootstrap 95\% CI; $p$: $t$-test over the 37 task means. The last DeepSeek rows are a
+random five of its 15 repeats per task.}
 \label{tab:agent}
-\setlength{\tabcolsep}{4.5pt}
-\begin{tabular}{@{}lrccccc@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llccccrr@{}}
 \toprule
-Agent model, repeats & Pairs & Passed & Tokens, F vs BM25 & $p$ & Searches & LLM calls \\
+Agent model, repeats & Selector & Passed & Tokens & Change in tokens & $p$ & Searches & LLM calls \\
 \midrule
-DeepSeek V4.1 Flash, 15 & 555 & 550 / 550 & \textbf{0.874$\times$} [0.82, 0.93] & 0.0002 & 11.1 / 7.1 & 29.0 / 26.8 \\
-GPT-6.1 Sol, 5 & 185 & 172 / 173 & \textbf{0.903$\times$} [0.84, 0.96] & 0.004 & 5.5 / 2.2 & 13.4 / 11.5 \\
-DeepSeek V4.1 Flash, 5 & 185 & 184 / 182 & 0.915$\times$ [0.84, 1.01] & 0.07 & 10.7 / 7.3 & 28.5 / 27.4 \\
+\multirow{2}{*}{DeepSeek V4.1 Flash, 15} & BM25 & 550/555 & 791k / 553k & & & 11.1 & 29.0 \\
+& \F{} & 550/555 & 680k / 507k & \textbf{$-$12.6\%} [$-$18, $-$7] & 0.0002 & 7.1 & 26.8 \\
+\midrule
+\multirow{2}{*}{GPT-6.1 Sol, 5} & BM25 & 172/185 & 193k / 168k & & & 5.5 & 13.4 \\
+& \F{} & 173/185 & 171k / 133k & \textbf{$-$9.7\%} [$-$16, $-$4] & 0.004 & 2.2 & 11.5 \\
+\midrule
+\multirow{2}{*}{DeepSeek V4.1 Flash, 5} & BM25 & 184/185 & 769k / 552k & & & 10.7 & 28.5 \\
+& \F{} & 182/185 & 717k / 477k & $-$8.5\% [$-$16, $+$1] & 0.07 & 7.3 & 27.4 \\
 \bottomrule
 \end{tabular}
 \end{table}
