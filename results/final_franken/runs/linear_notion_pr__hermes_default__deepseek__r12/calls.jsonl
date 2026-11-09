@@ -1,0 +1,33 @@
+{"t": 1794117280.7674143, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-91"}, "ok": true}
+{"t": 1794117281.7803676, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "API guidelines", "limit": 10}, "ok": true}
+{"t": 1794117285.2291298, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "API guidelines"}, "ok": true}
+{"t": 1794117286.45995, "kind": "call", "tool": "notion_API-retrieve-page-markdown", "args": {"page_id": "5e6f-guidelines"}, "ok": true}
+{"t": 1794117290.981604, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "public-api", "path": "/", "ref": "main"}, "ok": true}
+{"t": 1794117294.185441, "kind": "call", "tool": "gitlab_get_repository_tree", "args": {"path": "/", "project_id": "acme/public-api", "ref": "main"}, "ok": false}
+{"t": 1794117295.193471, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "public-api"}, "ok": false}
+{"t": 1794117298.1532447, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794117299.1612732, "kind": "call", "tool": "github_search_repositories", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794117302.0648935, "kind": "call", "tool": "github_search_orgs", "args": {"query": "acme"}, "ok": true}
+{"t": 1794117305.6855965, "kind": "call", "tool": "gitlab_discover_tools", "args": {"categories": ["projects", "repositories", "branches", "merge_requests", "search"]}, "ok": false}
+{"t": 1794117311.192772, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794117313.402852, "kind": "call", "tool": "github_list_starred_repositories", "args": {}, "ok": true}
+{"t": 1794117316.2915974, "kind": "call", "tool": "github_get_me", "args": {}, "ok": true}
+{"t": 1794117317.2993844, "kind": "call", "tool": "gitlab_whoami", "args": {}, "ok": false}
+{"t": 1794117320.6136203, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "public-api"}, "ok": true}
+{"t": 1794117321.6216958, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "public-api"}, "ok": false}
+{"t": 1794117331.2757182, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "repo": "public-api"}, "ok": true}
+{"t": 1794117333.9781315, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794117346.233672, "kind": "call", "tool": "git_set_working_dir", "args": {"path": "/srv/agentbox/work/linear_notion_pr__hermes_default__deepseek__r12/proj"}, "ok": true}
+{"t": 1794117350.6828454, "kind": "call", "tool": "git_remote", "args": {"action": "list"}, "ok": false}
+{"t": 1794117351.6909611, "kind": "call", "tool": "git_status", "args": {}, "ok": false}
+{"t": 1794117359.6377256, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794117360.6461139, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 5, "repo": "public-api"}, "ok": true}
+{"t": 1794117368.1018295, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "deprecation"}, "ok": true}
+{"t": 1794117369.109101, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "API"}, "ok": true}
+{"t": 1794117378.130868, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "public-api"}, "ok": true}
+{"t": 1794117384.385134, "kind": "call", "tool": "github_create_branch", "args": {"branch": "eng-91", "from_branch": "main", "owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794117391.124192, "kind": "call", "tool": "github_create_or_update_file", "args": {"branch": "eng-91", "content": "def deprecation_headers(sunset_date: str) -> dict:\n    return {\n        \"Deprecation\": \"true\",\n        \"Sunset\": sunset_date,\n        \"Link\": '<https://developer.acme.example/migrate>; rel=\"deprecation\"',\n    }\n", "message": "ENG-91: add deprecation headers to v1 endpoints", "owner": "acme", "path": "api/headers.py", "repo": "public-api"}, "ok": true}
+{"t": 1794117393.989979, "kind": "call", "tool": "github_create_pull_request", "args": {"base": "main", "body": "Implements `api.headers.deprecation_headers(sunset_date)` per the Deprecation section of the API guidelines in Notion.\n\nDeprecated endpoints now return:\n- `Deprecation: true`\n- `Sunset: <sunset_date>`\n- `Link: <https://developer.acme.example/migrate>; rel=\"deprecation\"`\n\nCloses ENG-91.", "head": "eng-91", "owner": "acme", "repo": "public-api", "title": "ENG-91: Add deprecation headers to v1 endpoints"}, "ok": true}
+{"t": 1794117397.7432885, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "ENG-91 repo:acme/public-api"}, "ok": true}
+{"t": 1794117398.7515135, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "eng-91", "repo": "public-api"}, "ok": true}
+{"t": 1794117414.2525485, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}

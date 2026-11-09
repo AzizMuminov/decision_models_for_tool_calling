@@ -1,0 +1,41 @@
+{
+ "id": "eks_importer",
+ "category": "single",
+ "prompt": "The data team's nightly batch-importer job has failed three nights in a row. Find out why and fix importer/config.py. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "aws_eks_list_k8s_resources",
+   "aws_eks_get_k8s_events"
+  ],
+  [
+   "aws_eks_get_pod_logs",
+   "aws_eks_get_cloudwatch_logs"
+  ]
+ ],
+ "gold": [
+  [
+   "aws_eks_list_k8s_resources",
+   {
+    "cluster_name": "data-prod",
+    "kind": "Pod",
+    "api_version": "v1",
+    "namespace": "batch"
+   }
+  ],
+  [
+   "aws_eks_get_pod_logs",
+   {
+    "cluster_name": "data-prod",
+    "namespace": "batch",
+    "pod_name": "batch-importer-29188440-x7k2p"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "importer/config.py",
+  "name": "BATCH_SIZE",
+  "expected": 1000,
+  "original": 5000
+ }
+}

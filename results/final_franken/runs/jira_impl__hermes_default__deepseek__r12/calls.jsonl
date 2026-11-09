@@ -1,0 +1,20 @@
+{"t": 1794117647.542091, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": ["comments", "transitions", "remote_links"], "issue_key": "PAY-412"}, "ok": false}
+{"t": 1794117648.8660872, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,transitions,remote_links", "issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117660.5867507, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794117665.3359146, "kind": "call", "tool": "github_search_code", "args": {"query": "mask_iban"}, "ok": true}
+{"t": 1794117666.3438902, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments", "repo": "payments"}, "ok": true}
+{"t": 1794117675.7587142, "kind": "call", "tool": "atlassian_jira_get_transitions", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117677.4015126, "kind": "call", "tool": "atlassian_jira_transition_issue", "args": {"issue_key": "PAY-412", "transition_id": "31"}, "ok": true}
+{"t": 1794117678.4308963, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117680.21852, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-412", "include": "transitions"}, "ok": true}
+{"t": 1794117681.6462467, "kind": "call", "tool": "atlassian_jira_get_issue_dates", "args": {"include_history": true, "issue_key": "PAY-412"}, "ok": false}
+{"t": 1794117685.5912917, "kind": "call", "tool": "atlassian_jira_get_issue_dates", "args": {"issue_key": "PAY-412"}, "ok": false}
+{"t": 1794117689.5510125, "kind": "call", "tool": "atlassian_jira_transition_issue", "args": {"issue_key": "PAY-412", "transition_id": "31"}, "ok": true}
+{"t": 1794117691.3085637, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117694.1115837, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-412", "fields": "key,status,summary", "limit": 5}, "ok": true}
+{"t": 1794117696.4036486, "kind": "call", "tool": "atlassian_jira_update_issue", "args": {"fields": "{\"status\": {\"name\": \"In Review\"}}", "issue_key": "PAY-412", "return_fields": "status"}, "ok": true}
+{"t": 1794117698.0856183, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117701.9975939, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"project_key": "PAY"}, "ok": false}
+{"t": 1794117704.5303242, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "changelog", "issue_key": "PAY-412"}, "ok": true}
+{"t": 1794117708.977655, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-412 AND status = \"In Review\""}, "ok": true}
+{"t": 1794117710.439564, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-412 AND status = \"Nonexistent Status\""}, "ok": true}

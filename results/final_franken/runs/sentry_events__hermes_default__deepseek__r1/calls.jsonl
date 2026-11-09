@@ -1,0 +1,30 @@
+{"t": 1794105515.620234, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "project:refunds-api is:unresolved", "limit": 20}, "ok": false}
+{"t": 1794105517.9879072, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "query": "project:refunds-api is:unresolved"}, "ok": true}
+{"t": 1794105518.997255, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "per_page": 20, "repo": "refunds"}, "ok": true}
+{"t": 1794105521.3970883, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceType": "issue", "resourceId": "REFUNDS-API-1C"}, "ok": true}
+{"t": 1794105522.4048393, "kind": "call", "tool": "github_search_repositories", "args": {"query": "repo:acme/refunds"}, "ok": true}
+{"t": 1794105528.628787, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "refunds API"}, "ok": true}
+{"t": 1794105529.6364307, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "refunds"}, "ok": true}
+{"t": 1794105530.6475682, "kind": "call", "tool": "github_search_pull_requests", "args": {"limit": 20, "query": "repo:acme/refunds is:pr"}, "ok": true}
+{"t": 1794105532.8585634, "kind": "call", "tool": "gitlab_list_projects", "args": {"search": "refunds"}, "ok": true}
+{"t": 1794105533.8683264, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "refunds", "ref": "main"}, "ok": false}
+{"t": 1794105535.3816922, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "refunds/handler.py", "repo": "refunds"}, "ok": true}
+{"t": 1794105536.38936, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "project:refunds-api"}, "ok": true}
+{"t": 1794105541.6122344, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794105545.9465308, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"limit": 20, "logql": "{app=~\"refunds.*\"} |= \"reason_code\""}, "ok": false}
+{"t": 1794105546.9538689, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"limit": 20, "logql": "{namespace=\"prod\"} |= \"refunds\""}, "ok": false}
+{"t": 1794105549.3152068, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794105551.0075295, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 30, "logql": "{app=~\"refunds.*\"}"}, "ok": true}
+{"t": 1794105552.0155568, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "matcher": "{namespace=\"prod\"}", "type": "loki"}, "ok": true}
+{"t": 1794105556.1974018, "kind": "call", "tool": "github_search_repositories", "args": {"query": "refunds"}, "ok": true}
+{"t": 1794105558.74721, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "refunds"}, "ok": true}
+{"t": 1794105559.7545297, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"refunds\" ORDER BY created DESC", "maxResults": 20}, "ok": true}
+{"t": 1794105564.2600267, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"organizationSlug": "acme", "query": "release deploy refunds"}, "ok": true}
+{"t": 1794105565.26686, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "project:refunds-api", "limit": 10}, "ok": true}
+{"t": 1794105570.576187, "kind": "call", "tool": "github_search_code", "args": {"query": "parse_refund repo:acme/refunds"}, "ok": true}
+{"t": 1794105580.1992896, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "query": "refund"}, "ok": true}
+{"t": 1794105581.206749, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "query": "project:refunds-api is:resolved"}, "ok": true}
+{"t": 1794105590.6457202, "kind": "call", "tool": "kubernetes_kubectl_rollout", "args": {"command": "rollout history deployment/refunds-api -n prod"}, "ok": false}
+{"t": 1794105591.6536837, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "sum(rate(http_requests_total{service=\"refunds-api\",code=\"500\"}[5m]))"}, "ok": false}
+{"t": 1794105593.2683122, "kind": "call", "tool": "kubernetes_kubectl_rollout", "args": {"name": "refunds-api", "namespace": "prod", "resourceType": "deployment", "subCommand": "history"}, "ok": true}
+{"t": 1794105594.2762456, "kind": "call", "tool": "grafana_query_prometheus", "args": {"endTime": "2026-11-08T12:00:00Z", "expr": "sum(rate(http_requests_total{service=\"refunds-api\",code=\"500\"}[5m]))", "startTime": "2026-11-08T00:00:00Z"}, "ok": false}

@@ -1,0 +1,18 @@
+{"t": 1794112297.4588175, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "ledger-worker reconciliation errors is:unresolved"}, "ok": false}
+{"t": 1794112299.9701214, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:ledger-worker is:unresolved"}, "ok": true}
+{"t": 1794112301.801276, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "LEDGER-WORKER-9A"}, "ok": true}
+{"t": 1794112302.8088117, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "LEDGER-WORKER-9A", "resourceType": "issue"}, "ok": true}
+{"t": 1794112305.1715403, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "LEDGER-WORKER-9A events detail"}, "ok": true}
+{"t": 1794112308.5492032, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_pull_request", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": false}
+{"t": 1794112316.027702, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112317.0382025, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_diff", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112319.340642, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_files", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112320.3469963, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_commits", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112322.8939545, "kind": "call", "tool": "github_get_commit", "args": {"owner": "acme", "repo": "ledger-worker", "sha": "8c2f1d0"}, "ok": true}
+{"t": 1794112323.900425, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_comments", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112330.6166265, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue permalink url link"}, "ok": true}
+{"t": 1794112335.7167172, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "list all tools issue details"}, "ok": true}
+{"t": 1794112336.7240484, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:ledger-worker"}, "ok": true}
+{"t": 1794112340.4642467, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"url": "https://acme.sentry.io/issues/LEDGER-WORKER-9A/"}, "ok": true}
+{"t": 1794112373.7515023, "kind": "call", "tool": "github_add_issue_comment", "args": {"body": "\u26a0\ufe0f Regression flagged: this change replaced rounding with `int()` truncation in `worker/rates.py`, which drops fractions instead of rounding to the nearest minor unit. It is causing a production reconciliation mismatch (expected 1100, got 1099).\n\nSentry error: https://acme.sentry.io/issues/LEDGER-WORKER-9A/ \u2014 `ReconciliationMismatch: converted totals off by 1 minor unit`, 2,201 events, first seen in release `ledger-worker@2026.11.3`, suspect commit `8c2f1d0` (this PR).\n\nFix: restore rounding in `convert()` (`round(amount_minor * rate)`).", "issue_number": 412, "owner": "acme", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794112375.66983, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_comments", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}

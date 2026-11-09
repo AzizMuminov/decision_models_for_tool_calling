@@ -1,0 +1,29 @@
+
+=== GPT-6.1 Sol, 5 repeats (pre-planned): 185 slots, 37 tasks, errored 0
+  BM25           passed 172/185 | searches 5.5 / 5.0 | LLM calls 13.4 / 13.0 | tokens 193 / 168k | cost $0.0724 | time 53 / 45 s
+  DM selector F  passed 173/185 | searches 2.2 / 2.0 | LLM calls 11.5 / 10.0 | tokens 171 / 133k | cost $0.0715 | time 52 / 41 s
+  TOKENS (primary)   ratio F/BM25 0.903 [0.844, 0.961]  task-level p=0.00410
+  cost incl. DM fee  ratio F/BM25 0.991 [0.954, 1.028]  task-level p=0.63455
+  LLM calls          ratio F/BM25 0.878 [0.830, 0.924]  task-level p=0.00003
+  wall time          ratio F/BM25 0.987 [0.922, 1.053]  task-level p=0.69048
+  pass: BM25-only 4, F-only 5, McNemar p=1.000
+
+VERDICT (Sol): fewer tokens (p<0.05 and interval excludes 1)
+
+=== DeepSeek V4.1 Flash, random 5 of 15 repeats per task (seed 20261108, pre-specified): 185 slots, 37 tasks, errored 0
+  BM25           passed 184/185 | searches 10.7 / 10.0 | LLM calls 28.5 / 26.0 | tokens 769 / 552k | cost $0.0080 | time 135 / 123 s
+  DM selector F  passed 182/185 | searches 7.3 / 6.0 | LLM calls 27.4 / 24.0 | tokens 717 / 477k | cost $0.0104 | time 145 / 128 s
+  TOKENS (primary)   ratio F/BM25 0.915 [0.836, 1.006]  task-level p=0.06608
+  cost incl. DM fee  ratio F/BM25 1.249 [1.150, 1.358]  task-level p=0.00001
+  LLM calls          ratio F/BM25 0.946 [0.893, 1.005]  task-level p=0.07359
+  wall time          ratio F/BM25 1.040 [0.954, 1.136]  task-level p=0.38183
+  pass: BM25-only 3, F-only 1, McNemar p=0.625
+
+=== DeepSeek V4.1 Flash, all 15 repeats (its own verdict): 555 slots, 37 tasks, errored 0
+  BM25           passed 550/555 | searches 11.1 / 10.0 | LLM calls 29.0 / 26.0 | tokens 791 / 553k | cost $0.0082 | time 137 / 120 s
+  DM selector F  passed 550/555 | searches 7.1 / 6.0 | LLM calls 26.8 / 24.0 | tokens 680 / 507k | cost $0.0100 | time 140 / 120 s
+  TOKENS (primary)   ratio F/BM25 0.874 [0.821, 0.933]  task-level p=0.00021
+  cost incl. DM fee  ratio F/BM25 1.195 [1.126, 1.275]  task-level p=0.00000
+  LLM calls          ratio F/BM25 0.919 [0.879, 0.961]  task-level p=0.00069
+  wall time          ratio F/BM25 1.010 [0.957, 1.071]  task-level p=0.74945
+  pass: BM25-only 5, F-only 5, McNemar p=1.000

@@ -1,0 +1,7 @@
+{"t": 1794108365.9510305, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"rate limit\""}, "ok": true}
+{"t": 1794108366.9626973, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "rate limits public API"}, "ok": true}
+{"t": 1794108369.9321272, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794108373.5140002, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794108374.5213695, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "title ~ \"rate limit*\""}, "ok": true}
+{"t": 1794108378.0846744, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"parent_id": "884213"}, "ok": false}
+{"t": 1794108379.091724, "kind": "call", "tool": "atlassian_confluence_get_labels", "args": {"content_id": "884213"}, "ok": false}

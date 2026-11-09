@@ -1,0 +1,235 @@
+{
+ "github": [
+  "github_get_file_contents",
+  "github_search_repositories",
+  "github_pull_request_read",
+  "github_search_code",
+  "github_list_commits",
+  "github_list_branches",
+  "github_list_pull_requests",
+  "github_issue_read",
+  "github_search_issues",
+  "github_list_releases",
+  "github_get_me",
+  "github_list_issues",
+  "github_search_pull_requests",
+  "github_list_tags",
+  "github_search_commits",
+  "github_push_files",
+  "github_actions_list",
+  "github_list_dependabot_alerts",
+  "github_add_reply_to_pull_request_comment",
+  "github_add_issue_comment",
+  "github_create_pull_request",
+  "github_create_or_update_file",
+  "github_create_branch",
+  "github_search_orgs",
+  "github_list_global_security_advisories",
+  "github_actions_run_trigger",
+  "github_get_job_logs",
+  "github_get_commit",
+  "github_get_latest_release",
+  "github_actions_get",
+  "github_list_notifications",
+  "github_list_starred_repositories",
+  "github_list_repository_security_advisories",
+  "github_list_discussions",
+  "github_get_teams",
+  "github_list_code_scanning_alerts",
+  "github_search_users",
+  "github_list_repository_collaborators",
+  "github_update_issue_comment",
+  "github_list_org_repository_security_advisories"
+ ],
+ "git": [
+  "git_set_working_dir",
+  "git_add"
+ ],
+ "atlassian": [
+  "atlassian_confluence_search",
+  "atlassian_jira_search",
+  "atlassian_jira_get_issue",
+  "atlassian_jira_search_projects",
+  "atlassian_confluence_get_page",
+  "atlassian_jira_add_comment",
+  "atlassian_jira_get_transitions",
+  "atlassian_jira_transition_issue",
+  "atlassian_jira_update_issue"
+ ],
+ "slack": [
+  "slack_get_channel_history",
+  "slack_list_channels",
+  "slack_get_thread_replies",
+  "slack_post_message",
+  "slack_get_users",
+  "slack_reply_to_thread"
+ ],
+ "grafana": [
+  "grafana_query_loki_logs",
+  "grafana_list_incidents",
+  "grafana_list_datasources",
+  "grafana_query_prometheus",
+  "grafana_list_prometheus_metric_names",
+  "grafana_search_dashboards",
+  "grafana_list_loki_label_names",
+  "grafana_list_alert_groups",
+  "grafana_list_loki_label_values",
+  "grafana_list_oncall_schedules",
+  "grafana_query_prometheus_histogram",
+  "grafana_get_incident",
+  "grafana_api_request",
+  "grafana_alerting_manage_rules",
+  "grafana_list_oncall_teams",
+  "grafana_list_prometheus_label_values",
+  "grafana_list_oncall_users",
+  "grafana_add_activity_to_incident",
+  "grafana_get_current_oncall_users",
+  "grafana_get_annotations",
+  "grafana_get_alert_group",
+  "grafana_search_folders",
+  "grafana_list_prometheus_label_names",
+  "grafana_query_tempo_metrics",
+  "grafana_search_tempo_traces",
+  "grafana_list_tempo_attribute_values",
+  "grafana_list_prometheus_metric_metadata",
+  "grafana_query_loki_stats",
+  "grafana_list_snapshots",
+  "grafana_list_sift_investigations",
+  "grafana_list_provisioning_repositories",
+  "grafana_search_docs",
+  "grafana_list_tempo_attribute_names",
+  "grafana_find_slow_requests",
+  "grafana_find_error_pattern_logs",
+  "grafana_get_oncall_shift",
+  "grafana_get_assertions",
+  "grafana_list_incident_custom_fields",
+  "grafana_alerting_manage_silences",
+  "grafana_get_annotation_tags",
+  "grafana_query_loki_patterns",
+  "grafana_update_alert_group"
+ ],
+ "gitlab": [
+  "gitlab_list_projects",
+  "gitlab_search_repositories",
+  "gitlab_get_file_contents",
+  "gitlab_list_pipelines",
+  "gitlab_get_merge_request_notes",
+  "gitlab_get_merge_request",
+  "gitlab_get_pipeline_job_output",
+  "gitlab_list_pipeline_jobs",
+  "gitlab_get_merge_request_diffs",
+  "gitlab_list_commits",
+  "gitlab_list_merge_request_changed_files",
+  "gitlab_list_merge_requests",
+  "gitlab_create_merge_request_thread",
+  "gitlab_get_pipeline",
+  "gitlab_list_branches",
+  "gitlab_get_merge_request_file_diff",
+  "gitlab_list_issues",
+  "gitlab_list_merge_request_diffs",
+  "gitlab_get_merge_request_approval_state",
+  "gitlab_list_wiki_pages",
+  "gitlab_get_merge_request_note",
+  "gitlab_list_job_artifacts",
+  "gitlab_list_group_wiki_pages",
+  "gitlab_create_pipeline",
+  "gitlab_get_merge_request_discussion",
+  "gitlab_list_pipeline_trigger_jobs",
+  "gitlab_list_environments",
+  "gitlab_get_pipeline_variables",
+  "gitlab_list_labels",
+  "gitlab_list_pipeline_triggers"
+ ],
+ "linear": [
+  "linear_searchIssues",
+  "linear_getIssueById",
+  "linear_searchDocuments",
+  "linear_getTeams",
+  "linear_updateIssue",
+  "linear_getWorkflowStates",
+  "linear_searchReleases",
+  "linear_createComment"
+ ],
+ "notion": [
+  "notion_API-post-search",
+  "notion_API-get-block-children",
+  "notion_API-retrieve-page-markdown",
+  "notion_API-retrieve-a-page"
+ ],
+ "monday": [
+  "monday_search",
+  "monday_list_workspaces"
+ ],
+ "kubernetes": [
+  "kubernetes_kubectl_get",
+  "kubernetes_kubectl_describe",
+  "kubernetes_kubectl_logs",
+  "kubernetes_kubectl_context",
+  "kubernetes_exec_in_pod",
+  "kubernetes_list_api_resources"
+ ],
+ "sentry": [
+  "sentry_search_issues",
+  "sentry_search_events",
+  "sentry_find_projects",
+  "sentry_search_sentry_tools",
+  "sentry_get_sentry_resource",
+  "sentry_find_organizations",
+  "sentry_update_issue",
+  "sentry_execute_sentry_tool"
+ ],
+ "filesystem": [
+  "filesystem_list_allowed_directories",
+  "filesystem_list_directory",
+  "filesystem_search_files"
+ ],
+ "aws_cloudwatch": [
+  "aws_cloudwatch_execute_log_insights_query",
+  "aws_cloudwatch_describe_log_groups",
+  "aws_cloudwatch_execute_promql_query",
+  "aws_cloudwatch_execute_cwl_insights_batch"
+ ],
+ "memory": [
+  "memory_search_nodes"
+ ],
+ "aws_eks": [
+  "aws_eks_list_k8s_resources",
+  "aws_eks_get_pod_logs",
+  "aws_eks_manage_k8s_resource",
+  "aws_eks_get_k8s_events",
+  "aws_eks_get_cloudwatch_logs"
+ ],
+ "postgres": [
+  "postgres_query"
+ ],
+ "clickhouse": [
+  "clickhouse_list_databases",
+  "clickhouse_list_tables"
+ ],
+ "mongodb": [
+  "mongodb_find",
+  "mongodb_count",
+  "mongodb_connect",
+  "mongodb_list-connections",
+  "mongodb_aggregate",
+  "mongodb_list-collections",
+  "mongodb_list-databases",
+  "mongodb_collection-schema",
+  "mongodb_list-knowledge-sources",
+  "mongodb_search-knowledge"
+ ],
+ "elasticsearch": [
+  "elasticsearch_list_indices",
+  "elasticsearch_search"
+ ],
+ "circleci": [
+  "circleci_list_followed_projects",
+  "circleci_get_latest_pipeline_status"
+ ],
+ "heroku": [
+  "heroku_list_apps"
+ ],
+ "airtable": [
+  "airtable_list_bases"
+ ]
+}

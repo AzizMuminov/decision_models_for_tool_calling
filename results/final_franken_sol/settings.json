@@ -1,0 +1,10 @@
+{
+ "tasks_dir": "tasks_real_v2",
+ "extra": true,
+ "validate": true,
+ "deny": true,
+ "pinned": true,
+ "preamble": true,
+ "pin": "openai/gpt-6.1-sol=openai",
+ "temperature": null
+}

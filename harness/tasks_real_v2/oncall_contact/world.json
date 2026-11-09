@@ -1,0 +1,49 @@
+[
+ {
+  "tool": "grafana_get_current_oncall_users",
+  "match": {
+   "scheduleId": "SBM7DV7BKFUYU"
+  },
+  "response": {
+   "scheduleId": "SBM7DV7BKFUYU",
+   "scheduleName": "payments-primary",
+   "users": [
+    {
+     "id": "U4X3",
+     "username": "rnakamura",
+     "email": "r.nakamura@acme.example"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_get_current_oncall_users",
+  "match": {
+   "scheduleId": "SQ6F1P3K9WX2A"
+  },
+  "response": {
+   "scheduleName": "platform-primary",
+   "users": [
+    {
+     "username": "tbauer",
+     "email": "t.bauer@acme.example"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_get_oncall_shift",
+  "match": {
+   "_any": "SBM7"
+  },
+  "response": {
+   "schedule": "payments-primary",
+   "users": [
+    {
+     "email": "r.nakamura@acme.example"
+    }
+   ],
+   "start": "2026-11-05T00:00:00Z"
+  }
+ }
+]

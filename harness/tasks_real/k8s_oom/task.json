@@ -1,0 +1,35 @@
+{
+ "id": "k8s_oom",
+ "category": "single",
+ "prompt": "The report-builder pods in namespace `reports` keep getting killed. Check the cluster, then set the container memory limit in deploy/report-builder.yaml as our runbook (RUNBOOK.md) says. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "kubernetes_kubectl_get",
+   "kubernetes_kubectl_describe"
+  ],
+  [
+   "kubernetes_kubectl_describe",
+   "kubernetes_kubectl_logs",
+   "kubernetes_kubectl_get"
+  ]
+ ],
+ "gold": [
+  [
+   "kubernetes_kubectl_get",
+   {
+    "resourceType": "pods",
+    "namespace": "reports"
+   }
+  ],
+  [
+   "kubernetes_kubectl_describe",
+   {
+    "resourceType": "pod",
+    "name": "report-builder-6b7c9d-q8w2e",
+    "namespace": "reports"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

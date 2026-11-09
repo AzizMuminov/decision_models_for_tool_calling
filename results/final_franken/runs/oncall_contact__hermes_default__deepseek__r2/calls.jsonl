@@ -1,0 +1,12 @@
+{"t": 1794106838.5434215, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794106839.5546098, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794106840.512184, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794106842.6969206, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794106856.845519, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794106857.868375, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 30}, "ok": true}
+{"t": 1794106859.0370843, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 30}, "ok": true}
+{"t": 1794106861.5134802, "kind": "call", "tool": "slack_get_users", "args": {}, "ok": true}
+{"t": 1794106862.5251133, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments on-call escalation contact"}, "ok": true}
+{"t": 1794106865.6260424, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "escalation"}, "ok": true}
+{"t": 1794106869.3475344, "kind": "call", "tool": "grafana_list_oncall_users", "args": {"username": "rnakamura"}, "ok": true}
+{"t": 1794106870.4949117, "kind": "call", "tool": "grafana_list_oncall_users", "args": {}, "ok": true}

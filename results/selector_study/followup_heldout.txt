@@ -1,0 +1,9 @@
+uncached DM calls: 0 spent $0.000
+variant                      hit1  hit_list cov  all  named  trueNone falseNone avg_len
+F 15 (as run)                nan nan 0.845 0.790 0.997 0.950 nan 13.287
+F 10                         nan nan 0.830 0.772 0.997 0.950 nan 9.136
+F 10, no usage names         nan nan 0.816 0.762 0.997 0.950 nan 9.136
+F 8 = 5 best + 3 expert      nan nan 0.816 0.762 0.997 0.950 nan 7.426
+F 5 best only                nan nan 0.794 0.740 0.997 0.950 nan 4.648
+F 15, no none                nan nan 0.850 0.794 1.000 0.000 nan 14.090
+F 10, no none                nan nan 0.835 0.776 1.000 0.000 nan 9.690

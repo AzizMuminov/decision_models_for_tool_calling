@@ -1,0 +1,18 @@
+{"t": 1794105507.5337996, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "repo": "notifier", "perPage": 20}, "ok": true}
+{"t": 1794105510.3288105, "kind": "call", "tool": "github_search_repositories", "args": {"query": "notifier"}, "ok": true}
+{"t": 1794105513.0286381, "kind": "call", "tool": "github_list_starred_repositories", "args": {}, "ok": true}
+{"t": 1794105515.309616, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794105516.317055, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794105518.1445034, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "labelName": "app"}, "ok": true}
+{"t": 1794105519.1522477, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 50, "logql": "{app=\"notifier\"} |~ \"(?i)error|fail|exception\"", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794105523.645628, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "notifier/templates.py", "repo": "notifier"}, "ok": true}
+{"t": 1794105524.6531513, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-05T06:20:00Z", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-05T05:50:00Z"}, "ok": true}
+{"t": 1794105529.3165476, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794105530.3247702, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "CHG-2231 template migration"}, "ok": true}
+{"t": 1794105536.1914482, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-05T12:00:00Z", "limit": 100, "logql": "{app=\"notifier\"} |~ \"(?i)template|render\"", "startRfc3339": "2026-10-29T00:00:00Z"}, "ok": true}
+{"t": 1794105541.7774553, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "7d", "query": "is:unresolved notifier"}, "ok": true}
+{"t": 1794105542.785273, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "resourceType": "deployments"}, "ok": false}
+{"t": 1794105547.832018, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-06T00:00:00Z", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "2026-10-01T00:00:00Z"}, "ok": true}
+{"t": 1794105551.7621102, "kind": "call", "tool": "grafana_query_loki_patterns", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-10-01T00:00:00Z", "endRfc3339": "2026-11-06T00:00:00Z"}, "ok": true}
+{"t": 1794105556.5962138, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "notifier"}, "ok": true}
+{"t": 1794105557.60382, "kind": "call", "tool": "github_search_code", "args": {"query": "order_shipped_v3"}, "ok": true}

@@ -1,0 +1,29 @@
+{"t": 1794118179.0391057, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "importer"}, "ok": true}
+{"t": 1794118182.1309357, "kind": "call", "tool": "gitlab_list_projects", "args": {"query": "batch-importer", "limit": 20}, "ok": true}
+{"t": 1794118186.4564114, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme importer"}, "ok": true}
+{"t": 1794118187.4642444, "kind": "call", "tool": "github_actions_list", "args": {"method": "list_workflows", "owner": "acme", "repo": "batch-importer"}, "ok": false}
+{"t": 1794118190.8355806, "kind": "call", "tool": "github_search_repositories", "args": {"minimal_output": true, "query": "importer in:name", "perPage": 50}, "ok": true}
+{"t": 1794118191.8432102, "kind": "call", "tool": "gitlab_search_repositories", "args": {"perPage": 50, "query": "batch"}, "ok": true}
+{"t": 1794118193.9553788, "kind": "call", "tool": "github_search_repositories", "args": {"minimal_output": true, "perPage": 100, "query": "batch"}, "ok": true}
+{"t": 1794118197.7472098, "kind": "call", "tool": "github_search_orgs", "args": {"query": "acme"}, "ok": true}
+{"t": 1794118200.7684224, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 100, "simple": true, "summary": true}, "ok": true}
+{"t": 1794118201.777404, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 100}, "ok": true}
+{"t": 1794118205.748003, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "batch-importer"}, "ok": false}
+{"t": 1794118210.812831, "kind": "call", "tool": "sentry_find_organizations", "args": {"query": "acme"}, "ok": true}
+{"t": 1794118211.8208194, "kind": "call", "tool": "sentry_find_projects", "args": {"query": "importer"}, "ok": false}
+{"t": 1794118213.9242966, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "period": "7d", "query": "batch importer", "sort": "date"}, "ok": true}
+{"t": 1794118214.9319036, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme", "query": "importer"}, "ok": true}
+{"t": 1794118223.6539423, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "batch/v1", "cluster_name": "data-prod", "kind": "CronJob", "namespace": "batch"}, "ok": true}
+{"t": 1794118224.6616333, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "v1", "cluster_name": "data-prod", "kind": "Pod", "namespace": "batch"}, "ok": true}
+{"t": 1794118226.9863698, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "batch-importer-29188440-x7k2p", "namespace": "batch", "resourceType": "pod", "tail": 200}, "ok": false}
+{"t": 1794118227.9941483, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "batch-importer-29187000-m2d9q", "namespace": "batch", "resourceType": "pod", "tail": 200}, "ok": false}
+{"t": 1794118230.9602494, "kind": "call", "tool": "aws_eks_get_k8s_events", "args": {"cluster_name": "data-prod", "kind": "Pod", "name": "batch-importer-29188440-x7k2p", "namespace": "batch"}, "ok": true}
+{"t": 1794118233.7108433, "kind": "call", "tool": "aws_eks_get_k8s_events", "args": {"cluster_name": "data-prod", "kind": "Pod", "name": "batch-importer-29187000-m2d9q", "namespace": "batch"}, "ok": true}
+{"t": 1794118235.9103942, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "limit_bytes": 20000, "namespace": "batch", "pod_name": "batch-importer-29188440-x7k2p", "tail_lines": 300}, "ok": true}
+{"t": 1794118236.9182296, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "limit_bytes": 20000, "namespace": "batch", "pod_name": "batch-importer-29187000-m2d9q", "tail_lines": 300}, "ok": true}
+{"t": 1794118243.517214, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "batch/v1", "cluster_name": "data-prod", "kind": "Job", "namespace": "batch"}, "ok": true}
+{"t": 1794118249.5276475, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "warehouse"}, "ok": true}
+{"t": 1794118250.5352116, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"end": "now", "limit": 20, "logql": "{namespace=\"batch\"} |= \"ERROR\"", "start": "now-7d"}, "ok": false}
+{"t": 1794118254.2607648, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 100, "query": "warehouse v9"}, "ok": false}
+{"t": 1794118255.9378667, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "warehouse v9 batch limit"}, "ok": true}
+{"t": 1794118256.9454784, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "period": "7d", "query": "warehouse", "sort": "date"}, "ok": true}

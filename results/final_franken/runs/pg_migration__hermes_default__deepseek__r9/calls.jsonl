@@ -1,0 +1,14 @@
+{"t": 1794114136.9250317, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794114139.9917357, "kind": "call", "tool": "postgres_query", "args": {"sql": "select current_database() as db, current_schema() as schema"}, "ok": true}
+{"t": 1794114140.9997435, "kind": "call", "tool": "postgres_query", "args": {"sql": "select indexname, indexdef from pg_indexes where schemaname not in ('pg_catalog','information_schema') order by 1"}, "ok": true}
+{"t": 1794114155.261519, "kind": "call", "tool": "github_search_code", "args": {"query": "merchant_ref repo:acme/payments-db"}, "ok": true}
+{"t": 1794114156.269155, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments-db", "ref": "main"}, "ok": false}
+{"t": 1794114159.136758, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-db in:name org:acme"}, "ok": true}
+{"t": 1794114164.3507266, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794114165.3654964, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794114170.2657773, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments table schema merchant_ref created_ts"}, "ok": true}
+{"t": 1794114171.2732997, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments table schema"}, "ok": true}
+{"t": 1794114178.1049838, "kind": "call", "tool": "postgres_query", "args": {"sql": "select column_name, data_type from information_schema.columns where table_name = 'merchants' order by ordinal_position"}, "ok": true}
+{"t": 1794114179.1126795, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from merchants limit 1"}, "ok": true}
+{"t": 1794114186.9145553, "kind": "call", "tool": "postgres_query", "args": {"sql": "select count(*) as n from payments"}, "ok": true}
+{"t": 1794114187.9225008, "kind": "call", "tool": "postgres_query", "args": {"sql": "select count(*) as n from payment"}, "ok": true}

@@ -1,0 +1,21 @@
+{"t": 1794109120.987167, "kind": "call", "tool": "github_list_releases", "args": {"repo": "acme/ghost-sdk"}, "ok": false}
+{"t": 1794109121.997994, "kind": "call", "tool": "github_list_tags", "args": {"repo": "acme/ghost-sdk"}, "ok": false}
+{"t": 1794109123.5096176, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794109124.5189512, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794109131.851782, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "ghost-sdk"}, "ok": true}
+{"t": 1794109132.8599179, "kind": "call", "tool": "gitlab_list_projects", "args": {"search": "ghost"}, "ok": true}
+{"t": 1794109137.936037, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794109139.778849, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "ghost-sdk", "ref": "main"}, "ok": false}
+{"t": 1794109143.8601618, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost"}, "ok": true}
+{"t": 1794109148.63692, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794109149.644865, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "ref": "main", "repo": "sdk-consumer"}, "ok": false}
+{"t": 1794109153.4208157, "kind": "call", "tool": "github_search_code", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794109160.9244063, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794109161.932203, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794109164.5117302, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794109165.5195312, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 100}, "ok": true}
+{"t": 1794109167.327987, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794109168.3347218, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 100}, "ok": true}
+{"t": 1794109169.3420258, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}
+{"t": 1794109176.1546333, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794109177.1629431, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost-sdk"}, "ok": true}

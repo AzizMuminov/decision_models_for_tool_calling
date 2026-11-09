@@ -1,0 +1,10 @@
+{"t": 1794110724.827513, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794110725.7231698, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"schedule_id": "SBM7DV7BKFUYU"}, "ok": false}
+{"t": 1794110726.7497714, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794110729.490394, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794110730.497913, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794110737.9992392, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794110738.8453999, "kind": "call", "tool": "slack_get_channel_history", "args": {"channelId": "C07PAYENG01", "limit": 40}, "ok": false}
+{"t": 1794110739.760753, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 40}, "ok": true}
+{"t": 1794110741.2083194, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 30}, "ok": true}
+{"t": 1794110742.2154744, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 30}, "ok": true}

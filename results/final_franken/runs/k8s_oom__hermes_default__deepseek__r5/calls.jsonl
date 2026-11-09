@@ -1,0 +1,19 @@
+{"t": 1794109628.4944532, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {}, "ok": false}
+{"t": 1794109629.5092928, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794109630.3247886, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list"}, "ok": true}
+{"t": 1794109631.828905, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "pods", "namespace": "reports"}, "ok": true}
+{"t": 1794109632.8356864, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resourceType": "deployment", "name": "report-builder", "namespace": "reports"}, "ok": true}
+{"t": 1794109636.417762, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"namespace": "reports", "name": "report-builder-6b7c9d-q8w2e", "tailLines": 100}, "ok": false}
+{"t": 1794109637.425074, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"regex": "container_memory.*", "limit": 50}, "ok": false}
+{"t": 1794109641.0748615, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 120}, "ok": true}
+{"t": 1794109644.3725579, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794109645.9059713, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 50, "regex": "container_memory.*"}, "ok": true}
+{"t": 1794109649.3568892, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 50, "regex": ".*memory.*"}, "ok": true}
+{"t": 1794109650.364098, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 50, "regex": ".*"}, "ok": true}
+{"t": 1794109653.9409406, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"query": "{namespace=\"reports\"} |= ``", "datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "startRfc3339": "now-7d"}, "ok": false}
+{"t": 1794109656.4852495, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 100, "logql": "{namespace=\"reports\"}", "startRfc3339": "now-14d"}, "ok": true}
+{"t": 1794109659.9259632, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "events"}, "ok": true}
+{"t": 1794109661.3003225, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "reports"}, "ok": true}
+{"t": 1794109665.9348567, "kind": "call", "tool": "gitlab_get_file_contents", "args": {"projectId": "acme/reports", "path": ""}, "ok": true}
+{"t": 1794109668.8235579, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794109669.8308685, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "report-builder OOM memory"}, "ok": false}

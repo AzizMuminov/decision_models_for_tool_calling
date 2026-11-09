@@ -1,0 +1,3138 @@
+[
+ {
+  "name": "get_username",
+  "title": "Get Username",
+  "description": "Intelligently determines the appropriate username or alias for Salesforce operations.\n\nWHEN TO USE THIS TOOL:\n- When uncertain which org username a user wants for Salesforce operations.\n\nTo resolve the default org username, set the defaultTargetOrg param to true and defaultDevHub to false.\nTo resole the default devhub org username, set the defaultTargetOrg param to false and defaultDevHub to true.\nIf it's not clear which type of org to resolve, set both defaultTargetOrg and defaultDevHub to false to an allow-listed org username available.\n",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "defaultTargetOrg": {
+     "type": "boolean",
+     "default": false,
+     "description": "Resolve the default target org username"
+    },
+    "defaultDevHub": {
+     "type": "boolean",
+     "default": false,
+     "description": "Resolve the default target devhub org username"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true,
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "resume_tool_operation",
+  "title": "Resume",
+  "description": "Resume a long running operation that was not completed by another tool.\n\nAGENT INSTRUCTIONS:\nUse this tool to resume a long running operation.\n\nEXAMPLE USAGE:\nResume the metadata deploy job 0Af1234567890\nResume the deployment and wait for 10 minutes\nResume the deployment to my org\nResume scratch org creation\nResume job 2SR1234567890\nResume agent tests\nResume org snapshot with ID 0OoKa000000XZAbKAO\nReport on my org snapshot",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "jobId": {
+     "type": "string",
+     "description": "The job id of the long running operation to resume (required)"
+    },
+    "wait": {
+     "type": "number",
+     "default": 30,
+     "description": "The amount of time to wait for the operation to complete in minutes (optional)"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "jobId",
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "run_soql_query",
+  "title": "Query Org",
+  "description": "Run a SOQL query against a Salesforce org.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string",
+     "description": "SOQL query to run"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    },
+    "useToolingApi": {
+     "type": "boolean",
+     "description": "Use Tooling API for the operation"
+    }
+   },
+   "required": [
+    "query",
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true,
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "list_all_orgs",
+  "title": "List All Orgs",
+  "description": "Lists all configured Salesforce orgs.\n\nAGENT INSTRUCTIONS:\nDO NOT use this tool to try to determine which org a user wants, use #get_username instead. Only use it if the user explicitly asks for a list of orgs.\n\nExample usage:\nCan you list all Salesforce orgs for me\nList all Salesforce orgs\nList all orgs",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true,
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "deploy_metadata",
+  "title": "Deploy Metadata",
+  "description": "Deploy metadata to an org from your local project.\n\nAGENT INSTRUCTIONS:\nIf the user doesn't specify what to deploy exactly (\"deploy my changes\"), leave the \"sourceDir\", \"ignoreConflicts\" and \"manifest\" params empty so the tool calculates which files to deploy.\n\nEXAMPLE USAGE:\nDeploy changes to my org\nDeploy this file to my org\nDeploy the manifest\nDeploy X metadata to my org\nDeploy X local files to my org and ignore any conflicts between the local project and org\nDeploy X to my org and run A,B and C apex tests.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "ignoreConflicts": {
+     "type": "boolean",
+     "description": " Ignore conflicts and deploy local files, even if they overwrite changes in the org."
+    },
+    "sourceDir": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Path to the local source files to deploy. Leave this unset if the user is vague about what to deploy."
+    },
+    "manifest": {
+     "type": "string",
+     "description": "Full file path for manifest (XML file) of components to deploy."
+    },
+    "apexTestLevel": {
+     "type": "string",
+     "enum": [
+      "NoTestRun",
+      "RunLocalTests",
+      "RunAllTestsInOrg"
+     ],
+     "description": "Apex test level to use during deployment.\n\nAGENT INSTRUCTIONS\nSet this only if the user specifically ask to run apex tests in some of these ways:\n\nNoTestRun=\"No tests are run\"\nRunLocalTests=\"Run all tests in the org, except the ones that originate from installed managed and unlocked packages.\"\nRunAllTestsInOrg=\"Run all tests in the org, including tests of managed packages\"\n\nDon't set this param if \"apexTests\" is also set.\n"
+    },
+    "apexTests": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Apex tests classes to run.\n\nSet this param if the user ask an Apex test to be run during deployment.\n"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "destructive_hint": true,
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "retrieve_metadata",
+  "title": "Retrieve Metadata",
+  "description": "Retrieve metadata from an org to your local project.\n\nAGENT INSTRUCTIONS:\nIf the user doesn't specify what to retrieve exactly (\"retrieve my changes\"), leave the \"sourceDir\", \"ignoreConflicts\", and \"manifest\" params empty so the tool calculates which files to retrieve.\n\nEXAMPLE USAGE:\nRetrieve changes\nRetrieve changes from my org\nRetrieve this file from my org\nRetrieve the metadata in the manifest\nRetrieve X metadata from my org\nRetrieve X metadata from my org and ignore any conflicts between the local project and org",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "ignoreConflicts": {
+     "type": "boolean",
+     "description": "Ignore conflicts and retrieve and save files to your local filesystem, even if they overwrite your local changes.",
+     "default": false
+    },
+    "sourceDir": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Path to the local source files to retrieve. Leave this unset if the user is vague about what to retrieve."
+    },
+    "manifest": {
+     "type": "string",
+     "description": "Full file path for manifest (XML file) of components to retrieve."
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "destructive_hint": true,
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "run_agent_test",
+  "title": "Run Agent Tests",
+  "description": "Run Agent tests in an org.\n\nAGENT INSTRUCTIONS:\nIf the user doesn't specify what to test, take context from the currently open file\nThis will ONLY run Agent tests, NOT apex tests, lightning tests, flow tests, or any other type of test.\n\nthis should be chosen when a file in the 'aiEvaluationDefinitions' directory is mentioned\n\nEXAMPLE USAGE:\nRun tests for the X agent\nRun this test\nstart myAgentTest and don't wait for results",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "agentApiName": {
+     "type": "string",
+     "description": "Agent test to run\n            if unsure, list all files matching the pattern **/aiEvaluationDefinitions/*.aiEvaluationDefinition-meta.xml\n            only one test can be executed at a time\n"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    },
+    "async": {
+     "type": "boolean",
+     "default": false,
+     "description": "Whether to wait for the tests to finish (false) or quickly return only the test id (true)"
+    }
+   },
+   "required": [
+    "agentApiName",
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "run_apex_test",
+  "title": "Apex Tests",
+  "description": "Run Apex tests in an org.\n\nAGENT INSTRUCTIONS:\nIf the user doesn't specify what to test, take context from the currently open file\nThis will ONLY run APEX tests, NOT agent tests, lightning tests, flow tests, or any other type of test.\n\nthis should be chosen when a file in the 'classes' directory is mentioned\n\nEXAMPLE USAGE:\nRun tests A, B, C.\nRun the myTestMethod in this file\nRun this test and include success and failures\nRun all tests in the org.\nTest the \"mySuite\" suite asynchronously. I\u2019ll check results later.\nRun tests for this file and include coverage\nWhat are the results for 707XXXXXXXXXXXX",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "testLevel": {
+     "type": "string",
+     "enum": [
+      "RunLocalTests",
+      "RunAllTestsInOrg",
+      "RunSpecifiedTests"
+     ],
+     "description": "Apex test level\n\nAGENT INSTRUCTIONS\nChoose the correct value based on what tests are meant to be executed in some of these ways:\n\nRunLocalTests=\"Run all tests in the org, except the ones that originate from installed managed and unlocked packages.\"\nRunAllTestsInOrg=\"Run all tests in the org, including tests of managed packages\"\nRunSpecifiedTests=\"Run the Apex tests I specify, these will be specified in the classNames parameter\"\n"
+    },
+    "classNames": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Apex tests classes to run.\n            if Running all tests, all tests should be listed\n            Run the tests, find apex classes matching the pattern **/classes/*.cls, that include the @isTest decorator in the file and then join their test names together with ','\n"
+    },
+    "methodNames": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Specific test method names, functions inside of an apex test class, must be joined with the Apex tests name"
+    },
+    "async": {
+     "type": "boolean",
+     "default": false,
+     "description": "Weather to wait for the test to finish (false) or enque the Apex tests and return the test run id (true)"
+    },
+    "suiteName": {
+     "type": "string",
+     "description": "a suite of apex test classes to run"
+    },
+    "testRunId": {
+     "type": "string",
+     "default": "an id of an in-progress, or completed apex test run"
+    },
+    "verbose": {
+     "type": "boolean",
+     "default": false,
+     "description": "If a user wants more test information in the context, or information about passing tests"
+    },
+    "codeCoverage": {
+     "type": "boolean",
+     "default": false,
+     "description": "set to true if a user wants codecoverage calculated by the server"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "testLevel",
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "open_world_hint": false
+  }
+ },
+ {
+  "name": "assign_permission_set",
+  "title": "Assign Permission Set",
+  "description": "Assign a permission set to one or more org users.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "permissionSetName": {
+     "type": "string",
+     "description": "A single permission set to assign\n\nEXAMPLE USAGE:\nSet the permission set MyPermSet\nSet the perm set MyPermSet"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "onBehalfOf": {
+     "type": "string",
+     "description": "A single username or alias (other than the usernameOrAlias) to assign the permission set to\n\nAGENT INSTRUCTIONS:\nIf the user does not specifically say \"on behalf of\" this will be empty.\nIf the user does specifically say \"on behalf of\", but it is unclear what the target-org is, run the #get_username tool.\nIn that case, use the usernameOrAlias parameter as the org to assign the permission set to.\n\nUSAGE EXAMPLE:\nAssign the permission set MyPermSet.\nSet the permission set MyPermSet on behalf of test-3uyb8kmftiu@example.com.\nSet the permission set MyPermSet on behalf of my-alias."
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    }
+   },
+   "required": [
+    "permissionSetName",
+    "usernameOrAlias",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "open_world_hint": true
+  }
+ },
+ {
+  "name": "get_mobile_lwc_offline_analysis",
+  "title": "Salesforce Mobile Offline LWC Expert Static Analysis",
+  "description": "Analyzes LWC components for mobile-specific issues and provides detailed recommendations for improvements. It can be leveraged to check if components are mobile-ready.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the LWC component"
+    },
+    "namespace": {
+     "type": "string",
+     "description": "Namespace of the LWC component",
+     "default": "c"
+    },
+    "js": {
+     "type": "object",
+     "properties": {
+      "path": {
+       "type": "string",
+       "description": "path to component file relative to LWC component bundle root"
+      },
+      "content": {
+       "type": "string",
+       "description": "content of the file"
+      }
+     },
+     "required": [
+      "path",
+      "content"
+     ],
+     "additionalProperties": false,
+     "description": "LWC component JavaScript file."
+    },
+    "html": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "path": {
+        "$ref": "#/properties/js/properties/path"
+       },
+       "content": {
+        "$ref": "#/properties/js/properties/content"
+       }
+      },
+      "required": [
+       "path",
+       "content"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1,
+     "description": "LWC component HTML templates."
+    },
+    "css": {
+     "type": "array",
+     "items": {
+      "$ref": "#/properties/html/items"
+     },
+     "description": "LWC component CSS files."
+    },
+    "jsMetaXml": {
+     "$ref": "#/properties/html/items",
+     "description": "LWC component configuration .js-meta.xml file."
+    }
+   },
+   "required": [
+    "name",
+    "js",
+    "html"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "analysisResults": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "expertReviewerName": {
+        "type": "string",
+        "description": "The title-cased name of the reviewer providing the review instructions, representing a brief description of the functional area meant to be reviewed."
+       },
+       "issues": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "properties": {
+          "type": {
+           "type": "string",
+           "description": "Categorize the issue"
+          },
+          "description": {
+           "type": "string",
+           "description": "Why this is an issue?"
+          },
+          "intentAnalysis": {
+           "type": "string",
+           "description": "What is the likely intent of the developer?"
+          },
+          "suggestedAction": {
+           "type": "string",
+           "description": "How a developer should address the issue? Be as detailed as possible without adding code snippets."
+          },
+          "filePath": {
+           "type": "string",
+           "description": "The relative path to the file where the issue occurs"
+          },
+          "code": {
+           "type": "string",
+           "description": "What is the code snippet with the issue?"
+          },
+          "location": {
+           "type": "object",
+           "properties": {
+            "startLine": {
+             "type": "number",
+             "minimum": 0
+            },
+            "endLine": {
+             "type": "number",
+             "minimum": 0
+            },
+            "startColumn": {
+             "type": "number",
+             "minimum": 0
+            },
+            "endColumn": {
+             "type": "number",
+             "minimum": 0
+            }
+           },
+           "required": [
+            "startLine"
+           ],
+           "additionalProperties": false,
+           "description": "Provide the exact line number(s) and column number(s) where the issue occurs"
+          }
+         },
+         "required": [
+          "type",
+          "description",
+          "intentAnalysis",
+          "suggestedAction",
+          "filePath",
+          "location"
+         ],
+         "additionalProperties": false
+        },
+        "description": "Specific issues found during the analysis. Should be empty if no issues were found."
+       }
+      },
+      "required": [
+       "expertReviewerName",
+       "issues"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1,
+     "description": "An array of expert reviews of the code, each outlining specific issues found during analysis."
+    },
+    "orchestrationInstructions": {
+     "type": "string",
+     "default": "If you have not already executed the 'get_mobile_lwc_offline_guidance' tool in this conversation thread: (1) Immediately call the 'get_mobile_lwc_offline_guidance' tool, (2) Execute all review instructions from the guidance tool's output against the user's LWC component code in the specified format, (3) Combine the review results from step 2 with this tool's analysis results, then refactor the component based on all combined review recommendations.",
+     "description": "Instructions for the MCP client on how to orchestrate this tool with the companion guidance tool for comprehensive offline compatibility review."
+    }
+   },
+   "required": [
+    "analysisResults"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "get_mobile_lwc_offline_guidance",
+  "title": "Salesforce Mobile Offline LWC Expert Instruction Delivery",
+  "description": "Provides structured review instructions to detect and remediate Mobile Offline code violations in Lightning web components (LWCs) for Salesforce Mobile Apps.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "reviewInstructions": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "expertReviewerName": {
+        "type": "string",
+        "description": "The title-cased name of the reviewer providing the review instructions, representing a brief description of the functional area meant to be reviewed."
+       },
+       "supportedFileTypes": {
+        "type": "array",
+        "items": {
+         "type": "string",
+         "enum": [
+          "JS",
+          "HTML",
+          "CSS"
+         ]
+        },
+        "minItems": 1,
+        "description": "The list of file types this review should apply to. All content for these files types should be reviewed."
+       },
+       "grounding": {
+        "type": "string",
+        "description": "The grounding context that will apply to this expert review."
+       },
+       "request": {
+        "type": "string",
+        "description": "The formal review request instructions for the expert review."
+       },
+       "expectedResponseFormat": {
+        "type": "object",
+        "properties": {
+         "schema": {
+          "type": "object",
+          "additionalProperties": {},
+          "description": "The JSON schema definition for the expected response format"
+         },
+         "inputValues": {
+          "type": "object",
+          "properties": {
+           "expertReviewerName": {
+            "$ref": "#/properties/reviewInstructions/items/properties/expertReviewerName"
+           }
+          },
+          "required": [
+           "expertReviewerName"
+          ],
+          "additionalProperties": false,
+          "description": "Specific values that should be used as inputs when constructing the response"
+         }
+        },
+        "required": [
+         "schema",
+         "inputValues"
+        ],
+        "additionalProperties": false,
+        "description": "The required schema format and input values for the LLM's review response."
+       }
+      },
+      "required": [
+       "expertReviewerName",
+       "supportedFileTypes",
+       "grounding",
+       "request",
+       "expectedResponseFormat"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1,
+     "description": "An array of LLM-directed instructions to conduct expert reviews of code with supported file types, grounding context, and request fields for processing."
+    },
+    "orchestrationInstructions": {
+     "type": "string",
+     "default": "If you have not already executed the 'get_mobile_lwc_offline_analysis' tool in this conversation thread: (1) Execute all review instructions provided in this response against the user's LWC component code, producing structured review results in the specified format, (2) Immediately call the 'get_mobile_lwc_offline_analysis' tool with the user's component code as input, (3) Combine your review results from step 1 with the analysis results from step 2, then refactor the component based on all combined review recommendations.",
+     "description": "Instructions for the MCP client on how to orchestrate this tool with the companion analysis tool for comprehensive offline compatibility review."
+    }
+   },
+   "required": [
+    "reviewInstructions"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_app_review",
+  "title": "Salesforce Mobile App Review LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC App Review Service, laying the foundation for understanding mobile app review and offering expert-level guidance for implementing the App Review feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_ar_space_capture",
+  "title": "Salesforce Mobile AR Space Capture LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC AR Space Capture, laying the foundation for understanding mobile AR space capture and offering expert-level guidance for implementing the AR Space Capture feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_barcode_scanner",
+  "title": "Salesforce Mobile Barcode Scanner LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Barcode Scanner, laying the foundation for understanding mobile barcode scanner and offering expert-level guidance for implementing the Barcode Scanner feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_biometrics",
+  "title": "Salesforce Mobile Biometrics Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Biometrics Service, laying the foundation for understanding mobile biometrics and offering expert-level guidance for implementing the Biometrics feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_calendar",
+  "title": "Salesforce Mobile Calendar Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Calendar Service, laying the foundation for understanding mobile calendar and offering expert-level guidance for implementing the Calendar feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_contacts",
+  "title": "Salesforce Mobile Contacts Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Contacts Service, laying the foundation for understanding mobile contacts and offering expert-level guidance for implementing the Contacts feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_document_scanner",
+  "title": "Salesforce Mobile Document Scanner LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Document Scanner, laying the foundation for understanding mobile document scanner and offering expert-level guidance for implementing the Document Scanner feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_geofencing",
+  "title": "Salesforce Mobile Geofencing Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Geofencing Service, laying the foundation for understanding mobile geofencing and offering expert-level guidance for implementing the Geofencing feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_location",
+  "title": "Salesforce Mobile Location Services LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Location Service, laying the foundation for understanding mobile location and offering expert-level guidance for implementing the Location feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_nfc",
+  "title": "Salesforce Mobile NFC Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC NFC Service, laying the foundation for understanding mobile NFC and offering expert-level guidance for implementing the NFC feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_mobile_lwc_payments",
+  "title": "Salesforce Mobile Payments Service LWC Native Capability",
+  "description": "The MCP tool provides a comprehensive TypeScript-based API documentation for Salesforce LWC Payments Service, laying the foundation for understanding mobile payments and offering expert-level guidance for implementing the Payments feature in a Lightning Web Component (LWC).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_aura_blueprint_draft",
+  "title": "Aura Create Blueprint Draft",
+  "description": "Use this tool to generate a Product Requirements Document (PRD) from a Salesforce Aura component. The PRD outlines the component's structure, functionality, and requirements for migrating or converting it into a Lightning Web Component (LWC), as part of the Aura to LWC migration workflow orchestrator.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "componentName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the Aura component"
+    },
+    "files": {
+     "anyOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "string"
+      }
+     ],
+     "description": "Component files as key-value pairs where key is filename and value is file content. Can be passed as an object or JSON string."
+    }
+   },
+   "required": [
+    "componentName",
+    "files"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "enhance_aura_blueprint_draft",
+  "title": "Aura Enhance Blueprint Draft",
+  "description": "Use this tool to enhance a draft Product Requirements Document (PRD) as part of the Aura to LWC migration workflow orchestrator.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "draftPrd": {
+     "type": "string",
+     "minLength": 1,
+     "description": "The draft PRD content to be enhanced"
+    }
+   },
+   "required": [
+    "draftPrd"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false
+  }
+ },
+ {
+  "name": "transition_prd_to_lwc",
+  "title": "Aura Transition from PRD to LWC Component Creation",
+  "description": "Use this tool to provide next-step migration instructions from a Product Requirements Document (PRD) to a Lightning Web Component (LWC), as part of the Aura to LWC migration workflow orchestrator. The PRD is generated from a Salesforce Aura component.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "componentName": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "required": [
+    "componentName"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false
+  }
+ },
+ {
+  "name": "orchestrate_aura_migration",
+  "title": "Aura Orchestrate Migration",
+  "description": "Use this tool to orchestrate a workflow to convert or migrate a Salesforce Aura component into its Lightning Web Component (LWC) equivalent. The input can be either an Aura component bundle file (e.g., .cmp, .controller.js, .helper.js, etc.) or a directory containing Aura component bundle files.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "componentName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the Aura component"
+    },
+    "files": {
+     "anyOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "string"
+      }
+     ],
+     "description": "Component files as key-value pairs where key is filename and value is file content. Can be passed as an object or JSON string."
+    }
+   },
+   "required": [
+    "componentName",
+    "files"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false
+  }
+ },
+ {
+  "name": "verify_aura_migration_completeness",
+  "title": "Aura to LWC Migration Completeness Checklist",
+  "description": "Completeness Checklist for aura to LWC conversion using this tool.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_figma_to_lwc_conversion",
+  "title": "Figma Guide LWC Conversion",
+  "description": "Prior to generating an LWC component from a Figma design, you must call this tool to understand how to do this for salesforce.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_lwc_component_from_prd",
+  "title": "LWC Create Component",
+  "description": "Use this tool to create a Lightning Web Component (LWC) from a Product Requirement Document (PRD).",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "prd": {
+     "type": "string",
+     "description": "Optional: The Product Requirements Document content for context-aware guidance"
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_lwc_jest_tests",
+  "title": "LWC Generate Jest Tests",
+  "description": "This is a sub tool of the orchestrate_lwc_component_testing. It should only be used as part of the workflow, not directly. Performs comprehensive component analysis and generates test suite using a static knowledge base.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "componentName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the LWC component"
+    },
+    "files": {
+     "anyOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "string"
+      }
+     ],
+     "description": "Component files as key-value pairs where key is filename and value is file content. Can be passed as an object or JSON string."
+    },
+    "name": {
+     "type": "string",
+     "description": "Name of the tool"
+    },
+    "client": {
+     "type": "string",
+     "description": "Client identifier"
+    }
+   },
+   "required": [
+    "componentName",
+    "files",
+    "name",
+    "client"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_component_accessibility",
+  "title": "Component Guide Accessibility",
+  "description": "Provides accessibility guidelines. When hasImages=true, includes Vision AI accessibility guidelines. Use this tool for both code-based accessibility guidance and visual accessibility validation.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "hasImages": {
+     "type": "boolean",
+     "description": "Whether images are present for Vision AI accessibility analysis. When true, includes Vision AI guidelines."
+    },
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lwc_best_practices",
+  "title": "LWC Best Practices Guide",
+  "description": "Use this tool for Salesforce LWC best practices guidelines for Lightning Web Component (LWC).",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lwc_development",
+  "title": "LWC Guide Development",
+  "description": "Use this tool to get guidance on Lightning Web Components (LWC) development.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "review_lwc_jest_tests",
+  "title": "LWC Review Jest Tests",
+  "description": "This is a sub tool of the orchestrate_lwc_component_testing. It should only be used as part of the workflow, not directly. Reviews test coverage and implementation based on initial analysis. Only provides feedback and recommendations, never generates or rewrites test code.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "componentName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the LWC component"
+    },
+    "files": {
+     "anyOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "string"
+      }
+     ],
+     "description": "Component files as key-value pairs where key is filename and value is file content. Can be passed as an object or JSON string."
+    },
+    "name": {
+     "type": "string",
+     "description": "Name of the tool"
+    },
+    "client": {
+     "type": "string",
+     "description": "Client identifier"
+    }
+   },
+   "required": [
+    "componentName",
+    "files",
+    "name",
+    "client"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false
+  }
+ },
+ {
+  "name": "orchestrate_lwc_component_creation",
+  "title": "LWC Workflow Component Creation",
+  "description": "Use this tool to create a LWC Components (Lightning Web Components) by orchestrating a workflow that provides step-by-step guidelines",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "orchestrate_lwc_component_optimization",
+  "title": "LWC Workflow Component Optimization",
+  "description": "Use this tool to orchestrate a workflow that provides step-by-step guidance for optimization of a Lightning Web Component (LWC)",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "orchestrate_lwc_component_testing",
+  "title": "LWC Workflow Component Testing",
+  "description": "Use this tool to orchestrate a workflow that will comprehensively generate or enhance and validate Jest unit tests for a Lightning Web Component (LWC)",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "explore_lds_uiapi",
+  "title": "LDS Explore UIAPI",
+  "description": "Use this tool to explore Lightning Data Service (LDS) UI API documentation, browse available adapter APIs, and retrieve type definitions for LWC development. Use this when you need to discover what LDS APIs are available or get specific API documentation.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "type": {
+     "type": "string",
+     "enum": [
+      "adapter-api",
+      "uiapi-type"
+     ],
+     "description": "Type of knowledge to retrieve. If not provided, returns a complete UIAPI directory listing."
+    },
+    "names": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Array of specific names to get documentation for. If not provided or empty, returns a list of all available items for the specified type."
+    },
+    "subtype": {
+     "type": "string",
+     "enum": [
+      "records",
+      "lists",
+      "metadata"
+     ],
+     "description": "Subtype of knowledge to retrieve. If not provided, returns a complete UIAPI directory listing."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lds_data_consistency",
+  "title": "LDS Guide Data Consistency",
+  "description": "Use this tool to get detailed guidance on implementing data consistency patterns in LWC components when working with Salesforce record data through Lightning Data Service (LDS).",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lds_development",
+  "title": "LDS Guide Development",
+  "description": "Use this tool to get comprehensive Lightning Data Service (LDS) guidelines covering data consistency, referential integrity, and choosing UIAPI vs Apex, with review checklists and links to specialized knowledge tools. Start here for general LDS guidance, then use specialized tools for deeper dives.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lds_referential_integrity",
+  "title": "LDS Guide Referential Integrity",
+  "description": "Use this tool to get detailed guidance on implementing referential integrity best practices in LWC components to make your code resilient against object/field name changes. Use this when you need to review Salesforce Record data access.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "run_lwc_accessibility_jest_tests",
+  "title": "Run Lwc Accessibility Jest Tests",
+  "description": "Provides detailed instructions and commands for running Sa11y accessibility Jest tests on LWC components. Covers both Bazel commands (core build environment) and Jest commands (standalone environment).",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lws_security",
+  "title": "LWS Guide Security",
+  "description": "Use this tool to get comprehensive security analysis in accordance with Product Security Guidelines and Lightning Web Security Guidelines. Use this to identify and fix security vulnerabilities in your code.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "orchestrate_lds_data_requirements",
+  "title": "LDS Workflow Data Requirements",
+  "description": "Provides step-by-step workflow guidance for analyzing and clarifying LDS data requirements to produce PRD-ready specifications.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "clearRequirements": {
+     "type": "boolean",
+     "default": false,
+     "description": "Skips requirements gathering and ambiguity resolution; set to true when analysis has already been performed and you are confident in the requirements."
+    },
+    "skipValidation": {
+     "type": "boolean",
+     "default": false,
+     "description": "Skips API name validation; either because the data requirement does not involve Salesforce Records orobject and field API names have already been validated."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lds_graphql",
+  "title": "LDS Guide GraphQL",
+  "description": "Use this tool to get detailed guidance on implementing GraphQL patterns in LWC components when working with Salesforce data through Lightning Data Service (LDS) GraphQL APIs.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_lds_graphql_read_query",
+  "title": "LDS Create GraphQL Read Query",
+  "description": "This is a sub tool of the guide_lds_graphql tool. It **must** only be called as part of its workflow, not directly. Use this tool to create GraphQL read queries for Lightning Web Components using Salesforce Lightning Data Service (LDS) GraphQL APIs.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_lds_graphql_mutation_query",
+  "title": "LDS Create GraphQL Mutation Query",
+  "description": "This is a sub tool of the guide_lds_graphql tool. It **must** only be called as part of its workflow, not directly. Use this tool to create GraphQL mutation queries for Lightning Web Components using Salesforce Lightning Data Service (LDS) GraphQL APIs.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "fetch_lds_graphql_schema",
+  "title": "Fetch LDS GraphQL Schema",
+  "description": "Fetches the full GraphQL introspection schema from a connected Salesforce org and saves it to the local filesystem. Returns only the file path and metadata \u2014 the schema content never enters the conversation context. Use the saved schema file path in your codegen.yml and ESLint graphql config.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Username or alias of the Salesforce org to introspect. If not specified, use the #get_username tool."
+    },
+    "directory": {
+     "type": "string",
+     "default": "/srv/agentbox/home",
+     "description": "Directory of the Salesforce project. Used to resolve local default orgs and aliases. Defaults to current working directory."
+    },
+    "outputPath": {
+     "type": "string",
+     "default": "schema.graphql",
+     "description": "File path to write the schema SDL. Relative paths resolve from the nearest project root. Defaults to schema.graphql"
+    },
+    "apiVersion": {
+     "type": "string",
+     "description": "Salesforce API version (e.g. \"62.0\"). Uses org default if omitted"
+    }
+   },
+   "required": [
+    "usernameOrAlias"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "test_lds_graphql_query",
+  "title": "Test LDS GraphQL Query",
+  "description": "This is a sub tool of the create_lds_graphql_read_query and create_lds_graphql_mutation_query tools. It **must** only be called as part of their workflows, not directly. Tests a GraphQL query against a connected Salesforce org and returns the result.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Username or alias of the Salesforce org to test the query against. If not specified, use the #get_username tool."
+    },
+    "directory": {
+     "type": "string",
+     "default": "/srv/agentbox/home",
+     "description": "Directory of the Salesforce project. Used to resolve local default orgs and aliases. Defaults to current working directory."
+    },
+    "query": {
+     "type": "string",
+     "minLength": 1,
+     "description": "The GraphQL query to test"
+    },
+    "operation": {
+     "type": "string",
+     "description": "The name of the operation to test"
+    },
+    "variables": {
+     "type": "object",
+     "additionalProperties": {},
+     "description": "Optional GraphQL variables as a JSON object"
+    },
+    "apiVersion": {
+     "type": "string",
+     "description": "Salesforce API version (e.g. \"66.0\"). Uses org default if omitted"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "query"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_design_general",
+  "title": "Salesforce Lightning Design System (SLDS) Guide General",
+  "description": "Provides comprehensive Salesforce Lightning Design System (SLDS) guidelines and best practices for creating enterprise Lightning Web Components with proper accessibility, responsive design, and component usage patterns.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "mode": {
+     "type": "string",
+     "enum": [
+      "fix",
+      "analysis"
+     ],
+     "default": "fix",
+     "description": "The mode of the MCP tool. \"fix\" means the tool will fix the issues found in the code. \"analysis\" means the tool will analyze the code and respond with a SARIF report."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "create_lightning_type",
+  "title": "Create Custom Lightning Type",
+  "description": "(Developer Preview) Creates, enhances, and provides expert guidance and best practices for custom Lightning types. Generates and maintains LightningTypeBundle components, including schema.json, editor.json, renderer.json, and validation rules, for use across Salesforce applications.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lbc_usage",
+  "title": "LBC Usage Guide",
+  "description": "Use this tool to discover which Lightning Base Components are available and find the best fit for a given use case. Follow the returned instructions to identify candidates, then call explore_lbc_components to retrieve their full API documentation.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "explore_lbc_components",
+  "title": "LBC Explore Components",
+  "description": "Use this tool to retrieve full API documentation for specific Lightning Base Components by name. Returns properties, methods, events, slots, and usage notes. Use guide_lbc_usage first to identify which component names to pass here.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "names": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Array of Lightning Base Component names to retrieve documentation for (e.g. [\"accordion\", \"button\"]). Use guide_lbc_usage to discover available component names."
+    }
+   },
+   "required": [
+    "names"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "reference_lwc_compilation_error",
+  "title": "Reference LWC Compilation Error",
+  "description": "Look up documentation for a single LWC compilation error code (e.g., \"LWC1034\"). Returns the error description, root cause, examples, and suggested fix steps from the knowledge base. Call this tool once per error code.\n\nPREREQUISITES (must be completed BEFORE calling this tool):\n1. The error code MUST come from actual compiler output or IDE diagnostics. If you do not have compiler output, compile the component first or ask the user for the error codes shown in their IDE. NEVER guess or infer error codes from reading the source code.\n2. Read ALL component files (JS, HTML, CSS) for the affected component.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "errorCode": {
+     "type": "string",
+     "minLength": 1,
+     "description": "A single LWC compilation error code (e.g., \"LWC1034\", \"lwc1034\", or just \"1034\")."
+    },
+    "errorMessage": {
+     "type": "string",
+     "description": "The full error message from the compiler, if available. Helps provide more targeted guidance."
+    },
+    "componentName": {
+     "type": "string",
+     "description": "Name of the LWC component that has the compilation error."
+    },
+    "files": {
+     "anyOf": [
+      {
+       "type": "object",
+       "additionalProperties": {
+        "type": "string"
+       }
+      },
+      {
+       "type": "string"
+      }
+     ],
+     "description": "Component files as key-value pairs where key is filename and value is file content. Can be passed as an object or JSON string. Providing the files enables more targeted fix suggestions."
+    }
+   },
+   "required": [
+    "errorCode"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "guide_lo_migration",
+  "title": "Guide LO Migration",
+  "description": "Migration recipe: converts a Lightning Out (beta) host page into a Lightning Out 2.0 host page. Includes LO 2.0 architecture reference, step-by-step instructions, value mapping table, and a complete page skeleton with placeholders.",
+  "input_schema": {
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "type": "object",
+   "properties": {}
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "list_devops_center_projects",
+  "title": "List DevOps Projects",
+  "description": "List all DevOps Center projects in a specific org\n\n      **Terminology:** Treat \"DevOps Center\", \"DOCe\", and \"DoCe\" as the same product/org context.\n      \n      **MANDATORY:** If the DevOps Center org is not given, use the 'list_all_orgs' tool to list all orgs. \n      The list will indicate which org is DevOps Center, or Sandbox if possible. If these details are not provided in the list, \n      ask the user to specify which org is DevOps Center org. Only proceed after the user has selected the DevOps Center org.\n\n**MANDATORY:** Before using this tool, always confirm the selected org is the DevOps Center org. If not, prompt the user to select a DevOps Center org. This tool must NOT be used for any non DevOps Center or Sandbox orgs.\n\n**Input:**\n- Either username (example devops-center@example.com) or alias (example myDevOpsOrg) is required.\n\nLists DevOps Center Projects available in the specified org using SOQL on DevopsProject.\n\n**Output:**\nAn array of project records with fields such as Id, Name, Description.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    }
+   },
+   "required": [
+    "usernameOrAlias"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "list_devops_center_work_items",
+  "title": "List DevOps Work Items",
+  "description": "List all the work items for a specific  DevOps Center project.\n\n      **Terminology:** Treat \"DevOps Center\", \"DOCe\", and \"DoCe\" as the same product/org context.\n      \n**Input:**\n- Either username (example devops-center@example.com) or alias (example myDevOpsOrg) is required.\n      \n      **MANDATORY:** If the DevOps Center org is not given, use the 'sf-list-all-orgs' tool to list all orgs. \n      The list will indicate which org is DevOps Center, or Sandbox if possible. If these details are not provided in the list, \n      ask the user to specify which org is DevOps Center org. Only proceed after the user has selected the DevOps Center org.\n\n      **MANDATORY:** Before using this tool, always confirm the selected org is the DevOps Center org. If not, prompt the user to select a DevOps Center org. This tool must NOT be used for any non DevOps Center or Sandbox orgs.\n\n      **MANDATORY PROJECT SELECTION:** Before listing work items, the user must select a DevOps Center project (projectId) from the same DevOps Center org. First call 'list_devops_center_projects' for that org, then pass the selected project's Id here. The org used here must match the org used to fetch the projects.\n\n      Lists work items from a Salesforce DevOps Center project. Each work item includes branch, environment, and repository details needed for checkout and promotion.\n\n      **After using this tool, always suggest the user with the next actions:**\n      **LLM should strictly suggest only these two options:**\n      1. Start work on the work item (use the 'checkout_devops_center_work_item' tool)\n      2. Promote work items (use the 'promote_devops_center_work_item' tool)",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "project": {
+     "type": "object",
+     "properties": {
+      "Id": {
+       "type": "string",
+       "description": "Selected project's Id"
+      },
+      "Name": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "Id"
+     ],
+     "additionalProperties": false,
+     "description": "DevOps project selected from list_devops_center_projects for the same org"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "project"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "create_devops_center_work_item",
+  "title": "Create Work Item",
+  "description": "Creates a new DevOps Center Work Item in the specified project.\n\n**Usage notes:**\n- This tool must be used for the DevOps Center org only. If the org is not provided, use 'list_all_orgs' to select the DevOps Center org.\n- A DevOps Center project must be selected first from the same org. If the projectId is not known, call 'list_devops_center_projects' for that org and ask the user to select a project. Use that project's Id here.\n- Ensure the org used to select the project is the same org passed to this tool.\n- **(Mandatory)** Always ask the user to give the work item subject. Don't proceed until the user has provided the subject. **(Mandatory)**\n\n**API:** POST /services/data/v65.0/connect/devops/projects/<ProjectID>/workitem\n**Body:** { \"subject\": string, \"description\": string }\n\n**Input parameters:**\n- usernameOrAlias: DevOps Center org username or alias. If missing, use 'list_all_orgs' and ask user to select the DevOps Center org.\n- projectId: DevOps Center Project ID from list_devops_center_projects for the same org.\n- subject: Work item subject.\n- description: Work item description (optional).\n\n**Output:**\n- success: Whether the create succeeded.\n- workItemId, workItemName, subject: Created work item details on success.\n- error: Error message if the create failed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "projectId": {
+     "type": "string",
+     "minLength": 1,
+     "description": "DevOps Center Project ID selected from list_devops_center_projects for the same org."
+    },
+    "subject": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Work item subject."
+    },
+    "description": {
+     "type": "string",
+     "description": "Work item description."
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "projectId",
+    "subject"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false,
+   "destructive_hint": false,
+   "open_world_hint": true
+  }
+ },
+ {
+  "name": "promote_devops_center_work_item",
+  "title": "Promote Work Item",
+  "description": "Promote an approved work item to the next stage in the DevOps Center pipeline.\n\n      **Use when user asks (examples):**\n      - \"Promote WI-123 to UAT\"\n      - \"Promote my approved work item\"\n      - \"Release WI-456 to next stage\"\n\n      **Prerequisites:**\n      - This tool must be used only for the DevOps Center org.\n      - The user must provide: username (DevOps Center) and a list of Work Item Names.\n\n      **Input Parameters:**\n      - username: DevOps Center org username. If missing, use 'list_all_orgs' and ask user to select the DevOps Center org.\n      - workItemNames: Array of exact Work Item Names to promote.\n\n      **Behavior:**\n      1. Fetches the specified Work Items by Name and derives PipelineId and TargetStageId automatically.\n      2. Validates that each Work Item has PipelineStageId and a resolvable TargetStageId.\n      3. Calls the promotion API with the resolved ids.\n\n\n      **Safety and guidance for the LLM:**\n      - Do not auto-select a non-DevOps Center org; always confirm with the user.\n      - If any Work Item is not found or missing required pipeline data, return an actionable error listing which names failed.\n      - Never promote without explicit user confirmation of workitems.\n\n      **Output:**\n      - JSON with promotion requestId (if available) and any error details.\n\n      **Next steps:**\n      - Suggest how to track promotion status using the returned requestId or the DevOps Center UI.\n      - If applicable, prompt the user to promote to the next stage after validation.\n\n      **Output:**\n      A JSON object containing the promotion request ID, the org details, and any relevant status or tracking information.\n      ",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemNames": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     },
+     "minItems": 1,
+     "description": "Exact Work Item Names to promote"
+    },
+    "isFullDeploy": {
+     "type": "boolean",
+     "description": "Set to true to run a full deploy (e.g. when resolving deployment failures due to missing dependencies). Default false."
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemNames"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "detect_devops_center_merge_conflict",
+  "title": "Detect Conflict",
+  "description": "Detects merge conflicts for a selected work item or in given source branch.\n\n      **When to use:**\n      - User asks to detect conflicts for a work item, or asks for help fixing a merge conflict.\n      - User asks to detect conflicts for a given source branch.\n\n      **MANDATORY input:**\n      - Either workitem name (example WI-0000000X) or source branch (example WI-0000000X) is provided.\n      - usernameOrAlias: DevOps Center org username or alias (example devops-center-org).\n\n      **Behavior:**\n      - The tool will look up the Work Item by Name in the DevOps Center org and compute target branch automatically.\n      - If the item cannot be found, or required fields are missing (branch or repo), it will return actionable guidance.\n\n      **What this tool does:**\n      1. Validates required properties (WorkItemBranch, TargetBranch, SourceCodeRepository.repoUrl)\n      2. Provides instructions to check for conflicts between the work item branch and target branch\n      3. Runs the necessary git commands to detect conflicts and surface findings\n\n      **Output:**\n      - If conflicts exist: lists conflicted files and suggested next steps\n      - If no conflicts: confirms it is safe to merge\n      - On error: returns details\n\n      **Next step:**\n      - After detection, call 'resolve_devops_center_merge_conflict' to guide the user through conflict resolution.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "description": "Exact Work Item Name"
+    },
+    "sourcebranch": {
+     "type": "string",
+     "description": "Source branch of the Work Item"
+    },
+    "localPath": {
+     "type": "string",
+     "description": "Local path to the repository (defaults to current working directory)"
+    }
+   },
+   "required": [
+    "localPath"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "resolve_devops_center_merge_conflict",
+  "title": "Resolve Conflict",
+  "description": "Guides merge conflict resolution for a selected work item by name.\n\n      **When to use:**\n      - After running 'detect_devops_center_merge_conflict' and conflicts were found.\n\n      **MANDATORY input:**\n      - workItemName (exact Name of the Work Item) and username or alias of the DevOps Center org.\n\n      **Behavior:**\n      - Looks up the Work Item by Name, validates required fields, and prepares per-file resolution commands.\n      - If branch/target branch/repo URL are missing, returns actionable guidance to fix inputs first.\n      - NEVER auto-resolve conflicts. For every conflicted file, the agent must ask the user which side to keep and wait for explicit confirmation before running any checkout command.\n\n      **What this tool does:**\n      1. Confirms the repo is in a conflicted state\n      2. Lists conflicted files\n      3. For each file, asks the user to choose one option only: keep current OR keep incoming\n      4. After each explicit user choice, applies the selected command and stages the file\n      5. Verifies conflicts are cleared and guides local commit steps\n\n      **Hard constraints:**\n      - Do not run `git checkout --ours` or `git checkout --theirs` until the user chooses for that specific file.\n      - Do not offer or attempt a \"keep both\" merge path in this tool.\n      - Keep operations local unless the user explicitly asks to push.\n\n      **Output:**\n      - If conflicts exist: per-file action plan with commands\n      - If no conflicts: confirms the repo is clean\n      - On error: actionable troubleshooting\n",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Exact Work Item Name (mandatory)"
+    },
+    "localPath": {
+     "type": "string",
+     "description": "Local path to the repository (defaults to current working directory)"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemName",
+    "localPath"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "resolve_devops_center_deployment_failure",
+  "title": "Resolve Deployment Failure",
+  "description": "Determine if **full promotion** can fix a deployment failure and guide the user.\n\n**Inputs:** workItemName (mandatory), sourceBranchName (mandatory), errorDetails (mandatory), localPath (optional; defaults to current working directory), targetBranchName (optional; when provided, source and target are compared to confirm if full promotion will resolve).\n\n**Behavior:**\n1. **Merge conflict**: Full promotion cannot fix \u2192 instruct to use **resolve_devops_center_merge_conflict**.\n2. **All other errors**: The tool **checks out the source branch** in the repo (at localPath), then parses the error for a missing dependency and checks if the **source branch** contains it. If **source contains the missing dependency** \u2192 full promotion can fix \u2192 ask for confirmation (see below), then proceed to full promotion after user confirms. If **source does not contain it** (or no dependency could be parsed) \u2192 return generic instructions to resolve the deployment failure.\n\n**MANDATORY \u2013 Ask for confirmation; do NOT run full promotion without it:**\n- When this tool returns that full promotion can fix the failure, you MUST present the confirmation request to the user and STOP.\n- Do NOT call **promote_devops_center_work_item** until the user explicitly confirms (e.g. \"Yes\", \"Proceed\", \"Go ahead\").\n- Only after the user confirms should you call **promote_devops_center_work_item** with usernameOrAlias, workItemNames: [workItemName], isFullDeploy: true.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Work Item name (mandatory). Exact name of the work item that failed deployment."
+    },
+    "sourceBranchName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Source branch name (mandatory). The work item branch where the change lives."
+    },
+    "targetBranchName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Target branch name (optional). When provided with localPath, the tool compares source and target to determine if the missing dependency is in source but not in target, confirming full promotion will resolve the failure."
+    },
+    "errorDetails": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Error details from the failed deployment (mandatory). Used to determine if full promotion can fix the failure."
+    },
+    "localPath": {
+     "type": "string",
+     "description": "Local path to the repository (defaults to current working directory)"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemName",
+    "sourceBranchName",
+    "errorDetails"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "checkout_devops_center_work_item",
+  "title": "Checkout Work Item",
+  "description": "Checks out the branch associated with a selected work item by name.\n\n**Terminology:** Treat \"DevOps Center\", \"DOCe\", and \"DoCe\" as the same product/org context.\n\n**MANDATORY:** Always ask the user to provide the local path (repoPath) to the checked-out repository. \nYou may show the current working directory as an option, but do not proceed until the user has explicitly chosen a repo path. \nNever assume or default to a path without user confirmation.\n\nThis tool takes the DevOps Center org username and the exact Work Item Name, looks up the Work Item to retrieve its repository URL and branch, and then checks out that branch. If localPath is not provided, the current working directory will be used. It clones the repository to the specified local path if it does not exist there, and checks out the specified branch. Assumes the user is already authenticated with the git CLI.\n\n**How to use this tool:**\n\n1. **Work Item Name Required:**\n   - Provide the exact Work Item Name and the DevOps Center org username. The tool will fetch the Work Item and derive repo URL and branch automatically.\n\n2. **Input Parameters:**\n   - \"username\": The username of the DevOps Center org.\n   - \"workItemName\": The exact Name of the Work Item whose branch to check out.\n   - \"localPath\" (mandatory): The directory path where the repository should be cloned/checked out. Must be provided by the user. The current working directory can be shown as an option, but do not proceed until the user chooses.\n\n3. **Operation:**\n   - If the repository does not exist at the specified local path, the tool will clone it there.\n   - The tool will then check out the specified branch in that directory.\n   - The output will explicitly show the path where the repository is cloned.\n\n**Typical workflow:**\n- Provide Work Item Name and local path, then run this tool to clone and check out the correct branch.\n\n**Output:**\n- Success or error message indicating the result of the clone and checkout operations, including the path where the repository is cloned.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Exact Work Item Name to check out."
+    },
+    "localPath": {
+     "type": "string",
+     "description": "The directory path where the repository should be cloned/checked out. If not provided, ask user to provide the path where project is cloned."
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemName",
+    "localPath"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "commit_devops_center_work_item",
+  "title": "Commit Work Item",
+  "description": "Commit SFDX project changes and register the commit SHA in DevOps Center.\n\n**CRITICAL:** Do not run git commands (git add/commit/push) manually. When a user asks to commit, call this tool so DevOps Center correctly tracks metadata and links the commit to the Work Item.\n**CRITICAL:** This tool commits on the currently checked out branch. Ensure current branch matches the selected Work Item branch before running.\n\n**Inputs to validate before execution:**\n1. DevOps Center org identifier (username or alias)\n2. Work Item Name that resolves in the org\n3. Repository path pointing to the project root (git repo)\n4. Non-empty commit message\n\n**Use this tool to:**\n- Finalize and record changes for a Work Item in DevOps Center\n- Commit using DevOps Center credentials and conventions\n- Ensure metadata changes are captured correctly in the pipeline\n\n**After execution:**\n- Follow the returned instructions to push (if not pushed automatically)\n- Then create a PR (use 'create_devops_center_pull_request') as the next step\n\n**Output:**\n- commitSha: The resulting commit SHA (plus push instructions if applicable)\n\n**Example:**\n- \"Commit my changes with message 'Fix bug in account logic' and tie it to WI-1092.\"",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Exact Work Item Name to commit workitem."
+    },
+    "commitMessage": {
+     "type": "string",
+     "description": "Commit message describing the changes (ask user for input)"
+    },
+    "repoPath": {
+     "type": "string",
+     "description": "Absolute path to the git repository root. Defaults to current working directory."
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemName",
+    "commitMessage",
+    "repoPath"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "update_devops_center_work_item_status",
+  "title": "Update Work Item Status",
+  "description": "Update the status of a DevOps Center work item to either \"In Progress\" or \"Ready to Promote\".\n\n      **Use when user asks (examples):**\n      - \"Mark WI-123 In Progress\"\n      - \"Set work item WI-456 to Ready to Promote\"\n      - \"Change work item status to In Progress\"\n      - \"Mark my work item as Ready to Promote\"\n\n      **Prerequisites:**\n      - This tool must be used only for the DevOps Center org.\n      - The user must provide: username (DevOps Center), Work Item Name, and the desired status.\n\n      **Input Parameters:**\n      - usernameOrAlias: DevOps Center org username or alias. If missing, use 'list_all_orgs' and ask user to select the DevOps Center org.\n      - workItemName: Exact Work Item Name (e.g. WI-00000001).\n      - status: New status - either \"In Progress\" or \"Ready to Promote\".\n\n      **Output:**\n      - success: Whether the update succeeded.\n      - workItemId, workItemName, status: Updated work item details on success.\n      - error: Error message if the work item was not found or update failed.\n\n      **Next steps:**\n      - After marking \"Ready to Promote\", suggest promoting the work item (using 'promote_devops_center_work_item') when appropriate.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Exact Work Item Name to update (e.g. WI-00000001)."
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "In Progress",
+      "Ready to Promote"
+     ],
+     "description": "New status: 'In Progress' or 'Ready to Promote'"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "workItemName",
+    "status"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": false,
+   "destructive_hint": false,
+   "open_world_hint": true
+  }
+ },
+ {
+  "name": "check_devops_center_commit_status",
+  "title": "Check Commit Status",
+  "description": "Check the current status of a work item committed to DevOps Center.\n\n        **Use this tool to:**\n        - Check the status of a specific commit using its Request Id\n        - Verify commit processing completion before creating a pull request\n        - Ensure commits are ready for PR creation\n\n        **Input Parameters:**\n        - usernameOrAlias: The username or alias of the DevOps Center org to authenticate with\n        - requestId: The specific request Id to check status for (REQUIRED)\n\n        **Output:**\n        - Status field value for the specified request Id\n        - Request Id and associated status information",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    },
+    "requestId": {
+     "type": "string",
+     "description": "Request ID from the commit operation to check status for"
+    }
+   },
+   "required": [
+    "usernameOrAlias",
+    "requestId"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "create_devops_center_pull_request",
+  "title": "Create Pull Request",
+  "description": "Commit local changes to a DevOps Center work item's feature branch\n      \n      **IMPORTANT: THIS IS NOT A STARTING TOOL**\n\n      When user asks to \"create pull request\" or \"create PR\", DO NOT use this tool directly. Instead, start with step 1 below.\n\n      **THIS TOOL IS ONLY USED AS THE FINAL STEP AFTER COMPLETING ALL PREREQUISITES**\n\n      **MANDATORY workflow for creating pull requests: DO NOT skip any of the steps and DO NOT move to the next step until the current step is completed.**\n      1. **MANDATORY:** If the DevOps Center org is not given, use the 'list_all_orgs' tool to list all orgs. \n            The list will indicate which org is DevOps Center. If this detail is not provided in the list, then\n            ask the user to specify which org is DevOps Center. Only proceed after the user has selected the DevOps Center org.\n      2. **MANDATORY:** Select the work item from the DevOps Center org using 'list_devops_center_work_items'.\n      3. **MANDATORY:** Checkout the work item branch using 'checkout_devops_center_work_item' to get the project code locally.\n      4. **MANDATORY:** Verify with the user that all changes have been manually committed and pushed to the work item branch. DO NOT use any commit tools - this should be done manually by the user.\n      5. **MANDATORY - PREREQUISITE CHECK:** Ask the user for their commit request ID and use the 'check_devops_center_commit_status' tool to verify the status of their previous commits. You MUST call 'check_devops_center_commit_status' before proceeding. Do not skip this step.\n      6. **MANDATORY:** Only after successfully verifying commit status with 'check_devops_center_commit_status', call this tool to create the pull request using the DevOps Center API.\n\n      **Use this tool to:**\n      - Create a Pull Request based on a work item in DevOps Center\n      - Initiate the review process for completed work items\n      - Move work items from development to review stage\n\n      **After using this tool, suggest these next actions:**\n      1. Ask the user to review the created pull request using the returned reviewUrl\n      2. Ask the user to promote work items (using the 'promote_devops_center_work_item' tool) after PR approval\n\n      **Output:**\n      - reviewUrl: URL where the user can check the created pull request\n      - status: Status of the pull request creation\n      - workItemId: The work item ID for reference\n      - errorMessage: Error message if the pull request creation failed\n\n      **Example Usage:**\n      - \"Create a pull request for Work Item and merge it into integration\"\n      - \"Open a PR from my current feature branch to the integration branch\"\n      - \"Create and register a PR to DevOps Center from my latest pushed commits\"\n      - \"Create a change request for my committed changes\"\n      - \"Start the review process for my work item\"",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "workItemName": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Exact Work Item Name to create pull request."
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n"
+    }
+   },
+   "required": [
+    "workItemName",
+    "usernameOrAlias"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  }
+ },
+ {
+  "name": "run_code_analyzer",
+  "title": "Run Code Analyzer",
+  "description": "A tool for performing static analysis against code.\nThis tool can validate that code conforms to best practices, check for security vulnerabilities, and identify possible\nperformance issues. It returns a JSON containing the absolute path to a results file if such a file was created,\nand a string indicating the overall success or failure of the operation.\n\nWhen to use this tool:\n- When the user asks you to generate files, use this tool to scan those files.\n- When the user asks you to check code for problems, use this tool to do that.\n\nREQUIRED INPUT - Directory:\n- You MUST provide the \"directory\" parameter with the absolute path to the project/workspace root.\n- The tool will automatically search for code-analyzer.yml or code-analyzer.yaml config files in this directory.\n- Config files contain custom rule configurations, severities, and ignore patterns that will be respected.\n- If no config file is found in the directory, default configuration will be used.\n\nOPTIONAL - Custom Config Path:\n- Use \"configPath\" parameter only if the config file has a custom name or is in a non-standard location.\n- If provided, configPath takes precedence over config files in directory.\n\nOptional: Provide a \"selector\" to choose which rules to run. Supports:\n- Rule names: \"WhileLoopsMustUseBraces\", \"no-unused-vars\"\n- Engines: \"pmd\", \"eslint\", \"regex\"\n- Tags: \"Security\", \"Performance\", \"Recommended\"\n- Severities: \"Critical\", \"High\", \"1\", \"2\"\n- Combinations: \"Security:pmd\", \"(Security,Performance):eslint\"\n\nExamples:\n- \"WhileLoopsMustUseBraces\" \u2192 run specific rule by name\n- \"Security:pmd\" \u2192 run Security-tagged PMD rules\n- \"Critical\" \u2192 run all Critical-severity rules\n- \"(Security,Performance):eslint\" \u2192 ESLint rules tagged Security or Performance\n\nAfter completion: Use the \"query_code_analyzer_results\" tool to filter and explain results, e.g., top-N most severe violations or violations by category/tag.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "target": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "A JSON-formatted array of between 1 and 10 files on the users machine that should be scanned. These paths MUST be ABSOLUTE paths, and not relative paths."
+    },
+    "directory": {
+     "type": "string",
+     "description": "REQUIRED: Absolute path to the workspace/directory. The tool will automatically search for code-analyzer.yml or code-analyzer.yaml config files in this directory. This should typically be the root directory of the project being analyzed."
+    },
+    "selector": {
+     "type": "string",
+     "description": "Optional selector for Code Analyzer rules. Supports rule names, engines, tags, severities, and combinations. If omitted, \"recommended\" rules run.\nExamples: \"WhileLoopsMustUseBraces\", \"Security:pmd\", \"Critical\", \"(Security,Performance):eslint\", \"pmd:High\""
+    },
+    "configPath": {
+     "type": "string",
+     "description": "Optional absolute path to a Code Analyzer configuration file with a custom name or in a non-standard location. Use this when your config file has a different name or is not in the directory. If provided, this takes precedence over config files found in directory."
+    }
+   },
+   "required": [
+    "target",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "description": "If the analysis succeeded, then this will be 'success'. Otherwise, it will be an error message."
+    },
+    "resultsFile": {
+     "type": "string",
+     "description": "The absolute path of the file to which results were written. Read from this file to get those results."
+    },
+    "summary": {
+     "type": "object",
+     "properties": {
+      "total": {
+       "type": "number",
+       "description": "The total number of violations that are present in the results file. Will be equal to the sum of all violations across all severities."
+      },
+      "sev1": {
+       "type": "number",
+       "description": "The number of severity 1 violations that are present in the results file."
+      },
+      "sev2": {
+       "type": "number",
+       "description": "The number of severity 2 violations that are present in the results file."
+      },
+      "sev3": {
+       "type": "number",
+       "description": "The number of severity 3 violations that are present in the results file."
+      },
+      "sev4": {
+       "type": "number",
+       "description": "The number of severity 4 violations that are present in the results file."
+      },
+      "sev5": {
+       "type": "number",
+       "description": "The number of severity 5 violations that are present in the results file."
+      }
+     },
+     "additionalProperties": false,
+     "description": "An object describing the number of violations of each severity, as well as the total number of violations."
+    }
+   },
+   "required": [
+    "status"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": false
+  }
+ },
+ {
+  "name": "describe_code_analyzer_rule",
+  "title": "Describe Code Analyzer Rule",
+  "description": "A tool for getting the description of a Code Analyzer rule.\nThis tool can return a JSON that describes the properties of a Code Analyzer rule, which may include information about\nhow it can be fixed.\n\nWhen to use this tool:\n- When the results file from the run_code_analyzer tool does not provide enough information to fix a violation yourself.\n- When the user asks for information about a specific rule or violation.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "ruleName": {
+     "type": "string",
+     "description": "The name of a rule about which more information is required"
+    },
+    "engineName": {
+     "type": "string",
+     "description": "The engine to which the rule belongs. Resolves ambiguity when rules have the same name."
+    }
+   },
+   "required": [
+    "ruleName",
+    "engineName"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "description": "If the operation succeeds, this will be \"success\". Otherwise, it will be an error message."
+    },
+    "rule": {
+     "type": "object",
+     "properties": {
+      "name": {
+       "type": "string",
+       "description": "The name of the rule, equivalent to the `ruleName` input property."
+      },
+      "engine": {
+       "type": "string",
+       "description": "The name of the engine to which the rule belongs."
+      },
+      "severity": {
+       "type": "number",
+       "description": "An integer between 1 and 5 indicating the severity of the rule. Lower numbers are MORE severe."
+      },
+      "tags": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "description": "An array of strings indicating tags applicable to the rule, e.g. \"performance\", \"security\", etc."
+      },
+      "description": {
+       "type": "string",
+       "description": "A string describing the purpose and functionality of the rule."
+      },
+      "resources": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       },
+       "description": "A possibly empty array of strings that represent links to documentation or other helpful material."
+      }
+     },
+     "required": [
+      "name",
+      "engine",
+      "severity",
+      "tags",
+      "description",
+      "resources"
+     ],
+     "additionalProperties": false,
+     "description": "If a rule exists with the specified name, this is its description."
+    }
+   },
+   "required": [
+    "status"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "list_code_analyzer_rules",
+  "title": "List Code Analyzer Rules",
+  "description": "A tool for selecting Code Analyzer rules based on a number of criteria.\nThis tool returns a JSON array describing Code Analyzer rules that match a \"selector\".\nA selector is a colon-separated (:) string of tokens; tags and severity names are case-insensitive.\nYou can OR multiple tokens of the same type by grouping them in parentheses and separating with commas, e.g. \"(Performance,Security)\".\n\nPolicy: To prevent overly broad results, the full unfiltered list of rules is not returned unless you explicitly set allowFullList=true.\nThis flag defaults to false and its use is not recommended.\nNote: Listing large rule sets can significantly increase token consumption.\n\nExamples:\n- \"Recommended\" \u2192 all rules tagged as Recommended.\n- \"Performance:pmd:Critical\" \u2192 rules in the PMD engine with the Performance tag and Critical severity.\n- \"pmd:(Performance,Security):2\" \u2192 PMD rules with Performance OR Security tags and severity 2.\n- \"(Apex,JavaScript):Recommended\" \u2192 rules for Apex OR JavaScript languages that are Recommended.\n- \"Security:High\" \u2192 rules tagged Security with High severity.\n- \"Apex:Recommended\" \u2192 rules for the Apex language that are Recommended.\n- \"DevPreview\" \u2192 rules marked as DevPreview.\n- Prompt: \"tell me about all performance rules\" \u2192 selector: \"Performance\".\n\nSupported selector tokens:\n- Engines: eslint, regex, retire-js, flow, pmd, cpd, sfge\n- Severities (names): Critical, High, Moderate, Low, Info\n- Severities (numbers): 1, 2, 3, 4, 5\n- General tags: Recommended, Custom, All\n- Categories: BestPractices, CodeStyle, Design, Documentation, ErrorProne, Security, Performance\n- Languages: Apex, CSS, HTML, JavaScript, TypeScript, Visualforce, XML\n- Engine-specific tags: DevPreview, LWC\n\nTip: Use the \"describe_code_analyzer_rule\" tool to get details for any listed rule.\n",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "selector": {
+     "type": "string",
+     "description": "A selector for Code Analyzer rules. Must meet the criteria outlined in the tool-level description."
+    },
+    "allowFullList": {
+     "type": "boolean",
+     "description": "Explicit opt-in to return the full list of rules (e.g., when using the 'All' selector). If not set, selectors that resolve to the complete unfiltered rules list will be rejected. Defaults to false and is not recommended."
+    }
+   },
+   "required": [
+    "selector"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "description": "If the operation succeeds, this will be \"success\". Otherwise, it will be an error message."
+    },
+    "rules": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string",
+        "description": "The name of the rule, equivalent to the `ruleName` input property."
+       },
+       "engine": {
+        "type": "string",
+        "description": "The name of the engine to which the rule belongs."
+       },
+       "severity": {
+        "type": "number",
+        "description": "An integer between 1 and 5 indicating the severity of the rule. Lower numbers are MORE severe."
+       },
+       "tags": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "An array of strings indicating tags applicable to the rule, e.g. \"performance\", \"security\", etc."
+       }
+      },
+      "required": [
+       "name",
+       "engine",
+       "severity",
+       "tags"
+      ],
+      "additionalProperties": false
+     },
+     "description": "An array of rules that matched the selector. Empty if no rules matched."
+    }
+   },
+   "required": [
+    "status"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "query_code_analyzer_results",
+  "title": "Query Code Analyzer Results",
+  "description": "Query a Code Analyzer results JSON file and return filtered violations.\nSupports filters like severity, category/tag, engine, rule, and file name, plus top-N and sorting.\nUse this after running \"run_code_analyzer\" to read the generated results file.\nAfter completion, this tool will summarize and explain the filtered results to the user.\n\nPolicy: To avoid overwhelming results, this tool returns no more than the top 10 violations by default.\nRequesting more than 10 requires an explicit opt-in via allowLargeResultSet=true and is not recommended.\nNote: Querying larger result sets can significantly increase token consumption.\n\nExamples (natural language \u2192 selector/topN):\n- \"Top 5 security in PMD\" \u2192 selector: \"Security:pmd\", topN: 5\n- \"Top 10 critical\" \u2192 selector: \"Critical\", topN: 10\n- \"Top 5 security or performance in ESLint\" \u2192 selector: \"(Security,Performance):eslint\", topN: 5\n- \"Top 5 PMD High severity\" \u2192 selector: \"pmd:High\", topN: 5\n- \"Top 5 for rule MyRuleName\" \u2192 selector: \"rule=MyRuleName\", topN: 5\n- \"Top 5 in files under src/app\" \u2192 selector: \"file=src/app\", topN: 5\n",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "resultsFile": {
+     "type": "string",
+     "description": "Absolute path to a results JSON file produced by the code analyzer., if results file is not provided, call run_code_analyzer tool to generate a results file first."
+    },
+    "selector": {
+     "type": "string",
+     "description": "Selector (same semantics as \"list_code_analyzer_rules\"): colon-separated tokens with optional OR-groups in parentheses, e.g., \"Security:(pmd,eslint):High\"."
+    },
+    "topN": {
+     "type": "integer",
+     "exclusiveMinimum": 0,
+     "maximum": 1000,
+     "default": 10,
+     "description": "Return at most this many violations after filtering and sorting (default 10). Never increase this number unless the user explicitly asks for a larger result set. Requests >10 require allowLargeResultSet=true."
+    },
+    "allowLargeResultSet": {
+     "type": "boolean",
+     "description": "Explicit opt-in to request more than the top 10 violations. Defaults to false and is not recommended unless the user explicitly requests a larger result set. If set to true, you must also increase topN to the desired value."
+    },
+    "sortBy": {
+     "type": "string",
+     "enum": [
+      "severity",
+      "rule",
+      "engine",
+      "file",
+      "none"
+     ],
+     "description": "Optional primary sort field."
+    },
+    "sortDirection": {
+     "type": "string",
+     "enum": [
+      "asc",
+      "desc"
+     ],
+     "description": "Optional sort direction."
+    }
+   },
+   "required": [
+    "resultsFile",
+    "selector"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "output_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "description": "If the operation succeeds, this will be \"success\". Otherwise, it will be an error message."
+    },
+    "resultsFile": {
+     "type": "string",
+     "description": "Echoes the analyzed results file path."
+    },
+    "totalViolations": {
+     "type": "number",
+     "description": "Total violations present in the results file."
+    },
+    "totalMatches": {
+     "type": "number",
+     "description": "Total violations matching the provided filters (before topN)."
+    },
+    "violations": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "rule": {
+        "type": "string"
+       },
+       "engine": {
+        "type": "string"
+       },
+       "severity": {
+        "type": "number"
+       },
+       "severityName": {
+        "type": "string"
+       },
+       "tags": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "message": {
+        "type": "string"
+       },
+       "primaryLocation": {
+        "type": "object",
+        "properties": {
+         "file": {
+          "type": "string"
+         },
+         "startLine": {
+          "type": "number"
+         },
+         "startColumn": {
+          "type": "number"
+         }
+        },
+        "additionalProperties": false
+       },
+       "resources": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      },
+      "required": [
+       "rule",
+       "engine",
+       "severity",
+       "severityName",
+       "tags",
+       "message",
+       "primaryLocation"
+      ],
+      "additionalProperties": false
+     },
+     "description": "Filtered/sorted violations (capped by topN)."
+    }
+   },
+   "required": [
+    "status"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "scan_apex_class_for_antipatterns",
+  "title": "Scan Apex Class for Antipatterns",
+  "description": "Apex Code Scan Tool: Invoke (alongside other code scan tools if needed) whenever the user intends to scan or analyze an Apex class.\nAnalyzes an Apex class file for performance antipatterns and provides recommendations for fixing them. Currently detects:\n1) Schema.getGlobalDescribe() usage with optimized alternatives\n2) SOQL queries without WHERE or LIMIT clauses\n3) SOQL queries with unused fields (with fix generation).\nDistinguishes between different severity levels (e.g., usage in loops vs. ordinary usage).\nWhen authenticated to an org with ApexGuru enabled, severity is calculated from actual runtime metrics.\nIMPORTANT: If the user does not mention an org alias or username in the request, call #get_username tool to resolve the default org username.\nRequires an absolute path to the Apex class file.\n",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "className": {
+     "type": "string",
+     "description": "Name of the Apex class to scan (e.g., 'AccountController')"
+    },
+    "apexFilePath": {
+     "type": "string",
+     "description": "Absolute path to the Apex class file (.cls) to analyze for antipatterns"
+    },
+    "identifier": {
+     "type": "string",
+     "description": "Optional unique identifier for this scan (e.g., 'orgId:className'). Defaults to className if not provided."
+    },
+    "directory": {
+     "type": "string",
+     "description": "The directory to run this tool from.\nAGENT INSTRUCTIONS:\nWe need to know where the user wants to run this tool from.\nLook at your current Workspace Context to determine this filepath.\nALWAYS USE A FULL PATH TO THE DIRECTORY.\nUnless the user explicitly asks for a different directory, or a new directory is created from the action of a tool, use this same directory for future tool calls.\n"
+    },
+    "usernameOrAlias": {
+     "type": "string",
+     "description": "The username or alias for the Salesforce org to run this tool against.\n\nA username follows the <name@domain.com> format.\nIf the user refers to an org with a string not following that format, it can be a valid alias.\n\nIMPORTANT:\n- If it is not clear what the username or alias is, run the #get_username tool to resolve it.\n- NEVER guess or make-up a username or alias.\n- If not provided, the tool will use the default target org for the directory.\n"
+    }
+   },
+   "required": [
+    "className",
+    "apexFilePath",
+    "directory"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "validate_and_optimize",
+  "title": "Validate and Optimize Component",
+  "description": "Validation tool for UI component quality assessment.\n\nThis tool returns a runbook that instructs the agent to:\n- Call a list of validators (predefined suite OR a custom list supplied by the caller)\n- Produce issues per validator\n- Call `score_issues` after each validator and again for the overall score\n- Stop and present results before fixing/revalidating\n\nProvide EITHER `suite` (a predefined validator set) OR `validators` (an explicit list), but not both.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "suite": {
+     "type": "string",
+     "enum": [
+      "core-lwc",
+      "core-react"
+     ]
+    },
+    "validators": {
+     "type": "array",
+     "items": {
+      "anyOf": [
+       {
+        "type": "object",
+        "properties": {
+         "instruction": {
+          "type": "string"
+         },
+         "outputMode": {
+          "type": "string",
+          "enum": [
+           "produces_issues",
+           "produces_guidance"
+          ]
+         },
+         "type": {
+          "type": "string",
+          "const": "tool"
+         },
+         "tool": {
+          "type": "string"
+         },
+         "args": {
+          "type": "object",
+          "additionalProperties": {}
+         }
+        },
+        "required": [
+         "type",
+         "tool"
+        ],
+        "additionalProperties": false
+       },
+       {
+        "type": "object",
+        "properties": {
+         "instruction": {
+          "$ref": "#/properties/validators/items/anyOf/0/properties/instruction"
+         },
+         "outputMode": {
+          "$ref": "#/properties/validators/items/anyOf/0/properties/outputMode"
+         },
+         "type": {
+          "type": "string",
+          "const": "cli"
+         },
+         "command": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "type",
+         "command"
+        ],
+        "additionalProperties": false
+       }
+      ]
+     },
+     "minItems": 1
+    },
+    "summaryFormat": {
+     "type": "string",
+     "enum": [
+      "text",
+      "json"
+     ],
+     "default": "text"
+    },
+    "targetPaths": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1,
+     "description": "Optional list of absolute file paths to validate. Grounds the agent runbook with the explicit list of files the agent must read and analyze. This tool does not read file contents \u2014 the agent is responsible for reading each file."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ },
+ {
+  "name": "score_issues",
+  "title": "Score Issues",
+  "description": "Score validation issues using readiness scoring rules.\n\n## WHEN TO USE THIS TOOL\n\nUse this tool when you need a numeric score + quality grade from a set of issues:\n- After a single validator run (per-validator score)\n- After aggregating issues across validators (overall readiness score)\n\n## Input\n\nProvide one or more of these (all are merged before scoring):\n- `issues`: A SARIF 2.1.0 report.\n- `codeAnalyzerResultsFiles`: Array of file paths to code analyzer JSON results. The tool reads and converts them internally \u2014 preferred to avoid wasting tokens.\n- `codeAnalyzerResults`: Array of inline code analyzer result objects (fallback if file reading fails).\n\nIf all inputs are omitted, scores as zero issues.\n\n## Output\n\nReturns:\n- `readinessScore`: number (0-100)\n- `qualityGrade`: 'draft' | 'prototype' | 'review-for-production'\n- `breakdown`: counts + penalty\n- `sarif`: (only when `codeAnalyzerResultsFiles` was provided) the combined SARIF report so you have the full issue details for summary and fixing\n\n## Aggregate Mode\n\nInstead of re-submitting all issues, you can pass pre-computed per-validator scores:\n- `validatorScores`: Array of `{ name, score }` from individual per-validator calls.\n- Returns the weighted aggregate score using per-validator weights.\n- **Mutually exclusive** with `issues`, `codeAnalyzerResultsFiles`, and `codeAnalyzerResults`.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "issues": {
+     "type": "object",
+     "properties": {
+      "$schema": {
+       "type": "string"
+      },
+      "version": {
+       "type": "string",
+       "const": "2.1.0",
+       "default": "2.1.0"
+      },
+      "runs": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "tool": {
+          "type": "object",
+          "properties": {
+           "driver": {
+            "type": "object",
+            "properties": {
+             "name": {
+              "type": "string"
+             },
+             "version": {
+              "type": "string"
+             },
+             "informationUri": {
+              "type": "string"
+             },
+             "rules": {
+              "type": "array",
+              "items": {
+               "type": "object",
+               "properties": {
+                "id": {
+                 "type": "string"
+                },
+                "name": {
+                 "type": "string"
+                },
+                "shortDescription": {
+                 "type": "object",
+                 "properties": {
+                  "text": {
+                   "type": "string"
+                  }
+                 },
+                 "required": [
+                  "text"
+                 ],
+                 "additionalProperties": false
+                },
+                "helpUri": {
+                 "type": "string"
+                }
+               },
+               "required": [
+                "id"
+               ],
+               "additionalProperties": false
+              }
+             }
+            },
+            "required": [
+             "name"
+            ],
+            "additionalProperties": false
+           }
+          },
+          "required": [
+           "driver"
+          ],
+          "additionalProperties": false
+         },
+         "results": {
+          "type": "array",
+          "items": {
+           "type": "object",
+           "properties": {
+            "ruleId": {
+             "type": "string"
+            },
+            "level": {
+             "type": "string",
+             "enum": [
+              "error",
+              "warning",
+              "note",
+              "none"
+             ],
+             "default": "warning"
+            },
+            "message": {
+             "$ref": "#/properties/issues/properties/runs/items/properties/tool/properties/driver/properties/rules/items/properties/shortDescription"
+            },
+            "locations": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "physicalLocation": {
+                "type": "object",
+                "properties": {
+                 "artifactLocation": {
+                  "type": "object",
+                  "properties": {
+                   "uri": {
+                    "type": "string"
+                   }
+                  },
+                  "additionalProperties": false
+                 },
+                 "region": {
+                  "type": "object",
+                  "properties": {
+                   "startLine": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                   },
+                   "endLine": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                   },
+                   "startColumn": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                   },
+                   "endColumn": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0
+                   }
+                  },
+                  "additionalProperties": false
+                 }
+                },
+                "additionalProperties": false
+               }
+              },
+              "additionalProperties": false
+             }
+            },
+            "fixes": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "description": {
+                "$ref": "#/properties/issues/properties/runs/items/properties/tool/properties/driver/properties/rules/items/properties/shortDescription"
+               },
+               "artifactChanges": {
+                "type": "array",
+                "items": {}
+               }
+              },
+              "additionalProperties": false
+             }
+            }
+           },
+           "required": [
+            "message"
+           ],
+           "additionalProperties": false
+          },
+          "default": []
+         }
+        },
+        "required": [
+         "tool"
+        ],
+        "additionalProperties": false
+       },
+       "default": []
+      }
+     },
+     "additionalProperties": false,
+     "description": "A SARIF 2.1.0 report."
+    },
+    "codeAnalyzerResultsFiles": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Paths to code analyzer JSON results files. The tool reads and converts them internally."
+    },
+    "codeAnalyzerResults": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "runDir": {
+        "type": "string"
+       },
+       "violationCounts": {
+        "type": "object",
+        "properties": {
+         "total": {
+          "type": "number"
+         },
+         "sev1": {
+          "type": "number"
+         },
+         "sev2": {
+          "type": "number"
+         },
+         "sev3": {
+          "type": "number"
+         },
+         "sev4": {
+          "type": "number"
+         },
+         "sev5": {
+          "type": "number"
+         }
+        },
+        "required": [
+         "total",
+         "sev1",
+         "sev2",
+         "sev3",
+         "sev4",
+         "sev5"
+        ],
+        "additionalProperties": false
+       },
+       "versions": {
+        "type": "object",
+        "additionalProperties": {
+         "type": "string"
+        }
+       },
+       "violations": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "properties": {
+          "rule": {
+           "type": "string"
+          },
+          "engine": {
+           "type": "string"
+          },
+          "severity": {
+           "type": "number"
+          },
+          "tags": {
+           "type": "array",
+           "items": {
+            "type": "string"
+           }
+          },
+          "primaryLocationIndex": {
+           "type": "number"
+          },
+          "locations": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "file": {
+              "type": "string"
+             },
+             "startLine": {
+              "type": "number"
+             },
+             "startColumn": {
+              "type": "number"
+             },
+             "endLine": {
+              "type": "number"
+             },
+             "endColumn": {
+              "type": "number"
+             },
+             "comment": {
+              "type": "string"
+             }
+            },
+            "additionalProperties": false
+           }
+          },
+          "message": {
+           "type": "string"
+          },
+          "resources": {
+           "type": "array",
+           "items": {
+            "type": "string"
+           }
+          }
+         },
+         "required": [
+          "rule",
+          "engine",
+          "severity",
+          "tags",
+          "primaryLocationIndex",
+          "locations",
+          "message",
+          "resources"
+         ],
+         "additionalProperties": false
+        }
+       }
+      },
+      "required": [
+       "runDir",
+       "violationCounts",
+       "versions",
+       "violations"
+      ],
+      "additionalProperties": false
+     },
+     "description": "Inline code analyzer results (fallback when file reading is unavailable)."
+    },
+    "validatorScores": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "name": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Validator name (e.g. \"run_code_analyzer\")"
+       },
+       "score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "Readiness score (0-100) from a per-validator score_issues call"
+       }
+      },
+      "required": [
+       "name",
+       "score"
+      ],
+      "additionalProperties": false
+     },
+     "minItems": 1,
+     "description": "Pre-computed per-validator scores for aggregation. Mutually exclusive with issue inputs."
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  },
+  "execution": {
+   "task_support": "forbidden"
+  },
+  "annotations": {
+   "read_only_hint": true
+  }
+ }
+]

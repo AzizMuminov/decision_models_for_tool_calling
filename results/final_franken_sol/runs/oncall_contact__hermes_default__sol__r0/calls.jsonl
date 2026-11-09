@@ -1,0 +1,2 @@
+{"t": 1794122692.1189983, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794122693.5223489, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}

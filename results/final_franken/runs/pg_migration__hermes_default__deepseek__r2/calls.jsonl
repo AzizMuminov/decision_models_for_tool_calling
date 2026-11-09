@@ -1,0 +1,22 @@
+{"t": 1794107191.0436156, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type, ordinal_position FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794107193.0549836, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema::text AS sch, table_name::text AS tbl, string_agg(column_name::text, ', ' ORDER BY ordinal_position) AS cols FROM information_schema.columns WHERE table_name ILIKE '%payment%' GROUP BY 1,2"}, "ok": true}
+{"t": 1794107194.6017325, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database() AS db, current_user AS usr, version() AS ver"}, "ok": true}
+{"t": 1794107196.5919478, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"}, "ok": true}
+{"t": 1794107197.5997374, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 3"}, "ok": true}
+{"t": 1794107200.8377044, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'payments'"}, "ok": true}
+{"t": 1794107201.845059, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, table_type FROM information_schema.tables WHERE table_name = 'payments'"}, "ok": true}
+{"t": 1794107204.3487043, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT merchant_ref, created_ts FROM payments ORDER BY created_ts DESC LIMIT 1"}, "ok": true}
+{"t": 1794107205.3566597, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'payment_attempts'"}, "ok": true}
+{"t": 1794107215.7245939, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "recursive": true, "repo": "payments-db"}, "ok": false}
+{"t": 1794107216.7322156, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "payments table schema columns merchant"}, "ok": true}
+{"t": 1794107222.1672843, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT n.nspname AS schema, c.relname AS table, c.relkind AS kind FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relname = 'payments'"}, "ok": true}
+{"t": 1794107223.1750855, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname FROM pg_indexes WHERE tablename = 'payments' AND indexname = 'payments_merchant_created_idx'"}, "ok": true}
+{"t": 1794107224.9521053, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM definitely_not_a_table LIMIT 1"}, "ok": true}
+{"t": 1794107225.9596615, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM merchant_payments LIMIT 1"}, "ok": true}
+{"t": 1794107231.877326, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-db"}, "ok": true}
+{"t": 1794107232.8852284, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794107236.7219815, "kind": "call", "tool": "github_search_code", "args": {"query": "merchant_ref"}, "ok": true}
+{"t": 1794107239.187839, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'zzz_nothing_here'"}, "ok": true}
+{"t": 1794107240.1952128, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema') ORDER BY 1"}, "ok": true}
+{"t": 1794107248.5698369, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT obj_description('payments'::regclass) AS comment"}, "ok": true}
+{"t": 1794107262.6200247, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT merchant_ref, created_ts, count(*) FROM payments WHERE merchant_ref = 'm_1029' GROUP BY merchant_ref, created_ts ORDER BY created_ts DESC LIMIT 5"}, "ok": true}

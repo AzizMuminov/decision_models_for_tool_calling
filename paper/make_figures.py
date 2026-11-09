@@ -1,134 +1,88 @@
-"""Builds the paper's data figures straight from the result files (every plotted number is traceable).
-
-    .venv/bin/python paper/make_figures.py      # -> paper/figures/*.pdf, paper/figures/figure_data.json
+"""Figures for the paper, from the logged rows in results/ (no API calls).
+    python3 paper/make_figures.py   # writes paper/figures/
 """
-
-from __future__ import annotations
-
-import json
-from collections import defaultdict
+import json, math, random, statistics as st, sys
 from pathlib import Path
-
 import matplotlib
-
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
+import matplotlib.pyplot as plt
+import matplotlib.ticker
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "paper" / "figures"
-OUT.mkdir(parents=True, exist_ok=True)
-
-# validated categorical slots (light): blue, orange, aqua, yellow; control in neutral gray
-C = {"MSD1": "#2a78d6", "Jev": "#eb6834", "DeepSeek": "#1baf7a", "Sonnet": "#eda100", "Lexical": "#8a8a85"}
-M = {"MSD1": "o", "Jev": "s", "DeepSeek": "^", "Sonnet": "D", "Lexical": "x"}
+RES = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parents[1] / "results"
+OUT = Path(__file__).resolve().parent / "figures"; OUT.mkdir(exist_ok=True)
 INK, MUTED = "#2b2b29", "#6b6b66"
-
-plt.rcParams.update({
-    "font.family": "serif", "font.size": 8.5, "axes.titlesize": 9, "axes.labelsize": 8.5,
-    "axes.edgecolor": MUTED, "axes.labelcolor": INK, "xtick.color": MUTED, "ytick.color": MUTED,
-    "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.color": "#e6e6e3",
-    "grid.linewidth": 0.6, "legend.frameon": False, "pdf.fonttype": 42,
-})
+BLUE, GRAY, ORANGE = "#2a78d6", "#8a8a85", "#eb6834"
+plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.titlesize": 9.5, "axes.edgecolor": MUTED,
+                     "axes.labelcolor": INK, "xtick.color": MUTED, "ytick.color": INK,
+                     "axes.spines.top": False, "axes.spines.right": False, "pdf.fonttype": 42})
 
 
-def rows(path: Path):
-    return [json.loads(l) for l in open(path)]
+def slots(d, a="hermes_default", b="hermes_dmfrankenbridge"):
+    S = {}
+    for line in open(RES / d / "rows.jsonl"):
+        r = json.loads(line)
+        if r["task"] == "k8s_crashloop" or r.get("error") or not r.get("total_tokens"):
+            continue
+        S.setdefault((r["task"], r["rep"]), {})[r["condition"]] = r
+    return {k: math.log(v[b]["total_tokens"] / v[a]["total_tokens"]) for k, v in S.items() if a in v and b in v}
 
 
-def ece(p, y, bins=10):
-    p, y = np.asarray(p), np.asarray(y, float)
-    edges = np.linspace(0, 1, bins + 1)
-    tot = 0.0
-    for lo, hi in zip(edges[:-1], edges[1:]):
-        m = (p >= lo) & ((p < hi) if hi < 1 else (p <= hi))
-        if m.any():
-            tot += m.mean() * abs(p[m].mean() - y[m].mean())
-    return tot
+def task_boot(lr):
+    """Geometric mean of task-level mean log ratios with a task bootstrap 95% CI (10,000 resamples, seed 1)."""
+    per = {}
+    for (t, _), v in lr.items():
+        per.setdefault(t, []).append(v)
+    tm = [sum(v) / len(v) for v in per.values()]
+    n, rng = len(tm), random.Random(1)
+    bs = sorted(sum(tm[rng.randrange(n)] for _ in range(n)) / n for _ in range(10000))
+    return math.exp(sum(tm) / n), math.exp(bs[249]), math.exp(bs[9749]), per
 
 
-def auroc(p, y):
-    pos = [a for a, b in zip(p, y) if b]
-    neg = [a for a, b in zip(p, y) if not b]
-    return np.mean([(a > b) + 0.5 * (a == b) for a in pos for b in neg])
-
-
-data = {}
-
-# ---- Figure 2: reliability of the DM gate, BFCL pooled (Study 1, DeepSeek cells; gate is LLM-independent)
-fig, ax = plt.subplots(figsize=(3.3, 3.5))
-ax.plot([0, 1], [0, 1], color=MUTED, lw=0.8, ls="--", zorder=1)
-data["reliability"] = {}
-for name, dm in (("MSD1", "msd1"), ("Jev", "jev"), ("Lexical", "lexical")):
-    p, y = [], []
-    for f in (ROOT / "results/openrouter_v1").glob(f"bfcl__*__dm_gate__deepseek__{dm}.jsonl"):
-        for r in rows(f):
-            p.append(r["p_tool_call"])
-            y.append(bool(r["should_call"]))
-    p, y = np.asarray(p), np.asarray(y, float)
-    edges = np.linspace(0, 1, 11)
-    xs, ys, ns = [], [], []
-    for lo, hi in zip(edges[:-1], edges[1:]):
-        m = (p >= lo) & ((p < hi) if hi < 1 else (p <= hi))
-        if m.sum() >= 5:
-            xs.append(p[m].mean()); ys.append(y[m].mean()); ns.append(int(m.sum()))
-    a, e = auroc(p, y), ece(p, y)
-    data["reliability"][name] = {"n": int(len(p)), "auroc": round(float(a), 3), "ece": round(float(e), 3),
-                                 "bins": list(zip([round(x, 3) for x in xs], [round(v, 3) for v in ys], ns))}
-    ax.plot(xs, ys, color=C[name], lw=1.5, marker=M[name], ms=5, label=f"{name}  (AUROC {a:.2f}, ECE {e:.2f})", zorder=3)
-ax.set_xlabel("predicted P(tool_call), binned")
-ax.set_ylabel("fraction of items that should call a tool")
-ax.set_xlim(0, 1); ax.set_ylim(0, 1.02)
-ax.legend(loc="upper center", fontsize=7, bbox_to_anchor=(0.45, -0.17), ncol=1)  # below the plot, off the data
-ax.set_title("Gate calibration, BFCL (n = 860)", loc="left", color=INK)
+# ---------------------------------------------------------------- Hermes runs: per-slot token ratios
+rows = [("DeepSeek V4.1 Flash\n15 repeats, 555 pairs", slots("final_franken")),
+        ("GPT-6.1 Sol\n5 repeats, 185 pairs", slots("final_franken_sol"))]
+fig, ax = plt.subplots(figsize=(6.4, 2.1))
+jit = random.Random(0)
+for i, (lab, lr) in enumerate(rows):
+    gm, lo, hi, per = task_boot(lr)
+    ax.scatter([math.exp(v) for v in lr.values()], [i + jit.uniform(-0.28, 0.28) for _ in lr], s=5, color=GRAY,
+               alpha=0.45, linewidths=0, zorder=2, label="single pair" if i == 0 else None)
+    tms = [math.exp(sum(v) / len(v)) for v in per.values()]
+    ax.scatter(tms, [i - 0.36] * len(tms), s=9, marker="|", color=INK, linewidths=0.8, zorder=3,
+               label="task geometric mean" if i == 0 else None)
+    ax.plot([lo, hi], [i, i], color=BLUE, lw=2.4, zorder=4)
+    ax.scatter([gm], [i], color=BLUE, s=26, zorder=5, label="overall, 95% CI" if i == 0 else None)
+    ax.text(9.5, i, f"{gm:.3f}\n[{lo:.2f}, {hi:.2f}]", va="center", ha="left", fontsize=8.5, color=INK)
+ax.axvline(1, color=MUTED, lw=0.8, zorder=1)
+ax.set_xscale("log")
+ax.set_xlim(0.12, 24)
+ax.set_xticks([0.125, 0.25, 0.5, 1, 2, 4, 8], ["1/8", "1/4", "1/2", "1", "2", "4", "8"])
+ax.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
+ax.set_yticks(range(len(rows)), [lab for lab, _ in rows])
+ax.set_ylim(len(rows) - 0.5, -0.6)
+ax.set_xlabel("tokens per run with selector F relative to BM25 in the same pair")
+ax.legend(frameon=False, fontsize=7.5, loc="lower left", ncol=3, bbox_to_anchor=(0.0, 1.0), handletextpad=0.3)
 fig.tight_layout()
-fig.savefig(OUT / "fig_reliability.pdf")
+fig.savefig(OUT / "fig_tokens.pdf")
 plt.close(fig)
 
-# ---- Figure 3: selection accuracy and cost vs holster size (Study 2, padded BFCL)
-H = ROOT / "results/holster_v1"
-sel = defaultdict(lambda: defaultdict(list))
-cost = defaultdict(lambda: defaultdict(list))
-for name, f, kind in (("MSD1", "dm__msd1", "dm"), ("Jev", "dm__jev", "dm"), ("Lexical", "lexical__-", "dm"),
-                      ("DeepSeek", "llm_native__deepseek", "llm"), ("Sonnet", "llm_native__sonnet", "llm")):
-    for r in rows(H / f"{f}.jsonl"):
-        if r["src"] != "bfcl_pad":
-            continue
-        cost[name][r["K"]].append(r.get("cost_usd") or 0.0)
-        if not r["should_call"]:
-            continue
-        ok = r["select_ok"] if kind == "dm" else (bool(r["calls"]) and sorted(next(iter(c)) for c in r["calls"]) == r["gold_tools"])
-        sel[name][r["K"]].append(bool(ok))
-Ks = [25, 100, 200]
-X = {25: 0, 100: 1, 200: 2}  # evenly spaced categories; the sizes are design points, not a continuum
-NUDGE = {"MSD1": -6, "Jev": 6, "DeepSeek": 0, "Sonnet": 0, "Lexical": 0}  # keep end labels apart
-fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.6, 2.7))
-data["scaling"] = {}
-for name in ("MSD1", "Jev", "DeepSeek", "Sonnet", "Lexical"):
-    ks = [k for k in Ks if sel[name].get(k)]
-    acc = [np.mean(sel[name][k]) for k in ks]
-    n = [len(sel[name][k]) for k in ks]
-    cst = [1000 * np.mean(cost[name][k]) for k in ks]
-    data["scaling"][name] = {"K": ks, "accuracy": [round(x, 3) for x in acc], "n": n, "cost_per_1k": [round(x, 3) for x in cst]}
-    lab = name + (" (n=81)" if name == "Sonnet" else "")
-    xs = [X[k] for k in ks]
-    a1.plot(xs, acc, color=C[name], lw=1.5, marker=M[name], ms=5, label=lab)
-    if name != "Lexical":  # lexical costs nothing; log axis
-        a2.plot(xs, cst, color=C[name], lw=1.5, marker=M[name], ms=5)
-        a2.annotate(name, (xs[-1], cst[-1]), xytext=(6, NUDGE[name]), textcoords="offset points", va="center", fontsize=7, color=INK)
-a1.legend(loc="center", fontsize=7, bbox_to_anchor=(0.66, 0.56))  # 5 series: legend, no end labels
-a2.set_yscale("log")
-for a in (a1, a2):
-    a.set_xticks([0, 1, 2]); a.set_xticklabels([str(k) for k in Ks]); a.set_xlim(-0.2, 2.75)
-    a.set_xlabel("tools in the holster (K)")
-a1.set_ylabel("right tool picked (should-call items)")
-a1.set_ylim(0.35, 1.0)
-a1.set_title("(a) Selection accuracy", loc="left", color=INK)
-a2.set_ylabel("USD per 1,000 requests (log)")
-a2.set_title("(b) Cost of the selecting call", loc="left", color=INK)
+# ---------------------------------------------------------------- selector study, held-out agent searches
+ho = {d["variant"].split()[0]: d for d in json.load(open(RES / "selector_study" / "results_1_3_5b_F_R_B.json"))}
+order = [("B", "BM25"), ("1", "1: top service"), ("3", "3: nucleus,\nfixed cards"), ("5b", "5: 3 + none"),
+         ("F", "F: selector F")]
+fig, ax = plt.subplots(figsize=(6.4, 2.0))
+xs = range(len(order))
+c5 = [ho[k]["agent_cov5"] for k, _ in order]; c15 = [ho[k]["agent_cov15"] for k, _ in order]
+ax.bar([x - 0.2 for x in xs], c5, 0.38, color=GRAY, label="first 5 tools")
+ax.bar([x + 0.2 for x in xs], c15, 0.38, color=BLUE, label="all 15 tools")
+for x, a, b in zip(xs, c5, c15):
+    ax.text(x - 0.2, a + 0.004, f"{a:.2f}", ha="center", fontsize=7.5, color=INK)
+    ax.text(x + 0.2, b + 0.004, f"{b:.2f}", ha="center", fontsize=7.5, color=INK)
+ax.set_xticks(list(xs), [lab for _, lab in order], fontsize=8)
+ax.set_ylim(0.65, 0.88)
+ax.set_ylabel("coverage of next tools")
+ax.legend(frameon=False, fontsize=7.5, loc="upper left", ncol=2)
 fig.tight_layout()
-fig.savefig(OUT / "fig_scaling.pdf")
+fig.savefig(OUT / "fig_selector_heldout.pdf")
 plt.close(fig)
-
-(OUT / "figure_data.json").write_text(json.dumps(data, indent=1))
-print(json.dumps(data, indent=1))
+print("wrote", OUT)

@@ -1,0 +1,17 @@
+{"t": 1794118187.060151, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "perPage": 30, "repo": "ghost-sdk", "fields": ["tag_name", "name", "published_at", "prerelease", "draft"]}, "ok": true}
+{"t": 1794118189.8772202, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 100, "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794118198.0130475, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 20, "query": "ghost-sdk in:name org:acme"}, "ok": true}
+{"t": 1794118200.853642, "kind": "call", "tool": "gitlab_search_repositories", "args": {"per_page": 50, "search": "ghost-sdk"}, "ok": true}
+{"t": 1794118203.486499, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 30, "query": "ghost"}, "ok": true}
+{"t": 1794118204.493993, "kind": "call", "tool": "gitlab_search_repositories", "args": {"per_page": 50, "search": "ghost"}, "ok": true}
+{"t": 1794118207.9308825, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 10, "query": "sdk-consumer"}, "ok": true}
+{"t": 1794118211.730073, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794118212.7381868, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794118224.1161382, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "ghost-sdk"}, "ok": true}
+{"t": 1794118225.123889, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794118232.4021518, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794118233.4094813, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794118241.0345032, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "octocat", "path": "/", "repo": "Hello-World"}, "ok": true}
+{"t": 1794118242.0420883, "kind": "call", "tool": "github_list_tags", "args": {"owner": "octocat", "perPage": 10, "repo": "Hello-World"}, "ok": true}
+{"t": 1794118252.4702075, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "query": "ghost-sdk"}, "ok": true}
+{"t": 1794118253.4777153, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"ghost-sdk\"", "limit": 10}, "ok": true}

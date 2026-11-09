@@ -1,0 +1,26 @@
+{"t": 1794108541.9755187, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "refunds-api", "query": "errors in the last 24 hours", "dataset": "errors", "limit": 20, "sort": "-timestamp"}, "ok": true}
+{"t": 1794108543.2240608, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved", "projectSlug": "refunds-api", "limit": 20}, "ok": true}
+{"t": 1794108546.385057, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceType": "issue", "resourceId": "REFUNDS-API-1C"}, "ok": true}
+{"t": 1794108554.7547715, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "refunds"}, "ok": true}
+{"t": 1794108555.7623146, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "refunds"}, "ok": true}
+{"t": 1794108557.9636605, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "refunds/handler.py", "repo": "refunds"}, "ok": true}
+{"t": 1794108558.9717636, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "refunds API reason_code reason contract"}, "ok": true}
+{"t": 1794108561.7457128, "kind": "call", "tool": "git_set_working_dir", "args": {"path": "/srv/agentbox/work/sentry_events__hermes_default__deepseek__r4/proj"}, "ok": true}
+{"t": 1794108564.1815338, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"limit": 30, "logql": "{app=\"refunds\"} |= \"refund\""}, "ok": false}
+{"t": 1794108567.2686408, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_name": "incidents"}, "ok": false}
+{"t": 1794108568.266824, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794108570.7101145, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 40, "logql": "{app=\"refunds\"} |= \"refund\""}, "ok": true}
+{"t": 1794108571.717021, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794108573.1797264, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 40}, "ok": true}
+{"t": 1794108574.18699, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 40}, "ok": true}
+{"t": 1794108577.4821296, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "errors", "fields": ["title", "timestamp", "client", "http.request.method", "request.url", "message"], "limit": 20, "organizationSlug": "acme", "projectSlug": "refunds-api", "query": "errors in the last 24 hours", "sort": "-timestamp"}, "ok": true}
+{"t": 1794108579.304185, "kind": "call", "tool": "git_status", "args": {}, "ok": false}
+{"t": 1794108580.3118331, "kind": "call", "tool": "git_log", "args": {}, "ok": false}
+{"t": 1794108583.395104, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "errors", "fields": ["title", "timestamp", "client", "release", "request.data"], "limit": 20, "organizationSlug": "acme", "projectSlug": "refunds-api", "query": "issue:REFUNDS-API-1C", "sort": "-timestamp"}, "ok": true}
+{"t": 1794108584.402661, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "releases deploys list"}, "ok": true}
+{"t": 1794108586.7965264, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "refunds"}, "ok": true}
+{"t": 1794108587.954644, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 30}, "ok": false}
+{"t": 1794108591.5877695, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "REFUNDS-API-1C", "resourceType": "issue", "url": "https://sentry.io/acme/refunds-api/issues/REFUNDS-API-1C/events/latest/"}, "ok": true}
+{"t": 1794108593.0831003, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND text ~ \"refund\""}, "ok": true}
+{"t": 1794108594.0903282, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "refund reason_code reason field API"}, "ok": true}
+{"t": 1794108615.3584812, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "sum(rate(http_requests_total{service=\"refunds\",code=~\"5..\"}[5m]))"}, "ok": false}

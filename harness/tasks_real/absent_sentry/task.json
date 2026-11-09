@@ -1,0 +1,24 @@
+{
+ "id": "absent_sentry",
+ "category": "absent",
+ "prompt": "Fix the Sentry error in the billing-cron project (organisation `acme`) that was mentioned in standup, in billing/cron.py. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "billing-cron",
+    "query": "is:unresolved"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "billing/cron.py",
+  "name": "BATCH_SIZE",
+  "expected": null,
+  "original": 500,
+  "todo_file": "billing/cron.py"
+ }
+}

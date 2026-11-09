@@ -1,0 +1,14 @@
+[
+ {
+  "tool": "github_issue_read",
+  "match": {
+   "issue_number": "57"
+  },
+  "response": {
+   "number": 57,
+   "title": "page() skips the first page",
+   "state": "open",
+   "body": "The API documents page numbers as **1-based** (`?page=1` is the first page), but `catalog.pager.page(items, 1, size)` returns the *second* page."
+  }
+ }
+]

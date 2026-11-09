@@ -1,0 +1,25 @@
+{"t": 1794105792.7681282, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794105802.8214014, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "finance-export"}, "ok": true}
+{"t": 1794105805.0758407, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794105808.235851, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794105810.1576092, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794105816.7011986, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105820.4126182, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794105821.362845, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794105823.1849828, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794105826.2394476, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "Finance CSV export opens garbled in Excel", "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105827.7579427, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "states": ["In Review"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105831.2442114, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 50}, "ok": false}
+{"t": 1794105832.312741, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794105833.9101324, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794105834.9182875, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "states": ["In Progress"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105837.1494422, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "states": ["st-review-04"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105838.1566827, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794105841.7571607, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "In Review"}, "ok": true}
+{"t": 1794105843.8204107, "kind": "call", "tool": "linear_getIssueHistory", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794105851.582435, "kind": "call", "tool": "github_search_code", "args": {"query": "to_csv repo:acme/finance-export"}, "ok": true}
+{"t": 1794105855.4310582, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "a41e0c9d-77"}, "ok": true}
+{"t": 1794105860.1271892, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "garbled", "states": ["In Review"]}, "ok": true}
+{"t": 1794105861.135802, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "garbled"}, "ok": true}
+{"t": 1794105863.3097613, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794105868.529513, "kind": "call", "tool": "linear_getIssueHistory", "args": {"issueId": "a41e0c9d-77"}, "ok": false}

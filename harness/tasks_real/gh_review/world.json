@@ -1,0 +1,48 @@
+[
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "88",
+   "method": [
+    "get_review_comments",
+    "get_reviews",
+    "get_comments"
+   ]
+  },
+  "response": [
+   {
+    "id": 90011,
+    "path": "ledger/entries.py",
+    "line": 1,
+    "user": {
+     "login": "mkowalski"
+    },
+    "body": "Please rename `amt` to `amount_cents` - the unit has to be in the name."
+   },
+   {
+    "id": 90012,
+    "path": "ledger/entries.py",
+    "line": 2,
+    "user": {
+     "login": "mkowalski"
+    },
+    "body": "Reject negative amounts with a ValueError; refunds go through a separate entry type."
+   }
+  ]
+ },
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "88"
+  },
+  "response": {
+   "number": 88,
+   "title": "Add make_entry helper",
+   "state": "open",
+   "review_comments": 2,
+   "head": {
+    "ref": "entry-helper"
+   }
+  }
+ }
+]

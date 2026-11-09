@@ -1,0 +1,33 @@
+{
+ "id": "loki_errors",
+ "category": "single",
+ "prompt": "Customers stopped getting shipping e-mails at around 06:00 UTC today; the notifier service is the suspect. Find the cause and fix it. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "grafana_list_datasources"
+  ],
+  [
+   "grafana_query_loki_logs",
+   "grafana_find_error_pattern_logs",
+   "grafana_query_loki_patterns"
+  ]
+ ],
+ "gold": [
+  [
+   "grafana_list_datasources",
+   {
+    "name": "loki"
+   }
+  ],
+  [
+   "grafana_query_loki_logs",
+   {
+    "datasourceUid": "P8E80F9AEF21F6940",
+    "logql": "{app=\"notifier\"} |= \"error\"",
+    "limit": 50
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

@@ -1,0 +1,8 @@
+{"t": 1794112897.0727782, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "open", "perPage": 100}, "ok": true}
+{"t": 1794112904.684769, "kind": "call", "tool": "github_get_dependabot_alert", "args": {"alert_number": 12, "owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794112905.6948082, "kind": "call", "tool": "github_get_dependabot_alert", "args": {"alert_number": 11, "owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794112907.1786041, "kind": "call", "tool": "github_get_dependabot_alert", "args": {"alertNumber": 12, "owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794112908.1856594, "kind": "call", "tool": "github_get_dependabot_alert", "args": {"alertNumber": 11, "owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794112911.12647, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794112912.1329503, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "requirements.txt", "repo": "payments"}, "ok": true}
+{"t": 1794112928.9343712, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "fixed"}, "ok": true}

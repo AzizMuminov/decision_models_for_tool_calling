@@ -1,0 +1,1 @@
+SUPPORTED_CURRENCIES = ["EUR", "USD", "GBP", "SEK", "PLN", "CZK"]

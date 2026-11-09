@@ -1,0 +1,4 @@
+2026-11-05 05:41:10.553 | INFO     | awslabs.eks_mcp_server.server:main:174 - Starting EKS MCP Server in restricted sensitive data access mode
+2026-11-05 05:41:10.573 | INFO     | awslabs.eks_mcp_server.k8s_client_cache:__init__:82 - K8sClientCache initialized with auth mode: iam
+2026-11-05 05:41:10.776 | INFO     | awslabs.eks_mcp_server.aws_helper:create_boto3_client:83 - Using cached boto3 client for eks
+<mcp.server.mcpserver.server.MCPServer object at 0x7f83131d38c0>

@@ -1,0 +1,38 @@
+{"t": 1794106523.208607, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794106531.753818, "kind": "call", "tool": "grafana_list_alert_groups", "args": {"state": "new"}, "ok": true}
+{"t": 1794106533.4572396, "kind": "call", "tool": "grafana_get_alert_group", "args": {"alert_group_id": "AG-7731"}, "ok": false}
+{"t": 1794106534.4648287, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"logql": "{app=\"checkout\"} |~ \"error|4xx|gateway\"", "limit": 30, "direction": "backward"}, "ok": false}
+{"t": 1794106536.8575442, "kind": "call", "tool": "grafana_get_alert_group", "args": {"alertGroupId": "AG-7731"}, "ok": true}
+{"t": 1794106539.0870793, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794106541.1316583, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "backward", "format": "compact", "limit": 40, "logql": "{app=\"checkout\"} |~ \"(?i)error|4xx|gateway\"", "startRfc3339": "now-2h"}, "ok": true}
+{"t": 1794106544.4863017, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "backward", "format": "compact", "limit": 60, "logql": "{app=\"checkout\"}", "startRfc3339": "now-6h"}, "ok": true}
+{"t": 1794106547.4927225, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payment gateway api strict amounts 2026-11"}, "ok": true}
+{"t": 1794106550.812201, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payment gateway"}, "ok": true}
+{"t": 1794106552.1068194, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "checkout/gateway.py", "repo": "checkout"}, "ok": true}
+{"t": 1794106553.1145768, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "checkout", "state": "all"}, "ok": true}
+{"t": 1794106555.6802833, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 20, "repo": "checkout"}, "ok": true}
+{"t": 1794106556.687978, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme/checkout in:name"}, "ok": true}
+{"t": 1794106562.215918, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "checkout is:unresolved"}, "ok": false}
+{"t": 1794106565.0733447, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "checkout is:unresolved"}, "ok": true}
+{"t": 1794106572.112215, "kind": "call", "tool": "slack_list_channels", "args": {"limit": 50}, "ok": true}
+{"t": 1794106573.1204562, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 30}, "ok": false}
+{"t": 1794106574.3939996, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794106575.4027634, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 30}, "ok": true}
+{"t": 1794106579.4354336, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"limit": 20}, "ok": false}
+{"t": 1794106580.4858375, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"operation": "list"}, "ok": true}
+{"t": 1794106581.4932709, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100}, "ok": true}
+{"t": 1794106586.3724692, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "sum by (__name__) ({__name__=~\".*gateway.*\"})"}, "ok": false}
+{"t": 1794106587.379928, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"limit": 10, "query": "{resource.service.name=\"checkout\"}"}, "ok": false}
+{"t": 1794106589.3862994, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "sum by (__name__) ({__name__=~\".*gateway.*\"})", "startTime": "now-2h"}, "ok": true}
+{"t": 1794106590.3936634, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"datasourceUid": "P214B5B846CF3925F", "limit": 10, "query": "{resource.service.name=\"checkout\"}"}, "ok": true}
+{"t": 1794106594.0165343, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "label": "app", "startRfc3339": "now-24h"}, "ok": false}
+{"t": 1794106595.440543, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "labelName": "app", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794106599.2664273, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794106604.3377097, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "text ~ \"gateway\""}, "ok": true}
+{"t": 1794106605.3461502, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "type=page"}, "ok": true}
+{"t": 1794106612.3391821, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "backward", "format": "compact", "limit": 100, "logql": "{app=\"checkout\"}", "startRfc3339": "2026-10-01T00:00:00Z"}, "ok": true}
+{"t": 1794106613.3474731, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "backward", "format": "compact", "limit": 50, "logql": "{app=\"checkout\"} |~ \"(?i)amount|cents|minor|currency|version\"", "startRfc3339": "2026-10-01T00:00:00Z"}, "ok": true}
+{"t": 1794106617.5224862, "kind": "call", "tool": "grafana_list_alert_groups", "args": {"limit": 50}, "ok": true}
+{"t": 1794106626.9874969, "kind": "call", "tool": "grafana_find_error_pattern_logs", "args": {"labelSelector": "{app=\"checkout\"}", "datasourceUid": "P8E80F9AEF21F6940"}, "ok": false}
+{"t": 1794106639.6233478, "kind": "call", "tool": "slack_post_message", "args": {"channel_id": "C07INCID003", "text": "INCIDENT: PaymentGatewayErrors / checkout (AG-7731)\n\nWhat happened: checkout's charge payload was rejected by the payment gateway with HTTP 400 invalid_amount \u2014 \"amount must be an integer in minor units (cents), got 12.34\". The gateway moved to API version 2026-11 (\"strict amounts\"), so decimal EUR amounts are no longer accepted; this caused the 4xx rate to jump to 38%.\n\nFix: checkout/gateway.py charge_payload() now converts amount_eur to integer cents (Decimal, half-up) and sends {\"amount\": <int cents>, \"currency\": \"EUR\"}. 12.34 -> 1234. Fractional cents are rounded half-up; flag if the gateway expects a different rounding policy.\n\nNext: deploy checkout with this change and watch gateway 4xx rate; ack/resolve AG-7731 once the error rate is back to normal."}, "ok": true}
+{"t": 1794106641.3012807, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 5}, "ok": true}

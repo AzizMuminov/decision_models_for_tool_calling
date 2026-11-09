@@ -1,0 +1,15 @@
+{"t": 1794110653.2885387, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110662.8918777, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "finance-export"}, "ok": true}
+{"t": 1794110665.0627646, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "finance-export"}, "ok": true}
+{"t": 1794110672.8640208, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794110674.9549365, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794110675.8270524, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110677.3430438, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794110679.4648151, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "states": ["In Review"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794110681.2160175, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794110682.3875494, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110687.1411476, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "In Review"}, "ok": true}
+{"t": 1794110689.3644226, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 50}, "ok": false}
+{"t": 1794110694.0505614, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794110700.5490181, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "states": ["In Progress"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794110702.6249068, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}

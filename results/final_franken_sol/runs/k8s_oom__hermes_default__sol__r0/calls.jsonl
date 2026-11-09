@@ -1,0 +1,1 @@
+{"t": 1794122623.1343524, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resourceType": "pods", "name": "report-builder", "namespace": "reports"}, "ok": true}

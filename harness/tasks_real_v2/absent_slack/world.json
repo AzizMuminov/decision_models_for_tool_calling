@@ -1,0 +1,23 @@
+[
+ {
+  "tool": "slack_get_channel_history",
+  "match": {
+   "channel_id": "C07PLATF004"
+  },
+  "response": {
+   "ok": true,
+   "messages": [
+    {
+     "ts": "1793740000.000100",
+     "user": "U09TBAUER",
+     "text": "should we revisit the cache TTL? 300s feels long"
+    },
+    {
+     "ts": "1793740100.000200",
+     "user": "U08NINA",
+     "text": "let's discuss next week, no decision yet"
+    }
+   ]
+  }
+ }
+]

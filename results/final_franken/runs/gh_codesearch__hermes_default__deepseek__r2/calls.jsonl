@@ -1,0 +1,3 @@
+{"t": 1794106926.7325048, "kind": "call", "tool": "github_search_code", "args": {"query": "SUPPORTED_CURRENCIES"}, "ok": true}
+{"t": 1794106927.7437122, "kind": "call", "tool": "github_search_repositories", "args": {"query": "currency"}, "ok": true}
+{"t": 1794106929.7586932, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "currencies.yaml", "repo": "platform-config"}, "ok": true}

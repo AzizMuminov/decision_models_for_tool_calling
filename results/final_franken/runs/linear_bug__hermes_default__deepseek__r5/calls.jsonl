@@ -1,0 +1,19 @@
+{"t": 1794110449.0184703, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110460.8949454, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "finance-export"}, "ok": true}
+{"t": 1794110463.6001453, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794110470.105693, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794110477.450405, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794110478.5679805, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110483.0578587, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "Finance CSV export"}, "ok": true}
+{"t": 1794110487.3003817, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110490.3323755, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794110496.1054711, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 10}, "ok": false}
+{"t": 1794110505.7678618, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794110508.8469305, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110512.972564, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794110513.954607, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794110518.6914427, "kind": "call", "tool": "linear_searchIssues", "args": {"states": ["In Review"]}, "ok": true}
+{"t": 1794110519.99596, "kind": "call", "tool": "linear_searchIssues", "args": {"states": ["In Progress"]}, "ok": true}
+{"t": 1794110522.1227715, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-bogus-999"}, "ok": true}
+{"t": 1794110525.7337527, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794110531.405946, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}

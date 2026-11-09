@@ -1,0 +1,3 @@
+{"t": 1794124278.112019, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position;"}, "ok": true}
+{"t": 1794124279.8718336, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename = 'payments' ORDER BY schemaname, indexname;"}, "ok": true}
+{"t": 1794124284.2068636, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'payments' ORDER BY ordinal_position;"}, "ok": true}

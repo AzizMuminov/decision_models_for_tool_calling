@@ -1,0 +1,37 @@
+{"t": 1794116773.729499, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "30d", "query": "export", "limit": 25}, "ok": true}
+{"t": 1794116777.7399485, "kind": "call", "tool": "sentry_find_projects", "args": {}, "ok": false}
+{"t": 1794116780.5272727, "kind": "call", "tool": "mongodb_connect", "args": {"connectionName": "shop-prod", "connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop"}, "ok": true}
+{"t": 1794116781.5357113, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794116782.9831707, "kind": "call", "tool": "mongodb_list-collections", "args": {"connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794116785.198396, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 5, "sort": {"_id": -1}}, "ok": true}
+{"t": 1794116786.2063968, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 3, "sort": {"_id": 1}}, "ok": true}
+{"t": 1794116789.9569001, "kind": "call", "tool": "mongodb_count", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {}}, "ok": true}
+{"t": 1794116798.1554167, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "shop-export"}, "ok": true}
+{"t": 1794116799.1631813, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "export"}, "ok": true}
+{"t": 1794116803.0887263, "kind": "call", "tool": "github_search_repositories", "args": {"query": "shop-export"}, "ok": true}
+{"t": 1794116804.0960548, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794116806.2693353, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 30, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794116807.2771943, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "shop-export"}, "ok": true}
+{"t": 1794116811.4449077, "kind": "call", "tool": "mongodb_list-databases", "args": {"connectionId": "prod-shop-a1b2"}, "ok": true}
+{"t": 1794116815.2631726, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794116816.2709627, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "order schema export"}, "ok": true}
+{"t": 1794116817.2785366, "kind": "call", "tool": "github_search_code", "args": {"query": "parse_order"}, "ok": true}
+{"t": 1794116819.143185, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794116820.1515574, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794116822.933384, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 100}, "ok": true}
+{"t": 1794116823.9413056, "kind": "call", "tool": "mongodb_find", "args": {"collection": "customers", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 10}, "ok": true}
+{"t": 1794116827.837307, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "export"}, "ok": true}
+{"t": 1794116834.9090028, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "export order"}, "ok": true}
+{"t": 1794116843.8415716, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794116848.4109743, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "shop-export order schema parse.py"}, "ok": true}
+{"t": 1794116849.4185057, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "orders total customer email currency"}, "ok": true}
+{"t": 1794116863.3435736, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": ""}, "ok": true}
+{"t": 1794116864.9302866, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794116865.9382799, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794116867.5151231, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794116888.4034953, "kind": "call", "tool": "github_search_commits", "args": {"query": "order schema"}, "ok": true}
+{"t": 1794116889.4111948, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "shop-export"}, "ok": true}
+{"t": 1794116918.825218, "kind": "call", "tool": "mongodb_aggregate", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "pipeline": [{"$project": {"_id": 0, "customer_type": {"$type": "$customer"}, "customer_email_type": {"$type": "$customer_email"}, "total_type": {"$type": "$total"}, "currency_type": {"$type": "$currency"}, "nested_currency_type": {"$type": "$total.currency"}, "amount_type": {"$type": "$total.amount"}}}]}, "ok": true}
+{"t": 1794116938.0304184, "kind": "call", "tool": "mongodb_collection-schema", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794116946.072143, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"customer": {"$exists": true}}, "limit": 10}, "ok": true}
+{"t": 1794116947.08284, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"customer_email": {"$exists": true}}, "limit": 10}, "ok": true}

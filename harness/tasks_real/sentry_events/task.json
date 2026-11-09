@@ -1,0 +1,36 @@
+{
+ "id": "sentry_events",
+ "category": "single",
+ "prompt": "Since this morning's deploy, POST /refunds returns 500 for some clients. Use Sentry (organisation `acme`, project refunds-api) to find the error and fix it. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "sentry_search_issues",
+   "sentry_search_events"
+  ],
+  [
+   "sentry_get_sentry_resource",
+   "sentry_search_events",
+   "sentry_search_issues"
+  ]
+ ],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "refunds-api",
+    "query": "is:unresolved firstSeen:-24h"
+   }
+  ],
+  [
+   "sentry_get_sentry_resource",
+   {
+    "resourceType": "issue",
+    "resourceId": "REFUNDS-API-1C",
+    "organizationSlug": "acme"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

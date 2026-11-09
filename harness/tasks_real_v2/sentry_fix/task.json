@@ -1,0 +1,56 @@
+{
+ "id": "sentry_fix",
+ "category": "single",
+ "prompt": "The noisiest production error of payments-api right now needs to go. Fix it, and close it out where it is tracked. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "sentry_search_issues",
+   "sentry_search_events"
+  ],
+  [
+   "sentry_get_sentry_resource",
+   "sentry_search_events",
+   "sentry_search_issues"
+  ],
+  [
+   "sentry_update_issue"
+  ]
+ ],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "payments-api",
+    "query": "is:unresolved",
+    "sort": "freq"
+   }
+  ],
+  [
+   "sentry_get_sentry_resource",
+   {
+    "resourceType": "issue",
+    "resourceId": "PAYMENTS-API-3K",
+    "organizationSlug": "acme"
+   }
+  ],
+  [
+   "sentry_update_issue",
+   {
+    "organizationSlug": "acme",
+    "issueId": "PAYMENTS-API-3K",
+    "status": "resolved"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "sentry_update_issue",
+   "match": {
+    "_any": "3K",
+    "status": "resolved"
+   }
+  }
+ ],
+ "probe": null
+}

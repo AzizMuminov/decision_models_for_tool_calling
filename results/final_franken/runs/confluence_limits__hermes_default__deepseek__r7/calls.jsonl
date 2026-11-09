@@ -1,0 +1,4 @@
+{"t": 1794111696.856923, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "API rate limits"}, "ok": true}
+{"t": 1794111701.9388266, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794111709.7331188, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794111710.7405484, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"rate limit\" OR text ~ \"rate-limit\""}, "ok": true}

@@ -1,0 +1,68 @@
+{
+ "id": "multi_alert",
+ "category": "multi",
+ "prompt": "An alert is firing for the checkout service. Use the alert and the service's logs to find out what is wrong, fix checkout/gateway.py, and post a short summary of the fix in the #incidents Slack channel. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "grafana_list_alert_groups",
+   "grafana_get_alert_group"
+  ],
+  [
+   "grafana_list_datasources"
+  ],
+  [
+   "grafana_query_loki_logs",
+   "grafana_find_error_pattern_logs"
+  ],
+  [
+   "slack_list_channels"
+  ],
+  [
+   "slack_post_message"
+  ]
+ ],
+ "gold": [
+  [
+   "grafana_list_alert_groups",
+   {
+    "labels": [
+     "service:checkout"
+    ]
+   }
+  ],
+  [
+   "grafana_list_datasources",
+   {
+    "name": "loki"
+   }
+  ],
+  [
+   "grafana_query_loki_logs",
+   {
+    "datasourceUid": "P8E80F9AEF21F6940",
+    "logql": "{app=\"checkout\"} |= \"gateway\"",
+    "limit": 50
+   }
+  ],
+  [
+   "slack_list_channels",
+   {}
+  ],
+  [
+   "slack_post_message",
+   {
+    "channel_id": "C07INCID003",
+    "text": "checkout: amounts now sent in minor units"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "slack_post_message",
+   "match": {
+    "channel_id": "C07INCID003"
+   }
+  }
+ ],
+ "probe": null
+}

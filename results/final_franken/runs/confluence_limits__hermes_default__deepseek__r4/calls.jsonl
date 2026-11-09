@@ -1,0 +1,21 @@
+{"t": 1794108978.1520646, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "rate limit"}, "ok": true}
+{"t": 1794108979.1624255, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "text ~ \"rate limits\" AND type = page"}, "ok": true}
+{"t": 1794108981.1100872, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794108984.4985864, "kind": "call", "tool": "atlassian_confluence_get_comments", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794108985.5066304, "kind": "call", "tool": "atlassian_confluence_get_space_page_tree", "args": {"space_key": "API"}, "ok": false}
+{"t": 1794108991.141456, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "space = API"}, "ok": true}
+{"t": 1794108992.149751, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "text ~ \"requests per minute\""}, "ok": true}
+{"t": 1794108997.311958, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "public API limits plans"}, "ok": true}
+{"t": 1794109002.8540955, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794109003.8628461, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794109007.436881, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"parent_id": "884213"}, "ok": false}
+{"t": 1794109013.2120752, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "rate limit"}, "ok": true}
+{"t": 1794109014.219877, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "public-api"}, "ok": true}
+{"t": 1794109016.0461488, "kind": "call", "tool": "github_search_code", "args": {"query": "RATE_LIMITS"}, "ok": true}
+{"t": 1794109025.2370656, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "limits"}, "ok": true}
+{"t": 1794109026.2455819, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "API"}, "ok": true}
+{"t": 1794109027.2531216, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794109029.2156515, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 100}, "ok": true}
+{"t": 1794109030.2237394, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794109034.8982399, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "changelog"}, "ok": true}
+{"t": 1794109035.9085646, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "pricing plans quota"}, "ok": true}

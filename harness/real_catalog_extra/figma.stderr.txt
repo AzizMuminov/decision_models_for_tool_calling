@@ -1,0 +1,2 @@
+Usage telemetry enabled. Disable: FRAMELINK_TELEMETRY=off or DO_NOT_TRACK=1
+Warning: --image-dir not set; download_figma_images will save under the server's cwd (/srv/agentbox/home). MCP clients often launch the server outside your project root — set IMAGE_DIR or pass --image-dir to make this explicit.

@@ -1,0 +1,7 @@
+[Plugin Check] @heroku/plugin-ai: NOT INSTALLED - Skipping AI tools
+Heroku MCP Server running on stdioWarning: Detected unsettled top-level await at file:///opt/mcp-harvest/node_modules/@heroku/mcp-server/bin/heroku-mcp-server.mjs:5
+  await runServer();
+  ^
+
+
+

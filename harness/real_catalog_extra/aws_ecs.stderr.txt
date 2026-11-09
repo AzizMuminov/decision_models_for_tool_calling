@@ -1,0 +1,44 @@
+2026-11-05 05:41:07,878 - ecs-mcp-server - INFO - Server started
+2026-11-05 05:41:07,878 - ecs-mcp-server - INFO - Write operations enabled: False
+2026-11-05 05:41:07,878 - ecs-mcp-server - INFO - Sensitive data access enabled: False
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 4.0.11                                │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      AWS ECS MCP Server, 4.0.11                  │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                          🎉 Update available: 4.1.6                          │
+│                      Run: pip install --upgrade fastmcp                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+2026-11-05 05:41:07,911 - ecs-mcp-server - INFO - Server initializing
+2026-11-05 05:41:07,911 - awslabs.ecs_mcp_server.modules.aws_knowledge_proxy - INFO - Applying tool transformations...
+2026-11-05 05:41:08,553 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:08,553 - mcp.client.streamable_http - INFO - Received session ID: ec949f08-20e6-40dc-af41-e3614f645d38
+2026-11-05 05:41:08,607 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 202 Accepted"
+2026-11-05 05:41:08,676 - httpx2 - INFO - HTTP Request: GET https://knowledge-mcp.global.api.aws "HTTP/1.1 405 Method Not Allowed"
+2026-11-05 05:41:08,677 - mcp.client.streamable_http - INFO - GET stream disconnected, reconnecting in 1000ms...
+2026-11-05 05:41:08,738 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:08,839 - httpx2 - INFO - HTTP Request: DELETE https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:09,012 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:09,013 - mcp.client.streamable_http - INFO - Received session ID: 038ae82c-159c-4fb9-a762-a0f4c00ddc40
+2026-11-05 05:41:09,069 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 202 Accepted"
+2026-11-05 05:41:09,140 - httpx2 - INFO - HTTP Request: GET https://knowledge-mcp.global.api.aws "HTTP/1.1 405 Method Not Allowed"
+2026-11-05 05:41:09,141 - mcp.client.streamable_http - INFO - GET stream disconnected, reconnecting in 1000ms...
+2026-11-05 05:41:09,197 - httpx2 - INFO - HTTP Request: POST https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:09,250 - httpx2 - INFO - HTTP Request: DELETE https://knowledge-mcp.global.api.aws "HTTP/1.1 200 OK"
+2026-11-05 05:41:09,252 - awslabs.ecs_mcp_server.modules.aws_knowledge_proxy - ERROR - Error applying tool transformations: 'FastMCP' object has no attribute 'add_tool_transformation'
+2026-11-05 05:41:09,253 - ecs-mcp-server - ERROR - Error starting server: 'FastMCP' object has no attribute 'add_tool_transformation'

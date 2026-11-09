@@ -1,0 +1,12 @@
+[
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-999"
+  },
+  "response": {
+   "error": "Issue does not exist or you do not have permission to see it.",
+   "status": 404
+  }
+ }
+]

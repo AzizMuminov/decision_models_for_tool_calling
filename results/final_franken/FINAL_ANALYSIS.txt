@@ -1,0 +1,26 @@
+duplicate rows: 0 | errored or zero-token rows: 0
+complete slots 555 of 555; tasks 37
+
+PRIMARY (per plan): total tokens
+tokens: ratio 0.874 [0.821, 0.933], t-test on 37 task means p=0.00021
+VERDICT: fewer tokens (p<0.05 and interval excludes 1)
+
+SECONDARY
+cost incl. DM fee (DeepSeek pinned): ratio 1.195 [1.126, 1.275], t-test on 37 task means p=0.00000
+LLM calls: ratio 0.919 [0.879, 0.961], t-test on 37 task means p=0.00069
+(searches: see means): ratio 0.919 [0.879, 0.961], t-test on 37 task means p=0.00069
+wall time: ratio 1.010 [0.957, 1.071], t-test on 37 task means p=0.74945
+BM25           passed 550/555 | searches 11.1 / 10.0 | LLM calls 29.0 / 26.0 | tokens 791 / 553k | cost $0.0082 | time 137 / 120 s
+DM selector F  passed 550/555 | searches 7.1 / 6.0 | LLM calls 26.8 / 24.0 | tokens 680 / 507k | cost $0.0100 | time 140 / 120 s
+failures F: [('cw_reports', 5), ('eks_importer', 6), ('prom_threshold', 0), ('prom_threshold', 11), ('prom_threshold', 14)]
+failures BM25: [('k8s_oom', 10), ('prom_threshold', 5), ('prom_threshold', 10), ('sentry_events', 1), ('sentry_events', 9)]
+McNemar: BM25-only passes 5, F-only passes 5, exact p=1.000
+gh_open_pr: BM25 15/15, F 15/15
+slot-level (overstated): t p=1.31e-08, Wilcoxon p=2.49e-11, SD log ratio 0.55, fewer on 361/555
+
+PROJECTION (mean token mix, list prices, DM fee $0.0025/run)
+  DeepSeek V4.1 Flash              BM25 $0.0131  F $0.0147  change +12%  saving per 1k runs $-1.59
+  Claude Haiku 5.5                 BM25 $0.0159  F $0.0169  change +6%  saving per 1k runs $-1.01
+  Claude Sonnet 5.5 / GPT-6.1 Sol  BM25 $0.2420  F $0.2247  change -7%  saving per 1k runs $17.35
+  Kimi K3.1 Pro                    BM25 $0.3176  F $0.2895  change -9%  saving per 1k runs $28.10
+  Claude Fable 5.1                 BM25 $1.0211  F $0.9510  change -7%  saving per 1k runs $70.06

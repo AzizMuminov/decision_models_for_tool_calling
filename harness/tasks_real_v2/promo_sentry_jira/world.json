@@ -1,0 +1,62 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": [
+    "checkout",
+    "promo",
+    "android"
+   ]
+  },
+  "response": "# Issues in **acme/checkout-web**\n\n1. **CHECKOUT-WEB-7Q** - PromoNotFound: code ' autumn24 ' does not exist\n   culprit: checkout.promo in apply | events: 2,940 | tags: os=Android 15, app=android 8.2 | status: unresolved\n   linked ticket: PAY-618"
+ },
+ {
+  "tool": "sentry_get_sentry_resource",
+  "match": {
+   "_any": "7Q"
+  },
+  "response": "# CHECKOUT-WEB-7Q\nPromoNotFound: code ' autumn24 ' does not exist\nAndroid keyboard adds spaces and lower-case. Linked Jira: PAY-618."
+ },
+ {
+  "tool": "sentry_search_events",
+  "match": {
+   "_any": [
+    "checkout",
+    "promo"
+   ]
+  },
+  "response": "| issue | title | count |\n| CHECKOUT-WEB-7Q | PromoNotFound ' autumn24 ' (Android; see PAY-618) | 2940 |"
+ },
+ {
+  "tool": "atlassian_jira_search",
+  "match": {
+   "_any": [
+    "promo",
+    "PAY-618",
+    "android"
+   ]
+  },
+  "response": {
+   "issues": [
+    {
+     "key": "PAY-618",
+     "summary": "Android promo codes fail",
+     "status": "To Do"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-618"
+  },
+  "response": {
+   "key": "PAY-618",
+   "fields": {
+    "summary": "Android promo codes fail",
+    "description": "Agreed fix (product + mobile): normalise codes before lookup - strip surrounding whitespace, remove inner spaces, upper-case. Implement in checkout.promo.normalize_code."
+   }
+  }
+ }
+]

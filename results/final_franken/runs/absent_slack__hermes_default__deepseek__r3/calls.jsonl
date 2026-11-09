@@ -1,0 +1,38 @@
+{"t": 1794107419.5416021, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794107422.8300986, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794107423.7036905, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794107425.8975594, "kind": "call", "tool": "slack_get_channel_history", "args": {"limit": 50}, "ok": false}
+{"t": 1794107428.580656, "kind": "call", "tool": "atlassian_jira_search", "args": {"query": "cache OR TTL ORDER BY updated DESC"}, "ok": false}
+{"t": 1794107431.8471239, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"cache TTL\" ORDER BY updated DESC"}, "ok": true}
+{"t": 1794107436.6445477, "kind": "call", "tool": "github_search_issues", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794107437.7722645, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "cache TTL"}, "ok": true}
+{"t": 1794107438.7815933, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 20}, "ok": false}
+{"t": 1794107441.2197526, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794107443.0868602, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "cache"}, "ok": true}
+{"t": 1794107444.0938497, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 30, "repo": "cache"}, "ok": true}
+{"t": 1794107445.8181195, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794107446.825808, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794107448.4437199, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache"}, "ok": true}
+{"t": 1794107453.5681102, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50}, "ok": true}
+{"t": 1794107454.576181, "kind": "call", "tool": "gitlab_search_repositories", "args": {"limit": 50}, "ok": true}
+{"t": 1794107458.3540945, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794107459.3620574, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794107468.4931464, "kind": "call", "tool": "github_search_repositories", "args": {"query": "cache"}, "ok": true}
+{"t": 1794107472.841501, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "cache"}, "ok": true}
+{"t": 1794107477.724413, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "message_ts": "1793740000.000100"}, "ok": false}
+{"t": 1794107478.731541, "kind": "call", "tool": "slack_get_users", "args": {}, "ok": true}
+{"t": 1794107480.2408397, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "thread_ts": "1793740000.000100"}, "ok": true}
+{"t": 1794107481.248641, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "thread_ts": "1793740100.000200"}, "ok": true}
+{"t": 1794107483.4028797, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "type = page"}, "ok": true}
+{"t": 1794107484.410049, "kind": "call", "tool": "github_search_commits", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794107487.0351264, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794107489.327861, "kind": "call", "tool": "grafana_search_dashboards", "args": {}, "ok": true}
+{"t": 1794107490.336068, "kind": "call", "tool": "monday_search", "args": {"searchTerm": "cache TTL", "searchType": "DOCUMENTS"}, "ok": true}
+{"t": 1794107495.4606552, "kind": "call", "tool": "filesystem_list_directory", "args": {}, "ok": false}
+{"t": 1794107503.13717, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY updated DESC"}, "ok": true}
+{"t": 1794107504.1477618, "kind": "call", "tool": "filesystem_list_directory", "args": {"path": "/"}, "ok": true}
+{"t": 1794107506.584966, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "cache"}, "ok": true}
+{"t": 1794107509.0943704, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794107510.1020746, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794107513.032503, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794107514.0398953, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "cache", "teamId": "9f1c2e7a-eng"}, "ok": true}

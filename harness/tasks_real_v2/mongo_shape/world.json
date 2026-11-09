@@ -1,0 +1,23 @@
+[
+ {
+  "tool": "mongodb_collection-schema",
+  "match": {
+   "collection": "orders"
+  },
+  "response": "Schema of shop.orders (sample 1000):\n- _id: ObjectId\n- customer_email: String (31%)\n- customer: Document (69%)\n  - customer.id: String\n  - customer.email: String\n- total: String (31%) | Document (69%)\n  - total.amount: String\n  - total.currency: String\n- currency: String (31%)\n- created_at: Date"
+ },
+ {
+  "tool": "mongodb_find",
+  "match": {
+   "collection": "orders"
+  },
+  "response": "Found 2 documents:\n{\"_id\": {\"$oid\": \"6729f0\"}, \"customer\": {\"id\": \"c_8812\", \"email\": \"m.rossi@example.com\"}, \"total\": {\"amount\": \"49.90\", \"currency\": \"EUR\"}, \"created_at\": {\"$date\": \"2026-11-04T22:10:00Z\"}}\n{\"_id\": {\"$oid\": \"6729a1\"}, \"customer_email\": \"j.li@example.com\", \"total\": \"12.00\", \"currency\": \"SEK\", \"created_at\": {\"$date\": \"2026-10-28T09:00:00Z\"}}"
+ },
+ {
+  "tool": "mongodb_aggregate",
+  "match": {
+   "collection": "orders"
+  },
+  "response": "[{\"customer\": {\"id\": \"c_8812\", \"email\": \"m.rossi@example.com\"}, \"total\": {\"amount\": \"49.90\", \"currency\": \"EUR\"}}, {\"customer_email\": \"j.li@example.com\", \"total\": \"12.00\", \"currency\": \"SEK\"}]"
+ }
+]

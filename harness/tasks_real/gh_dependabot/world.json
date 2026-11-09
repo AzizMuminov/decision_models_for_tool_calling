@@ -1,0 +1,54 @@
+[
+ {
+  "tool": "github_list_dependabot_alerts",
+  "match": {
+   "repo": "payments"
+  },
+  "response": [
+   {
+    "number": 12,
+    "state": "open",
+    "dependency": {
+     "package": {
+      "ecosystem": "pip",
+      "name": "urllib3"
+     },
+     "manifest_path": "requirements.txt"
+    },
+    "security_advisory": {
+     "ghsa_id": "GHSA-pq67-6m6q-mj2v",
+     "severity": "medium",
+     "summary": "urllib3 redirects are not disabled when retries are disabled on PoolManager"
+    },
+    "security_vulnerability": {
+     "vulnerable_version_range": "< 2.5.0",
+     "first_patched_version": {
+      "identifier": "2.5.0"
+     }
+    }
+   },
+   {
+    "number": 11,
+    "state": "open",
+    "dependency": {
+     "package": {
+      "ecosystem": "pip",
+      "name": "jinja2"
+     },
+     "manifest_path": "requirements.txt"
+    },
+    "security_advisory": {
+     "ghsa_id": "GHSA-cpwx-vrp4-4pq7",
+     "severity": "medium",
+     "summary": "Jinja2 vulnerable to sandbox breakout through attr filter"
+    },
+    "security_vulnerability": {
+     "vulnerable_version_range": "< 3.1.6",
+     "first_patched_version": {
+      "identifier": "3.1.6"
+     }
+    }
+   }
+  ]
+ }
+]

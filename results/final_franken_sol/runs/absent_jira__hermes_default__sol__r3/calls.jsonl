@@ -1,0 +1,2 @@
+{"t": 1794124437.7036524, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-999", "fields": "*all", "limit": 1}, "ok": true}
+{"t": 1794124441.7919762, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"PAY-999\"", "limit": 10}, "ok": true}

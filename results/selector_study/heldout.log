@@ -1,0 +1,10 @@
+HELD-OUT agent queries from results/final_deepseek: 500
+sets: HAND 40 (40 no-tool), AGENT 500, NAMED 350 (200 git family)
+{"variant": "1 current (top service)", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0, "agent_cov5": 0.785, "agent_cov15": 0.809, "agent_all15": 0.752, "named_top1": 0.969, "gitfam_top1": 0.95, "named_in15": 0.969, "usd_per_1k": 0.18, "new_spend": 0.056, "secs": 25.469}
+{"variant": "3 nucleus + fixed cards", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0, "agent_cov5": 0.799, "agent_cov15": 0.824, "agent_all15": 0.768, "named_top1": 0.98, "gitfam_top1": 0.97, "named_in15": 0.989, "usd_per_1k": 0.194, "new_spend": 0.011, "secs": 11.563}
+{"variant": "F combined selector", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0.95, "agent_cov5": 0.794, "agent_cov15": 0.845, "agent_all15": 0.79, "named_top1": 0.997, "gitfam_top1": 1, "named_in15": 0.997, "usd_per_1k": 0.339, "new_spend": 0.059, "secs": 23.788}
+{"variant": "R live recommendations design", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0, "agent_cov5": 0.785, "agent_cov15": 0.834, "agent_all15": 0.782, "named_top1": 0.969, "gitfam_top1": 0.95, "named_in15": 0.969, "usd_per_1k": 0.18, "new_spend": 0.0, "secs": 0.253}
+{"variant": "5b variant 5 (simple candidate)", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0.95, "agent_cov5": 0.794, "agent_cov15": 0.821, "agent_all15": 0.766, "named_top1": 0.977, "gitfam_top1": 0.97, "named_in15": 0.989, "usd_per_1k": 0.184, "new_spend": 0.0, "secs": 0.243}
+{"variant": "B BM25 (reference)", "hand_hit1": NaN, "hand_hit5": NaN, "hand_hit15": NaN, "false_none": NaN, "true_none": 0, "agent_cov5": 0.712, "agent_cov15": 0.806, "agent_all15": 0.754, "named_top1": 0.849, "gitfam_top1": 0.855, "named_in15": 0.997, "usd_per_1k": 0.0, "new_spend": 0.0, "secs": 0.943}
+
+total new DM spend $0.13 over 1613 calls

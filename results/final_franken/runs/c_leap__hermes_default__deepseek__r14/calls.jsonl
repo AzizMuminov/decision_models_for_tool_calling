@@ -1,0 +1,2 @@
+{"t": 1794119561.344307, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "query": "leap year"}, "ok": true}
+{"t": 1794119562.3562362, "kind": "call", "tool": "github_search_code", "args": {"query": "is_leap org:acme"}, "ok": true}

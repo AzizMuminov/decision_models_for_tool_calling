@@ -1,0 +1,46 @@
+{
+ "id": "grafana_incident",
+ "category": "single",
+ "prompt": "We are in the middle of an incident about checkout timeouts and the responders agreed on a mitigation. Apply it in checkout/client.py and post an update to the incident that the change is ready. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "grafana_list_incidents"
+  ],
+  [
+   "grafana_get_incident"
+  ],
+  [
+   "grafana_add_activity_to_incident"
+  ]
+ ],
+ "gold": [
+  [
+   "grafana_list_incidents",
+   {
+    "status": "active"
+   }
+  ],
+  [
+   "grafana_get_incident",
+   {
+    "id": "INC-1182"
+   }
+  ],
+  [
+   "grafana_add_activity_to_incident",
+   {
+    "incidentId": "INC-1182",
+    "body": "Mitigation ready: timeout 800ms, retry budget 2"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "grafana_add_activity_to_incident",
+   "match": {
+    "incidentId": "1182"
+   }
+  }
+ ],
+ "probe": null
+}

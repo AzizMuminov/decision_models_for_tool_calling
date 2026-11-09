@@ -1,0 +1,9 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": "billing"
+  },
+  "response": "# Issues in **acme/billing-cron**\n\nNo unresolved issues found."
+ }
+]

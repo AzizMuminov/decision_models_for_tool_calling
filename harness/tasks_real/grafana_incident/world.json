@@ -1,0 +1,41 @@
+[
+ {
+  "tool": "grafana_list_incidents",
+  "response": [
+   {
+    "incidentID": "INC-1182",
+    "title": "Checkout timeouts on payment confirmation",
+    "status": "active",
+    "severity": "major"
+   },
+   {
+    "incidentID": "INC-1171",
+    "title": "Search latency",
+    "status": "resolved"
+   }
+  ]
+ },
+ {
+  "tool": "grafana_get_incident",
+  "match": {
+   "id": "1182"
+  },
+  "response": {
+   "incidentID": "INC-1182",
+   "title": "Checkout timeouts on payment confirmation",
+   "status": "active",
+   "activity": [
+    {
+     "time": "08:02",
+     "user": "lena",
+     "body": "Gateway p99 is 650ms; our 3s timeout makes threads pile up."
+    },
+    {
+     "time": "08:20",
+     "user": "omar",
+     "body": "DECISION (mitigation): set the upstream timeout to 800 ms and allow a retry budget of 2. Owner: checkout team."
+    }
+   ]
+  }
+ }
+]

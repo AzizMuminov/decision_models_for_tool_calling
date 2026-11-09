@@ -1,0 +1,9 @@
+{"t": 1794118546.0997777, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "rate limits"}, "ok": true}
+{"t": 1794118547.1102655, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "API rate limit public API"}, "ok": true}
+{"t": 1794118550.2637992, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794118553.9654474, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"requests per minute\" OR title ~ \"rate limit*\""}, "ok": true}
+{"t": 1794118558.4472463, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794118559.455572, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794118562.2804112, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"parent_id": "884213"}, "ok": false}
+{"t": 1794118563.2888498, "kind": "call", "tool": "atlassian_confluence_get_space_page_tree", "args": {"space_key": "API"}, "ok": false}
+{"t": 1794118570.0595157, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "rate limit"}, "ok": true}

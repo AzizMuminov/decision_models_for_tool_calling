@@ -1,0 +1,6 @@
+{"t": 1794110755.8653433, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794110756.8778386, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "perPage": 100, "repo": "payments"}, "ok": true}
+{"t": 1794110758.1899326, "kind": "call", "tool": "github_search_code", "args": {"query": "validate_currency repo:acme/payments"}, "ok": true}
+{"t": 1794110765.7505534, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments", "recursive": true}, "ok": false}
+{"t": 1794110767.888537, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments", "repo": "payments"}, "ok": true}
+{"t": 1794110768.8960423, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/currency.py", "repo": "payments"}, "ok": true}

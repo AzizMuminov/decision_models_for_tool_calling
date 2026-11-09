@@ -1,0 +1,15 @@
+{"t": 1794117980.5399585, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "promo code android apply"}, "ok": false}
+{"t": 1794117981.5503314, "kind": "call", "tool": "sentry_search_events", "args": {"query": "promo code apply errors last 7 days"}, "ok": false}
+{"t": 1794117986.336171, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"promo code\" ORDER BY updated DESC"}, "ok": true}
+{"t": 1794117988.6864896, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794117989.6936395, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-618", "fields": "*all"}, "ok": true}
+{"t": 1794117992.2607937, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "promo code android", "limit": 20}, "ok": true}
+{"t": 1794117997.063909, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,changelog,transitions,remote_links", "issue_key": "PAY-618"}, "ok": true}
+{"t": 1794118002.3027976, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "CHECKOUT-WEB-7Q", "resourceType": "issue"}, "ok": true}
+{"t": 1794118012.11058, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "promo code normalize"}, "ok": true}
+{"t": 1794118017.2922306, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/"}, "ok": false}
+{"t": 1794118020.157572, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY updated DESC", "limit": 25}, "ok": true}
+{"t": 1794118023.677198, "kind": "call", "tool": "github_search_repositories", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794118024.6855493, "kind": "call", "tool": "atlassian_jira_get_issue_development_info", "args": {"issue_key": "PAY-618"}, "ok": false}
+{"t": 1794118040.8396745, "kind": "call", "tool": "atlassian_jira_add_comment", "args": {"body": "Implemented the agreed fix in `checkout/promo.py`.\n\n**Production error:** Sentry issue `CHECKOUT-WEB-7Q` (project `checkout-web`, org `acme`) \u2014 `PromoNotFound: code ' autumn24 ' does not exist`, culprit `checkout.promo in apply`, ~2,940 events, tags `os=Android 15`, `app=android 8.2`. Android keyboards were submitting codes with surrounding whitespace and lower-case, so lookup failed.\n\n**Change:** `normalize_code` now strips surrounding whitespace, removes inner whitespace and upper-cases before lookup:\n\n```python\ndef normalize_code(code: str) -> str:\n    return \"\".join(code.split()).upper()\n```\n\n**Verified:** `' autumn24 '`, `'autumn 24'`, `'  Autumn 24  '` and `'AUTUMN24'` all normalise to `AUTUMN24`.\n\nNote: the local working copy is not a git checkout and no matching GitHub/GitLab repository was reachable, so the change was not pushed or opened as a PR. It needs to be committed and reviewed via the usual `checkout` repo workflow.", "issue_key": "PAY-618"}, "ok": true}
+{"t": 1794118043.1771274, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments", "issue_key": "PAY-618"}, "ok": true}

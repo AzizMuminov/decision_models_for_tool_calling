@@ -1,0 +1,48 @@
+{
+ "id": "jira_impl",
+ "category": "single",
+ "prompt": "Pick up PAY-412: implement it, then move it to review. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "atlassian_jira_get_issue",
+   "atlassian_jira_search"
+  ],
+  [
+   "atlassian_jira_get_transitions"
+  ],
+  [
+   "atlassian_jira_transition_issue"
+  ]
+ ],
+ "gold": [
+  [
+   "atlassian_jira_get_issue",
+   {
+    "issue_key": "PAY-412"
+   }
+  ],
+  [
+   "atlassian_jira_get_transitions",
+   {
+    "issue_key": "PAY-412"
+   }
+  ],
+  [
+   "atlassian_jira_transition_issue",
+   {
+    "issue_key": "PAY-412",
+    "transition_id": "31"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "atlassian_jira_transition_issue",
+   "match": {
+    "issue_key": "PAY-412",
+    "transition_id": "31"
+   }
+  }
+ ],
+ "probe": null
+}

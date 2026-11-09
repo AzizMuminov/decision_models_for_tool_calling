@@ -1,0 +1,3 @@
+{"t": 1794123218.6717675, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resourceType": "pods", "name": "", "namespace": "reports"}, "ok": false}
+{"t": 1794123224.0390584, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resourceType": "deployment", "name": "report-builder", "namespace": "reports"}, "ok": true}
+{"t": 1794123225.0465884, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "prometheus"}, "ok": true}

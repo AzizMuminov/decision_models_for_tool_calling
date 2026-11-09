@@ -1,0 +1,58 @@
+{
+ "id": "gl_pipeline",
+ "category": "multi",
+ "prompt": "The main-branch pipeline of billing-legacy is red. Make it green and explain the fix on the open merge request !12. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "gitlab_list_pipelines",
+   "gitlab_get_pipeline",
+   "gitlab_list_pipeline_jobs"
+  ],
+  [
+   "gitlab_get_pipeline_job_output"
+  ],
+  [
+   "gitlab_create_merge_request_thread"
+  ]
+ ],
+ "gold": [
+  [
+   "gitlab_list_pipelines",
+   {
+    "project_id": "acme/billing-legacy",
+    "ref": "main"
+   }
+  ],
+  [
+   "gitlab_list_pipeline_jobs",
+   {
+    "project_id": "acme/billing-legacy",
+    "pipeline_id": "8812"
+   }
+  ],
+  [
+   "gitlab_get_pipeline_job_output",
+   {
+    "project_id": "acme/billing-legacy",
+    "job_id": "77104"
+   }
+  ],
+  [
+   "gitlab_create_merge_request_thread",
+   {
+    "project_id": "acme/billing-legacy",
+    "merge_request_iid": "12",
+    "body": "Fixed: zero-pad invoice sequence to 6 digits"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "gitlab_create_merge_request_thread",
+   "match": {
+    "merge_request_iid": "12"
+   }
+  }
+ ],
+ "probe": null
+}

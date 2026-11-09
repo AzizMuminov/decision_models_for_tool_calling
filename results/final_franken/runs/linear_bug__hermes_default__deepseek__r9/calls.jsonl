@@ -1,0 +1,21 @@
+{"t": 1794114395.537207, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794114406.736143, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "finance-export"}, "ok": false}
+{"t": 1794114407.7434087, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794114412.9370735, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794114413.9454725, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "finance-export"}, "ok": true}
+{"t": 1794114417.2971451, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794114428.2893567, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794114430.3373187, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794114444.24885, "kind": "call", "tool": "github_search_code", "args": {"query": "to_csv repo:acme/finance-export"}, "ok": true}
+{"t": 1794114445.2562807, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "finance-export"}, "ok": true}
+{"t": 1794114446.427982, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794114447.5116377, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794114449.8615918, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794114452.3289237, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794114453.3398154, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794114455.6093245, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794114457.841945, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "a41e0c9d-77"}, "ok": true}
+{"t": 1794114462.8981607, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794114474.731091, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-bogus-99"}, "ok": true}
+{"t": 1794114477.5525768, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794114479.8166811, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}

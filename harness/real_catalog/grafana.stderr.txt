@@ -1,0 +1,3 @@
+time=2026-11-05T05:11:09.669Z level=INFO msg="Starting Grafana MCP server using stdio transport" version=v1.6.3
+time=2026-11-05T05:11:09.669Z level=INFO msg="Using Grafana configuration" url=http://127.0.0.1:9 api_key_set=true basic_auth_set=false org_id=0 extra_headers_count=0
+time=2026-11-05T05:11:09.669Z level=WARN msg="Failed to fetch frontend settings" error="Get \"http://127.0.0.1:9/api/frontend/settings\": dial tcp 127.0.0.1:9: connect: connection refused"

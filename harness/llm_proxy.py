@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import os
 import time
 
@@ -23,6 +24,8 @@ from starlette.routing import Route
 UPSTREAM = "https://openrouter.ai/api/v1"
 ALLOWED: set[str] = set()
 LOG = "/dev/null"
+PIN: dict[str, list[str]] = {}  # --pin-provider: model=provider[|provider] pairs (or a bare provider for all models), no fallbacks
+TEMP = None  # --temperature: forced sampling temperature (plus a fixed seed)
 client = httpx.AsyncClient(timeout=httpx.Timeout(300, connect=30))  # honours the container's HTTPS proxy
 
 
@@ -40,16 +43,31 @@ async def chat(request: Request):
     if model not in ALLOWED:
         log(event="blocked", model=model)
         return JSONResponse({"error": {"message": f"model {model} not allowed by the sandbox proxy"}}, status_code=403)
+    if PIN or TEMP is not None:  # variance control: one fixed backend, fixed sampling (see --pin-provider / --temperature)
+        b = json.loads(body)
+        pin = PIN.get(model) or PIN.get("*")
+        if pin:
+            b["provider"] = {"order": pin, "allow_fallbacks": False}
+        if TEMP is not None:
+            b["temperature"] = TEMP
+            b.setdefault("seed", 7)
+        body = json.dumps(b).encode()
     headers = {"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}", "Content-Type": "application/json"}
     req = client.build_request("POST", f"{UPSTREAM}/chat/completions", content=body, headers=headers)
     resp = await client.send(req, stream=True)
     log(event="forward", model=model, status=resp.status_code)
 
     async def relay():
+        seen = None
         try:
             async for chunk in resp.aiter_raw():
+                if seen is None:
+                    m = re.search(rb'"provider"\s*:\s*"([^"]+)"', chunk)
+                    if m:
+                        seen = m.group(1).decode()
                 yield chunk
         finally:
+            log(event="served_by", model=model, provider=seen)
             await resp.aclose()
 
     passthrough = {k: v for k, v in resp.headers.items() if k.lower() in ("content-type", "cache-control")}
@@ -69,7 +87,13 @@ if __name__ == "__main__":
     ap.add_argument("--port", type=int, default=18080)
     ap.add_argument("--models", required=True)
     ap.add_argument("--log", default="/dev/null")
+    ap.add_argument("--pin-provider", default="", help="comma-separated OpenRouter providers to use, without fallbacks")
+    ap.add_argument("--temperature", type=float, default=None)
     a = ap.parse_args()
     ALLOWED.update(a.models.split(","))
     LOG = a.log
+    for item in filter(None, a.pin_provider.split(",")):
+        m, _, prov = item.rpartition("=")
+        PIN[m or "*"] = prov.split("|")
+    TEMP = a.temperature
     uvicorn.run(app, host="127.0.0.1", port=a.port, log_level="warning")

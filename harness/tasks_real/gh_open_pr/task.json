@@ -1,0 +1,82 @@
+{
+ "id": "gh_open_pr",
+ "category": "single",
+ "prompt": "Fix the bug described in issue #57 of acme/catalog. Then push your fix to a new branch named `fix/pagination-57` and open a pull request against `main`. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_issue_read"
+  ],
+  [
+   "github_create_branch",
+   "github_push_files",
+   "github_create_or_update_file"
+  ],
+  [
+   "github_create_pull_request"
+  ]
+ ],
+ "gold": [
+  [
+   "github_issue_read",
+   {
+    "method": "get",
+    "owner": "acme",
+    "repo": "catalog",
+    "issue_number": 57
+   }
+  ],
+  [
+   "github_create_branch",
+   {
+    "owner": "acme",
+    "repo": "catalog",
+    "branch": "fix/pagination-57"
+   }
+  ],
+  [
+   "github_push_files",
+   {
+    "owner": "acme",
+    "repo": "catalog",
+    "branch": "fix/pagination-57",
+    "message": "Fix pagination",
+    "files": [
+     {
+      "path": "catalog/pager.py",
+      "content": "..."
+     }
+    ]
+   }
+  ],
+  [
+   "github_create_pull_request",
+   {
+    "owner": "acme",
+    "repo": "catalog",
+    "title": "Fix pagination (#57)",
+    "head": "fix/pagination-57",
+    "base": "main"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": [
+    "github_push_files",
+    "github_create_or_update_file"
+   ],
+   "match": {
+    "branch": "fix/pagination-57",
+    "_any": "pager.py"
+   }
+  },
+  {
+   "tool": "github_create_pull_request",
+   "match": {
+    "head": "fix/pagination-57",
+    "base": "main"
+   }
+  }
+ ],
+ "probe": null
+}

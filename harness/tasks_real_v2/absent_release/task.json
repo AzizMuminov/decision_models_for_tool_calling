@@ -1,0 +1,23 @@
+{
+ "id": "absent_release",
+ "category": "absent",
+ "prompt": "Pin SDK_VERSION in sdk/version.py to the newest release of acme/ghost-sdk (without the leading `v`). If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [],
+ "gold": [
+  [
+   "github_get_latest_release",
+   {
+    "owner": "acme",
+    "repo": "ghost-sdk"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "sdk/version.py",
+  "name": "SDK_VERSION",
+  "expected": null,
+  "original": "1.2.0",
+  "todo_file": "sdk/version.py"
+ }
+}

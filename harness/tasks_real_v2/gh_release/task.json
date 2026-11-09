@@ -1,0 +1,28 @@
+{
+ "id": "gh_release",
+ "category": "single",
+ "prompt": "We are behind on the ledger API. Point API_VERSION in client/version.py at the newest published ledger-api release (without the leading `v`). If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_get_latest_release",
+   "github_list_releases",
+   "github_list_tags"
+  ]
+ ],
+ "gold": [
+  [
+   "github_get_latest_release",
+   {
+    "owner": "acme",
+    "repo": "ledger-api"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "client/version.py",
+  "name": "API_VERSION",
+  "expected": "4.12.1",
+  "original": "4.9.0"
+ }
+}

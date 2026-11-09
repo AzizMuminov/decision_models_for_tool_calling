@@ -1,0 +1,29 @@
+{"t": 1794118209.298393, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "export", "limit": 20, "period": "30d"}, "ok": true}
+{"t": 1794118211.5087457, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}
+{"t": 1794118212.5164738, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "is:unresolved", "limit": 25, "organizationSlug": "acme", "period": "30d", "sort": "new"}, "ok": true}
+{"t": 1794118215.6648312, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {}, "ok": false}
+{"t": 1794118217.6644526, "kind": "call", "tool": "mongodb_connect", "args": {"connectionName": "shop-prod", "connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop"}, "ok": true}
+{"t": 1794118218.6714702, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "list projects organizations"}, "ok": true}
+{"t": 1794118220.9112985, "kind": "call", "tool": "mongodb_list-databases", "args": {"connectionId": "prod-shop-a1b2"}, "ok": true}
+{"t": 1794118221.9221048, "kind": "call", "tool": "mongodb_find", "args": {"connectionId": "prod-shop-a1b2", "collection": "orders", "database": "shop", "limit": 5, "sort": {"_id": -1}}, "ok": true}
+{"t": 1794118224.9709504, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 20, "sort": {"created_at": -1}}, "ok": true}
+{"t": 1794118225.9791212, "kind": "call", "tool": "mongodb_count", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {}}, "ok": true}
+{"t": 1794118232.8208508, "kind": "call", "tool": "github_search_commits", "args": {"query": "order schema export parse", "repo": "acme/shop-export"}, "ok": true}
+{"t": 1794118233.8279161, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "orders schema export"}, "ok": true}
+{"t": 1794118238.258989, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "shop-export"}, "ok": true}
+{"t": 1794118239.2671428, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "repo": "shop-export"}, "ok": true}
+{"t": 1794118246.9498582, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794118247.9588773, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "order schema"}, "ok": true}
+{"t": 1794118250.4142792, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794118251.422575, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794118253.9509954, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794118254.9583383, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794118261.8661861, "kind": "call", "tool": "mongodb_list-collections", "args": {"connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794118262.8737552, "kind": "call", "tool": "mongodb_collection-schema", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794118270.1712701, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"customer_email": {"$exists": true}}, "limit": 10}, "ok": true}
+{"t": 1794118271.1805317, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"customer": {"$exists": true}}, "limit": 10}, "ok": true}
+{"t": 1794118276.4344327, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "query": "order"}, "ok": true}
+{"t": 1794118277.4416206, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "order schema export"}, "ok": true}
+{"t": 1794118279.679388, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "find organizations projects list"}, "ok": true}
+{"t": 1794118284.3142946, "kind": "call", "tool": "mongodb_find", "args": {"collection": "customers", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 5}, "ok": true}
+{"t": 1794118285.3217533, "kind": "call", "tool": "mongodb_collection-schema", "args": {"collection": "customers", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": false}

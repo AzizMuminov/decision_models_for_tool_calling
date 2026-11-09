@@ -1,0 +1,25 @@
+{"t": 1794108042.4899445, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108053.5558424, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "finance-export"}, "ok": false}
+{"t": 1794108055.4966285, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794108056.5046546, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "finance"}, "ok": true}
+{"t": 1794108065.070214, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794108066.0782323, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "finance export CSV"}, "ok": true}
+{"t": 1794108068.1895418, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794108080.2165546, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794108082.584061, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108083.6888785, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108085.2745044, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108086.2340677, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108089.1861424, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77", "limit": 10}, "ok": true}
+{"t": 1794108091.9788592, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "states": ["In Review"]}, "ok": true}
+{"t": 1794108095.2116306, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794108096.6641033, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794108104.0360665, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794108106.5019975, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "In Review"}, "ok": true}
+{"t": 1794108107.4629533, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108114.3993933, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794108118.650576, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "states": ["In Progress"]}, "ok": true}
+{"t": 1794108131.598824, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108132.861285, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108135.6504166, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "definitely-not-a-state"}, "ok": true}
+{"t": 1794108137.1272702, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}

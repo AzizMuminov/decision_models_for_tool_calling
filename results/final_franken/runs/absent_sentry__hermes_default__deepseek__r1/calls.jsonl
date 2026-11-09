@@ -1,0 +1,42 @@
+{"t": 1794105469.700265, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794105470.7135365, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "project:billing-cron is:unresolved"}, "ok": false}
+{"t": 1794105472.5264807, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel": "C07PAYENG01", "limit": 50}, "ok": false}
+{"t": 1794105473.534186, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "billing-cron"}, "ok": true}
+{"t": 1794105474.7489164, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794105475.7568767, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:billing-cron"}, "ok": true}
+{"t": 1794105477.2598822, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794105478.2729003, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794105481.347233, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794105482.3556135, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794105483.3640137, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794105484.37529, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved"}, "ok": true}
+{"t": 1794105488.1467953, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "billing/cron.py", "repo": "billing"}, "ok": true}
+{"t": 1794105489.158566, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "billing cron error", "team": "ENG"}, "ok": true}
+{"t": 1794105491.8365197, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND text ~ \"cron\" ORDER BY created DESC", "max_results": 20}, "ok": true}
+{"t": 1794105494.662769, "kind": "call", "tool": "github_search_repositories", "args": {"query": "billing"}, "ok": true}
+{"t": 1794105498.7002237, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "billing"}, "ok": true}
+{"t": 1794105499.707747, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme billing in:name"}, "ok": true}
+{"t": 1794105502.343035, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "billing-cron", "query": "billing cron error last 14 days"}, "ok": true}
+{"t": 1794105506.110709, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"logql": "{app=~\"billing.*\"} |~ \"(?i)error|exception|traceback\"", "limit": 20, "start": "7d"}, "ok": false}
+{"t": 1794105507.119809, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "billing cron"}, "ok": true}
+{"t": 1794105510.5213315, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794105511.5285037, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794105515.0070424, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 5, "logql": "{namespace=\"prod\"}"}, "ok": false}
+{"t": 1794105516.0143487, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 5, "logql": "{namespace=\"prod\"}", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794105517.230102, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794105522.5089073, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"regex": ".*billing.*", "datasourceUid": "PBFA97CFB590B2093"}, "ok": true}
+{"t": 1794105523.5162604, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "default", "resource_type": "cronjobs"}, "ok": false}
+{"t": 1794105526.2651105, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "default", "resourceType": "cronjobs"}, "ok": false}
+{"t": 1794105527.272545, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "max_results": 20}, "ok": true}
+{"t": 1794105528.2806098, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794105529.9604173, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "namespaces"}, "ok": false}
+{"t": 1794105530.9690948, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"action": "list"}, "ok": false}
+{"t": 1794105537.0304568, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "billing cron"}, "ok": true}
+{"t": 1794105538.0383172, "kind": "call", "tool": "github_search_commits", "args": {"query": "billing cron repo:acme/billing"}, "ok": true}
+{"t": 1794105540.9797878, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "standup"}, "ok": true}
+{"t": 1794105541.9954047, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794105543.0067496, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "billing"}, "ok": true}
+{"t": 1794105548.831124, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved project:billing-cron", "sort": "date"}, "ok": true}
+{"t": 1794105549.839607, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"query": "billing"}, "ok": false}
+{"t": 1794105552.0310884, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:resolved project:billing-cron"}, "ok": true}
+{"t": 1794105553.038406, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "billing cron", "statsPeriod": "14d"}, "ok": true}

@@ -1,0 +1,3 @@
+{"t": 1794113627.6416209, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "rate limits public API"}, "ok": true}
+{"t": 1794113629.944223, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794113632.846078, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"rate limit\" ORDER BY lastModified DESC"}, "ok": true}

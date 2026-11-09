@@ -1,0 +1,18 @@
+{"t": 1794116892.2698865, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "is:unresolved project:ledger-worker", "sort": "newest"}, "ok": false}
+{"t": 1794116893.2814207, "kind": "call", "tool": "github_list_pull_requests", "args": {"repo": "acme/ledger-worker", "state": "all", "per_page": 20}, "ok": false}
+{"t": 1794116894.714894, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved project:ledger-worker", "sort": "newest"}, "ok": false}
+{"t": 1794116895.722315, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "per_page": 20, "repo": "ledger-worker", "state": "all"}, "ok": true}
+{"t": 1794116897.481295, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved project:ledger-worker", "sort": "date"}, "ok": true}
+{"t": 1794116900.6165419, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceType": "issue", "resourceId": "LEDGER-WORKER-9A"}, "ok": true}
+{"t": 1794116901.6245937, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_files", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116904.7584772, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_diff", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116905.768233, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue permalink url"}, "ok": true}
+{"t": 1794116912.4385998, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116913.4465806, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "issue:LEDGER-WORKER-9A", "sort": "date"}, "ok": true}
+{"t": 1794116916.4101355, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issues"}, "ok": true}
+{"t": 1794116920.329495, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "organization slug base url find_organizations"}, "ok": true}
+{"t": 1794116921.336892, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "ledger-worker", "sort": "date"}, "ok": true}
+{"t": 1794116927.405636, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "worker/rates.py", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116928.4145572, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 20, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116946.7233012, "kind": "call", "tool": "github_add_issue_comment", "args": {"body": "Heads-up: this change introduced a production reconciliation bug.\n\nSentry issue LEDGER-WORKER-9A \u2014 \"ReconciliationMismatch: converted totals off by 1 minor unit (expected 1100, got 1099)\" \u2014 first seen in release ledger-worker@2026.11.3, 2,201 events, still unresolved.\nhttps://acme.sentry.io/issues/LEDGER-WORKER-9A/\n\nReplacing Decimal rounding with `int()` truncates the fractional minor unit (e.g. 1099.6 -> 1099) instead of rounding to the nearest minor unit, which breaks reconciliation. Fix in worker/rates.py restores `Decimal(...).quantize(Decimal(\"1\"), rounding=ROUND_HALF_UP)`; with the fix the reported case converts to 1100.", "issue_number": 412, "owner": "acme", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794116948.7689247, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_comments", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}

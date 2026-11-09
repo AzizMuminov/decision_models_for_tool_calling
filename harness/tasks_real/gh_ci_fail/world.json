@@ -1,0 +1,175 @@
+[
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "214",
+   "method": "get_check_runs"
+  },
+  "response": {
+   "total_count": 2,
+   "check_runs": [
+    {
+     "id": 50111,
+     "name": "lint",
+     "status": "completed",
+     "conclusion": "success"
+    },
+    {
+     "id": 50112,
+     "name": "contract-tests",
+     "status": "completed",
+     "conclusion": "failure",
+     "details_url": "https://github.com/acme/payments/actions/runs/9931/job/50112"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "214",
+   "method": "get_status"
+  },
+  "response": {
+   "state": "failure",
+   "statuses": [
+    {
+     "context": "contract-tests",
+     "state": "failure",
+     "target_url": "https://github.com/acme/payments/actions/runs/9931/job/50112"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "214"
+  },
+  "response": {
+   "number": 214,
+   "title": "Switch fee calculation to floats",
+   "state": "open",
+   "head": {
+    "ref": "fees-float",
+    "sha": "3f9ac1e"
+   },
+   "base": {
+    "ref": "main"
+   },
+   "mergeable_state": "blocked"
+  }
+ },
+ {
+  "tool": "github_actions_list",
+  "match": {
+   "repo": "payments",
+   "method": "list_workflow_jobs"
+  },
+  "response": {
+   "total_count": 2,
+   "jobs": [
+    {
+     "id": 50111,
+     "name": "lint",
+     "conclusion": "success"
+    },
+    {
+     "id": 50112,
+     "name": "contract-tests",
+     "conclusion": "failure"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_actions_list",
+  "match": {
+   "repo": "payments"
+  },
+  "response": {
+   "total_count": 2,
+   "workflow_runs": [
+    {
+     "id": 9931,
+     "name": "CI",
+     "head_branch": "fees-float",
+     "event": "pull_request",
+     "status": "completed",
+     "conclusion": "failure",
+     "pull_requests": [
+      {
+       "number": 214
+      }
+     ]
+    },
+    {
+     "id": 9925,
+     "name": "CI",
+     "head_branch": "main",
+     "status": "completed",
+     "conclusion": "success"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_actions_get",
+  "match": {
+   "resource_id": "9931"
+  },
+  "response": {
+   "id": 9931,
+   "name": "CI",
+   "conclusion": "failure",
+   "jobs_url": "https://api.github.com/repos/acme/payments/actions/runs/9931/jobs",
+   "failed_jobs": [
+    {
+     "id": 50112,
+     "name": "contract-tests"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-88"
+  },
+  "response": {
+   "key": "PAY-88",
+   "fields": {
+    "summary": "Card-network fee rounding contract",
+    "status": {
+     "name": "Done"
+    },
+    "description": "Fees must be computed on exact decimal values and rounded HALF-UP to cents (e.g. 2.675 -> 2.68, 1.005 -> 1.01). Binary float rounding is not acceptable."
+   }
+  }
+ },
+ {
+  "tool": "atlassian_jira_search",
+  "match": {
+   "_any": "PAY-88"
+  },
+  "response": {
+   "issues": [
+    {
+     "key": "PAY-88",
+     "summary": "Card-network fee rounding contract",
+     "description": "Fees must be computed on exact decimal values and rounded HALF-UP to cents (2.675 -> 2.68)."
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_get_job_logs",
+  "match": {
+   "_any": [
+    "50112",
+    "9931"
+   ]
+  },
+  "response": "2026-11-04T09:12:01Z ============================= test session starts ==============================\n2026-11-04T09:12:02Z collected 41 items\n2026-11-04T09:12:03Z contract/test_fee_contract.py ....F......\n2026-11-04T09:12:03Z =================================== FAILURES ===================================\n2026-11-04T09:12:03Z ____________________________ test_fee_rounding_contract ____________________________\n2026-11-04T09:12:03Z     def test_fee_rounding_contract():\n2026-11-04T09:12:03Z         # Card-network contract (PAY-88): fees are rounded half-up on exact decimal values.\n2026-11-04T09:12:03Z >       assert fee(2.675) == 2.68\n2026-11-04T09:12:03Z E       assert 2.67 == 2.68\n2026-11-04T09:12:03Z E        +  where 2.67 = fee(2.675)\n2026-11-04T09:12:03Z contract/test_fee_contract.py:18: AssertionError\n2026-11-04T09:12:03Z FAILED contract/test_fee_contract.py::test_fee_rounding_contract - assert 2.67 == 2.68\n2026-11-04T09:12:03Z ========================= 1 failed, 40 passed in 1.92s =========================\n##[error]Process completed with exit code 1.\n"
+ }
+]

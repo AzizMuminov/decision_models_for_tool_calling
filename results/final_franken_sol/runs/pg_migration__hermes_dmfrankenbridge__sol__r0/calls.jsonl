@@ -1,0 +1,2 @@
+{"t": 1794123026.5264812, "kind": "search", "query": "database production schema table columns SQL query", "ranked": ["postgres_query"], "described": ["postgres_query"], "names_only": [], "none": false, "cost": 2.5788e-05, "latency": 0.65, "via": "hermes_bridge", "mech": "dm_franken"}
+{"t": 1794123029.678609, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns WHERE table_name = 'payments' ORDER BY table_schema, ordinal_position;"}, "ok": true}

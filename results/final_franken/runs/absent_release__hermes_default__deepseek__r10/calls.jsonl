@@ -1,0 +1,51 @@
+{"t": 1794115618.156459, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ghost-sdk", "fields": ["tag_name", "name", "published_at", "prerelease", "draft"], "perPage": 50}, "ok": true}
+{"t": 1794115619.1675844, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "repo": "ghost-sdk", "perPage": 50}, "ok": true}
+{"t": 1794115625.469979, "kind": "call", "tool": "gitlab_get_project", "args": {"project_id": "acme/ghost-sdk", "jmespath": "{id: id, path_with_namespace: path_with_namespace, web_url: web_url}"}, "ok": false}
+{"t": 1794115630.6476798, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost-sdk org:acme"}, "ok": true}
+{"t": 1794115631.655037, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "ghost"}, "ok": true}
+{"t": 1794115633.9461064, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost"}, "ok": true}
+{"t": 1794115634.9539106, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme"}, "ok": true}
+{"t": 1794115637.5960789, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794115639.2721536, "kind": "call", "tool": "github_list_releases", "args": {"fields": ["tag_name", "name"], "owner": "acme", "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794115640.2795954, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 20, "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794115645.4515307, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": false}
+{"t": 1794115646.4594553, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794115651.5503242, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115653.559988, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115654.5673313, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794115662.038017, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794115663.0461433, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794115664.8834455, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794115665.8915877, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 100}, "ok": true}
+{"t": 1794115673.5820606, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100}, "ok": true}
+{"t": 1794115677.4986105, "kind": "call", "tool": "github_search_code", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794115679.6107798, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794115680.6176527, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794115688.2031872, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794115692.9994347, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115694.0071862, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115699.109947, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "SDK"}, "ok": true}
+{"t": 1794115700.1178737, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794115705.4730008, "kind": "call", "tool": "github_get_me", "args": {}, "ok": true}
+{"t": 1794115706.484465, "kind": "call", "tool": "github_search_commits", "args": {"query": "acme/ghost-sdk"}, "ok": true}
+{"t": 1794115718.978125, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794115721.72041, "kind": "call", "tool": "sentry_find_projects", "args": {"query": "ghost"}, "ok": false}
+{"t": 1794115725.94544, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme", "query": "ghost"}, "ok": true}
+{"t": 1794115726.953142, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"ghost-sdk\" ORDER BY created DESC", "maxResults": 20}, "ok": true}
+{"t": 1794115733.53949, "kind": "call", "tool": "github_search_repositories", "args": {"query": "sdk"}, "ok": true}
+{"t": 1794115748.9620085, "kind": "call", "tool": "github_list_releases", "args": {"fields": ["tag_name", "name", "published_at"], "owner": "acme", "perPage": 20, "repo": "payments-api"}, "ok": true}
+{"t": 1794115749.96895, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 20, "repo": "payments-api"}, "ok": true}
+{"t": 1794115756.4459476, "kind": "call", "tool": "gitlab_discover_tools", "args": {}, "ok": false}
+{"t": 1794115757.4539247, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "releases list"}, "ok": true}
+{"t": 1794115763.9434574, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794115764.951947, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794115774.520062, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "CHANGELOG.md", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115779.4699779, "kind": "call", "tool": "atlassian_confluence_search", "args": {"cql": "text ~ \"ghost\"", "limit": 25}, "ok": false}
+{"t": 1794115781.8859298, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost"}, "ok": true}
+{"t": 1794115795.9527323, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"name": "find_releases", "arguments": {"organizationSlug": "acme"}}, "ok": true}
+{"t": 1794115796.9635284, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {}, "ok": false}
+{"t": 1794115802.172255, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794115807.2445707, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "does-not-exist-xyz"}, "ok": false}
+{"t": 1794115808.2527866, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "sdk-consumer"}, "ok": false}
+{"t": 1794115812.759865, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "page": 1, "perPage": 100, "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794115813.7677808, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "page": 1, "perPage": 100, "repo": "ghost-sdk"}, "ok": true}

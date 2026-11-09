@@ -1,0 +1,26 @@
+{"t": 1794106291.5399911, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "export parse order", "period": "30d"}, "ok": true}
+{"t": 1794106293.6961577, "kind": "call", "tool": "mongodb_connect", "args": {"connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop"}, "ok": true}
+{"t": 1794106294.7041323, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "90d", "query": "is:unresolved"}, "ok": true}
+{"t": 1794106296.0036876, "kind": "call", "tool": "mongodb_list-databases", "args": {"connectionId": "prod-shop-a1b2"}, "ok": true}
+{"t": 1794106298.091729, "kind": "call", "tool": "mongodb_list-collections", "args": {"connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794106299.7710469, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 5, "sort": {"_id": -1}}, "ok": true}
+{"t": 1794106300.7798045, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 5, "sort": {"_id": 1}}, "ok": true}
+{"t": 1794106304.8159263, "kind": "call", "tool": "mongodb_count", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794106305.8247957, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {}, "limit": 50}, "ok": true}
+{"t": 1794106314.4995, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "export order parse"}, "ok": true}
+{"t": 1794106315.5070045, "kind": "call", "tool": "github_search_code", "args": {"query": "customer_email repo:acme/shop-export"}, "ok": true}
+{"t": 1794106317.2815657, "kind": "call", "tool": "mongodb_find", "args": {"collection": "customers", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 10}, "ok": true}
+{"t": 1794106319.7427318, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "order export"}, "ok": true}
+{"t": 1794106321.955132, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "order schema export"}, "ok": true}
+{"t": 1794106327.9362075, "kind": "call", "tool": "mongodb_find", "args": {"collection": "customers", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 3, "projection": {}}, "ok": true}
+{"t": 1794106328.8766558, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794106332.3738668, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794106333.3821938, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794106338.550453, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {}, "ok": false}
+{"t": 1794106341.279663, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794106342.3452466, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794106350.2948885, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"customer": {"$exists": true}}, "limit": 10}, "ok": true}
+{"t": 1794106352.8209095, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "shop-export"}, "ok": true}
+{"t": 1794106364.7011638, "kind": "call", "tool": "notion_API-post-search", "args": {}, "ok": true}
+{"t": 1794106368.3680305, "kind": "call", "tool": "mongodb_find", "args": {"collection": "inventory", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 3}, "ok": true}
+{"t": 1794106369.375102, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 10, "projection": {"customer": 1, "customer_email": 1, "total": 1, "currency": 1, "created_at": 1}}, "ok": true}

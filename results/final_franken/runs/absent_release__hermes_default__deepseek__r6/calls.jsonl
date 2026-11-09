@@ -1,0 +1,21 @@
+{"t": 1794110718.2060752, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794110719.2166884, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794110725.2418432, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794110729.878283, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "ghost-sdk"}, "ok": true}
+{"t": 1794110731.2754657, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794110732.282432, "kind": "call", "tool": "github_search_code", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794110736.1531694, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "ghost-sdk", "path": "/"}, "ok": true}
+{"t": 1794110737.16375, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794110748.9421747, "kind": "call", "tool": "gitlab_get_project", "args": {"project": "acme/ghost-sdk"}, "ok": false}
+{"t": 1794110749.9510043, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794110751.5158834, "kind": "call", "tool": "gitlab_get_project", "args": {"project_id": "acme/ghost-sdk"}, "ok": false}
+{"t": 1794110752.5239038, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794110754.4189312, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794110757.5701342, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794110758.5775554, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794110760.5945008, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794110761.6070619, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794110770.426194, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"ghost-sdk\"", "limit": 20}, "ok": true}
+{"t": 1794110771.7610052, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": false}
+{"t": 1794110779.9259708, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 100, "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794110780.9343839, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "ghost-sdk"}, "ok": true}

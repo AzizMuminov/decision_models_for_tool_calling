@@ -1,0 +1,1 @@
+{"t": 1794123851.1582174, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ledger-api"}, "ok": true}

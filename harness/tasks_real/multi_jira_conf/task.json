@@ -1,0 +1,47 @@
+{
+ "id": "multi_jira_conf",
+ "category": "multi",
+ "prompt": "Implement Jira ticket PAY-530 using the design document linked from the ticket, then comment on the ticket with a one-line summary of what you implemented. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "atlassian_jira_get_issue"
+  ],
+  [
+   "atlassian_confluence_get_page",
+   "atlassian_confluence_search"
+  ],
+  [
+   "atlassian_jira_add_comment"
+  ]
+ ],
+ "gold": [
+  [
+   "atlassian_jira_get_issue",
+   {
+    "issue_key": "PAY-530"
+   }
+  ],
+  [
+   "atlassian_confluence_get_page",
+   {
+    "page_id": "902117"
+   }
+  ],
+  [
+   "atlassian_jira_add_comment",
+   {
+    "issue_key": "PAY-530",
+    "body": "Implemented refund policy v3"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "atlassian_jira_add_comment",
+   "match": {
+    "issue_key": "PAY-530"
+   }
+  }
+ ],
+ "probe": null
+}

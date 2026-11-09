@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: report-builder
+spec:
+  template:
+    spec:
+      containers:
+        - name: builder
+          image: acme/report-builder:2026.10
+          resources:
+            limits:
+              memory: 1024Mi

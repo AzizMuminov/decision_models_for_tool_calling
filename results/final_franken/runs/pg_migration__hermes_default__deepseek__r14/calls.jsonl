@@ -1,0 +1,18 @@
+{"t": 1794119327.8790095, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name, column_name, data_type from information_schema.columns where table_name ilike '%payment%' order by table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794119328.8944345, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments-db", "recursive": true}, "ok": false}
+{"t": 1794119332.3599317, "kind": "call", "tool": "postgres_query", "args": {"sql": "select n.nspname as schema, c.relname as table_name, c.relkind from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind in ('r','p') and n.nspname not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794119337.9957614, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_name from information_schema.tables where table_schema='public'"}, "ok": true}
+{"t": 1794119347.4427636, "kind": "call", "tool": "gitlab_search_repositories", "args": {"per_page": 100, "search": "payments-db"}, "ok": true}
+{"t": 1794119353.8313553, "kind": "call", "tool": "postgres_query", "args": {"sql": "select 1 as x"}, "ok": true}
+{"t": 1794119354.8383183, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-db org:acme"}, "ok": true}
+{"t": 1794119358.1884694, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments in:name org:acme"}, "ok": true}
+{"t": 1794119359.1957908, "kind": "call", "tool": "github_search_code", "args": {"query": "created_ts org:acme"}, "ok": true}
+{"t": 1794119363.7718456, "kind": "call", "tool": "postgres_query", "args": {"sql": "select n.nspname as schema_name, c.relname as table_name from pg_class c join pg_namespace n on n.oid = c.relnamespace where c.relkind = 'r' and n.nspname not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794119367.790919, "kind": "call", "tool": "github_search_code", "args": {"query": "\"merchant_ref\" payments"}, "ok": true}
+{"t": 1794119374.0715983, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "payments table schema merchant_ref created_ts"}, "ok": true}
+{"t": 1794119375.0795157, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 20, "query": "payments"}, "ok": true}
+{"t": 1794119381.1662233, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from definitely_not_a_table_xyz limit 1"}, "ok": true}
+{"t": 1794119384.2887645, "kind": "call", "tool": "postgres_query", "args": {"sql": "select column_name, data_type from information_schema.columns where table_schema='public' and table_name='payments' order by ordinal_position"}, "ok": true}
+{"t": 1794119387.762272, "kind": "call", "tool": "postgres_query", "args": {"sql": "select indexname, indexdef from pg_indexes where schemaname='public' and tablename='payments'"}, "ok": true}
+{"t": 1794119391.160613, "kind": "call", "tool": "postgres_query", "args": {"sql": "select column_name, data_type from information_schema.columns where table_schema='public' and table_name='orders' order by ordinal_position"}, "ok": true}
+{"t": 1794119397.5943701, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 100}, "ok": true}

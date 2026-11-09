@@ -1,0 +1,7 @@
+{"t": 1794114531.9627686, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794114532.9736102, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794114534.0073323, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"schedule_id": "SBM7DV7BKFUYU"}, "ok": false}
+{"t": 1794114535.415409, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794114538.9202235, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794114541.778372, "kind": "call", "tool": "grafana_list_oncall_users", "args": {}, "ok": true}
+{"t": 1794114551.2773435, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "payments on-call"}, "ok": true}

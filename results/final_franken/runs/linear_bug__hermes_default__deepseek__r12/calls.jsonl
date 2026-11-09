@@ -1,0 +1,14 @@
+{"t": 1794117863.8978548, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "ENG-77", "include": "comments,remote_links,transitions", "fields": "*all", "comment_limit": 50, "use_display_names": true}, "ok": false}
+{"t": 1794117867.6680791, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794117885.8089032, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794117886.81629, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "finance-export"}, "ok": true}
+{"t": 1794117894.4025793, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794117895.411025, "kind": "call", "tool": "linear_getAttachments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794117911.4629457, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794117919.2433612, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794117921.3813279, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794117922.4732246, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794117924.4258537, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794117925.5790699, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794117928.214102, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794117929.221882, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}

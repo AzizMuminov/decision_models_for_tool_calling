@@ -1,0 +1,11 @@
+{"t": 1794117025.6958776, "kind": "call", "tool": "github_search_code", "args": {"perPage": 30, "query": "SUPPORTED_CURRENCIES"}, "ok": true}
+{"t": 1794117028.9040394, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "currencies.yaml", "repo": "platform-config"}, "ok": true}
+{"t": 1794117031.6607363, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "platform-config", "fields": ["name", "path", "type"]}, "ok": true}
+{"t": 1794117032.670164, "kind": "call", "tool": "github_search_commits", "args": {"perPage": 10, "query": "currencies repo:acme/platform-config"}, "ok": true}
+{"t": 1794117034.4273655, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "platform-config"}, "ok": true}
+{"t": 1794117038.3250847, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "ref": "refs/heads/main", "repo": "platform-config"}, "ok": true}
+{"t": 1794117039.3353426, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "path": "currencies.yaml", "perPage": 20, "repo": "platform-config"}, "ok": true}
+{"t": 1794117041.712791, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "supported_currencies"}, "ok": true}
+{"t": 1794117042.7201598, "kind": "call", "tool": "gitlab_search_repositories", "args": {"perPage": 20, "query": "currency"}, "ok": true}
+{"t": 1794117047.9125102, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "shop", "repo": "shop"}, "ok": true}
+{"t": 1794117049.8355029, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "countries.yaml", "repo": "platform-config"}, "ok": true}

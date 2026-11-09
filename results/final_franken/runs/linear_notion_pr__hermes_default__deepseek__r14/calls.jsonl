@@ -1,0 +1,43 @@
+{"t": 1794119793.7147186, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "ENG-91", "include": "comments,remote_links", "comment_limit": 20}, "ok": false}
+{"t": 1794119794.72666, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "API guidelines", "limit": 20}, "ok": true}
+{"t": 1794119795.7372952, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "public-api", "path": "/", "ref": "main"}, "ok": true}
+{"t": 1794119804.065569, "kind": "call", "tool": "github_search_repositories", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794119807.1534424, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-91"}, "ok": true}
+{"t": 1794119808.1638687, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "API guidelines"}, "ok": true}
+{"t": 1794119815.5390437, "kind": "call", "tool": "notion_API-get-block-children", "args": {"block_id": "5e6f-guidelines", "page_size": 100}, "ok": true}
+{"t": 1794119830.8876672, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "ref": "main", "repo": "public-api"}, "ok": true}
+{"t": 1794119831.8952615, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "main", "repo": "public-api"}, "ok": true}
+{"t": 1794119838.1678796, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794119846.5350184, "kind": "call", "tool": "github_get_me", "args": {}, "ok": true}
+{"t": 1794119847.5424185, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794119848.5501394, "kind": "call", "tool": "github_get_teams", "args": {}, "ok": true}
+{"t": 1794119855.143561, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme public-api"}, "ok": true}
+{"t": 1794119856.1525784, "kind": "call", "tool": "github_search_commits", "args": {"query": "repo:acme/public-api deprecation_headers"}, "ok": true}
+{"t": 1794119858.6071749, "kind": "call", "tool": "github_search_code", "args": {"query": "deprecation_headers repo:acme/public-api"}, "ok": true}
+{"t": 1794119859.6156304, "kind": "call", "tool": "github_search_code", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794119869.1255686, "kind": "call", "tool": "github_list_branches", "args": {"owner": "octocat", "repo": "Hello-World"}, "ok": true}
+{"t": 1794119870.133351, "kind": "call", "tool": "github_create_branch", "args": {"owner": "acme", "repo": "public-api", "branch": "eng-91", "from_branch": "main"}, "ok": true}
+{"t": 1794119878.2245173, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "deprecation"}, "ok": true}
+{"t": 1794119879.2324636, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "Sunset"}, "ok": true}
+{"t": 1794119880.2397885, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "API"}, "ok": true}
+{"t": 1794119893.336005, "kind": "call", "tool": "linear_getComments", "args": {"id": "ENG-91"}, "ok": false}
+{"t": 1794119894.34419, "kind": "call", "tool": "linear_getAttachments", "args": {"id": "ENG-91"}, "ok": false}
+{"t": 1794119895.3522124, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "eng-91", "repo": "public-api"}, "ok": true}
+{"t": 1794119899.636136, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-91", "limit": 50}, "ok": false}
+{"t": 1794119900.6461706, "kind": "call", "tool": "linear_getAttachments", "args": {"issueId": "ENG-91", "limit": 50}, "ok": false}
+{"t": 1794119916.557, "kind": "call", "tool": "github_create_or_update_file", "args": {"branch": "eng-91", "content": "def deprecation_headers(sunset_date: str) -> dict:\n    return {\n        \"Deprecation\": \"true\",\n        \"Sunset\": sunset_date,\n        \"Link\": '<https://developer.acme.example/migrate>; rel=\"deprecation\"',\n    }\n", "message": "ENG-91: add deprecation headers to v1 endpoints", "owner": "acme", "path": "api/headers.py", "repo": "public-api"}, "ok": true}
+{"t": 1794119921.5496747, "kind": "call", "tool": "github_create_pull_request", "args": {"base": "main", "body": "Implements `api.headers.deprecation_headers(sunset_date)` per the Deprecation section of the API guidelines in Notion.\n\nReturns the following headers for deprecated v1 endpoints:\n- `Deprecation: true`\n- `Sunset: <HTTP-date>` (the `sunset_date` argument)\n- `Link: <https://developer.acme.example/migrate>; rel=\"deprecation\"`\n\nLinear: ENG-91", "head": "eng-91", "owner": "acme", "repo": "public-api", "title": "ENG-91: Add deprecation headers to v1 endpoints"}, "ok": true}
+{"t": 1794119922.5567274, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "eng-91", "repo": "public-api"}, "ok": true}
+{"t": 1794119925.1386476, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794119926.148326, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794119957.152669, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "guidelines"}, "ok": true}
+{"t": 1794119958.1600778, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": "engineering"}, "ok": true}
+{"t": 1794119961.0649831, "kind": "call", "tool": "notion_API-retrieve-a-block", "args": {"block_id": "5e6f-guidelines"}, "ok": false}
+{"t": 1794119970.6174314, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/public-api head:eng-91"}, "ok": true}
+{"t": 1794119998.6119976, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"deprecation\""}, "ok": true}
+{"t": 1794119999.6198385, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"API guidelines\""}, "ok": true}
+{"t": 1794120000.6285324, "kind": "call", "tool": "notion_API-get-block-children", "args": {"block_id": "5e6f-guidelines", "page_size": 1}, "ok": true}
+{"t": 1794120009.1647515, "kind": "call", "tool": "github_pull_request_read", "args": {"owner": "acme", "pullNumber": 1, "repo": "public-api"}, "ok": false}
+{"t": 1794120012.2636795, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "owner": "acme", "pullNumber": 1, "repo": "public-api"}, "ok": true}
+{"t": 1794120028.9804287, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "refs/heads/eng-91", "repo": "public-api"}, "ok": true}
+{"t": 1794120029.9892082, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "refs/heads/main", "repo": "public-api"}, "ok": true}

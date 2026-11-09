@@ -1,0 +1,2 @@
+{"t": 1794123918.6454706, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list", "detailed": true}, "ok": true}
+{"t": 1794123920.3366978, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resourceType": "pods", "name": "report-builder", "namespace": "reports", "context": "prod-eu-1"}, "ok": true}

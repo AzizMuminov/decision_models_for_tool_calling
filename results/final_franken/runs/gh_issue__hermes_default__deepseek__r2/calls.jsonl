@@ -1,0 +1,6 @@
+{"t": 1794106873.5851412, "kind": "call", "tool": "gitlab_get_issue", "args": {"project_id": "acme/payments", "issue_iid": 301}, "ok": false}
+{"t": 1794106874.9917684, "kind": "call", "tool": "gitlab_get_issue", "args": {"issue_iid": "301", "project_id": "acme/payments"}, "ok": false}
+{"t": 1794106878.2321131, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794106883.6051466, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794106885.5167537, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794106886.5186937, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments"}, "ok": true}

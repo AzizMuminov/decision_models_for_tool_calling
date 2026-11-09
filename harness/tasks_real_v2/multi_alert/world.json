@@ -1,0 +1,68 @@
+[
+ {
+  "tool": "grafana_list_alert_groups",
+  "response": [
+   {
+    "id": "AG-7731",
+    "title": "[FIRING] PaymentGatewayErrors checkout",
+    "state": "firing",
+    "labels": {
+     "service": "checkout",
+     "severity": "critical"
+    },
+    "summary": "Gateway 4xx rate 38% for service=checkout since 07:41 UTC. See logs for gateway error bodies."
+   }
+  ]
+ },
+ {
+  "tool": "grafana_get_alert_group",
+  "match": {
+   "_any": "7731"
+  },
+  "response": {
+   "id": "AG-7731",
+   "title": "[FIRING] PaymentGatewayErrors checkout",
+   "labels": {
+    "service": "checkout"
+   },
+   "summary": "Gateway 4xx rate 38% for service=checkout since 07:41 UTC. See Loki logs app=checkout for the gateway error bodies."
+  }
+ },
+ {
+  "tool": "grafana_query_loki_logs",
+  "match": {
+   "datasourceUid": "P8E80F9AEF21F6940",
+   "logql": "checkout"
+  },
+  "response": [
+   {
+    "timestamp": "2026-11-05T07:41:03Z",
+    "line": "WARN gateway rejected charge status=400 body={\"error\":\"invalid_amount\",\"message\":\"amount must be an integer in minor units (cents), got 12.34\"}"
+   },
+   {
+    "timestamp": "2026-11-05T07:41:05Z",
+    "line": "INFO gateway api version switched to 2026-11 (strict amounts)"
+   }
+  ]
+ },
+ {
+  "tool": "grafana_query_loki_logs",
+  "response": {
+   "error": "datasource not found or not a Loki datasource"
+  }
+ },
+ {
+  "tool": "grafana_find_error_pattern_logs",
+  "match": {
+   "_any": "checkout"
+  },
+  "response": {
+   "patterns": [
+    {
+     "pattern": "gateway rejected charge status=400 invalid_amount: amount must be an integer in minor units (cents), got <_>",
+     "count": 9124
+    }
+   ]
+  }
+ }
+]

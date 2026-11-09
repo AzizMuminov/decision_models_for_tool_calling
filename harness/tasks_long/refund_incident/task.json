@@ -1,0 +1,195 @@
+{
+ "id": "refund_incident",
+ "category": "long",
+ "prompt": "Finance reports that some customers were refunded twice since yesterday's refunds-api deploy. Handle this incident end to end: find the cause, fix it in this repository, and follow our incident process. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "sentry_search_issues",
+   "sentry_search_events"
+  ],
+  [
+   "sentry_get_sentry_resource"
+  ],
+  [
+   "atlassian_jira_get_issue",
+   "atlassian_jira_search"
+  ],
+  [
+   "atlassian_confluence_get_page",
+   "atlassian_confluence_search"
+  ],
+  [
+   "github_pull_request_read",
+   "github_get_commit",
+   "github_search_pull_requests",
+   "github_list_pull_requests"
+  ],
+  [
+   "notion_API-post-search"
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   "notion_API-get-block-children",
+   "notion_API-retrieve-a-page"
+  ],
+  [
+   "postgres_query"
+  ],
+  [
+   "grafana_get_current_oncall_users",
+   "grafana_get_oncall_shift"
+  ],
+  [
+   "slack_post_message"
+  ],
+  [
+   "github_add_issue_comment",
+   "github_pull_request_review_write",
+   "github_add_reply_to_pull_request_comment"
+  ],
+  [
+   "atlassian_jira_transition_issue"
+  ],
+  [
+   "sentry_update_issue"
+  ]
+ ],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "refunds-api",
+    "query": "is:unresolved"
+   }
+  ],
+  [
+   "sentry_get_sentry_resource",
+   {
+    "resourceType": "issue",
+    "resourceId": "REFUNDS-API-5D",
+    "organizationSlug": "acme"
+   }
+  ],
+  [
+   "atlassian_jira_get_issue",
+   {
+    "issue_key": "PAY-1432"
+   }
+  ],
+  [
+   "atlassian_confluence_get_page",
+   {
+    "page_id": "771204"
+   }
+  ],
+  [
+   "github_pull_request_read",
+   {
+    "method": "get",
+    "owner": "acme",
+    "repo": "refunds-api",
+    "pullNumber": 588
+   }
+  ],
+  [
+   "notion_API-post-search",
+   {
+    "query": "incident process"
+   }
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   {
+    "page_id": "7e9f-incident-process"
+   }
+  ],
+  [
+   "postgres_query",
+   {
+    "sql": "select count(distinct customer_id) from refund_payouts group by refund_id having count(*) > 1"
+   }
+  ],
+  [
+   "grafana_get_current_oncall_users",
+   {
+    "scheduleId": "SBM7DV7BKFUYU"
+   }
+  ],
+  [
+   "slack_post_message",
+   {
+    "channel_id": "C07INCID003",
+    "text": "refunds-api double payouts fixed; 37 customers affected; on call: rnakamura"
+   }
+  ],
+  [
+   "github_add_issue_comment",
+   {
+    "owner": "acme",
+    "repo": "refunds-api",
+    "issue_number": 588,
+    "body": "Caused https://acme.sentry.io/issues/REFUNDS-API-5D"
+   }
+  ],
+  [
+   "atlassian_jira_transition_issue",
+   {
+    "issue_key": "PAY-1432",
+    "transition_id": "31"
+   }
+  ],
+  [
+   "sentry_update_issue",
+   {
+    "organizationSlug": "acme",
+    "issueId": "REFUNDS-API-5D",
+    "status": "resolved"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "slack_post_message",
+   "match": {
+    "channel_id": [
+     "C07INCID003",
+     "incidents"
+    ],
+    "text": "37",
+    "_any": [
+     "nakamura"
+    ]
+   }
+  },
+  {
+   "tool": [
+    "github_add_issue_comment",
+    "github_pull_request_review_write",
+    "github_add_reply_to_pull_request_comment"
+   ],
+   "match": {
+    "_any": "588",
+    "body": [
+     "5D",
+     "sentry"
+    ]
+   }
+  },
+  {
+   "tool": "atlassian_jira_transition_issue",
+   "match": {
+    "issue_key": "PAY-1432",
+    "transition_id": "31"
+   }
+  },
+  {
+   "tool": "sentry_update_issue",
+   "match": {
+    "_any": "5D",
+    "status": "resolved"
+   }
+  }
+ ],
+ "probe": null
+}

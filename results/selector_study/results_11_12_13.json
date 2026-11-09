@@ -1,0 +1,53 @@
+[
+ {
+  "variant": "11 3 + 'which tools are relevant' prompt",
+  "hand_hit1": 0.8833333333333333,
+  "hand_hit5": 0.9833333333333333,
+  "hand_hit15": 0.9916666666666667,
+  "false_none": 0,
+  "true_none": 0,
+  "agent_cov5": 0.831875,
+  "agent_cov15": 0.855625,
+  "agent_all15": 0.785,
+  "named_top1": 0.98,
+  "gitfam_top1": 0.97,
+  "named_in15": 0.9885714285714285,
+  "usd_per_1k": 0.19501300884955752,
+  "new_spend": 0.13441507799999994,
+  "secs": 37.57469463348389
+ },
+ {
+  "variant": "12 3 + best-serves & expert-first interleaved",
+  "hand_hit1": 0.9166666666666666,
+  "hand_hit5": 0.9833333333333333,
+  "hand_hit15": 1,
+  "false_none": 0,
+  "true_none": 0,
+  "agent_cov5": 0.8304166666666667,
+  "agent_cov15": 0.858125,
+  "agent_all15": 0.7875,
+  "named_top1": 0.98,
+  "gitfam_top1": 0.97,
+  "named_in15": 0.9885714285714285,
+  "usd_per_1k": 0.36484513274336283,
+  "new_spend": 0.0,
+  "secs": 0.4737560749053955
+ },
+ {
+  "variant": "13 3 + best-serves & relevant interleaved",
+  "hand_hit1": 0.9166666666666666,
+  "hand_hit5": 0.9833333333333333,
+  "hand_hit15": 0.9916666666666667,
+  "false_none": 0,
+  "true_none": 0,
+  "agent_cov5": 0.8322916666666667,
+  "agent_cov15": 0.8589583333333334,
+  "agent_all15": 0.7875,
+  "named_top1": 0.98,
+  "gitfam_top1": 0.97,
+  "named_in15": 0.9885714285714285,
+  "usd_per_1k": 0.3647959115044248,
+  "new_spend": 0.0,
+  "secs": 0.5070798397064209
+ }
+]

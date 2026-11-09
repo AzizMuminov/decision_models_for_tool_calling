@@ -1,0 +1,7 @@
+{"t": 1794122644.94071, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794122655.7570763, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794122658.343514, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794122659.3508844, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794122667.164724, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794122668.5770075, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794122673.0875068, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77", "states": ["In Review"]}, "ok": true}

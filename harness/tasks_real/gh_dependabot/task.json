@@ -1,0 +1,23 @@
+{
+ "id": "gh_dependabot",
+ "category": "single",
+ "prompt": "Resolve the open Dependabot alerts for acme/payments by updating the pins in requirements.txt to the patched versions. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_list_dependabot_alerts",
+   "github_get_dependabot_alert"
+  ]
+ ],
+ "gold": [
+  [
+   "github_list_dependabot_alerts",
+   {
+    "owner": "acme",
+    "repo": "payments",
+    "state": "open"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

@@ -1,0 +1,54 @@
+[
+ {
+  "tool": "postgres_query",
+  "match": {
+   "sql": [
+    "information_schema",
+    "pg_attribute",
+    "\\d"
+   ]
+  },
+  "response": [
+   {
+    "column_name": "id",
+    "data_type": "uuid"
+   },
+   {
+    "column_name": "merchant_ref",
+    "data_type": "text"
+   },
+   {
+    "column_name": "amount_minor",
+    "data_type": "bigint"
+   },
+   {
+    "column_name": "currency",
+    "data_type": "character(3)"
+   },
+   {
+    "column_name": "created_ts",
+    "data_type": "timestamp with time zone"
+   },
+   {
+    "column_name": "status",
+    "data_type": "text"
+   }
+  ]
+ },
+ {
+  "tool": "postgres_query",
+  "match": {
+   "sql": "payments"
+  },
+  "response": [
+   {
+    "id": "5f0c...",
+    "merchant_ref": "m_1029",
+    "amount_minor": 4990,
+    "currency": "EUR",
+    "created_ts": "2026-11-04T21:00:00Z",
+    "status": "captured"
+   }
+  ]
+ }
+]

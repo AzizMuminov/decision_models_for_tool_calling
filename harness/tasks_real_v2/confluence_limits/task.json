@@ -1,0 +1,29 @@
+{
+ "id": "confluence_limits",
+ "category": "single",
+ "prompt": "Our public API rate limits changed. Make RATE_LIMITS in api/limits.py match the currently documented limits. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "atlassian_confluence_search"
+  ],
+  [
+   "atlassian_confluence_get_page"
+  ]
+ ],
+ "gold": [
+  [
+   "atlassian_confluence_search",
+   {
+    "query": "Public API rate limits"
+   }
+  ],
+  [
+   "atlassian_confluence_get_page",
+   {
+    "page_id": "884213"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

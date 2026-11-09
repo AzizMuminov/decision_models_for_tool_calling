@@ -1,0 +1,847 @@
+{
+ "atlassian_jira_get_issue_watchers": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_add_watcher": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_remove_watcher": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_issue": [
+  "atlassian_jira_get_board_issues"
+ ],
+ "atlassian_jira_get_field_options": [
+  "atlassian_jira_search_fields"
+ ],
+ "atlassian_jira_get_transitions": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_worklog": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_download_attachments": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_issue_images": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_board_issues": [
+  "atlassian_jira_get_agile_boards"
+ ],
+ "atlassian_jira_get_sprints_from_board": [
+  "atlassian_jira_get_agile_boards"
+ ],
+ "atlassian_jira_get_sprint_issues": [
+  "atlassian_jira_get_sprints_from_board"
+ ],
+ "atlassian_jira_update_issue": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_assign_issue": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_delete_issue": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_move_issue": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_add_comment": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_edit_comment": [
+  "atlassian_jira_get_issue",
+  "atlassian_confluence_get_comments"
+ ],
+ "atlassian_jira_add_worklog": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_link_to_epic": [
+  "atlassian_jira_get_issue",
+  "atlassian_jira_get_project_epic_hierarchy"
+ ],
+ "atlassian_jira_create_remote_issue_link": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_remove_issue_link": [
+  "atlassian_jira_get_link_types"
+ ],
+ "atlassian_jira_transition_issue": [
+  "atlassian_jira_get_issue",
+  "atlassian_jira_get_transitions"
+ ],
+ "atlassian_jira_create_sprint": [
+  "atlassian_jira_get_agile_boards"
+ ],
+ "atlassian_jira_update_sprint": [
+  "atlassian_jira_get_sprint_issues"
+ ],
+ "atlassian_jira_add_issues_to_sprint": [
+  "atlassian_jira_get_sprint_issues"
+ ],
+ "atlassian_jira_get_create_fields": [
+  "atlassian_jira_get_project_issue_types"
+ ],
+ "atlassian_jira_get_service_desk_queues": [
+  "atlassian_jira_get_service_desk_for_project"
+ ],
+ "atlassian_jira_get_queue_issues": [
+  "atlassian_jira_get_service_desk_queues"
+ ],
+ "atlassian_jira_get_request_types": [
+  "atlassian_jira_get_service_desk_queues"
+ ],
+ "atlassian_jira_get_request_type_fields": [
+  "atlassian_jira_get_service_desk_queues",
+  "atlassian_jira_get_request_types"
+ ],
+ "atlassian_jira_create_customer_request": [
+  "atlassian_jira_get_service_desk_queues",
+  "atlassian_jira_get_request_types"
+ ],
+ "atlassian_jira_update_version": [
+  "atlassian_jira_get_project_versions"
+ ],
+ "atlassian_jira_get_issue_proforma_forms": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_proforma_form_details": [
+  "atlassian_jira_get_issue",
+  "atlassian_jira_get_issue_proforma_forms"
+ ],
+ "atlassian_jira_update_proforma_form_answers": [
+  "atlassian_jira_get_issue",
+  "atlassian_jira_get_issue_proforma_forms"
+ ],
+ "atlassian_jira_get_issue_dates": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_issue_sla": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_jira_get_issue_development_info": [
+  "atlassian_jira_get_issue"
+ ],
+ "atlassian_confluence_get_space_page_tree": [
+  "atlassian_confluence_get_space_permissions"
+ ],
+ "atlassian_confluence_create_page": [
+  "atlassian_confluence_get_space_permissions"
+ ],
+ "atlassian_confluence_reply_to_comment": [
+  "atlassian_confluence_get_comments"
+ ],
+ "atlassian_confluence_download_attachment": [
+  "atlassian_confluence_get_attachments"
+ ],
+ "atlassian_confluence_delete_attachment": [
+  "atlassian_confluence_get_attachments"
+ ],
+ "atlassian_confluence_get_page_template": [
+  "atlassian_confluence_list_page_templates"
+ ],
+ "atlassian_confluence_create_page_from_template": [
+  "atlassian_confluence_get_space_permissions",
+  "atlassian_confluence_get_page_template"
+ ],
+ "atlassian_confluence_get_space_permissions": [
+  "atlassian_confluence_get_space_page_tree"
+ ],
+ "github_add_reply_to_pull_request_comment": [
+  "github_get_discussion_comments"
+ ],
+ "github_get_gist": [
+  "github_list_gists"
+ ],
+ "github_get_notification_details": [
+  "github_list_notifications"
+ ],
+ "github_manage_notification_subscription": [
+  "github_list_notifications"
+ ],
+ "github_update_gist": [
+  "github_list_gists"
+ ],
+ "github_update_issue_comment": [
+  "github_get_discussion_comments"
+ ],
+ "grafana_add_activity_to_incident": [
+  "grafana_list_incidents"
+ ],
+ "grafana_diff_tempo_traces": [
+  "grafana_list_datasources"
+ ],
+ "grafana_get_alert_group": [
+  "grafana_list_alert_groups"
+ ],
+ "grafana_get_current_oncall_users": [
+  "grafana_list_oncall_schedules"
+ ],
+ "grafana_get_plugin": [
+  "grafana_search_plugin_information"
+ ],
+ "grafana_get_sift_analysis": [
+  "grafana_list_sift_investigations"
+ ],
+ "grafana_get_tempo_trace": [
+  "grafana_list_datasources",
+  "grafana_search_tempo_traces"
+ ],
+ "grafana_install_plugin": [
+  "grafana_get_plugin"
+ ],
+ "grafana_list_loki_label_names": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_loki_label_values": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_prometheus_label_names": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_prometheus_label_values": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_prometheus_metric_metadata": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_prometheus_metric_names": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_tempo_attribute_names": [
+  "grafana_list_datasources"
+ ],
+ "grafana_list_tempo_attribute_values": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_loki_logs": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_loki_patterns": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_loki_stats": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_prometheus": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_prometheus_histogram": [
+  "grafana_list_datasources"
+ ],
+ "grafana_query_tempo_metrics": [
+  "grafana_list_datasources"
+ ],
+ "grafana_search_tempo_traces": [
+  "grafana_list_datasources"
+ ],
+ "grafana_update_alert_group": [
+  "grafana_list_alert_groups"
+ ],
+ "grafana_update_incident": [
+  "grafana_list_incidents"
+ ],
+ "linear_addIssueToProject": [
+  "linear_getIssues"
+ ],
+ "linear_removeIssueFromProject": [
+  "linear_getIssues"
+ ],
+ "linear_archiveRoadmap": [
+  "linear_getRoadmaps"
+ ],
+ "linear_archiveReleasePipeline": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_unarchiveReleasePipeline": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_deleteReleasePipeline": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_createReleaseStage": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_archiveReleaseStage": [
+  "linear_getReleaseStages"
+ ],
+ "linear_unarchiveReleaseStage": [
+  "linear_getReleaseStages"
+ ],
+ "linear_createRelease": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_completeRelease": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_archiveRelease": [
+  "linear_getReleases"
+ ],
+ "linear_unarchiveRelease": [
+  "linear_getReleases"
+ ],
+ "linear_addIssueToRelease": [
+  "linear_getIssues",
+  "linear_getReleases"
+ ],
+ "linear_removeIssueFromRelease": [
+  "linear_getIssues",
+  "linear_getReleases"
+ ],
+ "linear_createReleaseNote": [
+  "linear_getReleasePipelines"
+ ],
+ "linear_getInitiativeDocuments": [
+  "linear_getInitiatives"
+ ],
+ "linear_getIssueDocuments": [
+  "linear_getIssues"
+ ],
+ "linear_getReleaseDocuments": [
+  "linear_getReleases"
+ ],
+ "linear_getCycleDocuments": [
+  "linear_getCycles"
+ ],
+ "linear_getAttachments": [
+  "linear_getIssues"
+ ],
+ "linear_addAttachment": [
+  "linear_getIssues"
+ ],
+ "linear_logoutSession": [
+  "linear_getAuthenticationSessions"
+ ],
+ "linear_getCycleIssues": [
+  "linear_getCycles"
+ ],
+ "linear_addIssueToCycle": [
+  "linear_getIssues",
+  "linear_getCycles"
+ ],
+ "linear_removeIssueFromCycle": [
+  "linear_getIssues",
+  "linear_getCycles"
+ ],
+ "linear_getInitiativeById": [
+  "linear_getInitiatives"
+ ],
+ "linear_updateInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_archiveInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_unarchiveInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_deleteInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_getInitiativeProjects": [
+  "linear_getInitiatives"
+ ],
+ "linear_getInitiativeUpdates": [
+  "linear_getInitiatives"
+ ],
+ "linear_createInitiativeUpdate": [
+  "linear_getInitiatives"
+ ],
+ "linear_addProjectToInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_removeProjectFromInitiative": [
+  "linear_getInitiatives"
+ ],
+ "linear_createCustomerNeedFromAttachment": [
+  "linear_getAttachments"
+ ],
+ "linear_getIssueCustomFields": [
+  "linear_getIssues"
+ ],
+ "linear_updateIssueCustomField": [
+  "linear_getIssues",
+  "linear_getCustomFields"
+ ],
+ "linear_addIssueLabel": [
+  "linear_getIssues",
+  "linear_getLabels"
+ ],
+ "linear_removeIssueLabel": [
+  "linear_getIssues",
+  "linear_getLabels"
+ ],
+ "linear_createIssueFromTemplate": [
+  "linear_getIssueTemplates"
+ ],
+ "linear_assignIssue": [
+  "linear_getIssues"
+ ],
+ "linear_subscribeToIssue": [
+  "linear_getIssues"
+ ],
+ "linear_convertIssueToSubtask": [
+  "linear_getIssues"
+ ],
+ "linear_createIssueRelation": [
+  "linear_getIssues"
+ ],
+ "linear_archiveIssue": [
+  "linear_getIssues"
+ ],
+ "linear_setIssuePriority": [
+  "linear_getIssues"
+ ],
+ "linear_transferIssue": [
+  "linear_getIssues"
+ ],
+ "linear_duplicateIssue": [
+  "linear_getIssues"
+ ],
+ "linear_getIssueHistory": [
+  "linear_getIssues"
+ ],
+ "notion_API-get-block-children": [
+  "notion_API-retrieve-a-block"
+ ],
+ "notion_API-patch-block-children": [
+  "notion_API-get-block-children"
+ ],
+ "notion_API-retrieve-a-block": [
+  "notion_API-get-block-children"
+ ],
+ "notion_API-update-a-block": [
+  "notion_API-get-block-children"
+ ],
+ "notion_API-delete-a-block": [
+  "notion_API-get-block-children"
+ ],
+ "notion_API-retrieve-a-comment": [
+  "notion_API-get-block-children"
+ ],
+ "notion_API-query-data-source": [
+  "notion_API-list-data-source-templates"
+ ],
+ "notion_API-retrieve-a-data-source": [
+  "notion_API-query-data-source"
+ ],
+ "notion_API-update-a-data-source": [
+  "notion_API-query-data-source"
+ ],
+ "notion_API-list-data-source-templates": [
+  "notion_API-query-data-source"
+ ],
+ "slack_post_message": [
+  "slack_list_channels"
+ ],
+ "slack_reply_to_thread": [
+  "slack_list_channels"
+ ],
+ "slack_add_reaction": [
+  "slack_list_channels"
+ ],
+ "slack_get_channel_history": [
+  "slack_list_channels"
+ ],
+ "slack_get_thread_replies": [
+  "slack_list_channels"
+ ],
+ "airtable_list_records": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_search_records": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_list_tables": [
+  "airtable_list_bases"
+ ],
+ "airtable_describe_table": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_get_record": [
+  "airtable_list_bases",
+  "airtable_list_tables",
+  "airtable_list_records"
+ ],
+ "airtable_create_record": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_update_records": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_delete_records": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_create_table": [
+  "airtable_list_bases"
+ ],
+ "airtable_update_table": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_create_field": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_update_field": [
+  "airtable_list_bases",
+  "airtable_list_tables"
+ ],
+ "airtable_create_comment": [
+  "airtable_list_bases",
+  "airtable_list_tables",
+  "airtable_list_records"
+ ],
+ "airtable_list_comments": [
+  "airtable_list_bases",
+  "airtable_list_tables",
+  "airtable_list_records"
+ ],
+ "airtable_upload_attachment": [
+  "airtable_list_bases",
+  "airtable_list_records"
+ ],
+ "aws_cloudwatch_cancel_logs_insight_query": [
+  "aws_cloudwatch_get_logs_insight_query_results"
+ ],
+ "gitlab_resolve_merge_request_thread": [
+  "gitlab_list_issue_discussions"
+ ],
+ "gitlab_get_merge_request_discussion": [
+  "gitlab_list_issue_discussions"
+ ],
+ "gitlab_get_merge_request_note": [
+  "gitlab_get_merge_request_notes"
+ ],
+ "gitlab_list_group_wiki_pages": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_get_group_wiki_page": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_create_group_wiki_page": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_update_group_wiki_page": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_delete_group_wiki_page": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_get_pipeline": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_pipeline_variables": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_pipeline_test_report": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_pipeline_test_report_summary": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_delete_pipeline": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_update_pipeline_metadata": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_deployment": [
+  "gitlab_list_deployments"
+ ],
+ "gitlab_update_deployment": [
+  "gitlab_list_deployments"
+ ],
+ "gitlab_delete_deployment": [
+  "gitlab_list_deployments"
+ ],
+ "gitlab_list_deployment_merge_requests": [
+  "gitlab_list_deployments"
+ ],
+ "gitlab_approve_deployment": [
+  "gitlab_list_deployments"
+ ],
+ "gitlab_get_environment": [
+  "gitlab_list_environments"
+ ],
+ "gitlab_update_environment": [
+  "gitlab_list_environments"
+ ],
+ "gitlab_delete_environment": [
+  "gitlab_list_environments"
+ ],
+ "gitlab_stop_environment": [
+  "gitlab_list_environments"
+ ],
+ "gitlab_get_pipeline_trigger": [
+  "gitlab_list_pipeline_triggers"
+ ],
+ "gitlab_update_pipeline_trigger": [
+  "gitlab_list_pipeline_triggers"
+ ],
+ "gitlab_delete_pipeline_trigger": [
+  "gitlab_list_pipeline_triggers"
+ ],
+ "gitlab_list_pipeline_jobs": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_list_pipeline_trigger_jobs": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_pipeline_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_get_pipeline_job_output": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_retry_pipeline": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_cancel_pipeline": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_get_pipeline_schedule": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_list_pipeline_schedule_pipelines": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_update_pipeline_schedule": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_delete_pipeline_schedule": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_play_pipeline_schedule": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_take_ownership_pipeline_schedule": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_get_pipeline_schedule_variable": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_create_pipeline_schedule_variable": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_update_pipeline_schedule_variable": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_delete_pipeline_schedule_variable": [
+  "gitlab_list_pipeline_schedules"
+ ],
+ "gitlab_play_pipeline_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_retry_pipeline_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_cancel_pipeline_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_erase_pipeline_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_wait_for_pipeline": [
+  "gitlab_list_pipelines"
+ ],
+ "gitlab_wait_for_job": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_list_job_artifacts": [
+  "gitlab_list_pipeline_jobs"
+ ],
+ "gitlab_download_job_artifacts": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_get_job_artifact_file": [
+  "gitlab_list_job_artifacts"
+ ],
+ "gitlab_get_milestone": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_edit_milestone": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_delete_milestone": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_milestone_issue": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_milestone_merge_requests": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_promote_milestone": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_milestone_burndown_events": [
+  "gitlab_list_milestones"
+ ],
+ "gitlab_list_group_milestones": [
+  "gitlab_get_group_milestone"
+ ],
+ "gitlab_get_group_milestone": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_create_group_milestone": [
+  "gitlab_list_group_milestones"
+ ],
+ "gitlab_edit_group_milestone": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_delete_group_milestone": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_group_milestone_issue": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_group_milestone_merge_requests": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_group_milestone_burndown_events": [
+  "gitlab_list_group_milestones",
+  "gitlab_list_milestones"
+ ],
+ "gitlab_get_runner": [
+  "gitlab_list_project_runners"
+ ],
+ "heroku_pg_kill": [
+  "heroku_ps_list"
+ ],
+ "hubspot_hubspot-list-associations": [
+  "hubspot_hubspot-list-objects"
+ ],
+ "hubspot_hubspot-update-engagement": [
+  "hubspot_hubspot-get-engagement"
+ ],
+ "monday_delete_item": [
+  "monday_get_board_items_page"
+ ],
+ "monday_get_board_items_page": [
+  "monday_get_board_activity"
+ ],
+ "monday_create_item": [
+  "monday_get_board_activity"
+ ],
+ "monday_create_items": [
+  "monday_get_board_activity"
+ ],
+ "monday_create_update": [
+  "monday_get_board_items_page"
+ ],
+ "monday_create_update_in_monday": [
+  "monday_get_board_items_page"
+ ],
+ "monday_get_board_schema": [
+  "monday_get_board_activity"
+ ],
+ "monday_get_board_activity": [
+  "monday_get_board_info"
+ ],
+ "monday_get_board_info": [
+  "monday_get_board_activity"
+ ],
+ "monday_get_full_board_data": [
+  "monday_get_board_activity"
+ ],
+ "monday_change_item_column_values": [
+  "monday_get_board_activity",
+  "monday_get_board_items_page"
+ ],
+ "monday_move_item_to_group": [
+  "monday_get_board_items_page"
+ ],
+ "monday_create_column": [
+  "monday_get_board_activity"
+ ],
+ "monday_update_column": [
+  "monday_get_board_activity",
+  "monday_get_column_type_info"
+ ],
+ "monday_create_group": [
+  "monday_get_board_activity"
+ ],
+ "monday_delete_column": [
+  "monday_get_board_activity",
+  "monday_get_column_type_info"
+ ],
+ "monday_create_timeline_item": [
+  "monday_get_board_items_page",
+  "monday_fetch_custom_activity"
+ ],
+ "monday_board_insights": [
+  "monday_get_board_activity"
+ ],
+ "monday_update_assets_on_item": [
+  "monday_get_board_activity",
+  "monday_get_board_items_page",
+  "monday_get_column_type_info"
+ ],
+ "monday_create_view": [
+  "monday_get_board_activity"
+ ],
+ "monday_update_view": [
+  "monday_get_board_activity"
+ ],
+ "monday_create_view_table": [
+  "monday_get_board_activity"
+ ],
+ "monday_update_view_table": [
+  "monday_get_board_activity"
+ ],
+ "monday_undo_action": [
+  "monday_get_board_activity"
+ ],
+ "monday_set_object_schema_column_active_state": [
+  "monday_get_column_type_info"
+ ],
+ "monday_finalize_asset_upload": [
+  "monday_get_asset_upload_url",
+  "monday_get_board_activity",
+  "monday_get_board_items_page",
+  "monday_get_column_type_info"
+ ],
+ "monday_fetch_file_content": [
+  "monday_get_board_items_page",
+  "monday_get_column_type_info"
+ ],
+ "monday_list_automations": [
+  "monday_get_board_activity"
+ ],
+ "monday_create_automation": [
+  "monday_get_board_activity"
+ ],
+ "monday_configure_ai_column": [
+  "monday_get_board_activity",
+  "monday_get_column_type_info"
+ ],
+ "monday_remove_ai_from_column": [
+  "monday_get_board_activity",
+  "monday_get_column_type_info"
+ ],
+ "monday_get_sprints_metadata": [
+  "monday_get_monday_dev_sprints_boards"
+ ],
+ "monday_get_sprint_summary": [
+  "monday_get_sprints_metadata"
+ ],
+ "terraform_get_module_details": [
+  "terraform_search_modules"
+ ],
+ "terraform_get_provider_details": [
+  "terraform_search_provider_docs"
+ ]
+}

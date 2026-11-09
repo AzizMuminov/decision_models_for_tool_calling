@@ -1,0 +1,10 @@
+{
+ "tasks_dir": "tasks_real_v2",
+ "extra": true,
+ "validate": true,
+ "deny": true,
+ "pinned": true,
+ "preamble": true,
+ "pin": "deepseek/deepseek-v4.1-flash-1017=deepinfra/fp8",
+ "temperature": 0.6
+}

@@ -1,0 +1,39 @@
+{"t": 1794113391.9277718, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"comment_limit": 50, "fields": "*all", "include": "all", "issue_key": "PAY-999"}, "ok": false}
+{"t": 1794113400.1936345, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,description,issuetype,project,labels", "jql": "text ~ \"PAY-999\"", "limit": 20}, "ok": true}
+{"t": 1794113401.2097275, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,description,issuetype,project", "jql": "project = PAY ORDER BY created DESC", "limit": 20}, "ok": true}
+{"t": 1794113406.1138816, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-999", "limit": 5}, "ok": true}
+{"t": 1794113407.1292772, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "PAY-999"}, "ok": true}
+{"t": 1794113408.137682, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "query": "daily limit payments"}, "ok": true}
+{"t": 1794113424.408988, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "text ~ \"PAY-999\""}, "ok": true}
+{"t": 1794113425.4197347, "kind": "call", "tool": "github_search_issues", "args": {"fields": ["number", "title", "body", "state", "html_url"], "perPage": 20, "query": "PAY-999 daily limit"}, "ok": true}
+{"t": 1794113426.42768, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "\"PAY-999\" org:acme"}, "ok": true}
+{"t": 1794113432.3875594, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-999", "limit": 5, "projects_filter": "PAY"}, "ok": true}
+{"t": 1794113433.395895, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY", "limit": 50, "projects_filter": "PAY"}, "ok": true}
+{"t": 1794113434.9444768, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794113436.6816542, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794113437.6897686, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "payments"}, "ok": true}
+{"t": 1794113444.5857868, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/limits.py", "repo": "payments"}, "ok": true}
+{"t": 1794113445.5942526, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "perPage": 50, "repo": "payments"}, "ok": true}
+{"t": 1794113446.6022909, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "perPage": 50, "repo": "payments"}, "ok": true}
+{"t": 1794113447.6114352, "kind": "call", "tool": "github_search_issues", "args": {"perPage": 20, "query": "PAY-999 repo:acme/payments"}, "ok": true}
+{"t": 1794113455.171795, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794113456.1794567, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794113457.1881056, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "payments"}, "ok": true}
+{"t": 1794113464.0428262, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794113465.0501974, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 20, "query": "payments"}, "ok": true}
+{"t": 1794113466.0881767, "kind": "call", "tool": "github_search_commits", "args": {"perPage": 20, "query": "PAY-999"}, "ok": true}
+{"t": 1794113478.4092398, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "daily limit"}, "ok": true}
+{"t": 1794113479.4569743, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "payments limits"}, "ok": true}
+{"t": 1794113480.5325468, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "daily limit"}, "ok": true}
+{"t": 1794113482.7094376, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794113483.730264, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "payments daily limit"}, "ok": true}
+{"t": 1794113484.738414, "kind": "call", "tool": "memory_read_graph", "args": {}, "ok": false}
+{"t": 1794113487.5792964, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794113501.3560116, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "summary ~ \"limit\" ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794113502.5486364, "kind": "call", "tool": "atlassian_jira_get_project_issue_types", "args": {"project_key": "PAY"}, "ok": false}
+{"t": 1794113511.7887862, "kind": "call", "tool": "linear_searchDocuments", "args": {"query": "PAY-999"}, "ok": false}
+{"t": 1794113513.5358293, "kind": "call", "tool": "linear_searchDocuments", "args": {"query": "daily limit"}, "ok": false}
+{"t": 1794113514.5771513, "kind": "call", "tool": "monday_search", "args": {"searchTerm": "PAY-999", "searchType": "ITEMS"}, "ok": true}
+{"t": 1794113517.8152103, "kind": "call", "tool": "linear_searchDocuments", "args": {"term": "PAY-999"}, "ok": true}
+{"t": 1794113518.8784707, "kind": "call", "tool": "linear_searchDocuments", "args": {"term": "daily limit"}, "ok": true}
+{"t": 1794113519.8866282, "kind": "call", "tool": "linear_searchDocuments", "args": {"term": "payments"}, "ok": true}

@@ -1,0 +1,2 @@
+{"t": 1794118872.9135547, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794118873.9239857, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments", "perPage": 100}, "ok": true}

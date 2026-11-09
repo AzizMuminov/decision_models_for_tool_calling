@@ -1,0 +1,323 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": [
+    "refund",
+    "duplicate",
+    "ledger"
+   ]
+  },
+  "response": "# Issues in **acme/refunds-api** (sorted by frequency)\n\n1. **REFUNDS-API-5D** - DuplicateLedgerEntry: refund already booked for order\n   culprit: refunds.execute in run_refund | events: 412 | first seen: 2026-11-05T08:14Z (release refunds-api@2.14.0)\n2. **REFUNDS-API-2A** - TimeoutError: bank gateway (known, flaky) | events: 31"
+ },
+ {
+  "tool": "sentry_search_events",
+  "match": {
+   "_any": [
+    "refund",
+    "duplicate",
+    "5D"
+   ]
+  },
+  "response": "| issue | title | count |\n| REFUNDS-API-5D | DuplicateLedgerEntry: refund already booked (refunds-api@2.14.0) | 412 |"
+ },
+ {
+  "tool": "sentry_get_sentry_resource",
+  "match": {
+   "_any": "5D"
+  },
+  "response": "# Issue REFUNDS-API-5D\n**DuplicateLedgerEntry**: refund already booked for order o_77\n\nRelease: refunds-api@2.14.0 (deployed 2026-11-05 08:02Z).\nStack: refunds/execute.py run_refund -> refunds/idempotency.py make_key -> cache.get (miss) -> bank.payout\nSuspect commit: 9c1e4fa \"Simplify refund idempotency\" (acme/refunds-api pull request #588).\nLinked Jira issue: PAY-1432."
+ },
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-1432"
+  },
+  "response": {
+   "key": "PAY-1432",
+   "fields": {
+    "summary": "Refunds paid out twice after 2.14.0",
+    "status": {
+     "name": "To Do"
+    },
+    "description": "Duplicate refund payouts since 2.14.0. The idempotency rules are in the Confluence design doc \"Refund idempotency\" (page 771204); restore them exactly. Follow the incident process."
+   }
+  }
+ },
+ {
+  "tool": "atlassian_jira_search",
+  "match": {
+   "_any": [
+    "refund",
+    "PAY-1432",
+    "duplicate"
+   ]
+  },
+  "response": {
+   "issues": [
+    {
+     "key": "PAY-1432",
+     "summary": "Refunds paid out twice after 2.14.0",
+     "status": "To Do"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": [
+    "771204",
+    "Refund idempotency"
+   ]
+  },
+  "response": {
+   "id": "771204",
+   "title": "Refund idempotency",
+   "content": "## Rules\n1. One key per refund, not per order: `refund:{order_id}:{refund_id}` (orders can have several partial refunds).\n2. Keys live for **24 hours** (86400 s): the bank gateway retries for up to 6 hours, so a shorter TTL lets a retry pay out again.\n"
+  }
+ },
+ {
+  "tool": "atlassian_confluence_search",
+  "match": {
+   "_any": [
+    "idempot",
+    "refund"
+   ]
+  },
+  "response": [
+   {
+    "id": "771204",
+    "title": "Refund idempotency",
+    "space": "PAY"
+   },
+   {
+    "id": "510009",
+    "title": "Refund idempotency (2023, superseded)",
+    "space": "PAY"
+   }
+  ]
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": "510009"
+  },
+  "response": {
+   "id": "510009",
+   "title": "Refund idempotency (2023, superseded)",
+   "content": "Key by order id; 60 s is enough."
+  }
+ },
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "588"
+  },
+  "response": {
+   "number": 588,
+   "title": "Simplify refund idempotency",
+   "user": {
+    "login": "jdiaz"
+   },
+   "merged": true,
+   "merge_commit_sha": "9c1e4fa",
+   "body": "Key by order only and drop TTL to 60s to save Redis memory.",
+   "files": [
+    {
+     "filename": "refunds/idempotency.py",
+     "patch": "-    return f\"refund:{order_id}:{refund_id}\"\n+    return f\"refund:{order_id}\"\n-IDEMPOTENCY_TTL_SECONDS = 86400\n+IDEMPOTENCY_TTL_SECONDS = 60"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_get_commit",
+  "match": {
+   "sha": "9c1e4fa"
+  },
+  "response": {
+   "sha": "9c1e4fa",
+   "commit": {
+    "message": "Simplify refund idempotency (#588)"
+   },
+   "files": [
+    {
+     "filename": "refunds/idempotency.py"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_search_pull_requests",
+  "match": {
+   "_any": [
+    "idempot",
+    "refund",
+    "588"
+   ]
+  },
+  "response": {
+   "total_count": 1,
+   "items": [
+    {
+     "number": 588,
+     "title": "Simplify refund idempotency",
+     "state": "closed",
+     "merged": true
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_list_pull_requests",
+  "match": {
+   "repo": "refunds-api"
+  },
+  "response": [
+   {
+    "number": 588,
+    "title": "Simplify refund idempotency",
+    "state": "closed",
+    "merged_at": "2026-11-05T07:55:00Z"
+   }
+  ]
+ },
+ {
+  "tool": "notion_API-post-search",
+  "match": {
+   "query": [
+    "incident",
+    "process",
+    "runbook"
+   ]
+  },
+  "response": {
+   "object": "list",
+   "results": [
+    {
+     "object": "page",
+     "id": "7e9f-incident-process",
+     "properties": {
+      "title": {
+       "title": [
+        {
+         "plain_text": "Incident process"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "notion_API-retrieve-page-markdown",
+  "match": {
+   "page_id": "7e9f"
+  },
+  "response": "# Incident process\n\nWhen a fix is ready:\n1. Post an update in Slack #incidents that names the current payments on-call engineer (Grafana OnCall, schedule payments-primary) and states how many customers were affected (count them in the payments Postgres database).\n2. Comment on the pull request that caused the incident with a link to the Sentry issue.\n3. Move the Jira ticket to In Review.\n4. Resolve the Sentry issue.\n"
+ },
+ {
+  "tool": "notion_API-get-block-children",
+  "match": {
+   "_any": "7e9f"
+  },
+  "response": {
+   "results": [
+    {
+     "type": "paragraph",
+     "paragraph": {
+      "rich_text": [
+       {
+        "plain_text": "1) Slack #incidents update naming the payments on-call (Grafana OnCall payments-primary) and the number of affected customers (payments Postgres). 2) Comment on the causing PR with the Sentry link. 3) Jira ticket to In Review. 4) Resolve the Sentry issue."
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "postgres_query",
+  "match": {
+   "sql": [
+    "information_schema",
+    "pg_",
+    "\\d"
+   ]
+  },
+  "response": [
+   {
+    "table_name": "refunds",
+    "columns": "id, order_id, customer_id, amount_minor, created_at"
+   },
+   {
+    "table_name": "refund_payouts",
+    "columns": "id, refund_id, customer_id, paid_at, bank_ref"
+   }
+  ]
+ },
+ {
+  "tool": "postgres_query",
+  "match": {
+   "sql": [
+    "payout",
+    "refund"
+   ]
+  },
+  "response": [
+   {
+    "customers_with_duplicate_payouts": 37,
+    "duplicate_payouts": 41,
+    "since": "2026-11-05T08:02:00Z"
+   }
+  ]
+ },
+ {
+  "tool": "grafana_get_current_oncall_users",
+  "match": {
+   "scheduleId": "SBM7DV7BKFUYU"
+  },
+  "response": {
+   "scheduleName": "payments-primary",
+   "users": [
+    {
+     "username": "rnakamura",
+     "email": "r.nakamura@acme.example"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_get_current_oncall_users",
+  "match": {
+   "scheduleId": "SQ6F1P3K9WX2A"
+  },
+  "response": {
+   "scheduleName": "platform-primary",
+   "users": [
+    {
+     "username": "tbauer",
+     "email": "t.bauer@acme.example"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_query_loki_logs",
+  "match": {
+   "logql": "refund"
+  },
+  "response": [
+   {
+    "timestamp": "2026-11-05T09:31:44Z",
+    "line": "WARN bank retry for refund r_91 order o_77 after 92s: idempotency cache miss (ttl 60s) -> payout executed"
+   },
+   {
+    "timestamp": "2026-11-05T09:31:45Z",
+    "line": "ERROR DuplicateLedgerEntry refund r_91 order o_77"
+   }
+  ]
+ }
+]

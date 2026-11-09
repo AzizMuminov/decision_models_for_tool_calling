@@ -1,0 +1,4 @@
+{"t": 1794123498.0583086, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/shop-export", "perPage": 30}, "ok": true}
+{"t": 1794123501.5953598, "kind": "call", "tool": "mongodb_connect", "args": {"connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop", "connectionName": "shop-export-read-only"}, "ok": true}
+{"t": 1794123503.7252471, "kind": "call", "tool": "mongodb_collection-schema", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "sampleSize": 100}, "ok": true}
+{"t": 1794123504.7324266, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 5, "sort": {"_id": -1}}, "ok": true}

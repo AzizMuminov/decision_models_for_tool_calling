@@ -1,0 +1,88 @@
+[
+ {
+  "tool": "gitlab_list_pipelines",
+  "match": {
+   "_any": "billing-legacy"
+  },
+  "response": [
+   {
+    "id": 8812,
+    "iid": 311,
+    "ref": "main",
+    "status": "failed",
+    "sha": "a91c2e0",
+    "web_url": "https://gitlab.com/acme/billing-legacy/-/pipelines/8812"
+   },
+   {
+    "id": 8790,
+    "iid": 310,
+    "ref": "main",
+    "status": "success",
+    "sha": "77d01b2"
+   }
+  ]
+ },
+ {
+  "tool": "gitlab_get_pipeline",
+  "match": {
+   "pipeline_id": "8812"
+  },
+  "response": {
+   "id": 8812,
+   "status": "failed",
+   "ref": "main",
+   "jobs": [
+    {
+     "id": 77103,
+     "name": "lint",
+     "status": "success"
+    },
+    {
+     "id": 77104,
+     "name": "test:contract",
+     "status": "failed"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "gitlab_list_pipeline_jobs",
+  "match": {
+   "pipeline_id": "8812"
+  },
+  "response": [
+   {
+    "id": 77103,
+    "name": "lint",
+    "stage": "test",
+    "status": "success"
+   },
+   {
+    "id": 77104,
+    "name": "test:contract",
+    "stage": "test",
+    "status": "failed"
+   }
+  ]
+ },
+ {
+  "tool": "gitlab_get_pipeline_job_output",
+  "match": {
+   "job_id": "77104"
+  },
+  "response": "$ python -m pytest contract/ -q\nF\n___________________________ test_invoice_number_format ___________________________\n    def test_invoice_number_format():\n        # Finance ERP import (FIN-77): sequence part is zero-padded to 6 digits\n>       assert invoice_number(2026, 42) == \"INV-2026-000042\"\nE       AssertionError: assert 'INV-2026-42' == 'INV-2026-000042'\nFAILED contract/test_invoice.py::test_invoice_number_format\n1 failed in 0.21s\nERROR: Job failed: exit code 1\n"
+ },
+ {
+  "tool": "gitlab_get_merge_request",
+  "match": {
+   "_any": "12"
+  },
+  "response": {
+   "iid": 12,
+   "title": "Switch invoices to ERP v2 format",
+   "state": "opened",
+   "source_branch": "erp-v2",
+   "target_branch": "main"
+  }
+ }
+]

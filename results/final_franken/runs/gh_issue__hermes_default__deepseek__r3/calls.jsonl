@@ -1,0 +1,15 @@
+{"t": 1794107585.9444551, "kind": "call", "tool": "github_issue_read", "args": {"method": "get", "owner": "acme", "repo": "payments", "issue_number": 301}, "ok": true}
+{"t": 1794107586.9565887, "kind": "call", "tool": "github_issue_read", "args": {"method": "get_comments", "owner": "acme", "repo": "payments", "issue_number": 301, "perPage": 100}, "ok": true}
+{"t": 1794107600.0642028, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"validate_currency\" OR text ~ \"currency validation\" OR text ~ \"payments#301\"", "limit": 20}, "ok": true}
+{"t": 1794107604.4814818, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794107605.4892242, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "payments", "state": "all"}, "ok": true}
+{"t": 1794107606.9438784, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794107611.2573497, "kind": "call", "tool": "github_search_code", "args": {"query": "validate_currency repo:acme/payments"}, "ok": true}
+{"t": 1794107612.268447, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "301 repo:acme/payments is:pr"}, "ok": true}
+{"t": 1794107615.8912141, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_sub_issues", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794107616.8991945, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_parent", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794107619.8412964, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794107622.4576647, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"currency\" OR text ~ \"XTS\" OR text ~ \"validate\")", "limit": 25}, "ok": true}
+{"t": 1794107625.8482254, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "currency validation XTS payments"}, "ok": true}
+{"t": 1794107628.5244043, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "currency"}, "ok": true}
+{"t": 1794107629.5320668, "kind": "call", "tool": "github_search_issues", "args": {"query": "currency repo:acme/payments"}, "ok": true}

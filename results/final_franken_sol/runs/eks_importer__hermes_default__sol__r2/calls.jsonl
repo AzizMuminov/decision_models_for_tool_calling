@@ -1,0 +1,5 @@
+{"t": 1794124012.7199316, "kind": "call", "tool": "aws_eks_list_api_versions", "args": {"cluster_name": "data-prod"}, "ok": false}
+{"t": 1794124015.02594, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"cluster_name": "data-prod", "kind": "Job", "api_version": "batch/v1", "namespace": "batch"}, "ok": true}
+{"t": 1794124020.7888048, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "v1", "cluster_name": "data-prod", "kind": "Pod", "namespace": "batch"}, "ok": true}
+{"t": 1794124022.6201258, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "namespace": "batch", "pod_name": "batch-importer-29188440-x7k2p"}, "ok": true}
+{"t": 1794124023.6277435, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "namespace": "batch", "pod_name": "batch-importer-29187000-m2d9q"}, "ok": true}

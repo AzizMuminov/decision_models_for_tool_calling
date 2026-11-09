@@ -1,0 +1,58 @@
+{"t": 1794119359.3045316, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794119360.6492298, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794119362.2537863, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq", "period": "14d", "limit": 25}, "ok": true}
+{"t": 1794119366.4304388, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "PAYMENTS-API-3K", "resourceType": "issue"}, "ok": true}
+{"t": 1794119372.0095088, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "apply_discount"}, "ok": true}
+{"t": 1794119373.0185895, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"payments-api\" ORDER BY created DESC", "limit": 20}, "ok": true}
+{"t": 1794119381.9080024, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "limit": 30}, "ok": true}
+{"t": 1794119382.9185843, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/payments"}, "ok": true}
+{"t": 1794119387.4102573, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794119393.686224, "kind": "call", "tool": "github_list_issues", "args": {"repo_owner": "acme", "repo_name": "payments", "state": "open", "limit": 30}, "ok": false}
+{"t": 1794119396.6337304, "kind": "call", "tool": "github_list_issues", "args": {"limit": 30, "owner": "acme", "repo": "payments", "state": "open"}, "ok": false}
+{"t": 1794119397.642315, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 30, "query": "payments"}, "ok": true}
+{"t": 1794119399.4599447, "kind": "call", "tool": "github_list_issues", "args": {"limit": 30, "owner": "acme", "repo": "payments", "state": "OPEN"}, "ok": true}
+{"t": 1794119400.4677744, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 30}, "ok": true}
+{"t": 1794119406.5877936, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794119409.0224874, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794119410.031389, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794119411.385654, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794119414.1720974, "kind": "call", "tool": "github_search_issues", "args": {"query": "apply_discount coupon NoneType payments"}, "ok": true}
+{"t": 1794119415.1793287, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"project_key": "PAY", "limit": 50}, "ok": false}
+{"t": 1794119421.8848474, "kind": "call", "tool": "gitlab_list_issues", "args": {"limit": 50, "scope": "all", "state": "opened"}, "ok": true}
+{"t": 1794119422.8924034, "kind": "call", "tool": "gitlab_my_issues", "args": {}, "ok": false}
+{"t": 1794119425.9388783, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794119426.9484532, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"discount\" ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794119430.4069045, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_name": "incidents", "limit": 50}, "ok": false}
+{"t": 1794119431.4148374, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue comments activities notes"}, "ok": true}
+{"t": 1794119434.5267904, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {}, "ok": false}
+{"t": 1794119436.409059, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794119437.4173949, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue comments notes activities"}, "ok": true}
+{"t": 1794119439.0881703, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 60}, "ok": true}
+{"t": 1794119440.0957334, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 60}, "ok": true}
+{"t": 1794119443.2643082, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme"}, "ok": true}
+{"t": 1794119448.047614, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue"}, "ok": true}
+{"t": 1794119457.2800236, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794119458.2876558, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794119463.3701913, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "created >= -90d ORDER BY created DESC", "limit": 50}, "ok": true}
+{"t": 1794119464.3782535, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "order by created DESC", "limit": 5}, "ok": true}
+{"t": 1794119474.1274521, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-api"}, "ok": true}
+{"t": 1794119475.1352186, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "states": ["Triage", "Backlog", "Todo", "In Progress", "Done"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794119483.2679734, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "order by created DESC", "limit": 20, "projects_filter": "PAY"}, "ok": true}
+{"t": 1794119484.2758682, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "order by created DESC", "limit": 20, "projects_filter": "ENG,PAY,SUP,OPS"}, "ok": true}
+{"t": 1794119503.1495442, "kind": "call", "tool": "github_projects_list", "args": {"limit": 20, "owner": "acme"}, "ok": false}
+{"t": 1794119504.3948057, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794119511.0630863, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "errors", "fields": ["issue", "title", "tags", "timestamp", "release"], "limit": 3, "organizationSlug": "acme", "projectSlug": "payments-api", "query": "issue:PAYMENTS-API-3K"}, "ok": true}
+{"t": 1794119524.1558335, "kind": "call", "tool": "sentry_update_issue", "args": {"issueId": "PAYMENTS-API-3K", "organizationSlug": "acme", "reason": "Fixed in payments/discounts.py: apply_discount now treats expired coupons (amount_cents None/missing) as a no-op and clamps the total at zero, so a discount can never make the total negative. TypeError: unsupported operand type(s) for -: 'int' and 'NoneType' no longer occurs.", "status": "resolved"}, "ok": true}
+{"t": 1794119526.471923, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "14d", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794119529.4902654, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "PAYMENTS-API-3K", "resourceType": "issue"}, "ok": true}
+{"t": 1794119532.6360798, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "14d", "projectSlugOrId": "payments-api", "query": "is:resolved", "sort": "date"}, "ok": true}
+{"t": 1794119533.6431894, "kind": "call", "tool": "sentry_update_issue", "args": {"issueUrl": "https://acme.sentry.io/issues/PAYMENTS-API-3K/", "reason": "Resolved after shipping the apply_discount fix (expired/None amount_cents is a no-op; totals clamped at 0).", "status": "resolved"}, "ok": true}
+{"t": 1794119537.6894898, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"arguments": {"issueId": "PAYMENTS-API-3K", "organizationSlug": "acme"}, "name": "get_issue_details"}, "ok": true}
+{"t": 1794119545.107606, "kind": "call", "tool": "monday_get_user_context", "args": {}, "ok": false}
+{"t": 1794119602.122786, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "14d", "projectSlugOrId": "payments-api", "query": "level:fatal", "sort": "date"}, "ok": true}
+{"t": 1794119603.1299186, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "14d", "projectSlugOrId": "checkout-web", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794119613.8461492, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794119616.3874376, "kind": "call", "tool": "grafana_list_alert_groups", "args": {}, "ok": true}
+{"t": 1794119632.4959369, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "period": "14d", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794119637.9660993, "kind": "call", "tool": "atlassian_jira_get_agile_boards", "args": {}, "ok": false}
+{"t": 1794119646.6544259, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"url": "https://acme.sentry.io/issues/PAYMENTS-API-3K/"}, "ok": true}

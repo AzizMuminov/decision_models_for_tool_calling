@@ -1,0 +1,9 @@
+{"t": 1794105931.8570027, "kind": "call", "tool": "github_issue_read", "args": {"owner": "acme", "repo": "payments", "issue_number": 301}, "ok": false}
+{"t": 1794105935.686927, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794105936.7397768, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments", "perPage": 100}, "ok": true}
+{"t": 1794105942.3064299, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/currency.py", "repo": "payments"}, "ok": true}
+{"t": 1794105945.3410192, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794105947.5858648, "kind": "call", "tool": "github_search_code", "args": {"query": "validate_currency repo:acme/payments"}, "ok": true}
+{"t": 1794105951.0184047, "kind": "call", "tool": "gitlab_get_repository_tree", "args": {"project_id": "acme/payments", "ref": "main"}, "ok": false}
+{"t": 1794105955.6725779, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_sub_issues", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794105968.6445107, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"validate_currency\" ORDER BY created DESC", "max_results": 20}, "ok": true}

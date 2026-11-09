@@ -1,0 +1,61 @@
+[
+ {
+  "tool": "slack_get_channel_history",
+  "match": {
+   "channel_id": "C07PAYENG01"
+  },
+  "response": {
+   "ok": true,
+   "messages": [
+    {
+     "ts": "1793755001.000200",
+     "user": "U02LENA",
+     "text": "deploy of payments 2026.11.4 done"
+    },
+    {
+     "ts": "1793741112.004100",
+     "user": "U01OMAR",
+     "text": "Proposal for webhook retries: 5 retries, 2s base delay, exponential, cap 30s. Thoughts?",
+     "reply_count": 4,
+     "thread_ts": "1793741112.004100"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "slack_get_thread_replies",
+  "match": {
+   "thread_ts": "1793741112.004100"
+  },
+  "response": {
+   "ok": true,
+   "messages": [
+    {
+     "ts": "1793741112.004100",
+     "user": "U01OMAR",
+     "text": "Proposal for webhook retries: 5 retries, 2s base delay, exponential, cap 30s. Thoughts?"
+    },
+    {
+     "ts": "1793741300.004200",
+     "user": "U03JDIAZ",
+     "text": "5 is too many, merchants complain about duplicates"
+    },
+    {
+     "ts": "1793741422.004300",
+     "user": "U02LENA",
+     "text": "and 2s base is too aggressive for their rate limits"
+    },
+    {
+     "ts": "1793742001.004400",
+     "user": "U01OMAR",
+     "text": "FINAL: 4 retries, base delay 3s, exponential, cap 60s. Please implement."
+    },
+    {
+     "ts": "1793742100.004500",
+     "user": "U03JDIAZ",
+     "text": "+1"
+    }
+   ]
+  }
+ }
+]

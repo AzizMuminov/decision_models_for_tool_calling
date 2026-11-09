@@ -1,0 +1,5 @@
+{"t": 1794118458.3475347, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794118459.3597927, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794118460.4558241, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"schedule_id": "SBM7DV7BKFUYU"}, "ok": false}
+{"t": 1794118461.842917, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794118464.4895306, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}

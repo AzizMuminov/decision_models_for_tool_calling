@@ -1,0 +1,5 @@
+{"t": 1794106958.470122, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "open", "perPage": 100}, "ok": true}
+{"t": 1794106965.735091, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "requirements.txt", "ref": "refs/heads/main", "repo": "payments"}, "ok": true}
+{"t": 1794106966.7904568, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794106971.4275482, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"affects": "urllib3", "ecosystem": "pip"}, "ok": true}
+{"t": 1794106972.4356606, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"affects": "requests", "ecosystem": "pip"}, "ok": true}

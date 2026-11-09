@@ -1,0 +1,108 @@
+[
+ {
+  "tool": "grafana_query_loki_logs",
+  "match": {
+   "datasourceUid": "P8E80F9AEF21F6940",
+   "logql": "notifier"
+  },
+  "response": [
+   {
+    "timestamp": "2026-11-05T06:01:12Z",
+    "labels": {
+     "app": "notifier",
+     "level": "error"
+    },
+    "line": "ERROR render failed event=order_shipped template=order_shipped_v2: TemplateNotFound (available: order_shipped, order_shipped_v3, order_refunded_v1)"
+   },
+   {
+    "timestamp": "2026-11-05T06:01:13Z",
+    "labels": {
+     "app": "notifier",
+     "level": "info"
+    },
+    "line": "INFO template store migrated to v3 layouts; v2 templates removed (CHG-2231)"
+   },
+   {
+    "timestamp": "2026-11-05T06:03:40Z",
+    "labels": {
+     "app": "notifier",
+     "level": "error"
+    },
+    "line": "ERROR render failed event=order_shipped template=order_shipped_v2: TemplateNotFound (available: order_shipped, order_shipped_v3, order_refunded_v1)"
+   }
+  ]
+ },
+ {
+  "tool": "grafana_query_loki_logs",
+  "match": {
+   "datasourceUid": "PBFA97CFB590B2093"
+  },
+  "response": {
+   "error": "datasource PBFA97CFB590B2093 is of type prometheus, not loki"
+  }
+ },
+ {
+  "tool": "grafana_query_loki_logs",
+  "response": {
+   "error": "datasource not found or not a Loki datasource"
+  }
+ },
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "CHG-2231"
+  },
+  "response": {
+   "key": "CHG-2231",
+   "fields": {
+    "summary": "Template store: migrate to v3 layouts",
+    "status": {
+     "name": "Done"
+    },
+    "description": "All v2 templates were removed on 2026-11-05 06:00 UTC. Services must reference the v3 names (order_shipped_v3). order_refunded_v1 is unchanged."
+   }
+  }
+ },
+ {
+  "tool": "atlassian_jira_search",
+  "match": {
+   "_any": "CHG-2231"
+  },
+  "response": {
+   "issues": [
+    {
+     "key": "CHG-2231",
+     "summary": "Template store: migrate to v3 layouts",
+     "description": "v2 templates removed; use order_shipped_v3. order_refunded_v1 unchanged."
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_find_error_pattern_logs",
+  "match": {
+   "_any": "notifier"
+  },
+  "response": {
+   "patterns": [
+    {
+     "pattern": "ERROR render failed event=order_shipped template=order_shipped_v2: TemplateNotFound (available: order_shipped, order_shipped_v3, order_refunded_v1)",
+     "count": 3120
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_query_loki_patterns",
+  "match": {
+   "datasourceUid": "P8E80F9AEF21F6940",
+   "_any": "notifier"
+  },
+  "response": [
+   {
+    "pattern": "ERROR render failed event=<_> template=order_shipped_v2: TemplateNotFound (available: order_shipped, order_shipped_v3, order_refunded_v1)",
+    "samples": 3120
+   }
+  ]
+ }
+]

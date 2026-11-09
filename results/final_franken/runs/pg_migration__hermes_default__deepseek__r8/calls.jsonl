@@ -1,0 +1,8 @@
+{"t": 1794113604.5778103, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794113609.1471808, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database(), table_name FROM information_schema.tables WHERE table_schema='public'"}, "ok": true}
+{"t": 1794113610.1549003, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'payments'"}, "ok": true}
+{"t": 1794113613.7683074, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'payments' ORDER BY ordinal_position"}, "ok": true}
+{"t": 1794113614.7817068, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "migrations", "repo": "payments-db"}, "ok": true}
+{"t": 1794113617.8183706, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "payments-db"}, "ok": true}
+{"t": 1794113624.8346355, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments table schema columns"}, "ok": true}
+{"t": 1794113625.8453345, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments postgres schema merchant"}, "ok": true}

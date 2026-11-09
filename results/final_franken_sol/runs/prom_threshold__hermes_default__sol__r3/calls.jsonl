@@ -1,0 +1,3 @@
+{"t": 1794124153.31632, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "prometheus"}, "ok": true}
+{"t": 1794124155.3409019, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "expr": "{__name__=~\".*(request|http).*\", service=\"checkout\"}", "queryType": "instant", "endTime": "now"}, "ok": true}
+{"t": 1794124159.1802917, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{service=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}

@@ -1,0 +1,27 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": "refund"
+  },
+  "response": "# Issues in **acme/refunds-api**\n\n1. **REFUNDS-API-1C** - KeyError: 'reason_code'\n   culprit: refunds.handler in parse_refund | events: 412 | first seen: 06:14 UTC today | status: unresolved"
+ },
+ {
+  "tool": "sentry_get_sentry_resource",
+  "match": {
+   "_any": "1C"
+  },
+  "response": "# Issue REFUNDS-API-1C\n**KeyError**: 'reason_code'\n```\nFile \"refunds/handler.py\", line 2, in parse_refund\n  return {\"order_id\": payload[\"order_id\"], \"reason\": payload[\"reason_code\"]}\nKeyError: 'reason_code'\n```\nRequest body (scrubbed): {\"order_id\": 88123, \"reason\": \"damaged\"}\nTags: client=ios-app 5.0.2, environment=prod\nBreadcrumb: mobile clients >= 5.0 send the field as `reason`; web and older apps still send `reason_code`. Both must keep working.\n"
+ },
+ {
+  "tool": "sentry_search_events",
+  "match": {
+   "_any": [
+    "refund",
+    "1C",
+    "KeyError"
+   ]
+  },
+  "response": "| issue | title | client | count |\n| REFUNDS-API-1C | KeyError: 'reason_code' in parse_refund; body has `reason` instead (ios-app 5.x sends `reason`, web sends `reason_code`) | ios-app 5.0.2 | 412 |"
+ }
+]

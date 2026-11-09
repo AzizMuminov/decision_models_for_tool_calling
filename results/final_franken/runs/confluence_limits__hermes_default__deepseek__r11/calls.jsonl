@@ -1,0 +1,8 @@
+{"t": 1794116072.9027274, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "rate limits public API"}, "ok": true}
+{"t": 1794116075.178912, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794116078.4303994, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "text ~ \"rate limit\" AND type = page"}, "ok": true}
+{"t": 1794116079.4381328, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794116080.6783557, "kind": "call", "tool": "atlassian_confluence_get_space_page_tree", "args": {"space_key": "API"}, "ok": false}
+{"t": 1794116084.291518, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "space = API"}, "ok": true}
+{"t": 1794116091.9208605, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "quotas throttling limits per minute"}, "ok": true}
+{"t": 1794116092.9347687, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "enterprise plan API"}, "ok": true}

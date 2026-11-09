@@ -1,0 +1,10 @@
+{"t": 1794105423.6045122, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794105426.4153516, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%payment%' ORDER BY 1,2,3"}, "ok": true}
+{"t": 1794105427.422874, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT n.nspname AS schema, c.relname AS table, a.attname AS column, format_type(a.atttypid, a.atttypmod) AS type FROM pg_attribute a JOIN pg_class c ON c.oid=a.attrelid JOIN pg_namespace n ON n.oid=c.relnamespace WHERE c.relkind='r' AND a.attnum>0 AND NOT a.attisdropped AND c.relname ILIKE '%pay%' ORDER BY 1,2,a.attnum"}, "ok": true}
+{"t": 1794105429.8413494, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 1"}, "ok": true}
+{"t": 1794105430.8487256, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name"}, "ok": true}
+{"t": 1794105435.1690958, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_schema(), current_user"}, "ok": true}
+{"t": 1794105436.1765075, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'payments'"}, "ok": true}
+{"t": 1794105443.6654239, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "payments-db", "path": "migrations", "fields": ["name", "type", "size"]}, "ok": true}
+{"t": 1794105444.6744497, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "payments-db", "path": "models.py"}, "ok": true}
+{"t": 1794105451.2995267, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "payments table schema merchant_ref created_ts"}, "ok": true}

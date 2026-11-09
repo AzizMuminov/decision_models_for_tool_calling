@@ -1,0 +1,9 @@
+{"t": 1794123634.9611287, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794123637.205169, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T05:55:00Z", "endRfc3339": "2026-11-08T06:10:00Z", "limit": 50, "direction": "forward"}, "ok": true}
+{"t": 1794123641.9662828, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T06:00:00Z", "endRfc3339": "2026-11-08T07:40:00Z", "limit": 100, "direction": "backward"}, "ok": true}
+{"t": 1794123645.8541093, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/notifier order_shipped", "perPage": 30}, "ok": true}
+{"t": 1794123656.3992262, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "\"CHG-2231\""}, "ok": true}
+{"t": 1794123657.4072628, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 30}, "ok": false}
+{"t": 1794123662.1885269, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "notifier", "ref": "refs/heads/main", "path": "/"}, "ok": true}
+{"t": 1794123663.2013721, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "notifier templates"}, "ok": true}
+{"t": 1794123664.2092528, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme \"order_shipped_v3\""}, "ok": true}

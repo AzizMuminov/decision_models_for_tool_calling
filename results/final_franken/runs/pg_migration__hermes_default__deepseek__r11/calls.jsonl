@@ -1,0 +1,12 @@
+{"t": 1794116333.0621462, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794116335.1386049, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%'"}, "ok": true}
+{"t": 1794116336.1478655, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%payment%'"}, "ok": true}
+{"t": 1794116339.602751, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database() AS db, current_schema() AS schema, version() AS v"}, "ok": true}
+{"t": 1794116340.610194, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT 1 AS one"}, "ok": true}
+{"t": 1794116345.8585668, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type, is_nullable, column_default FROM information_schema.columns WHERE table_name = 'payments'"}, "ok": true}
+{"t": 1794116347.5655234, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments-db"}, "ok": true}
+{"t": 1794116354.472526, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "payments table schema columns postgres"}, "ok": true}
+{"t": 1794116355.4794843, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'payments' OR tablename LIKE '%payment%'"}, "ok": true}
+{"t": 1794116361.966016, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name FROM information_schema.columns WHERE table_name = 'payments' AND table_schema NOT IN ('pg_catalog','information_schema')"}, "ok": true}
+{"t": 1794116365.441383, "kind": "call", "tool": "github_get_file_contents", "args": {"fields": ["name", "path", "type"], "owner": "acme", "path": "/migrations", "repo": "payments-db"}, "ok": true}
+{"t": 1794116366.44877, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/migrations/0041_init.sql", "repo": "payments-db"}, "ok": true}

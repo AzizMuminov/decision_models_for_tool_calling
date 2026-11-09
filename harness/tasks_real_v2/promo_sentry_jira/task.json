@@ -1,0 +1,56 @@
+{
+ "id": "promo_sentry_jira",
+ "category": "multi",
+ "prompt": "Android users report they can't apply promo codes. Find the production error, check whether there is already a ticket with an agreed fix, implement it, and comment on the ticket. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "sentry_search_issues",
+   "sentry_search_events"
+  ],
+  [
+   "atlassian_jira_search",
+   "atlassian_jira_get_issue"
+  ],
+  [
+   "atlassian_jira_add_comment"
+  ]
+ ],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "checkout-web",
+    "query": "promo"
+   }
+  ],
+  [
+   "atlassian_jira_search",
+   {
+    "jql": "project = PAY AND text ~ promo"
+   }
+  ],
+  [
+   "atlassian_jira_get_issue",
+   {
+    "issue_key": "PAY-618"
+   }
+  ],
+  [
+   "atlassian_jira_add_comment",
+   {
+    "issue_key": "PAY-618",
+    "body": "Implemented: codes are trimmed, upper-cased, spaces removed"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "atlassian_jira_add_comment",
+   "match": {
+    "issue_key": "PAY-618"
+   }
+  }
+ ],
+ "probe": null
+}

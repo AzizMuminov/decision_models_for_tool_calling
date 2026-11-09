@@ -1,0 +1,61 @@
+{
+ "id": "linear_notion_pr",
+ "category": "multi",
+ "prompt": "Do ENG-91 the way our API guidelines say, and open a pull request for it from a branch named `eng-91` against `main` in acme/public-api. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "linear_getIssueById",
+   "linear_searchIssues"
+  ],
+  [
+   "notion_API-post-search"
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   "notion_API-get-block-children"
+  ],
+  [
+   "github_create_pull_request"
+  ]
+ ],
+ "gold": [
+  [
+   "linear_searchIssues",
+   {
+    "query": "ENG-91"
+   }
+  ],
+  [
+   "notion_API-post-search",
+   {
+    "query": "API guidelines"
+   }
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   {
+    "page_id": "5e6f-guidelines"
+   }
+  ],
+  [
+   "github_create_pull_request",
+   {
+    "owner": "acme",
+    "repo": "public-api",
+    "title": "ENG-91 deprecation headers",
+    "head": "eng-91",
+    "base": "main"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "github_create_pull_request",
+   "match": {
+    "head": "eng-91",
+    "base": "main"
+   }
+  }
+ ],
+ "probe": null
+}

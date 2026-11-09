@@ -1,0 +1,64 @@
+[
+ {
+  "tool": "aws_eks_list_k8s_resources",
+  "match": {
+   "_any": "data-prod"
+  },
+  "response": {
+   "items": [
+    {
+     "metadata": {
+      "name": "batch-importer-29188440-x7k2p",
+      "namespace": "batch"
+     },
+     "status": {
+      "phase": "Failed"
+     }
+    },
+    {
+     "metadata": {
+      "name": "batch-importer-29187000-m2d9q",
+      "namespace": "batch"
+     },
+     "status": {
+      "phase": "Failed"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "aws_eks_get_k8s_events",
+  "match": {
+   "_any": "batch-importer"
+  },
+  "response": {
+   "events": [
+    {
+     "reason": "BackoffLimitExceeded",
+     "message": "Job has reached the specified backoff limit"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "aws_eks_get_pod_logs",
+  "match": {
+   "_any": "batch-importer"
+  },
+  "response": "2026-11-05T02:00:04Z INFO importing 2.3M rows, batch size 5000\n2026-11-05T02:00:09Z ERROR warehouse rejected batch: 413 Payload Too Large (max 1000 rows per request since warehouse v9)\n2026-11-05T02:00:09Z FATAL aborting"
+ },
+ {
+  "tool": "aws_eks_get_cloudwatch_logs",
+  "match": {
+   "_any": "data-prod"
+  },
+  "response": {
+   "events": [
+    {
+     "message": "batch-importer: warehouse rejected batch: 413 Payload Too Large (max 1000 rows per request since warehouse v9)"
+    }
+   ]
+  }
+ }
+]

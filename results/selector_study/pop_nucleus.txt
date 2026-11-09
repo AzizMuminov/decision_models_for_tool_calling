@@ -1,0 +1,13 @@
+variant                    hit1  hit5  cov5  cov15 all15 services/search
+p=0.9  usage names on   0.917 0.983 0.827 0.872 0.807 1.11
+p=0.9  usage names off  0.917 0.983 0.827 0.854 0.782 1.11
+p=0.95 usage names on   0.917 0.983 0.829 0.874 0.807 1.13
+p=0.95 usage names off  0.917 0.983 0.829 0.856 0.785 1.13
+new DM spend $0.001 over 3 calls
+-- held-out
+variant                    hit1  hit5  cov5  cov15 all15 services/search
+p=0.9  usage names on   nan nan 0.794 0.845 0.796 1.06
+p=0.9  usage names off  nan nan 0.794 0.821 0.766 1.06
+p=0.95 usage names on   nan nan 0.798 0.849 0.800 1.07
+p=0.95 usage names off  nan nan 0.798 0.825 0.770 1.07
+new DM spend $0.000 over 3 calls

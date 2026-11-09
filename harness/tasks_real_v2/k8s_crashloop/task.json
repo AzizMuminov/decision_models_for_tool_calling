@@ -1,0 +1,34 @@
+{
+ "id": "k8s_crashloop",
+ "category": "single",
+ "prompt": "ledger-worker keeps restarting in production (namespace `ledger`) since the last config change. Figure out why and fix worker/settings.py. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "kubernetes_kubectl_get",
+   "kubernetes_kubectl_describe"
+  ],
+  [
+   "kubernetes_kubectl_logs"
+  ]
+ ],
+ "gold": [
+  [
+   "kubernetes_kubectl_get",
+   {
+    "resourceType": "pods",
+    "namespace": "ledger"
+   }
+  ],
+  [
+   "kubernetes_kubectl_logs",
+   {
+    "resourceType": "pod",
+    "name": "ledger-worker-7d9f6c5b8-xk2pq",
+    "namespace": "ledger",
+    "previous": true
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

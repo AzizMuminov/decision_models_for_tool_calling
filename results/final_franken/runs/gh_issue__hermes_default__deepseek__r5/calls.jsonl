@@ -1,0 +1,15 @@
+{"t": 1794109566.7485855, "kind": "call", "tool": "gitlab_get_issue", "args": {"project_id": "acme/payments", "issue_iid": 301}, "ok": false}
+{"t": 1794109567.759348, "kind": "call", "tool": "gitlab_list_issue_discussions", "args": {"project_id": "acme/payments", "issue_iid": 301}, "ok": false}
+{"t": 1794109568.8093305, "kind": "call", "tool": "gitlab_get_issue", "args": {"issue_iid": "301", "project_id": "acme/payments"}, "ok": false}
+{"t": 1794109569.8168662, "kind": "call", "tool": "gitlab_list_issue_discussions", "args": {"issue_iid": "301", "project_id": "acme/payments"}, "ok": true}
+{"t": 1794109573.7967958, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794109577.2287552, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-301"}, "ok": false}
+{"t": 1794109580.729926, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "repo": "acme/payments"}, "ok": false}
+{"t": 1794109581.7429757, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"301\" OR issue = PAY-301 ORDER BY created DESC", "max_results": 10}, "ok": true}
+{"t": 1794109583.6725385, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794109584.6819046, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments", "perPage": 100}, "ok": true}
+{"t": 1794109591.2688239, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/payments validate_currency"}, "ok": true}
+{"t": 1794109595.1857395, "kind": "call", "tool": "github_list_pull_requests", "args": {"repo": "acme/payments", "state": "all", "perPage": 50}, "ok": false}
+{"t": 1794109596.193583, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794109597.48497, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794109598.4924245, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "perPage": 50, "repo": "payments", "state": "all"}, "ok": true}

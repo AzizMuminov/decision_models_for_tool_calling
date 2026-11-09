@@ -1,0 +1,8 @@
+{"t": 1794110196.2656817, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type, ordinal_position FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794110197.290897, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database(), current_schema(), version()"}, "ok": true}
+{"t": 1794110200.167786, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%pay%'"}, "ok": true}
+{"t": 1794110201.1755083, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%pay%'"}, "ok": true}
+{"t": 1794110204.4423308, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename FROM pg_tables WHERE tablename LIKE '%payment%'"}, "ok": true}
+{"t": 1794110206.365984, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 1"}, "ok": true}
+{"t": 1794110207.373593, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name"}, "ok": true}
+{"t": 1794110213.9829984, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT id FROM payments WHERE merchant_ref = 'm_1029' ORDER BY created_ts DESC LIMIT 10"}, "ok": true}

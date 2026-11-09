@@ -1,0 +1,6 @@
+{"t": 1794124953.9612408, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "prometheus"}, "ok": true}
+{"t": 1794124958.6945405, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": ".*(request|http|checkout).*(duration|latency).*", "limit": 100}, "ok": true}
+{"t": 1794124960.1539574, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100}, "ok": true}
+{"t": 1794124964.3188932, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "expr": "{__name__=~\".*(request|http|checkout).*(duration|latency).*\"}", "queryType": "instant", "endTime": "now"}, "ok": true}
+{"t": 1794124970.442119, "kind": "call", "tool": "grafana_list_prometheus_metric_metadata", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100}, "ok": true}
+{"t": 1794124979.6879048, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "checkout"}, "ok": true}

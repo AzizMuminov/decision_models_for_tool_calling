@@ -1,0 +1,76 @@
+[
+ {
+  "tool": "github_search_code",
+  "match": {
+   "query": [
+    "currenc"
+   ]
+  },
+  "response": {
+   "total_count": 2,
+   "items": [
+    {
+     "name": "currencies.yaml",
+     "path": "currencies.yaml",
+     "repository": {
+      "full_name": "acme/platform-config"
+     }
+    },
+    {
+     "name": "currencies.py",
+     "path": "shop/currencies.py",
+     "repository": {
+      "full_name": "acme/shop"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_search_repositories",
+  "match": {
+   "query": [
+    "config",
+    "currenc",
+    "acme"
+   ]
+  },
+  "response": {
+   "total_count": 1,
+   "items": [
+    {
+     "full_name": "acme/platform-config",
+     "description": "Canonical platform configuration: currencies, countries, limits"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_get_file_contents",
+  "match": {
+   "repo": "platform-config",
+   "path": "currencies"
+  },
+  "response": "# Canonical list - owned by Platform. Do not edit copies by hand.\nsupported_currencies:\n  - EUR\n  - USD\n  - GBP\n  - SEK\n  - PLN\n  - CZK\n"
+ },
+ {
+  "tool": "github_get_file_contents",
+  "match": {
+   "repo": "platform-config"
+  },
+  "response": [
+   {
+    "name": "README.md",
+    "type": "file"
+   },
+   {
+    "name": "currencies.yaml",
+    "type": "file"
+   },
+   {
+    "name": "countries.yaml",
+    "type": "file"
+   }
+  ]
+ }
+]

@@ -1,0 +1,56 @@
+{
+ "id": "slack_decision",
+ "category": "single",
+ "prompt": "The payments team agreed on a new webhook retry policy in a chat discussion. Implement it in webhooks/retry.py and confirm in that same discussion once done. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "slack_list_channels"
+  ],
+  [
+   "slack_get_channel_history"
+  ],
+  [
+   "slack_get_thread_replies"
+  ],
+  [
+   "slack_reply_to_thread"
+  ]
+ ],
+ "gold": [
+  [
+   "slack_list_channels",
+   {}
+  ],
+  [
+   "slack_get_channel_history",
+   {
+    "channel_id": "C07PAYENG01",
+    "limit": 50
+   }
+  ],
+  [
+   "slack_get_thread_replies",
+   {
+    "channel_id": "C07PAYENG01",
+    "thread_ts": "1793741112.004100"
+   }
+  ],
+  [
+   "slack_reply_to_thread",
+   {
+    "channel_id": "C07PAYENG01",
+    "thread_ts": "1793741112.004100",
+    "text": "Implemented: 4 retries, 3s base, 60s cap"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "slack_reply_to_thread",
+   "match": {
+    "thread_ts": "1793741112.004100"
+   }
+  }
+ ],
+ "probe": null
+}

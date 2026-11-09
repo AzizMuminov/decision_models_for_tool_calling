@@ -1,0 +1,11 @@
+{"t": 1794115948.2261996, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "perPage": 100}, "ok": true}
+{"t": 1794115955.29033, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments", "ref": "main"}, "ok": false}
+{"t": 1794115959.2957065, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"vulnerab\" OR text ~ \"CVE\" OR text ~ \"security\" OR text ~ \"dependabot\") ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794115960.3034353, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "requirements.txt", "repo": "payments"}, "ok": true}
+{"t": 1794115968.1962628, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"affects": "requests@2.32.3,urllib3@2.2.1,jinja2@3.1.3,click@8.1.7", "ecosystem": "pip"}, "ok": true}
+{"t": 1794115970.0418699, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"ecosystem": "pip", "type": "reviewed"}, "ok": true}
+{"t": 1794115973.5456681, "kind": "call", "tool": "github_list_repository_security_advisories", "args": {"owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794115974.5562763, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "perPage": 100, "repo": "payments", "state": "dismissed"}, "ok": true}
+{"t": 1794115996.8219428, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794115997.8312454, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 30}, "ok": false}
+{"t": 1794115999.6122367, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}

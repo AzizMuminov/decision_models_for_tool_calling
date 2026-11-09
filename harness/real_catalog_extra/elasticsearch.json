@@ -1,0 +1,90 @@
+[
+ {
+  "name": "list_indices",
+  "description": "List all available Elasticsearch indices",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "indexPattern": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Index pattern of Elasticsearch indices to list"
+    }
+   },
+   "required": [
+    "indexPattern"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+ },
+ {
+  "name": "get_mappings",
+  "description": "Get field mappings for a specific Elasticsearch index",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "index": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the Elasticsearch index to get mappings for"
+    }
+   },
+   "required": [
+    "index"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+ },
+ {
+  "name": "search",
+  "description": "Perform an Elasticsearch search with the provided query DSL. Highlights are always enabled.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "index": {
+     "type": "string",
+     "minLength": 1,
+     "description": "Name of the Elasticsearch index to search"
+    },
+    "queryBody": {
+     "type": "object",
+     "additionalProperties": {},
+     "description": "Complete Elasticsearch query DSL object that can include query, size, from, sort, etc."
+    },
+    "profile": {
+     "type": "boolean",
+     "default": false,
+     "description": "Whether to include query profiling information"
+    },
+    "explain": {
+     "type": "boolean",
+     "default": false,
+     "description": "Whether to include explanation of how the query was executed"
+    }
+   },
+   "required": [
+    "index",
+    "queryBody"
+   ],
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+ },
+ {
+  "name": "get_shards",
+  "description": "Get shard information for all or specific indices",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "index": {
+     "type": "string",
+     "description": "Optional index name to get shard information for"
+    }
+   },
+   "additionalProperties": false,
+   "$schema": "http://json-schema.org/draft-07/schema#"
+  }
+ }
+]

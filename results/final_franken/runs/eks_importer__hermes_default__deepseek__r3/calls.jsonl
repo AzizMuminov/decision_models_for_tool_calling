@@ -1,0 +1,48 @@
+{"t": 1794107753.6313605, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"cluster_name": "data-prod", "kind": "CronJob", "api_version": "batch/v1", "namespace": "batch"}, "ok": true}
+{"t": 1794107754.6429255, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"cluster_name": "data-prod", "kind": "Job", "api_version": "batch/v1", "namespace": "batch"}, "ok": true}
+{"t": 1794107756.558474, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "v1", "cluster_name": "data-prod", "kind": "Pod", "namespace": "batch"}, "ok": true}
+{"t": 1794107757.5659482, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"cluster_name": "data-prod", "kind": "CronJob", "api_version": "batch/v1"}, "ok": true}
+{"t": 1794107760.3044825, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {}, "ok": false}
+{"t": 1794107761.3148854, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"resourceType": "job", "name": "batch-importer-29188440-x7k2p", "namespace": "batch", "tail": 100}, "ok": false}
+{"t": 1794107763.6384842, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "batch-importer-29188440-x7k2p", "namespace": "batch", "resourceType": "pod", "tail": 150}, "ok": false}
+{"t": 1794107764.8961325, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list", "detailed": true}, "ok": true}
+{"t": 1794107770.2142053, "kind": "call", "tool": "aws_cloudwatch_describe_log_groups", "args": {"prefix": "/aws/eks/data-prod"}, "ok": false}
+{"t": 1794107771.8251164, "kind": "call", "tool": "aws_cloudwatch_describe_log_groups", "args": {}, "ok": false}
+{"t": 1794107772.8323731, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "data-prod", "limit": 100, "log_type": "application", "minutes": 10080, "resource_name": "batch-importer", "resource_type": "pod"}, "ok": true}
+{"t": 1794107775.9823005, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "batch-importer"}, "ok": false}
+{"t": 1794107776.9914892, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"logql": "{namespace=\"batch\"} |= \"batch-importer\"", "minutes": 10080, "limit": 50}, "ok": false}
+{"t": 1794107777.9995105, "kind": "call", "tool": "github_search_repositories", "args": {"query": "batch-importer"}, "ok": true}
+{"t": 1794107780.3795564, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "batch-importer"}, "ok": true}
+{"t": 1794107784.2937376, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794107785.3013499, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme batch-importer"}, "ok": true}
+{"t": 1794107786.8909817, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 100, "logql": "{namespace=\"batch\"}", "minutes": 10080}, "ok": true}
+{"t": 1794107787.898581, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "minutes": 10080}, "ok": true}
+{"t": 1794107791.0059779, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "data-prod", "limit": 10, "log_type": "application", "minutes": 10080, "resource_name": "zzz-nonexistent-pod", "resource_type": "pod"}, "ok": true}
+{"t": 1794107792.0133684, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "data-prod", "limit": 10, "log_type": "application", "minutes": 10080, "resource_name": "batch-importer-29187000-m2d9q", "resource_type": "pod"}, "ok": true}
+{"t": 1794107796.3231459, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"kind": "job", "name": "batch-importer", "namespace": "batch"}, "ok": false}
+{"t": 1794107797.3325844, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved", "limit": 50}, "ok": true}
+{"t": 1794107800.357371, "kind": "call", "tool": "github_search_repositories", "args": {"query": "importer"}, "ok": true}
+{"t": 1794107804.2795377, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "output": "wide", "resourceType": "jobs"}, "ok": false}
+{"t": 1794107805.2873642, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "importer"}, "ok": true}
+{"t": 1794107812.4278252, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "batch importer"}, "ok": true}
+{"t": 1794107813.4359818, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "batch-importer"}, "ok": true}
+{"t": 1794107814.444189, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "batch importer"}, "ok": true}
+{"t": 1794107825.5047858, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "batch/v1", "cluster_name": "zzz-no-such-cluster", "kind": "Job", "namespace": "batch"}, "ok": false}
+{"t": 1794107826.5123205, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "zzz-no-such-cluster", "limit": 5, "log_type": "application", "minutes": 60, "resource_name": "whatever", "resource_type": "pod"}, "ok": false}
+{"t": 1794107830.4168265, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "resourceType": "events"}, "ok": false}
+{"t": 1794107835.591907, "kind": "call", "tool": "aws_eks_get_k8s_events", "args": {"cluster_name": "data-prod", "namespace": "batch", "kind": "Pod", "name": "batch-importer-29188440-x7k2p"}, "ok": true}
+{"t": 1794107840.0200007, "kind": "call", "tool": "github_search_code", "args": {"query": "BATCH_SIZE importer org:acme"}, "ok": true}
+{"t": 1794107844.2906725, "kind": "call", "tool": "aws_cloudwatch_describe_log_groups", "args": {"prefix": "/aws/containerinsights"}, "ok": false}
+{"t": 1794107848.5042975, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794107849.512084, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794107851.4515405, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794107852.4591799, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794107860.7690313, "kind": "call", "tool": "aws_eks_manage_k8s_resource", "args": {"cluster_name": "data-prod", "kind": "CronJob", "name": "batch-importer", "namespace": "batch", "operation": "get"}, "ok": false}
+{"t": 1794107862.4133587, "kind": "call", "tool": "aws_eks_manage_k8s_resource", "args": {"api_version": "batch/v1", "cluster_name": "data-prod", "kind": "CronJob", "name": "batch-importer", "namespace": "batch", "operation": "read"}, "ok": true}
+{"t": 1794107868.908885, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "prod-eu-1", "limit": 20, "log_type": "application", "minutes": 10080, "resource_name": "batch-importer", "resource_type": "pod"}, "ok": false}
+{"t": 1794107869.9167573, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "batch/v1", "cluster_name": "prod-eu-1", "kind": "Job", "namespace": "batch"}, "ok": false}
+{"t": 1794107877.7257361, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "warehouse"}, "ok": true}
+{"t": 1794107878.733411, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "warehouse"}, "ok": true}
+{"t": 1794107879.740965, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "data-prod", "filter_pattern": "warehouse", "limit": 100, "log_type": "application", "minutes": 43200, "resource_type": "cluster"}, "ok": true}
+{"t": 1794107885.4143872, "kind": "call", "tool": "github_search_commits", "args": {"query": "batch importer warehouse"}, "ok": true}
+{"t": 1794107897.2926803, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"cluster_name": "data-prod", "limit": 50, "log_type": "application", "minutes": 1440, "resource_type": "cluster"}, "ok": true}

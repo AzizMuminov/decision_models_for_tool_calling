@@ -1,0 +1,4 @@
+Warning: No LLM API key found (OPENAI_API_KEY, ANTHROPIC_API_KEY, or OPENROUTER_API_KEY).
+AI-powered search tools will be unavailable.
+Search tools still work with direct Sentry query syntax via the 'query' parameter.
+

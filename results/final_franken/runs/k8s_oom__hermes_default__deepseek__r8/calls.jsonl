@@ -1,0 +1,20 @@
+{"t": 1794113289.5062997, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "deployment"}, "ok": true}
+{"t": 1794113290.5185568, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "pods"}, "ok": true}
+{"t": 1794113301.100681, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list", "showCurrent": true}, "ok": true}
+{"t": 1794113302.1087077, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "wide", "resourceType": "pods"}, "ok": true}
+{"t": 1794113307.8184328, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "custom", "resourceType": "events"}, "ok": true}
+{"t": 1794113308.8259852, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder", "namespace": "reports", "previous": true, "resourceType": "deployment", "tail": 100}, "ok": true}
+{"t": 1794113312.6808875, "kind": "call", "tool": "grafana_query_prometheus", "args": {"end": "now", "expr": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\",pod=~\"report-builder.*\",container=\"builder\"}[6h])", "start": "now-6h", "step": "1m"}, "ok": false}
+{"t": 1794113315.9583507, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "prometheus"}, "ok": true}
+{"t": 1794113317.8879328, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\",container=\"builder\"}[6h])", "queryType": "instant"}, "ok": true}
+{"t": 1794113318.8950696, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "max_over_time(container_memory_max_usage_bytes{namespace=\"reports\"}[6h])", "queryType": "instant"}, "ok": true}
+{"t": 1794113321.742544, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "endRfc3339": "now", "limit": 50, "regex": ".*memory.*", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794113325.8825467, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"limit": 10, "operation": "list"}, "ok": true}
+{"t": 1794113330.358062, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 100, "logql": "{namespace=\"reports\"} |= \"memory high-water mark\"", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794113331.3663385, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": false, "namespace": "reports", "output": "wide", "resourceType": "events"}, "ok": true}
+{"t": 1794113340.6375284, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel": "incidents", "limit": 50}, "ok": false}
+{"t": 1794113341.6474187, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794113343.8074, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794113344.8174055, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794113347.443288, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794113348.451536, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}

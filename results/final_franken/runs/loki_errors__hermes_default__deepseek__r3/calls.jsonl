@@ -1,0 +1,28 @@
+{"t": 1794107861.2032654, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 20, "status": "active"}, "ok": true}
+{"t": 1794107862.2144017, "kind": "call", "tool": "github_search_code", "args": {"fields": ["path", "repository"], "query": "notifier shipping email", "perPage": 20}, "ok": true}
+{"t": 1794107865.2394855, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 20, "status": "resolved"}, "ok": true}
+{"t": 1794107868.9558673, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 20, "query": "notifier"}, "ok": true}
+{"t": 1794107869.9645865, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 20, "query": "notifier in:name"}, "ok": true}
+{"t": 1794107875.7866237, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "notifier", "ref": "main"}, "ok": false}
+{"t": 1794107879.9929612, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "notifier"}, "ok": true}
+{"t": 1794107881.0059738, "kind": "call", "tool": "github_search_repositories", "args": {"query": "notifier in:name"}, "ok": true}
+{"t": 1794107884.8589535, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 50}, "ok": true}
+{"t": 1794107889.029679, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794107891.2003722, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "format": "compact", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "now-12h"}, "ok": true}
+{"t": 1794107894.5415115, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "format": "compact", "limit": 100, "logql": "{app=\"notifier\"} |~ \"template|render|Template\"", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794107895.5506563, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "order_shipped_v2"}, "ok": true}
+{"t": 1794107898.161376, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "repo:acme/notifier"}, "ok": true}
+{"t": 1794107901.8613262, "kind": "call", "tool": "atlassian_jira_search", "args": {"query": "CHG-2231"}, "ok": false}
+{"t": 1794107904.2990599, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"CHG-2231\""}, "ok": true}
+{"t": 1794107905.3065698, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794107907.2976747, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "notifier"}, "ok": true}
+{"t": 1794107908.3054783, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "notifier"}, "ok": true}
+{"t": 1794107912.4056227, "kind": "call", "tool": "sentry_search_events", "args": {"query": "notifier"}, "ok": false}
+{"t": 1794107914.903095, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "notifier"}, "ok": true}
+{"t": 1794107915.9112415, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resource_type": "deployments", "namespace": "default"}, "ok": false}
+{"t": 1794107917.5346882, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "default", "resourceType": "deployments"}, "ok": false}
+{"t": 1794107921.340452, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = CHG AND key = CHG-2231"}, "ok": true}
+{"t": 1794107923.7509854, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "order_shipped_v3"}, "ok": true}
+{"t": 1794107924.7581995, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "notifier template"}, "ok": true}
+{"t": 1794107927.000412, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "format": "compact", "limit": 100, "logql": "{app=\"notifier\"} | level=\"error\"", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794107928.0081623, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "format": "compact", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "now-7d"}, "ok": true}

@@ -1,0 +1,29 @@
+7961 queries; 385 pilot queries; with instruction; methods ['A', 'E']
+  A: 1000/7961 queries, $0.14 spent, 37s
+  A: 2000/7961 queries, $0.32 spent, 77s
+  A: 3000/7961 queries, $0.48 spent, 115s
+  A: 4000/7961 queries, $0.63 spent, 150s
+  A: 5000/7961 queries, $0.77 spent, 185s
+  A: 6000/7961 queries, $0.91 spent, 220s
+  A: 7000/7961 queries, $1.06 spent, 256s
+  E: 1000/7961 queries, $1.94 spent, 89s
+  E: 2000/7961 queries, $2.81 spent, 181s
+  E: 3000/7961 queries, $3.70 spent, 275s
+  E: 4000/7961 queries, $4.47 spent, 366s
+  E: 5000/7961 queries, $5.30 spent, 458s
+  E: 6000/7961 queries, $6.43 spent, 614s
+  E: 7000/7961 queries, $6.96 spent, 675s
+
+== all 7,961 queries
+BM25                               web 26.06  code 41.90  customized 41.17 | avg N@10 36.37 R@10 46.40 C@10 39.03
+embeddings                         web 36.28  code 36.28  customized 41.85 | avg N@10 38.14 R@10 49.51 C@10 39.57
+A                                  web 46.20  code 55.55  customized 52.69 | avg N@10 51.48 R@10 61.54 C@10 49.86
+E                                  web 47.98  code 56.59  customized 56.07 | avg N@10 53.55 R@10 62.15 C@10 51.17
+
+== 7576 queries not in the pilot
+BM25                               web 27.63  code 41.72  customized 41.62 | avg N@10 36.99 R@10 46.82 C@10 39.42
+embeddings                         web 37.01  code 36.22  customized 39.98 | avg N@10 37.74 R@10 48.85 C@10 39.21
+A                                  web 48.38  code 55.49  customized 51.67 | avg N@10 51.85 R@10 61.81 C@10 50.26
+E                                  web 49.94  code 55.86  customized 55.54 | avg N@10 53.78 R@10 62.36 C@10 51.46
+
+failed DM calls kept first-stage order: {}; DM spend $7.73 over 46418 calls

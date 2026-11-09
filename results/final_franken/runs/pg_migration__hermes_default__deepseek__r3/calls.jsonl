@@ -1,0 +1,20 @@
+{"t": 1794107881.9953816, "kind": "call", "tool": "postgres_query", "args": {"sql": "select current_database(), current_schema();"}, "ok": true}
+{"t": 1794107883.007994, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema') order by 1,2;"}, "ok": true}
+{"t": 1794107885.715341, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name, column_name, data_type from information_schema.columns where table_schema not in ('pg_catalog','information_schema') order by table_schema, table_name, ordinal_position;"}, "ok": true}
+{"t": 1794107886.723801, "kind": "call", "tool": "postgres_query", "args": {"sql": "select schemaname, tablename, indexname, indexdef from pg_indexes where schemaname not in ('pg_catalog','information_schema') order by 1,2,3;"}, "ok": true}
+{"t": 1794107894.1156561, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "payments-db", "path": "/"}, "ok": true}
+{"t": 1794107895.1236157, "kind": "call", "tool": "github_search_code", "args": {"query": "merchant_ref repo:acme/payments-db"}, "ok": true}
+{"t": 1794107899.2905324, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments db"}, "ok": true}
+{"t": 1794107900.3020763, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments schema"}, "ok": true}
+{"t": 1794107904.7316873, "kind": "call", "tool": "postgres_query", "args": {"sql": "select count(*) as n from public.payments;"}, "ok": true}
+{"t": 1794107905.7450852, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_name from information_schema.tables where table_name ilike '%pay%';"}, "ok": true}
+{"t": 1794107908.6093123, "kind": "call", "tool": "postgres_query", "args": {"sql": "select c.relname as table_name, n.nspname as schema_name from pg_class c join pg_namespace n on n.oid = c.relnamespace where c.relkind = 'r' and n.nspname not in ('pg_catalog','information_schema') order by 1;"}, "ok": true}
+{"t": 1794107909.6195614, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from public.payments limit 1;"}, "ok": true}
+{"t": 1794107915.6756465, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794107916.6858082, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"index\" OR text ~ \"merchant\") ORDER BY created DESC", "maxResults": 20}, "ok": true}
+{"t": 1794107926.5077615, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from public.zzz_no_such_table_12345 limit 1;"}, "ok": true}
+{"t": 1794107927.5168192, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from public.payment limit 1;"}, "ok": true}
+{"t": 1794107930.4403195, "kind": "call", "tool": "postgres_query", "args": {"sql": "select merchant_ref, created_ts from public.payments order by created_ts desc limit 3;"}, "ok": true}
+{"t": 1794107931.4507172, "kind": "call", "tool": "postgres_query", "args": {"sql": "select merchant_id, created_at from public.payments limit 1;"}, "ok": true}
+{"t": 1794107935.6503599, "kind": "call", "tool": "postgres_query", "args": {"sql": "select indexname, indexdef from pg_indexes where schemaname='public' and tablename='payments';"}, "ok": true}
+{"t": 1794107936.6589415, "kind": "call", "tool": "postgres_query", "args": {"sql": "select column_name, data_type, is_nullable from information_schema.columns where table_schema='public' and table_name='payments' order by ordinal_position;"}, "ok": true}

@@ -1,0 +1,23 @@
+{"t": 1794119653.1637108, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "period": "14d", "projectSlugOrId": "ledger-worker", "query": "is:unresolved", "sort": "date"}, "ok": true}
+{"t": 1794119654.174677, "kind": "call", "tool": "github_list_pull_requests", "args": {"direction": "desc", "owner": "acme", "perPage": 20, "repo": "ledger-worker", "sort": "updated", "state": "all"}, "ok": true}
+{"t": 1794119655.9544246, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceId": "LEDGER-WORKER-9A", "resourceType": "issue"}, "ok": true}
+{"t": 1794119668.1863806, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue details permalink url", "toolName": "sentry"}, "ok": true}
+{"t": 1794119672.208998, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_diff", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119678.9094782, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_files", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119681.665969, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794119685.9040637, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "worker/rates.py", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119686.911466, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "path": "worker/rates.py", "perPage": 20, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119690.8476942, "kind": "call", "tool": "sentry_search_events", "args": {"query": "issue:LEDGER-WORKER-9A", "organizationSlug": "acme"}, "ok": true}
+{"t": 1794119693.5072544, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "rounding"}, "ok": true}
+{"t": 1794119696.8141315, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "rounding minor unit ledger"}, "ok": true}
+{"t": 1794119697.8213747, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119703.1706736, "kind": "call", "tool": "slack_list_channels", "args": {"limit": 50}, "ok": true}
+{"t": 1794119704.1781437, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "reconciliation rounding"}, "ok": true}
+{"t": 1794119707.0579443, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 30}, "ok": true}
+{"t": 1794119708.065978, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 30}, "ok": true}
+{"t": 1794119710.2237709, "kind": "call", "tool": "sentry_find_organizations", "args": {"query": "acme"}, "ok": true}
+{"t": 1794119713.151216, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"url": "https://acme.sentry.io/issues/LEDGER-WORKER-9A"}, "ok": true}
+{"t": 1794119717.90739, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ledger"}, "ok": true}
+{"t": 1794119718.9147723, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ledger-worker"}, "ok": true}
+{"t": 1794119733.8317652, "kind": "call", "tool": "github_add_issue_comment", "args": {"body": "\u26a0\ufe0f This change introduced a production regression.\n\nSentry issue: https://acme.sentry.io/issues/LEDGER-WORKER-9A \u2014 **ReconciliationMismatch: converted totals off by 1 minor unit** (expected 1100, got 1099). First seen in release `ledger-worker@2026.11.3`; 2,201 events.\n\nCause: replacing the `Decimal` rounding in `worker/rates.py` with `int(...)` truncates toward zero instead of rounding to the nearest minor unit, so converted totals come out 1 unit low and fail reconciliation.\n\nFix: `worker/rates.py` now multiplies with `Decimal` and quantizes to the nearest minor unit using `ROUND_HALF_UP`. Please cherry-pick/release a patch.", "issue_number": 412, "owner": "acme", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794119736.1874373, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_comments", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}

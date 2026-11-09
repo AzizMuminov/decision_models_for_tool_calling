@@ -1,0 +1,1 @@
+{"t": 1794122723.9624941, "kind": "call", "tool": "aws_eks_get_cloudwatch_logs", "args": {"resource_type": "pod", "cluster_name": "data-prod", "log_type": "application", "resource_name": "batch-importer", "minutes": 5760, "limit": 100}, "ok": true}

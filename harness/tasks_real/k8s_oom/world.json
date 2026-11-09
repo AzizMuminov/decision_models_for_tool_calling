@@ -1,0 +1,23 @@
+[
+ {
+  "tool": "kubernetes_kubectl_get",
+  "match": {
+   "_any": "reports"
+  },
+  "response": "NAME                         READY   STATUS      RESTARTS      AGE\nreport-builder-6b7c9d-q8w2e   0/1     OOMKilled   7 (40s ago)   1h"
+ },
+ {
+  "tool": "kubernetes_kubectl_describe",
+  "match": {
+   "_any": "report-builder"
+  },
+  "response": "Name: report-builder-6b7c9d-q8w2e\nNamespace: reports\nContainers:\n  builder:\n    Limits: memory: 512Mi\n    Last State: Terminated\n      Reason: OOMKilled\n      Exit Code: 137\nEvents:\n  Warning OOMKilling 41s kernel-monitor Memory cgroup out of memory: Killed process 4121 (python) total-vm:1301220kB, anon-rss:811008kB (peak 792Mi)"
+ },
+ {
+  "tool": "kubernetes_kubectl_logs",
+  "match": {
+   "_any": "report-builder"
+  },
+  "response": "2026-11-05T05:40:02Z INFO building monthly report (rows=2.1M)\n2026-11-05T05:40:31Z INFO memory high-water mark 792Mi\n(container killed: OOMKilled)"
+ }
+]

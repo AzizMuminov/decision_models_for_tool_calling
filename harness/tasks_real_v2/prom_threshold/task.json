@@ -1,0 +1,38 @@
+{
+ "id": "prom_threshold",
+ "category": "single",
+ "prompt": "Set SLOW_REQUEST_MS in alerts/config.py to twice the checkout service's current p99 request latency, in milliseconds. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "grafana_list_datasources"
+  ],
+  [
+   "grafana_query_prometheus",
+   "grafana_query_prometheus_histogram"
+  ]
+ ],
+ "gold": [
+  [
+   "grafana_list_datasources",
+   {
+    "name": "prom"
+   }
+  ],
+  [
+   "grafana_query_prometheus",
+   {
+    "datasourceUid": "PBFA97CFB590B2093",
+    "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{service=\"checkout\"}[5m])))",
+    "endTime": "now",
+    "queryType": "instant"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "alerts/config.py",
+  "name": "SLOW_REQUEST_MS",
+  "expected": 824,
+  "original": 1000
+ }
+}

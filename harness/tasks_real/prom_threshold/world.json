@@ -1,0 +1,47 @@
+[
+ {
+  "tool": "grafana_query_prometheus",
+  "match": {
+   "datasourceUid": "PBFA97CFB590B2093",
+   "expr": "checkout"
+  },
+  "response": {
+   "resultType": "vector",
+   "result": [
+    {
+     "metric": {
+      "service": "checkout"
+     },
+     "value": [
+      1793770000,
+      "0.412"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_query_prometheus_histogram",
+  "match": {
+   "datasourceUid": "PBFA97CFB590B2093",
+   "_any": "checkout"
+  },
+  "response": {
+   "quantile": 0.99,
+   "result": [
+    {
+     "metric": {
+      "service": "checkout"
+     },
+     "value": "0.412"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "grafana_query_prometheus",
+  "response": {
+   "error": "datasource not found or query returned no series; check datasourceUid and labels"
+  }
+ }
+]

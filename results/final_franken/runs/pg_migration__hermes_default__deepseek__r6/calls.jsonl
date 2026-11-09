@@ -1,0 +1,20 @@
+{"t": 1794111562.688277, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794111566.1095102, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type, ordinal_position FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794111567.1191344, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%payment%'"}, "ok": true}
+{"t": 1794111571.3874416, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database(), current_schema(), table_name FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema')"}, "ok": true}
+{"t": 1794111575.0385578, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "migrations", "repo": "payments-db"}, "ok": true}
+{"t": 1794111576.046206, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "payments-db"}, "ok": true}
+{"t": 1794111585.953298, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-db"}, "ok": true}
+{"t": 1794111586.9636612, "kind": "call", "tool": "github_search_code", "args": {"query": "payments merchant_ref created_ts"}, "ok": true}
+{"t": 1794111587.9714367, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments schema table columns"}, "ok": true}
+{"t": 1794111596.3926146, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT 1"}, "ok": true}
+{"t": 1794111597.3995943, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema='public'"}, "ok": true}
+{"t": 1794111608.3197966, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794111609.327758, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "max_results": 20}, "ok": true}
+{"t": 1794111610.3363807, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794111612.713933, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794111613.7219682, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794111621.7044237, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 1"}, "ok": true}
+{"t": 1794111622.7124426, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT c.relname AS table_name, a.attname AS column_name, format_type(a.atttypid, a.atttypmod) AS data_type FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace JOIN pg_attribute a ON a.attrelid=c.oid WHERE c.relkind='r' AND n.nspname='public' AND a.attnum>0 ORDER BY c.relname, a.attnum"}, "ok": true}
+{"t": 1794111626.6541574, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payment LIMIT 1"}, "ok": true}
+{"t": 1794111627.661627, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE schemaname='public' AND tablename='payments'"}, "ok": true}

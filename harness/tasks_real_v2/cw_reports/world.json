@@ -1,0 +1,80 @@
+[
+ {
+  "tool": "aws_cloudwatch_describe_log_groups",
+  "response": {
+   "log_groups": [
+    {
+     "logGroupName": "/ecs/reports-api",
+     "storedBytes": 81233411
+    },
+    {
+     "logGroupName": "/ecs/billing-sync",
+     "storedBytes": 2201933
+    }
+   ]
+  }
+ },
+ {
+  "tool": "aws_cloudwatch_execute_log_insights_query",
+  "match": {
+   "_any": "reports"
+  },
+  "response": {
+   "queryId": "q-5c1d",
+   "status": "Complete",
+   "results": [
+    [
+     {
+      "field": "@timestamp",
+      "value": "2026-11-04 19:02:11"
+     },
+     {
+      "field": "@message",
+      "value": "ERROR export failed: ValueError: dict contains fields not in fieldnames: 'currency'"
+     }
+    ],
+    [
+     {
+      "field": "@timestamp",
+      "value": "2026-11-04 19:02:11"
+     },
+     {
+      "field": "@message",
+      "value": "INFO upstream ledger 2026.11 added `currency` to every row"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "tool": "aws_cloudwatch_get_logs_insight_query_results",
+  "match": {
+   "_any": "q-5c1d"
+  },
+  "response": {
+   "status": "Complete",
+   "results": [
+    [
+     {
+      "field": "@message",
+      "value": "ERROR export failed: ValueError: dict contains fields not in fieldnames: 'currency'"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "tool": "aws_cloudwatch_analyze_log_group",
+  "match": {
+   "_any": "reports"
+  },
+  "response": {
+   "top_errors": [
+    {
+     "pattern": "ERROR export failed: ValueError: dict contains fields not in fieldnames: 'currency'",
+     "count": 4120
+    }
+   ]
+  }
+ }
+]

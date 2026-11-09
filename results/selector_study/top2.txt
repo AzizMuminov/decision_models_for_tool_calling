@@ -1,0 +1,18 @@
+== held-out
+variant                                        hit1  cov5  cov   all   len
+ref: nucleus 0.99, top 10, weighted              -   0.800 0.817 0.764   9.6
+top 2 services, 10 tools, weighted               -   0.798 0.816 0.762   9.9
+top 2 services, 10 tools, alternating            -   0.785 0.802 0.746   9.9
+top 2 services, 15 tools, alternating            -   0.785 0.819 0.766  14.8
+top 3 services, 10 tools, alternating            -   0.775 0.810 0.758   9.9
+top 3 services, 15 tools, alternating            -   0.775 0.818 0.764  14.8
+top 2, tool p 0.995, min 10 max 20, weighted     -   0.798 0.822 0.766  11.2
+== dev
+variant                                        hit1  cov5  cov   all   len
+ref: nucleus 0.99, top 10, weighted            0.917 0.831 0.856 0.785   9.7
+top 2 services, 10 tools, weighted             0.917 0.831 0.857 0.785  10.0
+top 2 services, 10 tools, alternating          0.917 0.823 0.842 0.767  10.0
+top 2 services, 15 tools, alternating          0.917 0.823 0.858 0.790  14.9
+top 3 services, 10 tools, alternating          0.917 0.814 0.838 0.762  10.0
+top 3 services, 15 tools, alternating          0.917 0.814 0.844 0.770  15.0
+top 2, tool p 0.995, min 10 max 20, weighted   0.917 0.831 0.857 0.785  11.7

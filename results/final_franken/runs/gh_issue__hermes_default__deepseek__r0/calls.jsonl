@@ -1,0 +1,4 @@
+{"t": 1794104537.1746206, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794104538.2355313, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments", "perPage": 100}, "ok": true}
+{"t": 1794104546.6289263, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_sub_issues", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794104547.6909654, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_labels", "owner": "acme", "repo": "payments"}, "ok": true}

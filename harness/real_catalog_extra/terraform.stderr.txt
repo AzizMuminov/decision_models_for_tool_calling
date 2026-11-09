@@ -1,0 +1,7 @@
+time="2026-11-05T05:41:06Z" level=info msg="Enabled toolsets: [all]"
+Terraform MCP Server running on stdio
+time="2026-11-05T05:41:06Z" level=error msg="NewSessionHandler failed to create TFE client" error="open /srv/agentbox/home/.terraform.d/credentials.tfrc.json: no such file or directory"
+time="2026-11-05T05:41:06Z" level=info msg="Created HTTP client"
+time="2026-11-05T05:41:06Z" level=warning msg="Session has no valid TFE client - TFE tools will not be available"
+time="2026-11-05T05:41:06Z" level=info msg="Session unregistered from TFE client"
+time="2026-11-05T05:41:06Z" level=info msg="Cleaned up clients for session"

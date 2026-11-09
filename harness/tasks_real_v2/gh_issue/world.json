@@ -1,0 +1,36 @@
+[
+ {
+  "tool": "github_issue_read",
+  "match": {
+   "issue_number": "301",
+   "method": "get_comments"
+  },
+  "response": [
+   {
+    "user": {
+     "login": "jdiaz"
+    },
+    "body": "Can we also accept the ISO test code XTS? Our sandbox merchants use it."
+   },
+   {
+    "user": {
+     "login": "apatel"
+    },
+    "body": "Yes - add XTS. Everything else stays as in the description."
+   }
+  ]
+ },
+ {
+  "tool": "github_issue_read",
+  "match": {
+   "issue_number": "301"
+  },
+  "response": {
+   "number": 301,
+   "title": "validate_currency should reject unsupported codes",
+   "state": "open",
+   "comments": 2,
+   "body": "`validate_currency` currently accepts anything.\n\nIt should:\n- strip whitespace and upper-case the code\n- accept only EUR, USD, GBP, PLN\n- raise `ValueError` for anything else\n- return the normalised code"
+  }
+ }
+]

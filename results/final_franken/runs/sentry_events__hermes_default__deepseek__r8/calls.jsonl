@@ -1,0 +1,13 @@
+{"t": 1794113263.439477, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "POST /refunds HTTP 500 is:unresolved", "limit": 10}, "ok": false}
+{"t": 1794113264.966661, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "query": "POST /refunds HTTP 500 is:unresolved"}, "ok": true}
+{"t": 1794113268.0982018, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "REFUNDS-API-1C", "resourceType": "issue"}, "ok": true}
+{"t": 1794113271.6248055, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "refunds/handler.py", "repo": "refunds"}, "ok": true}
+{"t": 1794113272.6327577, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 15, "repo": "refunds"}, "ok": true}
+{"t": 1794113275.0278141, "kind": "call", "tool": "gitlab_get_file_contents", "args": {"file_path": "refunds/handler.py", "project_id": "acme/refunds"}, "ok": true}
+{"t": 1794113278.5910337, "kind": "call", "tool": "github_search_repositories", "args": {"query": "refunds"}, "ok": true}
+{"t": 1794113283.939783, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"refund\" OR text ~ \"reason_code\") ORDER BY created DESC", "max_results": 10}, "ok": true}
+{"t": 1794113289.7746286, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel": "incidents", "limit": 30}, "ok": false}
+{"t": 1794113290.7822902, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794113295.3153443, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794113298.2698834, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 40}, "ok": true}
+{"t": 1794113299.2777383, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 40}, "ok": true}

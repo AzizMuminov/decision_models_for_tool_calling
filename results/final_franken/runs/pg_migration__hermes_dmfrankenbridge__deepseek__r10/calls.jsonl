@@ -1,0 +1,5 @@
+{"t": 1794115308.2149253, "kind": "search", "query": "postgres database query schema tables columns", "ranked": ["postgres_query"], "described": ["postgres_query"], "names_only": [], "none": false, "cost": 2.5746e-05, "latency": 0.61, "via": "hermes_bridge", "mech": "dm_franken"}
+{"t": 1794115310.3530185, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%pay%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794115313.262424, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%pay%'"}, "ok": true}
+{"t": 1794115314.2705536, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database(), current_schema()"}, "ok": true}
+{"t": 1794115316.7131467, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, data_type, is_nullable FROM information_schema.columns WHERE table_name = 'payments' ORDER BY ordinal_position"}, "ok": true}

@@ -1,0 +1,39 @@
+{"t": 1794116226.3675761, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {}, "ok": false}
+{"t": 1794116227.381969, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resource_type": "pods"}, "ok": false}
+{"t": 1794116230.9906247, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list", "showCurrent": true}, "ok": true}
+{"t": 1794116231.9998686, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "pods", "output": "wide"}, "ok": true}
+{"t": 1794116236.9222963, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod"}, "ok": true}
+{"t": 1794116237.931047, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "yaml", "resourceType": "deployments"}, "ok": true}
+{"t": 1794116244.029488, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"regex": "container_memory.*"}, "ok": false}
+{"t": 1794116245.0573888, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "deployment"}, "ok": true}
+{"t": 1794116248.632896, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794116251.0958135, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": "container_memory.*"}, "ok": true}
+{"t": 1794116252.106038, "kind": "call", "tool": "grafana_list_prometheus_label_values", "args": {"datasourceUid": "PBFA97CFB590B2093", "labelName": "cluster"}, "ok": true}
+{"t": 1794116254.1716201, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100}, "ok": true}
+{"t": 1794116255.1794038, "kind": "call", "tool": "grafana_list_prometheus_label_names", "args": {"datasourceUid": "PBFA97CFB590B2093"}, "ok": true}
+{"t": 1794116258.7221136, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "up", "queryType": "instant"}, "ok": true}
+{"t": 1794116259.7291126, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "count({__name__=~\".+\"})", "queryType": "instant"}, "ok": true}
+{"t": 1794116270.2854736, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "output": "yaml", "resourceType": "pod"}, "ok": true}
+{"t": 1794116271.292609, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "wide", "resourceType": "events"}, "ok": true}
+{"t": 1794116278.1030567, "kind": "call", "tool": "grafana_check_datasources_health", "args": {"uids": ["PBFA97CFB590B2093", "P8E80F9AEF21F6940"]}, "ok": false}
+{"t": 1794116279.1103127, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794116280.1201324, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794116299.0622005, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794116300.0704749, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794116301.0788574, "kind": "call", "tool": "github_search_commits", "args": {"query": "repo:acme/reports"}, "ok": true}
+{"t": 1794116303.3615997, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794116304.3691885, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794116310.6101553, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "reports"}, "ok": true}
+{"t": 1794116311.6179495, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794116316.8245883, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"output": "name", "resourceType": "namespaces"}, "ok": false}
+{"t": 1794116317.8319654, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "name", "resourceType": "configmaps"}, "ok": true}
+{"t": 1794116318.8404057, "kind": "call", "tool": "grafana_list_alert_groups", "args": {"limit": 50}, "ok": true}
+{"t": 1794116319.8483262, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endTime": "now", "limit": 50, "logql": "{namespace=\"reports\"}", "startTime": "now-24h"}, "ok": true}
+{"t": 1794116322.1983948, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "tail": 100}, "ok": false}
+{"t": 1794116324.8311596, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 100}, "ok": true}
+{"t": 1794116325.8392568, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod", "tail": 100}, "ok": true}
+{"t": 1794116335.084511, "kind": "call", "tool": "grafana_search_dashboards", "args": {}, "ok": true}
+{"t": 1794116336.9668467, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "apps/v1", "cluster_name": "data-prod", "kind": "Deployment"}, "ok": false}
+{"t": 1794116337.974476, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "v1", "cluster_name": "data-prod", "kind": "Pod"}, "ok": false}
+{"t": 1794116345.6568415, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "deployment"}, "ok": true}
+{"t": 1794116346.6649642, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 200, "timestamps": true}, "ok": true}

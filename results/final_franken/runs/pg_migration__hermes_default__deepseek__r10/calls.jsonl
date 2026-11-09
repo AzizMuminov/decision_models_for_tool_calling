@@ -1,0 +1,29 @@
+{"t": 1794115303.085901, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794115305.1261234, "kind": "call", "tool": "postgres_query", "args": {"sql": "select current_database() as db, table_schema, table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema')"}, "ok": true}
+{"t": 1794115306.1338243, "kind": "call", "tool": "postgres_query", "args": {"sql": "select schemaname, tablename, indexname, indexdef from pg_indexes where schemaname not in ('pg_catalog','information_schema') order by 1,2,3"}, "ok": true}
+{"t": 1794115315.0820982, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments table schema merchant_ref created_ts"}, "ok": true}
+{"t": 1794115316.0895517, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments schema merchant_ref created_ts"}, "ok": true}
+{"t": 1794115319.531014, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794115321.0990396, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments-db"}, "ok": false}
+{"t": 1794115322.1141071, "kind": "call", "tool": "github_search_code", "args": {"query": "merchant_ref"}, "ok": true}
+{"t": 1794115327.1197271, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from definitely_not_a_real_table limit 1"}, "ok": true}
+{"t": 1794115332.7192707, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_name as column_name, table_type as data_type from information_schema.tables where table_schema = 'public'"}, "ok": true}
+{"t": 1794115333.727935, "kind": "call", "tool": "postgres_query", "args": {"sql": "select 'probe' as column_name, 'probe' as data_type"}, "ok": true}
+{"t": 1794115337.2440927, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794115344.1110368, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794115350.252512, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payments limit 0"}, "ok": true}
+{"t": 1794115351.2597609, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payment limit 0"}, "ok": true}
+{"t": 1794115352.2680874, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payments_payment limit 0"}, "ok": true}
+{"t": 1794115353.2760096, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from transactions limit 0"}, "ok": true}
+{"t": 1794115362.7785218, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"merchant\" OR text ~ \"index\" OR text ~ \"migration\") ORDER BY updated DESC"}, "ok": true}
+{"t": 1794115363.7886019, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "payments merchant index migration"}, "ok": true}
+{"t": 1794115368.9112973, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payments_foo limit 1"}, "ok": true}
+{"t": 1794115369.9196517, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from xpayments limit 1"}, "ok": true}
+{"t": 1794115370.9283156, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payment_transactions limit 1"}, "ok": true}
+{"t": 1794115371.9359426, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from merchant_payments limit 1"}, "ok": true}
+{"t": 1794115380.1242678, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794115381.1322803, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794115399.0081644, "kind": "call", "tool": "sentry_search_events", "args": {"query": "merchant_ref"}, "ok": false}
+{"t": 1794115400.016067, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from pg_tables where tablename like '%payments%'"}, "ok": true}
+{"t": 1794115401.8779233, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "merchant_ref"}, "ok": true}
+{"t": 1794115402.8852892, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "payments index"}, "ok": true}

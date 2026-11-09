@@ -1,0 +1,7 @@
+{"t": 1794117993.5436563, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {}, "ok": true}
+{"t": 1794117995.9766572, "kind": "call", "tool": "grafana_get_current_oncall_users", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794118001.2274454, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"scheduleId": "SBM7DV7BKFUYU"}, "ok": true}
+{"t": 1794118011.2852092, "kind": "call", "tool": "grafana_list_oncall_users", "args": {"username": "rnakamura"}, "ok": true}
+{"t": 1794118012.5918822, "kind": "call", "tool": "grafana_list_oncall_users", "args": {}, "ok": true}
+{"t": 1794118025.7521236, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794118027.5591114, "kind": "call", "tool": "grafana_list_oncall_schedules", "args": {"teamId": "TI73TDU19W48J"}, "ok": true}

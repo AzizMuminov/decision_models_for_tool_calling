@@ -1,0 +1,31 @@
+{
+ "id": "notion_runbook",
+ "category": "single",
+ "prompt": "We are rotating the webhook signing keys. Do the code part of the rotation runbook in signing/keys.py. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "notion_API-post-search"
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   "notion_API-get-block-children",
+   "notion_API-retrieve-a-page"
+  ]
+ ],
+ "gold": [
+  [
+   "notion_API-post-search",
+   {
+    "query": "Webhook signing key rotation"
+   }
+  ],
+  [
+   "notion_API-retrieve-page-markdown",
+   {
+    "page_id": "1a2b3c4d-runbook"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

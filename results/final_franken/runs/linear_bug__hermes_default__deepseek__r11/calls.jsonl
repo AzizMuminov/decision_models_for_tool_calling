@@ -1,0 +1,21 @@
+{"t": 1794116282.1798215, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794116299.002233, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794116300.012566, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "finance-export"}, "ok": true}
+{"t": 1794116301.9072814, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export", "repo": "finance-export"}, "ok": true}
+{"t": 1794116307.2539532, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794116323.290288, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794116324.2978284, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794116332.607554, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794116333.612484, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794116337.083889, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "In Review"}, "ok": true}
+{"t": 1794116340.0920358, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794116341.764932, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794116346.2199996, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794116351.5207253, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "title": "Finance CSV export opens garbled in Excel"}, "ok": true}
+{"t": 1794116360.0117235, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794116362.3366148, "kind": "call", "tool": "linear_searchIssues", "args": {"states": ["In Review"]}, "ok": true}
+{"t": 1794116363.3445132, "kind": "call", "tool": "linear_searchIssues", "args": {"states": ["In Progress"]}, "ok": true}
+{"t": 1794116380.8060899, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme"}, "ok": true}
+{"t": 1794116381.8137434, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794116389.2478878, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794116392.2533967, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}

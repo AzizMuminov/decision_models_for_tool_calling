@@ -1,0 +1,13 @@
+{"t": 1794117465.1299455, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794117469.512766, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type, ordinal_position FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794117470.5236423, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%payment%' ORDER BY 1,2,3"}, "ok": true}
+{"t": 1794117475.0713902, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema='public' ORDER BY table_name"}, "ok": true}
+{"t": 1794117476.079307, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 3"}, "ok": true}
+{"t": 1794117489.6093054, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE schemaname = 'public' AND tablename = 'payments'"}, "ok": true}
+{"t": 1794117490.6172814, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT column_name, is_nullable, column_default FROM information_schema.columns WHERE table_schema='public' AND table_name='payments' ORDER BY ordinal_position"}, "ok": true}
+{"t": 1794117496.9075737, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments-db"}, "ok": true}
+{"t": 1794117497.916504, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "migrations", "repo": "payments-db"}, "ok": true}
+{"t": 1794117512.6729703, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT id, name FROM merchants LIMIT 3"}, "ok": true}
+{"t": 1794117513.680122, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT merchant_ref, created_ts FROM payments ORDER BY created_ts DESC LIMIT 5"}, "ok": true}
+{"t": 1794117522.0149183, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments table schema merchant_ref"}, "ok": true}
+{"t": 1794117524.5809128, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments schema merchant_ref created_ts"}, "ok": true}

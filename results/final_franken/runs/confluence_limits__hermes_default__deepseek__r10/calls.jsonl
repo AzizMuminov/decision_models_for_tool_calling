@@ -1,0 +1,20 @@
+{"t": 1794115675.7597542, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "rate limits public API"}, "ok": true}
+{"t": 1794115679.7336643, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794115683.8116345, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "text ~ \"rate limit\""}, "ok": true}
+{"t": 1794115688.5370576, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794115696.8927305, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213", "include_metadata": true}, "ok": true}
+{"t": 1794115699.9062622, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "rate limit"}, "ok": true}
+{"t": 1794115704.0833902, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "\"requests per minute\" org:acme"}, "ok": true}
+{"t": 1794115705.0939307, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "rate limit org:acme"}, "ok": true}
+{"t": 1794115711.993867, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "quota OR throttle OR \"requests per minute\""}, "ok": true}
+{"t": 1794115716.9615893, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "recursive": true, "repo": "public-api"}, "ok": false}
+{"t": 1794115717.9691143, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"limit": 50, "parent_id": "884213"}, "ok": false}
+{"t": 1794115722.478641, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "type=page AND space=API"}, "ok": true}
+{"t": 1794115724.6258736, "kind": "call", "tool": "atlassian_confluence_get_comments", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794115729.5457225, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 30, "query": "rate limits", "spaces_filter": ""}, "ok": true}
+{"t": 1794115730.5530896, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 30, "query": "API", "spaces_filter": ""}, "ok": true}
+{"t": 1794115738.3573012, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 50}, "ok": true}
+{"t": 1794115739.3647063, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "rate limit"}, "ok": true}
+{"t": 1794115743.4225082, "kind": "call", "tool": "atlassian_confluence_get_page_history", "args": {"page_id": "884213", "version": 6}, "ok": false}
+{"t": 1794115744.4299288, "kind": "call", "tool": "atlassian_confluence_get_page_history", "args": {"page_id": "884213", "version": 7}, "ok": false}
+{"t": 1794115749.955272, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"convert_to_markdown": false, "page_id": "884213"}, "ok": true}

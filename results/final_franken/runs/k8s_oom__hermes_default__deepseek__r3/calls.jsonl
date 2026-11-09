@@ -1,0 +1,27 @@
+{"t": 1794107993.1876605, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "pods", "output": "wide"}, "ok": true}
+{"t": 1794107994.2021909, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "deployments", "output": "yaml"}, "ok": true}
+{"t": 1794107996.1102092, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod"}, "ok": true}
+{"t": 1794108001.038275, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"limit": 50, "regex": "container_memory.*", "timeRange": {"from": "now-6h", "to": "now"}}, "ok": false}
+{"t": 1794108002.0035937, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794108003.2566817, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100, "regex": "container_memory.*"}, "ok": true}
+{"t": 1794108004.4374382, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 200, "regex": ".*"}, "ok": true}
+{"t": 1794108007.2981083, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "custom", "resourceType": "events", "sortBy": ".lastTimestamp"}, "ok": true}
+{"t": 1794108008.306086, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"container": "builder", "namespace": "reports", "podName": "report-builder-6b7c9d-q8w2e", "tailLines": 100}, "ok": false}
+{"t": 1794108010.3518147, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"container": "builder", "name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 120}, "ok": true}
+{"t": 1794108018.112406, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endTime": "now", "limit": 50, "logql": "{namespace=\"reports\"}", "startTime": "now-24h"}, "ok": true}
+{"t": 1794108019.1206656, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794108023.2847314, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 20, "query": "report-builder"}, "ok": true}
+{"t": 1794108024.6783261, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "recursive": true, "repo": "reports"}, "ok": false}
+{"t": 1794108027.07165, "kind": "call", "tool": "github_search_repositories", "args": {"query": "reports"}, "ok": true}
+{"t": 1794108028.0797555, "kind": "call", "tool": "github_search_code", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794108035.5053787, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "deployment"}, "ok": true}
+{"t": 1794108043.043631, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\",pod=~\"report-builder.*\",container=\"builder\"}[24h])", "queryType": "instant"}, "ok": true}
+{"t": 1794108044.051729, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "container_memory_working_set_bytes{namespace=\"reports\"}", "queryType": "instant"}, "ok": true}
+{"t": 1794108047.8392975, "kind": "call", "tool": "sentry_search_events", "args": {"query": "report-builder"}, "ok": false}
+{"t": 1794108053.8425832, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "output": "wide", "resourceType": "deployments"}, "ok": false}
+{"t": 1794108054.850486, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "wide", "resourceType": "replicasets"}, "ok": true}
+{"t": 1794108055.8588955, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "report-builder"}, "ok": true}
+{"t": 1794108057.7645, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "output": "yaml", "resourceType": "pod"}, "ok": true}
+{"t": 1794108058.772581, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"container": "builder", "name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod", "tail": 200}, "ok": true}
+{"t": 1794108065.968885, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "report-builder"}, "ok": true}
+{"t": 1794108066.977678, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "report-builder"}, "ok": true}

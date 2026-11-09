@@ -1,0 +1,28 @@
+{"t": 1794113701.8096464, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "recursive": true, "repo": "notifier"}, "ok": false}
+{"t": 1794113703.4967806, "kind": "call", "tool": "github_search_repositories", "args": {"query": "notifier"}, "ok": true}
+{"t": 1794113704.5052452, "kind": "call", "tool": "gitlab_search_repositories", "args": {"name": "notifier"}, "ok": true}
+{"t": 1794113705.5127683, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794113707.4083257, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 50, "logql": "{app=\"notifier\"}", "startRfc3339": "now-2h"}, "ok": true}
+{"t": 1794113708.416068, "kind": "call", "tool": "github_search_code", "args": {"query": "notifier shipping email", "limit": 10}, "ok": true}
+{"t": 1794113712.7097785, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 200, "logql": "{app=\"notifier\"} |~ \"(?i)template|ship|error\"", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794113718.0711014, "kind": "call", "tool": "github_search_code", "args": {"limit": 20, "query": "order_shipped"}, "ok": true}
+{"t": 1794113719.0786855, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 50}, "ok": true}
+{"t": 1794113721.3755372, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme"}, "ok": true}
+{"t": 1794113722.3828716, "kind": "call", "tool": "github_search_commits", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794113723.3901937, "kind": "call", "tool": "grafana_list_incidents", "args": {"include_drill": false, "limit": 20}, "ok": true}
+{"t": 1794113726.699609, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "CHG-2231 template migration"}, "ok": true}
+{"t": 1794113728.33844, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"all_namespaces": true, "resource_type": "pods"}, "ok": false}
+{"t": 1794113729.3453507, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "notifier template"}, "ok": false}
+{"t": 1794113733.3356605, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "output": "wide", "resourceType": "pods"}, "ok": false}
+{"t": 1794113734.3435552, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "query": "notifier", "period": "7d"}, "ok": true}
+{"t": 1794113737.3886569, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"CHG-2231\""}, "ok": true}
+{"t": 1794113745.5860112, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "now-7d", "datasourceUid": "P8E80F9AEF21F6940", "direction": "forward", "endRfc3339": "now", "format": "compact"}, "ok": true}
+{"t": 1794113755.4901319, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "notifier"}, "ok": true}
+{"t": 1794113756.4974172, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "notifier/templates.py", "repo": "notifier"}, "ok": true}
+{"t": 1794113764.6473472, "kind": "call", "tool": "sentry_find_organizations", "args": {"query": "notifier"}, "ok": true}
+{"t": 1794113765.6580238, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "notifier template runbook"}, "ok": true}
+{"t": 1794113767.345722, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "period": "24h", "query": "is:unresolved"}, "ok": true}
+{"t": 1794113768.3536491, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "sum(rate(notifier_emails_sent_total[5m]))"}, "ok": false}
+{"t": 1794113771.8518562, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "sum(rate(notifier_emails_sent_total[5m]))", "queryType": "instant"}, "ok": true}
+{"t": 1794113774.0343509, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"action": "list"}, "ok": false}
+{"t": 1794113775.0428605, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "deployments", "namespace": "prod"}, "ok": false}

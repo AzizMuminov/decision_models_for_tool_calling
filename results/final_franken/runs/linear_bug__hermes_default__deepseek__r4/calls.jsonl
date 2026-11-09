@@ -1,0 +1,16 @@
+{"t": 1794108483.1147487, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108495.6355224, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794108496.6434164, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794108509.3635612, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "finance-export"}, "ok": true}
+{"t": 1794108510.6815965, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794108512.9800675, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108514.444757, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108518.959674, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "state": "In Review"}, "ok": true}
+{"t": 1794108520.674855, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108535.1204383, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794108539.8735, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108541.6375115, "kind": "call", "tool": "linear_getIssueHistory", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794108548.2349603, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108553.8212593, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794108555.030103, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794108562.1033986, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}

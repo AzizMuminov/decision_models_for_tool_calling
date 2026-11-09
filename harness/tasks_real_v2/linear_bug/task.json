@@ -1,0 +1,53 @@
+{
+ "id": "linear_bug",
+ "category": "single",
+ "prompt": "Fix ENG-77 and move it to In Review. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "linear_getIssueById",
+   "linear_searchIssues",
+   "linear_getIssues"
+  ],
+  [
+   "linear_getWorkflowStates",
+   "linear_getTeams"
+  ],
+  [
+   "linear_updateIssue"
+  ]
+ ],
+ "gold": [
+  [
+   "linear_searchIssues",
+   {
+    "query": "ENG-77"
+   }
+  ],
+  [
+   "linear_getWorkflowStates",
+   {
+    "teamId": "9f1c2e7a-eng"
+   }
+  ],
+  [
+   "linear_updateIssue",
+   {
+    "id": "ENG-77",
+    "stateId": "st-review-04"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "linear_updateIssue",
+   "match": {
+    "_any": [
+     "ENG-77",
+     "a41e0c9d"
+    ],
+    "stateId": "st-review-04"
+   }
+  }
+ ],
+ "probe": null
+}

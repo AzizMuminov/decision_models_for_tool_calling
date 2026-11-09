@@ -1,0 +1,17 @@
+{"t": 1794114684.573629, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 25, "query": "rate limits"}, "ok": true}
+{"t": 1794114687.6071765, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794114690.24796, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794114696.8541932, "kind": "call", "tool": "atlassian_confluence_get_space_page_tree", "args": {"limit": 100, "space_key": "API"}, "ok": false}
+{"t": 1794114698.7862935, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "text ~ \"rate limit\"", "spaces_filter": ""}, "ok": true}
+{"t": 1794114709.110596, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"requests per minute\"", "spaces_filter": ""}, "ok": true}
+{"t": 1794114714.4744992, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 30, "query": "rate limits public API"}, "ok": true}
+{"t": 1794114716.5537949, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "rate limit"}, "ok": true}
+{"t": 1794114720.9776828, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "771002"}, "ok": true}
+{"t": 1794114726.6356828, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "text ~ \"6000\" AND text ~ \"enterprise\"", "spaces_filter": ""}, "ok": true}
+{"t": 1794114732.5179734, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "quota OR throttling OR \"per minute\"", "spaces_filter": ""}, "ok": true}
+{"t": 1794114733.5251613, "kind": "call", "tool": "atlassian_confluence_get_labels", "args": {"content_id": "884213"}, "ok": false}
+{"t": 1794114736.317083, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "space = API", "spaces_filter": ""}, "ok": true}
+{"t": 1794114737.3252525, "kind": "call", "tool": "atlassian_confluence_get_labels", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794114739.4273138, "kind": "call", "tool": "atlassian_confluence_get_page_children", "args": {"parent_id": "884213"}, "ok": false}
+{"t": 1794114746.2875714, "kind": "call", "tool": "github_search_code", "args": {"fields": ["name", "path", "repository"], "perPage": 20, "query": "\"rate limit\" org:acme"}, "ok": true}
+{"t": 1794114751.4091666, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "\"Public API\""}, "ok": true}

@@ -1,0 +1,7 @@
+{"t": 1794111673.3326857, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794111675.313017, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794111684.9496388, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_labels", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794111690.1628275, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"validate_currency\" OR text ~ \"XTS\" OR text ~ \"currency\") ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794111704.0454278, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "currency validation payments"}, "ok": true}
+{"t": 1794111729.916516, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794111731.637867, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}

@@ -1,0 +1,5 @@
+{"t": 1794123626.754476, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "billing-cron", "query": "is:unresolved", "limit": 10}, "ok": true}
+{"t": 1794123629.8561654, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "billing-cron", "query": "", "period": "90d", "limit": 20}, "ok": true}
+{"t": 1794123639.4442148, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794123642.7653496, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794123645.1591616, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}

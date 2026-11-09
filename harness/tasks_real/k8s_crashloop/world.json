@@ -1,0 +1,30 @@
+[
+ {
+  "tool": "kubernetes_kubectl_get",
+  "match": {
+   "_any": "configmap"
+  },
+  "response": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: ledger-config\n  namespace: ledger\n  annotations:\n    change: \"rev 12 - platform migration: LEDGER_DB_URL renamed to DATABASE_URL for all services\"\ndata:\n  LOG_LEVEL: info\n"
+ },
+ {
+  "tool": "kubernetes_kubectl_get",
+  "match": {
+   "_any": "ledger"
+  },
+  "response": "NAME                            READY   STATUS             RESTARTS        AGE\nledger-worker-7d9f6c5b8-xk2pq   0/1     CrashLoopBackOff   14 (2m ago)     48m\nledger-api-5c8d7f9b6-2mzl4      1/1     Running            0               3d"
+ },
+ {
+  "tool": "kubernetes_kubectl_describe",
+  "match": {
+   "_any": "ledger-worker"
+  },
+  "response": "Name: ledger-worker-7d9f6c5b8-xk2pq\nNamespace: ledger\nContainers:\n  worker:\n    State: Waiting (CrashLoopBackOff)\n    Last State: Terminated, Reason: Error, Exit Code: 1\n    Environment From: ledger-config (ConfigMap, revision 12)\n    Environment:\n      DATABASE_URL: <set from secret ledger-db>\nEvents:\n  Warning BackOff 2m kubelet Back-off restarting failed container worker"
+ },
+ {
+  "tool": "kubernetes_kubectl_logs",
+  "match": {
+   "_any": "ledger-worker"
+  },
+  "response": "2026-11-05T05:02:11Z INFO starting ledger-worker 2026.11.2\nTraceback (most recent call last):\n  File \"/app/worker/main.py\", line 9, in <module>\n    engine = create_engine(settings.db_url())\n  File \"/app/worker/settings.py\", line 4, in db_url\n    return os.environ[\"LEDGER_DB_URL\"]\nKeyError: 'LEDGER_DB_URL'\n# note: ConfigMap ledger-config rev 12 (platform migration) renamed LEDGER_DB_URL -> DATABASE_URL for all services"
+ }
+]

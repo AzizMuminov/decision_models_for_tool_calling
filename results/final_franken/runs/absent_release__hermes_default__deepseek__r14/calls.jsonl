@@ -1,0 +1,30 @@
+{"t": 1794119186.3209538, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": false}
+{"t": 1794119187.335061, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ghost-sdk", "perPage": 20, "fields": ["tag_name", "name", "published_at", "prerelease", "draft"]}, "ok": true}
+{"t": 1794119191.3334718, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 50, "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794119192.3412936, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ghost-sdk in:name"}, "ok": true}
+{"t": 1794119200.6634037, "kind": "call", "tool": "github_get_file_contents", "args": {"fields": ["name", "type", "path"], "owner": "acme", "path": "/", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794119201.6709647, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794119205.1246607, "kind": "call", "tool": "gitlab_get_project", "args": {"project_id": "acme/ghost-sdk"}, "ok": false}
+{"t": 1794119212.8318624, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794119213.8403172, "kind": "call", "tool": "github_search_code", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794119214.8489206, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794119217.7414227, "kind": "call", "tool": "github_search_repositories", "args": {"query": "sdk-consumer"}, "ok": true}
+{"t": 1794119224.3615642, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794119228.4898899, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794119229.4968922, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 10, "repo": "ghost-sdk"}, "ok": true}
+{"t": 1794119230.504534, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 10, "repo": "sdk-consumer"}, "ok": true}
+{"t": 1794119242.7875228, "kind": "call", "tool": "gitlab_discover_tools", "args": {"categories": ["releases", "tags", "repositories", "projects"]}, "ok": false}
+{"t": 1794119255.9335895, "kind": "call", "tool": "gitlab_get_file_contents", "args": {"file_path": "/", "project_id": "acme/ghost-sdk"}, "ok": true}
+{"t": 1794119256.9413073, "kind": "call", "tool": "github_actions_list", "args": {"method": "list_workflows", "owner": "acme", "repo": "ghost-sdk"}, "ok": false}
+{"t": 1794119263.8404286, "kind": "call", "tool": "slack_list_channels", "args": {"limit": 100}, "ok": true}
+{"t": 1794119264.8481874, "kind": "call", "tool": "github_search_code", "args": {"query": "ghost-sdk repo:acme/ghost-sdk", "perPage": 10}, "ok": true}
+{"t": 1794119270.3497465, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794119272.602502, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794119273.6094086, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794119274.6169999, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794119284.4070976, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "sdk-consumer"}, "ok": false}
+{"t": 1794119290.2111647, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 50}, "ok": true}
+{"t": 1794119291.2181473, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ghost-sdk"}, "ok": true}
+{"t": 1794119292.2260923, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "ghost-sdk SDK version"}, "ok": true}
+{"t": 1794119296.5339494, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/ghost-sdk release"}, "ok": true}
+{"t": 1794119297.5414994, "kind": "call", "tool": "github_search_issues", "args": {"query": "repo:acme/ghost-sdk"}, "ok": true}

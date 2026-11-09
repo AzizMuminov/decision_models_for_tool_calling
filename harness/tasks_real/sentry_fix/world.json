@@ -1,0 +1,27 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": "payments"
+  },
+  "response": "# Issues in **acme/payments-api** (sorted by frequency)\n\n1. **PAYMENTS-API-3K** - TypeError: unsupported operand type(s) for -: 'int' and 'NoneType'\n   culprit: payments.discounts in apply_discount | events: 1,843 | users: 611 | status: unresolved | last seen: 4 min ago\n2. **PAYMENTS-API-2Z** - ConnectionResetError: [Errno 104] Connection reset by peer\n   culprit: payments.gateway in post | events: 97 | users: 40 | status: unresolved | last seen: 2 h ago\n"
+ },
+ {
+  "tool": "sentry_get_sentry_resource",
+  "match": {
+   "_any": "3K"
+  },
+  "response": "# Issue PAYMENTS-API-3K\n**TypeError**: unsupported operand type(s) for -: 'int' and 'NoneType'\n\n## Latest event (2026-11-05T04:51:09Z, release payments@2026.11.4)\n```\nFile \"payments/checkout.py\", line 88, in finalize\n  total = apply_discount(total, coupon)\nFile \"payments/discounts.py\", line 2, in apply_discount\n  return total_cents - coupon.get(\"amount_cents\") + 0\nTypeError: unsupported operand type(s) for -: 'int' and 'NoneType'\n```\n### Local variables (apply_discount)\ntotal_cents = 1000\ncoupon = {'code': 'AUTUMN24', 'amount_cents': None, 'expired': True}\n\nTags: environment=prod, release=payments@2026.11.4\nNote from triage: expired coupons come back with amount_cents=None (or without the key); they must not change the total. A discount can never make the total negative.\n"
+ },
+ {
+  "tool": "sentry_search_events",
+  "match": {
+   "_any": [
+    "payments",
+    "3K",
+    "TypeError"
+   ]
+  },
+  "response": "Found 3 events.\n| issue | title | count |\n| PAYMENTS-API-3K | TypeError: unsupported operand type(s) for -: 'int' and 'NoneType' (payments/discounts.py in apply_discount; coupon.amount_cents=None for expired coupons) | 1843 |"
+ }
+]

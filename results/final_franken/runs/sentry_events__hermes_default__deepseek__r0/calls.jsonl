@@ -1,0 +1,22 @@
+{"t": 1794104601.8210022, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794104605.1504908, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:refunds-api is:unresolved"}, "ok": true}
+{"t": 1794104606.5044029, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "issueId": "REFUNDS-API-1C"}, "ok": true}
+{"t": 1794104609.6281466, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "repo": "refunds", "perPage": 20}, "ok": true}
+{"t": 1794104610.6415467, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "refunds"}, "ok": true}
+{"t": 1794104614.887307, "kind": "call", "tool": "github_list_commits", "args": {"fields": ["sha", "commit", "html_url"], "owner": "acme", "perPage": 20, "repo": "refunds"}, "ok": true}
+{"t": 1794104615.8968792, "kind": "call", "tool": "github_list_pull_requests", "args": {"fields": ["number", "title", "state", "merged", "html_url", "merged_at", "user"], "owner": "acme", "perPage": 20, "repo": "refunds", "state": "all"}, "ok": true}
+{"t": 1794104621.2637658, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "refunds"}, "ok": true}
+{"t": 1794104622.2714863, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "refunds"}, "ok": true}
+{"t": 1794104626.4600887, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "refunds reason_code API"}, "ok": true}
+{"t": 1794104627.4670866, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794104628.8106472, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794104629.8265617, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794104631.600584, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:refunds-api"}, "ok": true}
+{"t": 1794104632.6077998, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "releases refunds-api acme"}, "ok": true}
+{"t": 1794104636.44088, "kind": "call", "tool": "linear_getIssues", "args": {"query": "refunds reason field"}, "ok": false}
+{"t": 1794104637.4405766, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"refund\" OR text ~ \"reason_code\") ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794104642.5338938, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"limit": 20, "logql": "{app=\"refunds-api\"} |= \"reason\""}, "ok": false}
+{"t": 1794104645.347635, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794104646.3583467, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794104647.3286235, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 20, "logql": "{app=\"refunds-api\"} |= \"reason\""}, "ok": true}
+{"t": 1794104648.647161, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "project:refunds-api KeyError reason_code"}, "ok": true}

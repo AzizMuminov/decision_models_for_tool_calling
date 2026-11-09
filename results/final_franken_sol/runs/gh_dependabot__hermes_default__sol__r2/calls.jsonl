@@ -1,0 +1,1 @@
+{"t": 1794123890.8346722, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "open", "perPage": 100}, "ok": true}

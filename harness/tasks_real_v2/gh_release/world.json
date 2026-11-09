@@ -1,0 +1,51 @@
+[
+ {
+  "tool": "github_get_latest_release",
+  "match": {
+   "repo": "ledger-api"
+  },
+  "response": {
+   "tag_name": "v4.12.1",
+   "name": "ledger-api 4.12.1",
+   "published_at": "2026-10-29T14:02:11Z",
+   "prerelease": false
+  }
+ },
+ {
+  "tool": "github_list_releases",
+  "match": {
+   "repo": "ledger-api"
+  },
+  "response": [
+   {
+    "tag_name": "v4.13.0-rc.1",
+    "prerelease": true
+   },
+   {
+    "tag_name": "v4.12.1",
+    "prerelease": false
+   },
+   {
+    "tag_name": "v4.12.0",
+    "prerelease": false
+   }
+  ]
+ },
+ {
+  "tool": "github_list_tags",
+  "match": {
+   "repo": "ledger-api"
+  },
+  "response": [
+   {
+    "name": "v4.13.0-rc.1"
+   },
+   {
+    "name": "v4.12.1"
+   },
+   {
+    "name": "v4.12.0"
+   }
+  ]
+ }
+]

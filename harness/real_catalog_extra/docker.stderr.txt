@@ -1,0 +1,4 @@
+Warning: No allowed containers specified in ALLOWED_CONTAINERS environment variable
+MCP Server Docker started
+Default service: laravel_app
+Allowed containers: laravel_app

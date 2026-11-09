@@ -1,0 +1,5 @@
+{"t": 1794123756.6396377, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}
+{"t": 1794123757.6509101, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "shop-export", "dataset": "errors", "query": "nightly export parse_order", "period": "14d", "limit": 5}, "ok": true}
+{"t": 1794123762.7216475, "kind": "call", "tool": "mongodb_connect", "args": {"connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop", "connectionName": "shop-export-readonly"}, "ok": true}
+{"t": 1794123763.7293031, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "shop-export", "dataset": "errors", "period": "30d", "limit": 5}, "ok": true}
+{"t": 1794123765.7811613, "kind": "call", "tool": "mongodb_find", "args": {"connectionId": "prod-shop-a1b2", "database": "shop", "collection": "orders", "sort": {"_id": -1}, "limit": 5}, "ok": true}

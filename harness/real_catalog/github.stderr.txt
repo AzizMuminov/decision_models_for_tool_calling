@@ -1,0 +1,9 @@
+time=2026-11-05T05:11:09.483Z level=INFO msg="starting server" version=v1.14.0 host="" readOnly=false lockdownEnabled=false
+time=2026-11-05T05:11:09.539Z level=WARN msg="failed to fetch token scopes, continuing without scope filtering" error="invalid or expired token"
+GitHub MCP Server running on stdio
+time=2026-11-05T05:11:09.558Z level=INFO msg="server run start"
+time=2026-11-05T05:11:09.558Z level=INFO msg="server connecting"
+time=2026-11-05T05:11:09.558Z level=INFO msg="server session connected" session_id=""
+time=2026-11-05T05:11:09.561Z level=INFO msg="session initialized"
+time=2026-11-05T05:11:09.591Z level=INFO msg="server session disconnected" session_id=""
+time=2026-11-05T05:11:09.591Z level=INFO msg="server session ended"

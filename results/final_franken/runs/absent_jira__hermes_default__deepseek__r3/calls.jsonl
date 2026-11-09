@@ -1,0 +1,46 @@
+{"t": 1794108260.2389853, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-999", "include": "comments,remote_links,changelog,worklogs", "comment_limit": 50}, "ok": false}
+{"t": 1794108270.6349916, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"PAY-999\" OR summary ~ \"PAY-999\"", "limit": 20}, "ok": true}
+{"t": 1794108271.6430707, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "PAY-999"}, "ok": true}
+{"t": 1794108294.4416838, "kind": "call", "tool": "github_search_code", "args": {"query": "PAY-999 org:acme"}, "ok": true}
+{"t": 1794108295.4489045, "kind": "call", "tool": "github_search_commits", "args": {"query": "PAY-999 org:acme"}, "ok": true}
+{"t": 1794108296.4563801, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "PAY-999 org:acme"}, "ok": true}
+{"t": 1794108297.4641373, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "PAY-999", "limit": 20}, "ok": true}
+{"t": 1794108298.474785, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 20, "query": "PAY-999"}, "ok": true}
+{"t": 1794108314.110464, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794108315.1179821, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794108316.1257327, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794108317.1364117, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/payments limits"}, "ok": true}
+{"t": 1794108326.3041563, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 200}, "ok": true}
+{"t": 1794108327.3122206, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 100}, "ok": false}
+{"t": 1794108328.321019, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794108335.0848322, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "\"daily limit\""}, "ok": true}
+{"t": 1794108336.0933647, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 20, "query": "daily limit"}, "ok": true}
+{"t": 1794108337.102709, "kind": "call", "tool": "github_search_code", "args": {"query": "DAILY_LIMIT_EUR"}, "ok": true}
+{"t": 1794108338.110306, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 200}, "ok": true}
+{"t": 1794108339.118927, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 200}, "ok": true}
+{"t": 1794108343.6303291, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794108344.638762, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "limit": 50}, "ok": true}
+{"t": 1794108345.6463935, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-999", "limit": 5}, "ok": true}
+{"t": 1794108346.654022, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794108350.0896182, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794108360.3070264, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794108361.3150876, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "limits"}, "ok": true}
+{"t": 1794108363.3793604, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/limits.py", "repo": "payments"}, "ok": true}
+{"t": 1794108364.3870754, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794108365.3944373, "kind": "call", "tool": "github_search_pull_requests", "args": {"owner": "acme", "perPage": 50, "query": "PAY-999", "repo": "payments"}, "ok": true}
+{"t": 1794108371.7789261, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "payment limit"}, "ok": true}
+{"t": 1794108372.7863026, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "payments"}, "ok": true}
+{"t": 1794108373.7936985, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "payments"}, "ok": true}
+{"t": 1794108374.8014708, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "limit"}, "ok": true}
+{"t": 1794108375.808897, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 200}, "ok": true}
+{"t": 1794108376.817406, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 200}, "ok": true}
+{"t": 1794108380.8921769, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100, "query": ""}, "ok": true}
+{"t": 1794108381.899756, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "type = page"}, "ok": true}
+{"t": 1794108389.454044, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"limit": 50, "project_key": "PAY"}, "ok": false}
+{"t": 1794108390.464627, "kind": "call", "tool": "monday_search", "args": {"limit": 20, "searchTerm": "PAY-999", "searchType": "ITEMS"}, "ok": true}
+{"t": 1794108391.4731605, "kind": "call", "tool": "monday_search", "args": {"limit": 20, "searchTerm": "PAY-999", "searchType": "DOCUMENTS"}, "ok": true}
+{"t": 1794108392.4811456, "kind": "call", "tool": "monday_search", "args": {"limit": 20, "searchTerm": "payment limits", "searchType": "ITEMS"}, "ok": true}
+{"t": 1794108400.2937295, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "ORDER BY created DESC", "limit": 50}, "ok": true}
+{"t": 1794108401.3013077, "kind": "call", "tool": "github_search_issues", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794108402.308752, "kind": "call", "tool": "github_search_code", "args": {"query": "limits repo:acme/payments"}, "ok": true}
+{"t": 1794108403.3162084, "kind": "call", "tool": "github_search_commits", "args": {"query": "limit repo:acme/payments"}, "ok": true}

@@ -1,0 +1,45 @@
+[
+ {
+  "tool": "linear_getIssueById",
+  "match": {
+   "id": [
+    "ENG-77",
+    "a41e0c9d"
+   ]
+  },
+  "response": {
+   "id": "a41e0c9d-77",
+   "identifier": "ENG-77",
+   "title": "Finance CSV export opens garbled in Excel",
+   "team": {
+    "id": "9f1c2e7a-eng",
+    "key": "ENG"
+   },
+   "state": {
+    "name": "In Progress"
+   },
+   "description": "Finance (EU locale Excel) needs:\n1. `;` as the separator instead of `,`\n2. a UTF-8 byte-order mark (U+FEFF) at the very start of the file\nNothing else changes."
+  }
+ },
+ {
+  "tool": "linear_searchIssues",
+  "match": {
+   "_any": [
+    "77",
+    "csv",
+    "export"
+   ]
+  },
+  "response": [
+   {
+    "id": "a41e0c9d-77",
+    "identifier": "ENG-77",
+    "title": "Finance CSV export opens garbled in Excel",
+    "team": {
+     "id": "9f1c2e7a-eng"
+    },
+    "description": "Finance (EU locale Excel) needs: 1. `;` as the separator instead of `,` 2. a UTF-8 byte-order mark (U+FEFF) at the very start of the file. Nothing else changes."
+   }
+  ]
+ }
+]

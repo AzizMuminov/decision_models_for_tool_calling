@@ -1,0 +1,11 @@
+{"t": 1794119559.5933928, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "rate limits", "limit": 20}, "ok": true}
+{"t": 1794119560.60501, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "public API"}, "ok": true}
+{"t": 1794119562.2064073, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "884213"}, "ok": true}
+{"t": 1794119566.542568, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "rate limit"}, "ok": true}
+{"t": 1794119567.5511556, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "type=page AND text ~ \"rate limits\" ORDER BY lastmodified DESC"}, "ok": true}
+{"t": 1794119575.5010726, "kind": "call", "tool": "atlassian_confluence_get_comments", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794119576.5090344, "kind": "call", "tool": "atlassian_confluence_get_labels", "args": {"page_id": "884213"}, "ok": false}
+{"t": 1794119580.387954, "kind": "call", "tool": "atlassian_confluence_get_space_page_tree", "args": {"space_key": "API", "depth": 2}, "ok": false}
+{"t": 1794119585.5504386, "kind": "call", "tool": "github_get_repository_tree", "args": {"path": "/", "ref": "main", "repo": "acme/public-api"}, "ok": false}
+{"t": 1794119586.558688, "kind": "call", "tool": "github_search_code", "args": {"query": "RATE_LIMITS repo:acme/public-api"}, "ok": true}
+{"t": 1794119592.1756957, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "path": "/", "ref": "main", "repo": "public-api"}, "ok": false}

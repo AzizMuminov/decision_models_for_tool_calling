@@ -1,0 +1,46 @@
+{"t": 1794113085.297658, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794113086.950519, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794113089.5386477, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"CACHE_TTL\" OR text ~ \"cache TTL\" ORDER BY updated DESC", "limit": 20}, "ok": true}
+{"t": 1794113090.5462239, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 100}, "ok": true}
+{"t": 1794113091.5536754, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}
+{"t": 1794113093.8968027, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "message_ts": "1793740000.000100"}, "ok": false}
+{"t": 1794113094.9039242, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794113095.9142666, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 100}, "ok": true}
+{"t": 1794113098.4591215, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "thread_ts": "1793740000.000100"}, "ok": true}
+{"t": 1794113099.4670336, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794113101.5497863, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"cache\" ORDER BY updated DESC", "limit": 30}, "ok": true}
+{"t": 1794113102.5571558, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache"}, "ok": true}
+{"t": 1794113103.5665982, "kind": "call", "tool": "monday_search", "args": {"searchTerm": "cache TTL"}, "ok": false}
+{"t": 1794113107.9975288, "kind": "call", "tool": "github_search_code", "args": {"query": "CACHE_TTL_S"}, "ok": true}
+{"t": 1794113109.0139909, "kind": "call", "tool": "monday_search", "args": {"searchTerm": "cache TTL", "searchType": "DOCUMENTS"}, "ok": true}
+{"t": 1794113117.1804354, "kind": "call", "tool": "github_search_code", "args": {"query": "cache repo:acme/cache CACHE_TTL"}, "ok": true}
+{"t": 1794113118.7348747, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "cache TTL", "limit": 20}, "ok": true}
+{"t": 1794113119.7417989, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "cache"}, "ok": true}
+{"t": 1794113127.127989, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50}, "ok": true}
+{"t": 1794113128.135355, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100}, "ok": true}
+{"t": 1794113133.1933832, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/cache"}, "ok": true}
+{"t": 1794113134.2010934, "kind": "call", "tool": "github_search_issues", "args": {"query": "repo:acme/cache"}, "ok": true}
+{"t": 1794113139.1804113, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "cache"}, "ok": true}
+{"t": 1794113140.188224, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 50, "repo": "cache"}, "ok": true}
+{"t": 1794113146.8006735, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 50}, "ok": true}
+{"t": 1794113147.8078487, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "type = page AND text ~ \"cache\""}, "ok": true}
+{"t": 1794113153.2488425, "kind": "call", "tool": "slack_get_users", "args": {}, "ok": true}
+{"t": 1794113161.7026834, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "cache"}, "ok": false}
+{"t": 1794113162.7099295, "kind": "call", "tool": "github_search_repositories", "args": {"query": "cache"}, "ok": true}
+{"t": 1794113166.9157908, "kind": "call", "tool": "gitlab_list_projects", "args": {"limit": 100}, "ok": true}
+{"t": 1794113167.9234629, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "cache"}, "ok": true}
+{"t": 1794113173.4725266, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "thread_ts": "1793740100.000200"}, "ok": true}
+{"t": 1794113174.4798403, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "cache"}, "ok": true}
+{"t": 1794113175.488502, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme"}, "ok": true}
+{"t": 1794113176.496198, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794113188.842888, "kind": "call", "tool": "linear_searchDocuments", "args": {"query": "cache TTL"}, "ok": false}
+{"t": 1794113189.8531384, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794113190.8617425, "kind": "call", "tool": "git_status", "args": {}, "ok": false}
+{"t": 1794113192.6280084, "kind": "call", "tool": "linear_searchDocuments", "args": {"term": "cache TTL"}, "ok": true}
+{"t": 1794113193.636506, "kind": "call", "tool": "linear_searchDocuments", "args": {"term": "cache"}, "ok": true}
+{"t": 1794113199.453234, "kind": "call", "tool": "memory_read_graph", "args": {}, "ok": false}
+{"t": 1794113200.7473106, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794113201.7547367, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794113203.6038518, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794113207.6707814, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "cache", "state": "all"}, "ok": true}
+{"t": 1794113208.6797576, "kind": "call", "tool": "github_search_commits", "args": {"query": "cache TTL"}, "ok": true}

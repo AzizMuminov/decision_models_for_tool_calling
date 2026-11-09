@@ -1,0 +1,1 @@
+{"t": 1794123571.0137894, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns WHERE table_name = 'payments' ORDER BY table_schema, ordinal_position;"}, "ok": true}

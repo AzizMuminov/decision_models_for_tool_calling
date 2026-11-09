@@ -1,0 +1,67 @@
+{
+ "id": "cw_reports",
+ "category": "multi",
+ "prompt": "The legacy reports API has been answering 502 since yesterday evening. Find the cause, fix reports/export.py, and post a short note for the incident responders. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "aws_cloudwatch_describe_log_groups",
+   "aws_cloudwatch_execute_log_insights_query",
+   "aws_cloudwatch_analyze_log_group"
+  ],
+  [
+   "aws_cloudwatch_execute_log_insights_query",
+   "aws_cloudwatch_get_logs_insight_query_results"
+  ],
+  [
+   "slack_list_channels"
+  ],
+  [
+   "slack_post_message"
+  ]
+ ],
+ "gold": [
+  [
+   "aws_cloudwatch_describe_log_groups",
+   {
+    "log_group_name_prefix": "/ecs/reports-api"
+   }
+  ],
+  [
+   "aws_cloudwatch_execute_log_insights_query",
+   {
+    "log_group_names": [
+     "/ecs/reports-api"
+    ],
+    "start_time": "2026-11-04T18:00:00Z",
+    "end_time": "2026-11-05T08:00:00Z",
+    "query_string": "fields @timestamp, @message | filter @message like /ERROR/"
+   }
+  ],
+  [
+   "aws_cloudwatch_get_logs_insight_query_results",
+   {
+    "query_id": "q-5c1d"
+   }
+  ],
+  [
+   "slack_list_channels",
+   {}
+  ],
+  [
+   "slack_post_message",
+   {
+    "channel_id": "C07INCID003",
+    "text": "reports-api: CSV export now ignores unknown fields"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "slack_post_message",
+   "match": {
+    "channel_id": "C07INCID003"
+   }
+  }
+ ],
+ "probe": null
+}

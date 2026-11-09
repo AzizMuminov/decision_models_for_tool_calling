@@ -1,0 +1,39 @@
+{"t": 1794107258.873254, "kind": "call", "tool": "github_actions_list", "args": {"method": "list_workflow_runs", "owner": "acme", "repo": "batch-importer", "perPage": 20}, "ok": false}
+{"t": 1794107259.8845062, "kind": "call", "tool": "github_actions_list", "args": {"method": "list_workflows", "owner": "acme", "repo": "batch-importer"}, "ok": false}
+{"t": 1794107262.4008644, "kind": "call", "tool": "github_actions_list", "args": {"method": "list_workflow_runs", "owner": "acme", "repo": "batch_importer"}, "ok": false}
+{"t": 1794107263.9964728, "kind": "call", "tool": "github_search_repositories", "args": {"query": "batch importer"}, "ok": true}
+{"t": 1794107267.7100484, "kind": "call", "tool": "github_search_code", "args": {"query": "batch"}, "ok": true}
+{"t": 1794107268.8449392, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "batch"}, "ok": true}
+{"t": 1794107269.8539891, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 50}, "ok": true}
+{"t": 1794107272.3587377, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "batch-importer"}, "ok": false}
+{"t": 1794107273.8902705, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "batch-importer"}, "ok": true}
+{"t": 1794107274.8978317, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "batch/v1", "cluster_name": "data-prod", "kind": "CronJob", "namespace": "batch"}, "ok": true}
+{"t": 1794107277.5899994, "kind": "call", "tool": "aws_eks_list_k8s_resources", "args": {"api_version": "v1", "cluster_name": "data-prod", "kind": "Pod", "namespace": "batch"}, "ok": true}
+{"t": 1794107278.916939, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "namespace": "batch", "pod_name": "batch-importer-29188440-x7k2p", "tail_lines": 200}, "ok": true}
+{"t": 1794107279.925464, "kind": "call", "tool": "aws_eks_get_pod_logs", "args": {"cluster_name": "data-prod", "namespace": "batch", "pod_name": "batch-importer-29187000-m2d9q", "tail_lines": 200}, "ok": true}
+{"t": 1794107285.333163, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "all"}, "ok": true}
+{"t": 1794107289.5051594, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "warehouse v9"}, "ok": true}
+{"t": 1794107290.5132349, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "batch importer warehouse", "limit": 20}, "ok": true}
+{"t": 1794107293.348422, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "batch importer"}, "ok": true}
+{"t": 1794107294.356011, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "importer"}, "ok": true}
+{"t": 1794107297.383377, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794107298.3930326, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"logql": "{namespace=\"batch\"} |= \"batch-importer\"", "limit": 50}, "ok": false}
+{"t": 1794107302.06618, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794107303.0736897, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794107304.081429, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794107305.6307945, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{namespace=\"batch\"} |= \"batch-importer\""}, "ok": true}
+{"t": 1794107306.6393254, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "warehouse"}, "ok": true}
+{"t": 1794107309.677894, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme importer"}, "ok": true}
+{"t": 1794107310.686922, "kind": "call", "tool": "github_search_code", "args": {"query": "S3_PREFIX"}, "ok": true}
+{"t": 1794107311.6951578, "kind": "call", "tool": "github_search_code", "args": {"query": "warehouse v9 1000 rows"}, "ok": true}
+{"t": 1794107325.6332686, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "importer"}, "ok": true}
+{"t": 1794107330.2736592, "kind": "call", "tool": "aws_eks_manage_k8s_resource", "args": {"api_version": "batch/v1", "cluster_name": "data-prod", "kind": "CronJob", "name": "batch-importer", "namespace": "batch", "operation": "read"}, "ok": true}
+{"t": 1794107331.2820134, "kind": "call", "tool": "aws_eks_get_k8s_events", "args": {"cluster_name": "data-prod", "kind": "Pod", "name": "batch-importer-29188440-x7k2p", "namespace": "batch"}, "ok": true}
+{"t": 1794107338.3679793, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"name": "find_projects", "arguments": {"organizationSlug": "acme"}}, "ok": true}
+{"t": 1794107339.3751686, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "batch OR importer OR warehouse", "limit": 10}, "ok": false}
+{"t": 1794107342.478103, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100}, "ok": true}
+{"t": 1794107343.4861603, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 50, "query": "type=page"}, "ok": true}
+{"t": 1794107350.8550136, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"context": "data-prod", "name": "batch-importer", "namespace": "batch", "resourceType": "cronjob"}, "ok": false}
+{"t": 1794107351.863644, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"context": "data-prod", "name": "batch-importer-29188440-x7k2p", "namespace": "batch", "resourceType": "pod"}, "ok": false}
+{"t": 1794107359.4356885, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 100, "logql": "{namespace=\"batch\"}"}, "ok": true}
+{"t": 1794107360.4457152, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "warehouse v9 payload"}, "ok": true}

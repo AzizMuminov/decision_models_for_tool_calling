@@ -1,0 +1,9 @@
+[33mWARN[39m [05:40:50.669] (11324): [36mUSE_GITLAB_WIKI is deprecated and will be removed in v3.0.0. Use GITLAB_TOOLSETS=core,wiki instead. See https://github.com/zereight/gitlab-mcp/issues/815 for migration details.[39m
+[33mWARN[39m [05:40:50.673] (11324): [36mUSE_MILESTONE is deprecated and will be removed in v3.0.0. Use GITLAB_TOOLSETS=core,milestones instead. See https://github.com/zereight/gitlab-mcp/issues/815 for migration details.[39m
+[33mWARN[39m [05:40:50.673] (11324): [36mUSE_PIPELINE is deprecated and will be removed in v3.0.0. Use GITLAB_TOOLSETS=core,pipelines and GITLAB_TOOLS=validate_ci_lint,validate_project_ci_lint instead. See https://github.com/zereight/gitlab-mcp/issues/815 for migration details.[39m
+[32mINFO[39m [05:40:50.846] (11324): [36mConfiguration validation passed[39m
+[32mINFO[39m [05:40:50.847] (11324): [36mInitializing server with transport mode[39m
+    [35mmode[39m: "stdio"
+[33mWARN[39m [05:40:50.848] (11324): [36mStarting GitLab MCP Server with stdio transport[39m
+[32mINFO[39m [05:40:50.881] (11324): [36mConfigured GitLab API URLs: gitlab.com[39m
+[32mINFO[39m [05:40:50.882] (11324): [36mDefault GitLab API URL: gitlab.com[39m

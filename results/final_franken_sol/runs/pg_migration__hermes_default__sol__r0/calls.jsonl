@@ -1,0 +1,2 @@
+{"t": 1794123031.6342487, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type FROM information_schema.columns WHERE table_name = 'payments' ORDER BY table_schema, ordinal_position;"}, "ok": true}
+{"t": 1794123035.4745133, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename = 'payments';"}, "ok": true}

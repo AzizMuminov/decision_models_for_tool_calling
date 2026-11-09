@@ -4,7 +4,7 @@
 #   - the experiment repo (answers, world files, results) and the scratchpad (API key) are root-only
 #   - opencode and a Python with pytest are installed read-only under /opt/agentbox
 set -euo pipefail
-REPO="$(cd "$(dirname "$0")/.." && pwd)"
+REPO=/home/user/dm-toolcall-ablation
 
 mkdir -p /srv/agentbox
 id agentbox >/dev/null 2>&1 || useradd --create-home --home-dir /srv/agentbox/home --shell /bin/bash agentbox

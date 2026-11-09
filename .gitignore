@@ -2,15 +2,21 @@
 __pycache__/
 .pytest_cache/
 node_modules/
-results/
 data/
+!benchmarks/toolret/data/
 .or_env
 *.aux
 *.log
+!results/**/*.log
+!benchmarks/**/*.log
 *.out
 *.fdb_latexmk
 *.fls
-*.bbl
 *.blg
 *.synctex.gz
-paper/fig_*.pgf
+# large or regenerable artifacts: DM caches, embeddings, BM25 indexes, raw run directories
+dm_cache*.jsonl
+*.npy
+*.pkl
+results/*/runs/*/*
+!results/*/runs/*/calls.jsonl

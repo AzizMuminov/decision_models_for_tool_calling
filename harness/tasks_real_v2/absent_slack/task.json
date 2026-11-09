@@ -1,0 +1,22 @@
+{
+ "id": "absent_slack",
+ "category": "absent",
+ "prompt": "Set CACHE_TTL_S in cache/config.py to the value the platform team agreed on. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [],
+ "gold": [
+  [
+   "slack_get_channel_history",
+   {
+    "channel_id": "C07PLATF004"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "cache/config.py",
+  "name": "CACHE_TTL_S",
+  "expected": null,
+  "original": 300,
+  "todo_file": "cache/config.py"
+ }
+}

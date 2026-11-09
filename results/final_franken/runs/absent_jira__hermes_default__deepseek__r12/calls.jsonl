@@ -1,0 +1,21 @@
+{"t": 1794117769.5129979, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-999", "include": ["comments", "remote_links"]}, "ok": false}
+{"t": 1794117771.25454, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,remote_links", "issue_key": "PAY-999"}, "ok": false}
+{"t": 1794117785.7870455, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"PAY-999\" OR key = PAY-999", "limit": 20}, "ok": true}
+{"t": 1794117786.7952886, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794117787.8029277, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "\"PAY-999\""}, "ok": true}
+{"t": 1794117788.8109863, "kind": "call", "tool": "github_search_issues", "args": {"query": "PAY-999 daily limit"}, "ok": true}
+{"t": 1794117801.5509791, "kind": "call", "tool": "github_search_commits", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794117807.8011613, "kind": "call", "tool": "github_search_issues", "args": {"owner": "acme", "query": "PAY-999", "repo": "payments"}, "ok": true}
+{"t": 1794117808.8084621, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794117809.815969, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/limits.py", "repo": "payments"}, "ok": true}
+{"t": 1794117810.8256147, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794117811.8331966, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "daily limit"}, "ok": true}
+{"t": 1794117821.0763042, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "limit": 20}, "ok": true}
+{"t": 1794117822.0832973, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794117823.09067, "kind": "call", "tool": "github_search_commits", "args": {"query": "PAY-999 OR limits OR daily limit"}, "ok": true}
+{"t": 1794117827.6295807, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794117828.6375275, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}
+{"t": 1794117838.4902308, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payment limits", "limit": 20}, "ok": true}
+{"t": 1794117839.497749, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "limits"}, "ok": true}
+{"t": 1794117840.5052087, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "daily limit payments"}, "ok": true}
+{"t": 1794117841.5136175, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "PAY-999"}, "ok": true}

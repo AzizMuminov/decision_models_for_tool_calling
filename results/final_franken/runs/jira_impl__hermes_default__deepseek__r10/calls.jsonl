@@ -1,0 +1,20 @@
+{"t": 1794115659.8897324, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-412", "include": "all", "comment_limit": 50}, "ok": true}
+{"t": 1794115668.719677, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794115674.3968585, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/masking.py", "repo": "payments"}, "ok": true}
+{"t": 1794115675.7244391, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794115679.701999, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments in:name", "perPage": 20}, "ok": true}
+{"t": 1794115688.4836092, "kind": "call", "tool": "github_search_code", "args": {"query": "mask_iban"}, "ok": true}
+{"t": 1794115689.4909806, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 50, "query": "org:acme"}, "ok": true}
+{"t": 1794115697.2621558, "kind": "call", "tool": "atlassian_jira_get_transitions", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794115699.5973923, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "IBAN masking"}, "ok": true}
+{"t": 1794115719.117727, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794115725.2882044, "kind": "call", "tool": "atlassian_jira_transition_issue", "args": {"issue_key": "PAY-412", "transition_id": "31"}, "ok": true}
+{"t": 1794115726.3975227, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"fields": "summary,status", "issue_key": "PAY-412"}, "ok": true}
+{"t": 1794115731.133103, "kind": "call", "tool": "atlassian_jira_get_transitions", "args": {"issue_key": "PAY-412"}, "ok": true}
+{"t": 1794115732.4192457, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"fields": "summary,status", "issue_key": "PAY-412"}, "ok": true}
+{"t": 1794115737.1337624, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "changelog", "issue_key": "PAY-412"}, "ok": true}
+{"t": 1794115741.3647382, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status", "jql": "key = PAY-412"}, "ok": true}
+{"t": 1794115744.018098, "kind": "call", "tool": "atlassian_jira_get_issue_dates", "args": {"include_status_changes": true, "issue_key": "PAY-412"}, "ok": false}
+{"t": 1794115748.7009625, "kind": "call", "tool": "atlassian_jira_transition_issue", "args": {"issue_key": "PAY-412", "transition_id": "31"}, "ok": true}
+{"t": 1794115755.3209095, "kind": "call", "tool": "gitlab_get_repository_tree", "args": {"project_id": "acme/payments", "recursive": true}, "ok": false}
+{"t": 1794115760.8450966, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"limit": 50, "project_key": "PAY"}, "ok": false}

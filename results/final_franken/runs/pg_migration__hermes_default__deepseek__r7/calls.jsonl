@@ -1,0 +1,24 @@
+{"t": 1794112380.7604918, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%payment%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794112385.9091113, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name, column_name, data_type, ordinal_position FROM information_schema.columns WHERE table_name ILIKE '%payment%' ORDER BY table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794112400.1771135, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/payments-db payments"}, "ok": true}
+{"t": 1794112402.8877, "kind": "call", "tool": "github_get_file_contents", "args": {"fields": ["name", "type", "path"], "owner": "acme", "path": "/", "repo": "payments-db"}, "ok": true}
+{"t": 1794112405.4739888, "kind": "call", "tool": "github_search_code", "args": {"query": "payments_merchant_created_idx"}, "ok": true}
+{"t": 1794112407.0819256, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794112408.090222, "kind": "call", "tool": "github_search_code", "args": {"query": "CREATE TABLE payments"}, "ok": true}
+{"t": 1794112413.666777, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE tablename ILIKE '%payment%'"}, "ok": true}
+{"t": 1794112414.6743124, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments database schema"}, "ok": true}
+{"t": 1794112421.4579968, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name"}, "ok": true}
+{"t": 1794112427.618556, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments database schema table"}, "ok": true}
+{"t": 1794112434.725294, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments-db"}, "ok": true}
+{"t": 1794112435.733069, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme"}, "ok": true}
+{"t": 1794112441.5355606, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 2"}, "ok": true}
+{"t": 1794112442.5426884, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT c.relname AS table_name, n.nspname AS schema_name FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind = 'r' AND n.nspname NOT IN ('pg_catalog','information_schema') ORDER BY 1"}, "ok": true}
+{"t": 1794112446.4089274, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT n.nspname AS schema_name FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relname = 'payments' AND c.relkind = 'r'"}, "ok": true}
+{"t": 1794112447.4167302, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname, indexdef FROM pg_indexes WHERE tablename = 'payments'"}, "ok": true}
+{"t": 1794112455.451916, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "models.py", "repo": "payments-db"}, "ok": true}
+{"t": 1794112456.4597023, "kind": "call", "tool": "github_search_code", "args": {"query": "merchant_ref"}, "ok": true}
+{"t": 1794112457.4676623, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "merchant_ref payments index"}, "ok": true}
+{"t": 1794112458.4757779, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "payments index migration", "sort": "descending"}, "ok": true}
+{"t": 1794112460.835069, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM definitely_not_a_table_xyz LIMIT 1"}, "ok": true}
+{"t": 1794112461.845544, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name, column_name FROM information_schema.columns WHERE column_name = 'merchant_ref'"}, "ok": true}
+{"t": 1794112476.3621411, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT merchant_ref, created_ts FROM payments ORDER BY created_ts DESC LIMIT 1"}, "ok": true}

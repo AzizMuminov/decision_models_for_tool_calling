@@ -1,0 +1,2 @@
+{"t": 1794123017.011225, "kind": "call", "tool": "github_search_code", "args": {"query": "SUPPORTED_CURRENCIES", "perPage": 100}, "ok": true}
+{"t": 1794123021.3949344, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "platform-config", "path": "currencies.yaml"}, "ok": true}

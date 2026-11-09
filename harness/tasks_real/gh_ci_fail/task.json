@@ -1,0 +1,56 @@
+{
+ "id": "gh_ci_fail",
+ "category": "single",
+ "prompt": "CI is failing on pull request #214 in acme/payments. Find out why, fix the code, and leave a comment on the PR saying what you changed. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_pull_request_read",
+   "github_actions_list",
+   "github_actions_get"
+  ],
+  [
+   "github_get_job_logs"
+  ],
+  [
+   "github_add_issue_comment"
+  ]
+ ],
+ "gold": [
+  [
+   "github_pull_request_read",
+   {
+    "method": "get_check_runs",
+    "owner": "acme",
+    "repo": "payments",
+    "pullNumber": 214
+   }
+  ],
+  [
+   "github_get_job_logs",
+   {
+    "owner": "acme",
+    "repo": "payments",
+    "job_id": 50112,
+    "return_content": true
+   }
+  ],
+  [
+   "github_add_issue_comment",
+   {
+    "owner": "acme",
+    "repo": "payments",
+    "issue_number": 214,
+    "body": "Fixed rounding: ROUND_HALF_UP"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "github_add_issue_comment",
+   "match": {
+    "issue_number": "214"
+   }
+  }
+ ],
+ "probe": null
+}

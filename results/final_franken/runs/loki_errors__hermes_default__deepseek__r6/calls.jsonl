@@ -1,0 +1,30 @@
+{"t": 1794111165.3511727, "kind": "call", "tool": "github_search_repositories", "args": {"limit": 20, "query": "notifier", "minimal_output": false}, "ok": true}
+{"t": 1794111166.3617969, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 20}, "ok": true}
+{"t": 1794111168.8876688, "kind": "call", "tool": "github_search_repositories", "args": {"limit": 50, "query": "notifier in:name"}, "ok": true}
+{"t": 1794111181.0612168, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/notifier", "perPage": 20}, "ok": true}
+{"t": 1794111185.6505432, "kind": "call", "tool": "grafana_list_datasources", "args": {"query": "type=loki"}, "ok": true}
+{"t": 1794111186.65819, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "notifier"}, "ok": true}
+{"t": 1794111189.4787908, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"endRfc3339": "now", "limit": 50, "logql": "{app=\"notifier\"}", "startRfc3339": "now-6h"}, "ok": false}
+{"t": 1794111190.48935, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 50, "query": "org:acme"}, "ok": true}
+{"t": 1794111192.6189425, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 50, "logql": "{app=\"notifier\"}", "startRfc3339": "now-6h"}, "ok": true}
+{"t": 1794111193.626702, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"endRfc3339": "now", "startRfc3339": "now-6h"}, "ok": false}
+{"t": 1794111198.9807384, "kind": "call", "tool": "github_search_code", "args": {"perPage": 20, "query": "order_shipped_v3"}, "ok": true}
+{"t": 1794111202.6369033, "kind": "call", "tool": "atlassian_confluence_search", "args": {"cql": "text ~ \"CHG-2231\""}, "ok": false}
+{"t": 1794111205.9471252, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "notifier"}, "ok": true}
+{"t": 1794111209.4806633, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 10, "query": "\"CHG-2231\""}, "ok": true}
+{"t": 1794111222.5872416, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794111223.595917, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "notifier"}, "ok": true}
+{"t": 1794111228.6807842, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "forward", "endRfc3339": "now", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794111239.3741972, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel": "incidents", "limit": 50}, "ok": false}
+{"t": 1794111240.3818889, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "notifier template render failed order_shipped"}, "ok": false}
+{"t": 1794111241.7363994, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "notifier"}, "ok": true}
+{"t": 1794111244.0150292, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794111246.4590223, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794111251.7674215, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "output": "wide", "resourceType": "deployments"}, "ok": false}
+{"t": 1794111252.776475, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794111260.3862548, "kind": "call", "tool": "github_search_code", "args": {"perPage": 5, "query": "README"}, "ok": true}
+{"t": 1794111261.3937826, "kind": "call", "tool": "grafana_query_prometheus", "args": {"query": "{__name__=~\"notifier.*\"}"}, "ok": false}
+{"t": 1794111263.8769183, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": "notifier"}, "ok": true}
+{"t": 1794111264.8843243, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "labelName": "app", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794111271.4662457, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 100, "logql": "{app=\"notifier\"} |= \"template\"", "startRfc3339": "now-72h"}, "ok": true}
+{"t": 1794111275.0046396, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}

@@ -1,0 +1,32 @@
+{
+ "id": "gh_issue",
+ "category": "single",
+ "prompt": "Implement GitHub issue #301 in acme/payments. Read the whole discussion on the issue before you start. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_issue_read"
+  ]
+ ],
+ "gold": [
+  [
+   "github_issue_read",
+   {
+    "method": "get",
+    "owner": "acme",
+    "repo": "payments",
+    "issue_number": 301
+   }
+  ],
+  [
+   "github_issue_read",
+   {
+    "method": "get_comments",
+    "owner": "acme",
+    "repo": "payments",
+    "issue_number": 301
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

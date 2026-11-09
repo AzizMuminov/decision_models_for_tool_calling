@@ -1,0 +1,2 @@
+BATCH_SIZE = 1000
+S3_PREFIX = "imports/"

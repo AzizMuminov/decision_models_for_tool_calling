@@ -1,0 +1,9 @@
+{"t": 1794114965.2105668, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794114978.7367806, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794114979.7451208, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "finance-export", "state": "open"}, "ok": true}
+{"t": 1794114982.0594654, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "finance-export"}, "ok": true}
+{"t": 1794114990.462564, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794114991.606111, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794114992.4239097, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794114996.3329048, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794115002.626966, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}

@@ -1,0 +1,32 @@
+{
+ "id": "gh_codesearch",
+ "category": "single",
+ "prompt": "Another repository in the acme organisation holds the canonical list of supported currencies. Find it and make SUPPORTED_CURRENCIES in shop/currencies.py match it exactly. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "github_search_code",
+   "github_search_repositories"
+  ],
+  [
+   "github_get_file_contents"
+  ]
+ ],
+ "gold": [
+  [
+   "github_search_code",
+   {
+    "query": "org:acme supported currencies"
+   }
+  ],
+  [
+   "github_get_file_contents",
+   {
+    "owner": "acme",
+    "repo": "platform-config",
+    "path": "currencies.yaml"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

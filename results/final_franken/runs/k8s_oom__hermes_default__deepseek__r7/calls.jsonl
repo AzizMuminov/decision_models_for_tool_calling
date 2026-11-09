@@ -1,0 +1,23 @@
+{"t": 1794112139.5092585, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {}, "ok": false}
+{"t": 1794112140.345703, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list"}, "ok": true}
+{"t": 1794112141.9372082, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resource_type": "pods", "namespace": "reports"}, "ok": false}
+{"t": 1794112142.944714, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"resource_type": "deployment", "name": "report-builder", "namespace": "reports"}, "ok": false}
+{"t": 1794112148.8476167, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "pods", "output": "wide"}, "ok": true}
+{"t": 1794112149.8554256, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder", "namespace": "reports", "resourceType": "deployment"}, "ok": true}
+{"t": 1794112154.1904027, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"limit": 50, "regex": "container_memory.*"}, "ok": false}
+{"t": 1794112155.2005622, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "events", "namespace": "reports", "sortBy": ".lastTimestamp"}, "ok": true}
+{"t": 1794112157.174842, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794112158.8627129, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 50, "regex": "container_memory.*"}, "ok": true}
+{"t": 1794112160.7720401, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 200}, "ok": true}
+{"t": 1794112163.498872, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\"}[1h])", "time": "now"}, "ok": false}
+{"t": 1794112164.5064933, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "container_memory_working_set_bytes", "time": "now"}, "ok": false}
+{"t": 1794112166.2416303, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\"}[1h])", "startTime": "now-2h"}, "ok": true}
+{"t": 1794112169.972262, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod"}, "ok": true}
+{"t": 1794112170.980123, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "json", "resourceType": "events"}, "ok": true}
+{"t": 1794112173.5326817, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "tail": 100}, "ok": false}
+{"t": 1794112178.0265415, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{namespace=\"reports\"}"}, "ok": true}
+{"t": 1794112181.6928322, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 100}, "ok": true}
+{"t": 1794112182.700073, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod", "tail": 100}, "ok": true}
+{"t": 1794112193.518603, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "report-builder"}, "ok": false}
+{"t": 1794112194.5266538, "kind": "call", "tool": "grafana_list_incidents", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794112196.1993158, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "report-builder"}, "ok": true}

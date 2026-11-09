@@ -1,0 +1,7 @@
+{"t": 1794123075.0352144, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794123076.8029141, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T05:55:00Z", "endRfc3339": "2026-11-08T06:15:00Z", "limit": 100}, "ok": true}
+{"t": 1794123081.9651086, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T06:00:00Z", "endRfc3339": "2026-11-08T07:31:00Z", "limit": 30}, "ok": true}
+{"t": 1794123089.003065, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme \"order_shipped_v3\""}, "ok": true}
+{"t": 1794123093.9935784, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794123095.0019016, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "CHG-2231", "limit": 5}, "ok": true}
+{"t": 1794123096.0092092, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme \"order_shipped\""}, "ok": true}

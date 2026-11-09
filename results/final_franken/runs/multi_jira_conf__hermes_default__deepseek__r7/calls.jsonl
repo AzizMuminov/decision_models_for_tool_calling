@@ -1,0 +1,5 @@
+{"t": 1794111735.9914784, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": ["comments", "remote_links"], "issue_key": "PAY-530"}, "ok": false}
+{"t": 1794111739.0479903, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,remote_links", "issue_key": "PAY-530"}, "ok": true}
+{"t": 1794111740.2557545, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "902117"}, "ok": true}
+{"t": 1794111757.4874723, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "Refund policy"}, "ok": true}
+{"t": 1794111769.5930176, "kind": "call", "tool": "atlassian_jira_add_comment", "args": {"body": "Implemented refund policy v3 in refunds.policy.refund_window_days: default 45 days, digital goods 14 days.", "issue_key": "PAY-530"}, "ok": true}

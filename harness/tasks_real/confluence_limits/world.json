@@ -1,0 +1,50 @@
+[
+ {
+  "tool": "atlassian_confluence_search",
+  "match": {
+   "query": [
+    "rate",
+    "limit"
+   ]
+  },
+  "response": [
+   {
+    "id": "884213",
+    "title": "Public API rate limits",
+    "space": "API",
+    "url": "/wiki/spaces/API/pages/884213"
+   },
+   {
+    "id": "771002",
+    "title": "Rate limiting design (2024, superseded)",
+    "space": "ARCH"
+   }
+  ]
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": [
+    "884213",
+    "Public API rate limits"
+   ]
+  },
+  "response": {
+   "id": "884213",
+   "title": "Public API rate limits",
+   "version": 7,
+   "content": "| Plan | Requests per minute |\n|---|---|\n| free | 30 |\n| pro | 900 |\n| enterprise | 6000 |\n\nEffective 2026-11-01. Keys in code are the lowercase plan names."
+  }
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": "771002"
+  },
+  "response": {
+   "id": "771002",
+   "title": "Rate limiting design (2024, superseded)",
+   "content": "free 60/min, pro 600/min. SUPERSEDED - see 'Public API rate limits'."
+  }
+ }
+]

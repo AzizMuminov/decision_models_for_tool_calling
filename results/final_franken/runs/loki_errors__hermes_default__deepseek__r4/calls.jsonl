@@ -1,0 +1,27 @@
+{"t": 1794109226.6720967, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "notifier", "path": "/"}, "ok": true}
+{"t": 1794109229.6921098, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794109230.6998978, "kind": "call", "tool": "github_search_code", "args": {"query": "order_shipped repo:acme/notifier"}, "ok": true}
+{"t": 1794109233.1988764, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"logql": "{app=\"notifier\"}", "datasourceUid": "P8E80F9AEF21F6940", "limit": 20, "startRfc3339": "2026-11-08T04:00:00Z", "endRfc3339": "2026-11-08T07:00:00Z", "format": "compact"}, "ok": true}
+{"t": 1794109236.5455074, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme notifier"}, "ok": true}
+{"t": 1794109237.5547185, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-08T12:00:00Z", "format": "compact", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T00:00:00Z"}, "ok": true}
+{"t": 1794109243.9693766, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794109244.9798687, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "CHG-2231 template store migration"}, "ok": true}
+{"t": 1794109251.8111367, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme"}, "ok": true}
+{"t": 1794109255.4494443, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794109257.5093138, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "notifier template"}, "ok": true}
+{"t": 1794109258.5174944, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "template store v3 migration"}, "ok": true}
+{"t": 1794109261.4537408, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": false}
+{"t": 1794109262.461288, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "notifier"}, "ok": false}
+{"t": 1794109264.540525, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "labelName": "app"}, "ok": true}
+{"t": 1794109265.548863, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "notifier"}, "ok": true}
+{"t": 1794109276.146452, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-08T12:00:00Z", "limit": 50, "logql": "{app=\"notifier\"} |~ \"ship|template|render\"", "startRfc3339": "2026-11-07T00:00:00Z"}, "ok": true}
+{"t": 1794109278.714731, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "notifier"}, "ok": true}
+{"t": 1794109279.724778, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "2026-11-08T12:00:00Z", "logql": "sum(count_over_time({app=\"notifier\"}[24h]))", "queryType": "instant", "startRfc3339": "2026-11-07T12:00:00Z"}, "ok": true}
+{"t": 1794109285.0461652, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794109292.52376, "kind": "call", "tool": "grafana_list_alert_groups", "args": {}, "ok": true}
+{"t": 1794109293.531317, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel": "incidents", "limit": 20}, "ok": false}
+{"t": 1794109295.7522538, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794109297.0720208, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794109298.080527, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794109300.2993245, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794109301.306931, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}

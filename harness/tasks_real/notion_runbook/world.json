@@ -1,0 +1,77 @@
+[
+ {
+  "tool": "notion_API-post-search",
+  "match": {
+   "query": [
+    "signing",
+    "rotation",
+    "webhook"
+   ]
+  },
+  "response": {
+   "object": "list",
+   "results": [
+    {
+     "object": "page",
+     "id": "1a2b3c4d-runbook",
+     "properties": {
+      "title": {
+       "title": [
+        {
+         "plain_text": "Webhook signing key rotation"
+        }
+       ]
+      }
+     },
+     "url": "https://notion.so/acme/Webhook-signing-key-rotation-1a2b3c4d"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "notion_API-retrieve-page-markdown",
+  "match": {
+   "page_id": "1a2b3c4d"
+  },
+  "response": "# Webhook signing key rotation\n\n**Current rotation (Nov 2026)**\n\n1. New key id: `whsec_2026_11`. It becomes the primary key: put it FIRST in `ACTIVE_KEY_IDS`.\n2. Keep the previous key `whsec_2026_05` accepted during the 7-day grace period (second in the list).\n3. Remove any older keys.\n"
+ },
+ {
+  "tool": "notion_API-get-block-children",
+  "match": {
+   "_any": "1a2b3c4d"
+  },
+  "response": {
+   "results": [
+    {
+     "type": "paragraph",
+     "paragraph": {
+      "rich_text": [
+       {
+        "plain_text": "New key id whsec_2026_11 becomes primary (first in ACTIVE_KEY_IDS); keep previous whsec_2026_05 accepted (second) for the 7-day grace period; remove older keys."
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "notion_API-retrieve-a-page",
+  "match": {
+   "_any": "1a2b3c4d"
+  },
+  "response": {
+   "id": "1a2b3c4d-runbook",
+   "properties": {
+    "title": {
+     "title": [
+      {
+       "plain_text": "Webhook signing key rotation"
+      }
+     ]
+    }
+   },
+   "note": "page content is in its blocks"
+  }
+ }
+]

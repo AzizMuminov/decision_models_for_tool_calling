@@ -1,0 +1,98 @@
+[
+ {
+  "tool": "sentry_search_issues",
+  "match": {
+   "_any": "ledger"
+  },
+  "response": "# Issues in **acme/ledger-worker**\n\n1. **LEDGER-WORKER-9A** - ReconciliationMismatch: converted totals off by 1 minor unit\n   events: 2,201 | first seen: release ledger-worker@2026.11.3 | status: unresolved"
+ },
+ {
+  "tool": "sentry_get_sentry_resource",
+  "match": {
+   "_any": "9A"
+  },
+  "response": "# Issue LEDGER-WORKER-9A\n**ReconciliationMismatch**: converted totals off by 1 minor unit (expected 1100, got 1099)\n\nFirst seen in release ledger-worker@2026.11.3.\n**Suspect commit**: 8c2f1d0 \"Speed up FX conversion\" by tkim - from pull request acme/ledger-worker#412.\nIn worker/rates.py the conversion now truncates (`int(...)`) instead of rounding to the nearest minor unit."
+ },
+ {
+  "tool": "sentry_search_events",
+  "match": {
+   "_any": [
+    "ledger",
+    "9A"
+   ]
+  },
+  "response": "| issue | title | release |\n| LEDGER-WORKER-9A | ReconciliationMismatch: off by 1 minor unit; suspect commit 8c2f1d0 from PR acme/ledger-worker#412 (truncates instead of rounding) | 2026.11.3 |"
+ },
+ {
+  "tool": "github_get_commit",
+  "match": {
+   "_any": "8c2f1d0"
+  },
+  "response": {
+   "sha": "8c2f1d0",
+   "commit": {
+    "message": "Speed up FX conversion (#412)"
+   },
+   "files": [
+    {
+     "filename": "worker/rates.py",
+     "patch": "-    return round(amount_minor * rate)\n+    return int(amount_minor * rate)"
+    }
+   ]
+  }
+ },
+ {
+  "tool": "github_pull_request_read",
+  "match": {
+   "pullNumber": "412"
+  },
+  "response": {
+   "number": 412,
+   "title": "Speed up FX conversion",
+   "state": "closed",
+   "merged": true,
+   "user": {
+    "login": "tkim"
+   },
+   "body": "Replaced Decimal rounding with int() for speed."
+  }
+ },
+ {
+  "tool": "github_list_pull_requests",
+  "match": {
+   "repo": "ledger-worker"
+  },
+  "response": [
+   {
+    "number": 415,
+    "title": "Bump deps",
+    "state": "open"
+   },
+   {
+    "number": 412,
+    "title": "Speed up FX conversion",
+    "state": "closed",
+    "merged_at": "2026-11-03T10:00:00Z"
+   }
+  ]
+ },
+ {
+  "tool": "github_search_pull_requests",
+  "match": {
+   "_any": [
+    "ledger-worker",
+    "fx",
+    "8c2f1d0"
+   ]
+  },
+  "response": {
+   "items": [
+    {
+     "number": 412,
+     "title": "Speed up FX conversion",
+     "repository_url": "acme/ledger-worker"
+    }
+   ]
+  }
+ }
+]

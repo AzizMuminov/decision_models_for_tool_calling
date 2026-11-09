@@ -1,0 +1,43 @@
+{"t": 1794118050.216225, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "payments-api"}, "ok": false}
+{"t": 1794118054.2011673, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {}, "ok": false}
+{"t": 1794118056.146541, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"arguments": {}, "name": "find_organizations"}, "ok": true}
+{"t": 1794118059.572897, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "organization"}, "ok": true}
+{"t": 1794118062.9847913, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq", "limit": 20}, "ok": true}
+{"t": 1794118072.128243, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "PAYMENTS-API-3K", "resourceType": "issue"}, "ok": true}
+{"t": 1794118085.492263, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (text ~ \"apply_discount\" OR text ~ \"coupon\" OR text ~ \"PAYMENTS-API-3K\") ORDER BY updated DESC"}, "ok": true}
+{"t": 1794118088.8462348, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY updated DESC", "limit": 30}, "ok": true}
+{"t": 1794118089.854057, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "payments"}, "ok": true}
+{"t": 1794118094.2282023, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}
+{"t": 1794118095.2351532, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme payments"}, "ok": true}
+{"t": 1794118102.3564503, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794118103.3641343, "kind": "call", "tool": "linear_searchIssues", "args": {}, "ok": true}
+{"t": 1794118111.4782116, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794118112.4854226, "kind": "call", "tool": "sentry_search_events", "args": {"query": "apply_discount coupon"}, "ok": false}
+{"t": 1794118124.2620153, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "discount coupon"}, "ok": true}
+{"t": 1794118125.2693076, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "discount coupon"}, "ok": true}
+{"t": 1794118132.387681, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794118144.893026, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issue comments activity notes"}, "ok": true}
+{"t": 1794118147.8507316, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794118149.2737405, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794118154.0213864, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "ORDER BY updated DESC", "limit": 30}, "ok": true}
+{"t": 1794118155.0321362, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794118159.7607934, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794118160.7680814, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794118181.254872, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794118182.2623909, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794118184.7557144, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794118195.2999902, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"projectKey": "PAY"}, "ok": false}
+{"t": 1794118198.1049635, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"project_key": "PAY"}, "ok": false}
+{"t": 1794118201.7164183, "kind": "call", "tool": "sentry_update_issue", "args": {"issueId": "PAYMENTS-API-3K", "organizationSlug": "acme", "reason": "Fixed in payments/discounts.py apply_discount: expired coupons return amount_cents=None (or omit the key), which caused int - NoneType. Now a missing amount leaves the total unchanged, and the result is clamped at 0 so a discount can never make the total negative.", "status": "resolved"}, "ok": true}
+{"t": 1794118204.5819602, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "PAYMENTS-API-3K", "resourceType": "issue"}, "ok": true}
+{"t": 1794118205.5899236, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794118209.286322, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"arguments": {"issueId": "PAYMENTS-API-3K", "organizationSlug": "acme", "status": "resolved"}, "name": "update_issue"}, "ok": true}
+{"t": 1794118211.281973, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "projectSlugOrId": "payments-api", "query": "is:resolved"}, "ok": true}
+{"t": 1794118223.9217348, "kind": "call", "tool": "monday_search", "args": {"searchTerm": "payments", "searchType": "ITEMS"}, "ok": true}
+{"t": 1794118224.92923, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments"}, "ok": true}
+{"t": 1794118231.9081886, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794118232.9161856, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794118236.9008276, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceId": "https://acme.sentry.io/issues/PAYMENTS-API-3K/", "resourceType": "issue"}, "ok": true}
+{"t": 1794118239.6286075, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "period": "24h", "projectSlugOrId": "payments-api", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794118261.7842371, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-1", "limit": 5}, "ok": true}
+{"t": 1794118262.7918196, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"payments-api\"", "limit": 10}, "ok": true}

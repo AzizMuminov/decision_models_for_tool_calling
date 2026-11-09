@@ -1,0 +1,4 @@
+(node:11373) MetadataLookupWarning: received unexpected error = All promises were rejected code = UNKNOWN
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+Session terminated, killing shell... ...killed.

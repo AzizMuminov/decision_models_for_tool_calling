@@ -1,0 +1,60 @@
+[
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-530"
+  },
+  "response": {
+   "key": "PAY-530",
+   "fields": {
+    "summary": "Refund policy v3",
+    "description": "Implement refund policy v3 in refunds.policy.refund_window_days. All the rules are in the design doc: https://acme.atlassian.net/wiki/spaces/PAY/pages/902117/Refund+policy+v3"
+   }
+  }
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": [
+    "902117",
+    "Refund policy v3"
+   ]
+  },
+  "response": {
+   "id": "902117",
+   "title": "Refund policy v3",
+   "content": "## Refund windows\n- Default: **45 days** from delivery (was 30).\n- Digital goods (`digital`): **14 days**.\n- No other exceptions."
+  }
+ },
+ {
+  "tool": "atlassian_confluence_search",
+  "match": {
+   "query": [
+    "refund"
+   ]
+  },
+  "response": [
+   {
+    "id": "902117",
+    "title": "Refund policy v3",
+    "space": "PAY"
+   },
+   {
+    "id": "640001",
+    "title": "Refund policy v2 (old)",
+    "space": "PAY"
+   }
+  ]
+ },
+ {
+  "tool": "atlassian_confluence_get_page",
+  "match": {
+   "_any": "640001"
+  },
+  "response": {
+   "id": "640001",
+   "title": "Refund policy v2 (old)",
+   "content": "30 days for everything."
+  }
+ }
+]

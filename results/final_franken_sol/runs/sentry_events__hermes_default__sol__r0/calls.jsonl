@@ -1,0 +1,4 @@
+{"t": 1794122652.7081316, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "refunds-api", "dataset": "errors", "query": "POST /refunds errors since this morning's deploy", "period": "24h", "limit": 20}, "ok": true}
+{"t": 1794122661.195305, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceType": "issue", "organizationSlug": "acme", "resourceId": "REFUNDS-API-1C"}, "ok": true}
+{"t": 1794122662.2045162, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "repo": "refunds", "path": "refunds/handler.py", "perPage": 5}, "ok": true}
+{"t": 1794122663.2128212, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/refunds reason_code", "perPage": 20}, "ok": true}

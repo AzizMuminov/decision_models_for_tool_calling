@@ -1,0 +1,37 @@
+{
+ "id": "mongo_shape",
+ "category": "single",
+ "prompt": "The nightly export crashes on new documents in the `orders` collection of the prod MongoDB (database `shop`, connection string in README). Inspect the current document shape and update export/parse.py so both old and new documents work. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "mongodb_connect"
+  ],
+  [
+   "mongodb_collection-schema",
+   "mongodb_find",
+   "mongodb_aggregate"
+  ]
+ ],
+ "gold": [
+  [
+   "mongodb_connect",
+   {
+    "connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop"
+   }
+  ],
+  [
+   "mongodb_find",
+   {
+    "connectionId": "prod-shop-a1b2",
+    "database": "shop",
+    "collection": "orders",
+    "limit": 5,
+    "sort": {
+     "_id": -1
+    }
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

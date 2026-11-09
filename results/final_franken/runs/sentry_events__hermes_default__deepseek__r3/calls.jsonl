@@ -1,0 +1,9 @@
+{"t": 1794108336.563172, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved", "period": "24h", "sort": "date", "limit": 20}, "ok": true}
+{"t": 1794108340.830022, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794108343.8076684, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794108344.8160262, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "refunds"}, "ok": true}
+{"t": 1794108348.2891965, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 20, "organizationSlug": "acme", "period": "7d", "projectSlugOrId": "refunds-api", "query": "is:unresolved", "sort": "date"}, "ok": true}
+{"t": 1794108352.6335053, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceId": "REFUNDS-API-1C", "resourceType": "issue"}, "ok": true}
+{"t": 1794108353.641474, "kind": "call", "tool": "github_search_code", "args": {"limit": 10, "query": "repo:acme/refunds parse_refund"}, "ok": true}
+{"t": 1794108358.8818715, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "refunds/handler.py", "repo": "refunds"}, "ok": true}
+{"t": 1794108369.6252842, "kind": "call", "tool": "github_search_repositories", "args": {"query": "refunds"}, "ok": true}

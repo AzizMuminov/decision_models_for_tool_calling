@@ -1,0 +1,12 @@
+
+  ┌───────────────────────────────────────────────────────────────────┐
+  │  DEPRECATED: @circleci/mcp-server-circleci                        │
+  │                                                                   │
+  │  This self-hosted MCP server is deprecated and will stop          │
+  │  receiving updates, including security fixes.                     │
+  │                                                                   │
+  │  Migrate to CircleCI's hosted MCP server or the CircleCI CLI MCP: │
+  │  https://circleci.com/docs/guides/toolkit/circleci-mcp-overview/  │
+  └───────────────────────────────────────────────────────────────────┘
+
+Starting CircleCI MCP server in stdio mode...

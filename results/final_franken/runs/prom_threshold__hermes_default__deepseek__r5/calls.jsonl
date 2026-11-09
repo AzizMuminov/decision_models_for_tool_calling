@@ -1,0 +1,86 @@
+{"t": 1794109725.9437256, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794109728.1982975, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": ".*duration.*|.*latency.*", "limit": 100}, "ok": true}
+{"t": 1794109730.201361, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 200}, "ok": true}
+{"t": 1794109731.766375, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "endRfc3339": "now", "limit": 200, "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794109734.9374561, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "count by (__name__) ({__name__=~\".+\"})", "queryType": "instant", "time": "now"}, "ok": false}
+{"t": 1794109735.9442523, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "query": "up"}, "ok": false}
+{"t": 1794109737.6706395, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "count by (__name__) ({__name__=~\".+\"})", "queryType": "instant"}, "ok": false}
+{"t": 1794109742.34655, "kind": "call", "tool": "grafana_query_tempo_metrics", "args": {"datasourceUid": "P214B5B846CF3925F", "q": "{ } | rate()"}, "ok": false}
+{"t": 1794109744.097584, "kind": "call", "tool": "grafana_list_prometheus_label_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "endRfc3339": "now", "startRfc3339": "now-24h"}, "ok": true}
+{"t": 1794109748.0583405, "kind": "call", "tool": "grafana_query_tempo_metrics", "args": {"datasourceUid": "P214B5B846CF3925F", "query": "{ } | quantile_over_time(span:duration, .99) by (resource.service.name)", "type": "instant"}, "ok": true}
+{"t": 1794109750.1964905, "kind": "call", "tool": "aws_cloudwatch_get_promql_label_values", "args": {"label_name": "@resource.service.name"}, "ok": false}
+{"t": 1794109751.2039933, "kind": "call", "tool": "grafana_list_tempo_attribute_names", "args": {"datasourceUid": "P214B5B846CF3925F", "limit": 100}, "ok": true}
+{"t": 1794109755.9307933, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794109756.939931, "kind": "call", "tool": "grafana_search_dashboards", "args": {}, "ok": true}
+{"t": 1794109767.1889238, "kind": "call", "tool": "github_search_repositories", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794109768.1972919, "kind": "call", "tool": "aws_cloudwatch_get_promql_labels", "args": {}, "ok": false}
+{"t": 1794109776.1730247, "kind": "call", "tool": "github_search_repositories", "args": {"owner": "acme", "query": "checkout in:name"}, "ok": true}
+{"t": 1794109782.8766792, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794109783.8838093, "kind": "call", "tool": "github_search_repositories", "args": {"perPage": 100, "query": "org:acme"}, "ok": true}
+{"t": 1794109792.569095, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794109793.577065, "kind": "call", "tool": "aws_cloudwatch_get_promql_label_values", "args": {"label_name": "__name__"}, "ok": false}
+{"t": 1794109794.9107099, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794109797.3912382, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "span metrics performance latency p99 duration"}, "ok": true}
+{"t": 1794109798.399272, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "p99 span duration for checkout-web over the last hour"}, "ok": true}
+{"t": 1794109804.6913407, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "spans", "fields": ["p99(span.duration)"], "organizationSlug": "acme", "period": "1h", "projectSlug": "checkout-web", "query": "p99 span duration for checkout-web over the last hour"}, "ok": true}
+{"t": 1794109805.6984484, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"kind": "deployments", "namespace": "checkout"}, "ok": false}
+{"t": 1794109808.6242306, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"kind": "deployments", "namespace": "checkout", "resourceType": "deployments"}, "ok": false}
+{"t": 1794109809.631267, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794109813.6137335, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "*"}, "ok": true}
+{"t": 1794109818.8613079, "kind": "call", "tool": "grafana_query_tempo_metrics", "args": {"datasourceUid": "P214B5B846CF3925F", "query": "{ resource.service.name = \"checkout-web\" } | quantile_over_time(span:duration, .99)", "type": "instant"}, "ok": true}
+{"t": 1794109819.8721995, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "http_server_request_duration_seconds_bucket", "queryType": "instant"}, "ok": false}
+{"t": 1794109823.1848524, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794109828.475766, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "alerts"}, "ok": false}
+{"t": 1794109829.4830346, "kind": "call", "tool": "github_search_code", "args": {"limit": 20}, "ok": false}
+{"t": 1794109834.228383, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794109835.2372115, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794109836.8738925, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794109837.8825321, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794109840.4390483, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "errors", "fields": ["count()"], "organizationSlug": "acme", "period": "24h", "projectSlug": "checkout-web", "query": ""}, "ok": true}
+{"t": 1794109841.4470007, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "spans", "fields": ["count()"], "organizationSlug": "acme", "period": "24h", "query": ""}, "ok": true}
+{"t": 1794109843.6870763, "kind": "call", "tool": "grafana_list_provisioning_repositories", "args": {}, "ok": true}
+{"t": 1794109852.1907475, "kind": "call", "tool": "aws_cloudwatch_describe_log_groups", "args": {}, "ok": false}
+{"t": 1794109853.1989195, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"operation": "list"}, "ok": true}
+{"t": 1794109859.2145734, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlug": "checkout-web", "query": "is:unresolved"}, "ok": true}
+{"t": 1794109862.539745, "kind": "call", "tool": "grafana_search_folders", "args": {}, "ok": true}
+{"t": 1794109863.5474317, "kind": "call", "tool": "grafana_list_snapshots", "args": {}, "ok": true}
+{"t": 1794109876.0449467, "kind": "call", "tool": "aws_cloudwatch_execute_promql_query", "args": {"query": "{@resource.service.name=\"checkout\"}", "region": "eu-west-1"}, "ok": true}
+{"t": 1794109877.0521078, "kind": "call", "tool": "aws_cloudwatch_execute_promql_query", "args": {"query": "{\"@resource.service.name\"=\"checkout-web\"}", "region": "eu-west-1"}, "ok": true}
+{"t": 1794109879.7188642, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "prometheus", "limit": 100}, "ok": true}
+{"t": 1794109880.7294083, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794109884.9527233, "kind": "call", "tool": "grafana_list_alert_groups", "args": {}, "ok": true}
+{"t": 1794109885.9599144, "kind": "call", "tool": "grafana_list_oncall_teams", "args": {}, "ok": true}
+{"t": 1794109892.2108955, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "checkout latency p99"}, "ok": true}
+{"t": 1794109893.2181017, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794109896.2655835, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794109900.36155, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 20}, "ok": false}
+{"t": 1794109907.2755759, "kind": "call", "tool": "grafana_check_datasources_health", "args": {}, "ok": false}
+{"t": 1794109910.319436, "kind": "call", "tool": "grafana_list_sift_investigations", "args": {}, "ok": true}
+{"t": 1794109911.3266642, "kind": "call", "tool": "elasticsearch_list_indices", "args": {}, "ok": false}
+{"t": 1794109912.7549686, "kind": "call", "tool": "elasticsearch_list_indices", "args": {"indexPattern": "*"}, "ok": true}
+{"t": 1794109913.7629364, "kind": "call", "tool": "clickhouse_list_databases", "args": {}, "ok": true}
+{"t": 1794109915.7525032, "kind": "call", "tool": "mongodb_list-databases", "args": {}, "ok": false}
+{"t": 1794109916.7606401, "kind": "call", "tool": "airtable_list_bases", "args": {}, "ok": true}
+{"t": 1794109919.8539271, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "Prometheus (prod)", "endTime": "now", "expr": "up", "queryType": "instant"}, "ok": false}
+{"t": 1794109932.8832893, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "endRfc3339": "2026-11-08T00:00:00Z", "limit": 200, "startRfc3339": "2026-11-01T00:00:00Z"}, "ok": true}
+{"t": 1794109933.890503, "kind": "call", "tool": "grafana_query_tempo_metrics", "args": {"datasourceUid": "P214B5B846CF3925F", "end": "2026-11-08T00:00:00Z", "query": "{ } | quantile_over_time(span:duration, .99) by (resource.service.name)", "start": "2026-11-01T00:00:00Z", "type": "range"}, "ok": true}
+{"t": 1794109939.114005, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}
+{"t": 1794109941.6929252, "kind": "call", "tool": "grafana_query_prometheus_histogram", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "metric": "http_request_duration_seconds", "percentile": 99}, "ok": true}
+{"t": 1794109942.701382, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"datasourceUid": "P214B5B846CF3925F", "limit": 5, "query": "{resource.service.name=\"checkout\"}"}, "ok": true}
+{"t": 1794109945.5150645, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "pods"}, "ok": false}
+{"t": 1794109946.5239906, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "deployments", "namespace": "prod"}, "ok": false}
+{"t": 1794109954.5155737, "kind": "call", "tool": "netlify_netlify-project-services-reader", "args": {"operation": "get-projects"}, "ok": false}
+{"t": 1794109996.9020019, "kind": "call", "tool": "netlify_netlify-project-services-reader", "args": {"selectSchema": {"operation": "get-projects", "params": {}}}, "ok": false}
+{"t": 1794110002.7842093, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794110007.7974923, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794110011.4561794, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "count by (__name__) ({__name__=~\".+\"})", "queryType": "instant"}, "ok": false}
+{"t": 1794110012.464115, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 3, "logql": "{app=~\".+\"}"}, "ok": true}
+{"t": 1794110015.0307438, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794110022.4129658, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 20}, "ok": true}
+{"t": 1794110023.4208677, "kind": "call", "tool": "slack_get_users", "args": {"limit": 20}, "ok": true}
+{"t": 1794110028.3926888, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 100}, "ok": true}
+{"t": 1794110029.4005094, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "type=page"}, "ok": true}
+{"t": 1794110031.962771, "kind": "call", "tool": "filesystem_list_allowed_directories", "args": {}, "ok": true}
+{"t": 1794110035.209285, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100, "regex": ".*"}, "ok": true}
+{"t": 1794110036.2170324, "kind": "call", "tool": "grafana_list_prometheus_label_values", "args": {"datasourceUid": "PBFA97CFB590B2093", "labelName": "__name__", "limit": 100}, "ok": true}
+{"t": 1794110039.881882, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"checkout p99\"", "limit": 10}, "ok": true}

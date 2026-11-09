@@ -1,0 +1,20 @@
+{
+ "id": "pg_migration",
+ "category": "single",
+ "prompt": "Add migrations/0042_payments_merchant_idx.sql with an index named payments_merchant_created_idx for looking up a merchant's payments by creation time. Careful: production column names do not match our ORM. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "postgres_query"
+  ]
+ ],
+ "gold": [
+  [
+   "postgres_query",
+   {
+    "sql": "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'payments'"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": null
+}

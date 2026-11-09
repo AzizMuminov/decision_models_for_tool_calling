@@ -1,0 +1,8 @@
+{"t": 1794123168.053552, "kind": "call", "tool": "grafana_list_datasources", "args": {"type": "loki"}, "ok": true}
+{"t": 1794123170.4643464, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"}", "startRfc3339": "2026-11-08T05:55:00Z", "endRfc3339": "2026-11-08T06:10:00Z", "limit": 50}, "ok": true}
+{"t": 1794123174.3547177, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{app=\"notifier\"} |= \"TemplateNotFound\"", "startRfc3339": "2026-11-08T06:00:00Z", "endRfc3339": "2026-11-08T07:32:00Z", "limit": 50}, "ok": true}
+{"t": 1794123180.5504177, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/notifier \"order_shipped\""}, "ok": true}
+{"t": 1794123187.3126776, "kind": "call", "tool": "github_search_code", "args": {"query": "org:acme \"CHG-2231\""}, "ok": true}
+{"t": 1794123192.0658846, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 50}, "ok": false}
+{"t": 1794123201.034709, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "notifier", "path": "notifier/templates.py", "ref": "refs/heads/main"}, "ok": true}
+{"t": 1794123202.0452, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "projectSlug": "notifier", "dataset": "errors", "query": "timestamp:>=2026-11-08T06:00:00Z timestamp:<2026-11-08T07:33:00Z", "limit": 20}, "ok": true}

@@ -1,0 +1,71 @@
+{
+ "id": "multi_sentry_gh",
+ "category": "multi",
+ "prompt": "A recent change to ledger-worker introduced a reconciliation bug that shows up as a production error. Find the error and the change that caused it, fix worker/rates.py, and flag it on that change with a link to the error. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "sentry_search_issues",
+   "sentry_search_events"
+  ],
+  [
+   "sentry_get_sentry_resource"
+  ],
+  [
+   "github_pull_request_read",
+   "github_list_pull_requests",
+   "github_search_pull_requests"
+  ],
+  [
+   "github_add_issue_comment"
+  ]
+ ],
+ "gold": [
+  [
+   "sentry_search_issues",
+   {
+    "organizationSlug": "acme",
+    "projectSlugOrId": "ledger-worker",
+    "query": "is:unresolved"
+   }
+  ],
+  [
+   "sentry_get_sentry_resource",
+   {
+    "resourceType": "issue",
+    "resourceId": "LEDGER-WORKER-9A",
+    "organizationSlug": "acme"
+   }
+  ],
+  [
+   "github_pull_request_read",
+   {
+    "method": "get",
+    "owner": "acme",
+    "repo": "ledger-worker",
+    "pullNumber": 412
+   }
+  ],
+  [
+   "github_add_issue_comment",
+   {
+    "owner": "acme",
+    "repo": "ledger-worker",
+    "issue_number": 412,
+    "body": "Regression: https://acme.sentry.io/issues/LEDGER-WORKER-9A"
+   }
+  ]
+ ],
+ "writes": [
+  {
+   "tool": "github_add_issue_comment",
+   "match": {
+    "issue_number": "412",
+    "body": [
+     "sentry",
+     "LEDGER-WORKER-9A"
+    ]
+   }
+  }
+ ],
+ "probe": null
+}

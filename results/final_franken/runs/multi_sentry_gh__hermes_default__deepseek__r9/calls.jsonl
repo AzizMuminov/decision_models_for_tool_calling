@@ -1,0 +1,23 @@
+{"t": 1794114300.0476253, "kind": "call", "tool": "sentry_search_issues", "args": {"query": "ledger-worker errors unresolved"}, "ok": false}
+{"t": 1794114301.3796394, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "project:ledger-worker is:unresolved"}, "ok": true}
+{"t": 1794114302.3865836, "kind": "call", "tool": "github_list_pull_requests", "args": {"repo": "acme/ledger-worker"}, "ok": false}
+{"t": 1794114305.4914463, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"organizationSlug": "acme", "resourceId": "LEDGER-WORKER-9A", "resourceType": "issue"}, "ok": true}
+{"t": 1794114306.4992113, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "ledger-worker", "state": "all"}, "ok": true}
+{"t": 1794114313.2054815, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "number": 412, "owner": "acme", "repo": "ledger-worker"}, "ok": false}
+{"t": 1794114314.7060177, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114315.816654, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "files", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": false}
+{"t": 1794114317.0941992, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_diff", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114318.102442, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_files", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114322.7703717, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "worker/rates.py", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114323.778603, "kind": "call", "tool": "github_get_commit", "args": {"owner": "acme", "repo": "ledger-worker", "sha": "8c2f1d0"}, "ok": true}
+{"t": 1794114328.1326416, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "path": "worker/rates.py", "perPage": 30, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114329.1403258, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114331.4185004, "kind": "call", "tool": "sentry_search_events", "args": {"organizationSlug": "acme", "query": "issue:LEDGER-WORKER-9A"}, "ok": true}
+{"t": 1794114332.4266317, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"organizationSlug": "acme", "query": "ledger-worker reconciliation"}, "ok": true}
+{"t": 1794114335.2153168, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"organizationSlug": "acme", "query": "issue details permalink url short id"}, "ok": true}
+{"t": 1794114336.2231371, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceType": "issue", "resourceId": "https://acme.sentry.io/issues/LEDGER-WORKER-9A/"}, "ok": true}
+{"t": 1794114344.7379959, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "ledger-worker FX rounding minor units"}, "ok": true}
+{"t": 1794114345.7455409, "kind": "call", "tool": "github_search_code", "args": {"query": "amount_minor rate rounding ledger-worker"}, "ok": true}
+{"t": 1794114362.7235227, "kind": "call", "tool": "github_pull_request_read", "args": {"method": "get_comments", "owner": "acme", "pullNumber": 412, "repo": "ledger-worker"}, "ok": true}
+{"t": 1794114363.7328668, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceId": "https://acme.sentry.io/organizations/acme/issues/?query=LEDGER-WORKER-9A", "resourceType": "issue"}, "ok": true}
+{"t": 1794114366.6845446, "kind": "call", "tool": "github_add_issue_comment", "args": {"body": "\u26a0\ufe0f Regression found in production: this change replaced `round()` with `int()` in `worker/rates.py`, so conversions truncate instead of rounding to the nearest minor unit. Sentry issue: https://acme.sentry.io/issues/LEDGER-WORKER-9A/ (ReconciliationMismatch: expected 1100, got 1099; 2,201 events, first seen in release 2026.11.3, suspect commit 8c2f1d0). Reverting the truncation to `round(amount_minor * rate)` fixes reconciliation.", "issue_number": 412, "owner": "acme", "repo": "ledger-worker"}, "ok": true}

@@ -1,0 +1,13 @@
+[
+ {
+  "tool": "github_get_latest_release",
+  "match": {
+   "repo": "ghost-sdk"
+  },
+  "response": {
+   "error": "Not Found",
+   "status": 404,
+   "message": "repository acme/ghost-sdk has no releases"
+  }
+ }
+]

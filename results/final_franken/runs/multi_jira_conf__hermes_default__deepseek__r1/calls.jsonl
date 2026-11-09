@@ -1,0 +1,4 @@
+{"t": 1794105917.4409356, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-530", "include": ["comments", "remote_links"]}, "ok": false}
+{"t": 1794105918.527959, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,remote_links", "issue_key": "PAY-530"}, "ok": true}
+{"t": 1794105922.313258, "kind": "call", "tool": "atlassian_confluence_get_page", "args": {"page_id": "902117"}, "ok": true}
+{"t": 1794105935.9167109, "kind": "call", "tool": "atlassian_jira_add_comment", "args": {"body": "Implemented refund policy v3 in refunds/policy.py: refund_window_days now returns 45 days by default (was 30) and 14 days for 'digital', with no other exceptions.", "issue_key": "PAY-530"}, "ok": true}

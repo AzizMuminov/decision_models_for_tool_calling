@@ -1,0 +1,124 @@
+AccessibilityVisionExpert: no reviewers loaded for maturity level >= GA
+(node:11462) [DEP0151] DeprecationWarning: Package /opt/mcp-harvest/node_modules/@salesforce/mcp/node_modules/@salesforce/metadata-enrichment/ has a "main" field set to "lib/index", excluding the full filename and extension to the resolved file at "lib/index.js", imported from /opt/mcp-harvest/node_modules/@salesforce/mcp/node_modules/@salesforce/mcp-provider-metadata-enrichment/dist/tools/enrich_metadata.js.
+ Automatic extension resolution of the "main" field is deprecated for ES modules.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+SLDSExpert: no reviewers loaded for maturity level >= GA
+UtamExpert: no reviewers loaded for maturity level >= GA
+ ›   Warning: You acknowledge and agree that the MCP server may collect usage 
+ ›   information, user environment, and crash reports for the purposes of 
+ ›   providing services or functions that are relevant to use of the MCP server
+ ›    and product improvements.
+Allowed orgs:
+- DEFAULT_TARGET_ORG
+Skipping registration of dynamic tools.
+REGISTERING TOOLSETS (--toolsets)
+Registering toolset: 'core'
+-> Registering tool: 'get_username'
+-> Registering tool: 'resume_tool_operation'
+Registering toolset: 'data'
+-> Registering tool: 'run_soql_query'
+Registering toolset: 'orgs'
+* Skipping registration of non-ga tool 'create_org_snapshot' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'create_scratch_org' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'delete_org' because the '--allow-non-ga-tools' flag was not set at server startup.
+-> Registering tool: 'list_all_orgs'
+* Skipping registration of non-ga tool 'open_org' because the '--allow-non-ga-tools' flag was not set at server startup.
+Registering toolset: 'metadata'
+-> Registering tool: 'deploy_metadata'
+-> Registering tool: 'retrieve_metadata'
+Registering toolset: 'testing'
+-> Registering tool: 'run_agent_test'
+-> Registering tool: 'run_apex_test'
+Registering toolset: 'users'
+-> Registering tool: 'assign_permission_set'
+Registering toolset: 'mobile'
+-> Registering tool: 'get_mobile_lwc_offline_analysis'
+-> Registering tool: 'get_mobile_lwc_offline_guidance'
+-> Registering tool: 'create_mobile_lwc_app_review'
+-> Registering tool: 'create_mobile_lwc_ar_space_capture'
+-> Registering tool: 'create_mobile_lwc_barcode_scanner'
+-> Registering tool: 'create_mobile_lwc_biometrics'
+-> Registering tool: 'create_mobile_lwc_calendar'
+-> Registering tool: 'create_mobile_lwc_contacts'
+-> Registering tool: 'create_mobile_lwc_document_scanner'
+-> Registering tool: 'create_mobile_lwc_geofencing'
+-> Registering tool: 'create_mobile_lwc_location'
+-> Registering tool: 'create_mobile_lwc_nfc'
+-> Registering tool: 'create_mobile_lwc_payments'
+Registering toolset: 'mobile-core'
+* Skipping registration of tool 'get_mobile_lwc_offline_analysis' because it is already registered.
+* Skipping registration of tool 'get_mobile_lwc_offline_guidance' because it is already registered.
+* Skipping registration of tool 'create_mobile_lwc_barcode_scanner' because it is already registered.
+* Skipping registration of tool 'create_mobile_lwc_biometrics' because it is already registered.
+* Skipping registration of tool 'create_mobile_lwc_location' because it is already registered.
+Registering toolset: 'aura-experts'
+-> Registering tool: 'create_aura_blueprint_draft'
+-> Registering tool: 'enhance_aura_blueprint_draft'
+-> Registering tool: 'transition_prd_to_lwc'
+-> Registering tool: 'orchestrate_aura_migration'
+Registering toolset: 'lwc-experts'
+-> Registering tool: 'verify_aura_migration_completeness'
+-> Registering tool: 'guide_figma_to_lwc_conversion'
+-> Registering tool: 'create_lwc_component_from_prd'
+-> Registering tool: 'create_lwc_jest_tests'
+-> Registering tool: 'guide_component_accessibility'
+-> Registering tool: 'guide_lwc_best_practices'
+-> Registering tool: 'guide_lwc_development'
+* Skipping registration of non-ga tool 'guide_lwc_rtl_support' because the '--allow-non-ga-tools' flag was not set at server startup.
+-> Registering tool: 'review_lwc_jest_tests'
+-> Registering tool: 'orchestrate_lwc_component_creation'
+-> Registering tool: 'orchestrate_lwc_component_optimization'
+-> Registering tool: 'orchestrate_lwc_component_testing'
+-> Registering tool: 'explore_lds_uiapi'
+-> Registering tool: 'guide_lds_data_consistency'
+-> Registering tool: 'guide_lds_development'
+-> Registering tool: 'guide_lds_referential_integrity'
+-> Registering tool: 'run_lwc_accessibility_jest_tests'
+* Skipping registration of non-ga tool 'orchestrate_lwc_slds2_uplift' because the '--allow-non-ga-tools' flag was not set at server startup.
+-> Registering tool: 'guide_lws_security'
+-> Registering tool: 'orchestrate_lds_data_requirements'
+-> Registering tool: 'guide_lds_graphql'
+-> Registering tool: 'create_lds_graphql_read_query'
+-> Registering tool: 'create_lds_graphql_mutation_query'
+-> Registering tool: 'fetch_lds_graphql_schema'
+-> Registering tool: 'test_lds_graphql_query'
+-> Registering tool: 'guide_design_general'
+-> Registering tool: 'create_lightning_type'
+* Skipping registration of non-ga tool 'guide_utam_generation' because the '--allow-non-ga-tools' flag was not set at server startup.
+-> Registering tool: 'guide_lbc_usage'
+-> Registering tool: 'explore_lbc_components'
+* Skipping registration of non-ga tool 'explore_slds_blueprints' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'guide_slds_blueprints' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'explore_slds_styling' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'guide_slds_styling' because the '--allow-non-ga-tools' flag was not set at server startup.
+-> Registering tool: 'reference_lwc_compilation_error'
+-> Registering tool: 'guide_lo_migration'
+Registering toolset: 'devops'
+-> Registering tool: 'list_devops_center_projects'
+-> Registering tool: 'list_devops_center_work_items'
+-> Registering tool: 'create_devops_center_work_item'
+-> Registering tool: 'promote_devops_center_work_item'
+-> Registering tool: 'detect_devops_center_merge_conflict'
+-> Registering tool: 'resolve_devops_center_merge_conflict'
+-> Registering tool: 'resolve_devops_center_deployment_failure'
+-> Registering tool: 'checkout_devops_center_work_item'
+-> Registering tool: 'commit_devops_center_work_item'
+-> Registering tool: 'update_devops_center_work_item_status'
+-> Registering tool: 'check_devops_center_commit_status'
+-> Registering tool: 'create_devops_center_pull_request'
+Registering toolset: 'code-analysis'
+-> Registering tool: 'run_code_analyzer'
+-> Registering tool: 'describe_code_analyzer_rule'
+-> Registering tool: 'list_code_analyzer_rules'
+-> Registering tool: 'query_code_analyzer_results'
+* Skipping registration of non-ga tool 'get_ast_nodes_to_generate_xpath' because the '--allow-non-ga-tools' flag was not set at server startup.
+* Skipping registration of non-ga tool 'create_custom_rule' because the '--allow-non-ga-tools' flag was not set at server startup.
+Registering toolset: 'scale-products'
+-> Registering tool: 'scan_apex_class_for_antipatterns'
+Registering toolset: 'enrichment'
+* Skipping registration of non-ga tool 'enrich_metadata' because the '--allow-non-ga-tools' flag was not set at server startup.
+Registering toolset: 'experts-validation'
+-> Registering tool: 'validate_and_optimize'
+-> Registering tool: 'score_issues'
+Registering toolset: 'other'
+✅ Salesforce MCP Server v0.30.15 running on stdio

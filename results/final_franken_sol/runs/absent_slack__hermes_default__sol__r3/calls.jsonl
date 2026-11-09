@@ -1,0 +1,4 @@
+{"t": 1794124097.4330292, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "\"CACHE_TTL_S\""}, "ok": true}
+{"t": 1794124101.098776, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794124102.1068065, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794124104.8282704, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}

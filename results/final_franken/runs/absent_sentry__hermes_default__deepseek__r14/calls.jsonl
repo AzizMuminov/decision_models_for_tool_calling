@@ -1,0 +1,81 @@
+{"t": 1794119776.2270505, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "billing-cron", "query": "is:unresolved", "limit": 25, "period": "90d"}, "ok": true}
+{"t": 1794119781.3470647, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794119782.3565168, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 25, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "billing-cron", "query": ""}, "ok": true}
+{"t": 1794119784.234592, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794119785.243771, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794119787.5284233, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794119791.6669502, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794119792.680484, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794119793.6902523, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "billing"}, "ok": true}
+{"t": 1794119799.488086, "kind": "call", "tool": "sentry_search_events", "args": {"limit": 20, "organizationSlug": "acme", "projectSlugOrId": "billing-cron", "query": "billing-cron"}, "ok": true}
+{"t": 1794119801.9554827, "kind": "call", "tool": "github_search_repositories", "args": {"query": "billing org:acme"}, "ok": true}
+{"t": 1794119802.964931, "kind": "call", "tool": "github_search_commits", "args": {"limit": 20, "query": "billing-cron"}, "ok": true}
+{"t": 1794119806.8114483, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794119807.8192184, "kind": "call", "tool": "atlassian_jira_get_project_issues", "args": {"project_key": "PAY"}, "ok": false}
+{"t": 1794119812.929542, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794119813.9372928, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"billing\" ORDER BY updated DESC", "max_results": 20}, "ok": true}
+{"t": 1794119820.1627874, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "billing"}, "ok": true}
+{"t": 1794119821.1700652, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "billing"}, "ok": true}
+{"t": 1794119822.178241, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {}, "ok": false}
+{"t": 1794119824.255671, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794119825.2634912, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "ref": "main", "repo": "billing"}, "ok": false}
+{"t": 1794119828.1367254, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794119829.1442988, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "logql": "{job=~\".+\"} |= \"billing\"", "limit": 20}, "ok": true}
+{"t": 1794119831.7673817, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "billing-cron"}, "ok": true}
+{"t": 1794119838.7401483, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"operation": "list"}, "ok": true}
+{"t": 1794119839.7473884, "kind": "call", "tool": "grafana_list_alert_groups", "args": {}, "ok": true}
+{"t": 1794119840.7550182, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "default"}, "ok": false}
+{"t": 1794119844.322175, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "default", "resourceType": "pods"}, "ok": false}
+{"t": 1794119845.3312573, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "billing"}, "ok": true}
+{"t": 1794119848.9281373, "kind": "call", "tool": "grafana_search_dashboards", "args": {}, "ok": true}
+{"t": 1794119851.4416327, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794119852.4490879, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794119856.1135864, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 25, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "billing-cron", "query": "is:resolved"}, "ok": true}
+{"t": 1794119857.1201513, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 25, "organizationSlug": "acme", "period": "90d", "query": "cron"}, "ok": true}
+{"t": 1794119861.6442494, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": ""}, "ok": true}
+{"t": 1794119864.6749144, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": ".*(billing|cron).*"}, "ok": true}
+{"t": 1794119868.9722967, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794119869.979885, "kind": "call", "tool": "sentry_search_events", "args": {"limit": 20, "organizationSlug": "acme", "period": "30d", "projectSlugOrId": "billing-cron", "query": "error"}, "ok": true}
+{"t": 1794119872.0453296, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "billing"}, "ok": true}
+{"t": 1794119873.053803, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "cron"}, "ok": true}
+{"t": 1794119876.5381365, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "monitors cron check-ins"}, "ok": true}
+{"t": 1794119877.5455039, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794119883.9890158, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 25, "organizationSlug": "acme", "period": "90d", "query": "billing"}, "ok": true}
+{"t": 1794119886.9595497, "kind": "call", "tool": "filesystem_list_allowed_directories", "args": {}, "ok": true}
+{"t": 1794119887.9666495, "kind": "call", "tool": "slack_get_users", "args": {"channel_id": "C07PAYENG01"}, "ok": true}
+{"t": 1794119894.4977674, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"query": "billing-cron", "resourceType": "project"}, "ok": false}
+{"t": 1794119896.5877988, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceId": "billing-cron", "resourceType": "monitor"}, "ok": false}
+{"t": 1794119897.5959897, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"url": "https://acme.sentry.io/projects/billing-cron/"}, "ok": false}
+{"t": 1794119900.1354675, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "payments-api", "query": "is:unresolved"}, "ok": true}
+{"t": 1794119901.1431074, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "ledger-worker", "query": "is:unresolved"}, "ok": true}
+{"t": 1794119908.0994852, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "payments-eng", "limit": 50}, "ok": false}
+{"t": 1794119909.1077497, "kind": "call", "tool": "grafana_list_alert_groups", "args": {"limit": 25}, "ok": true}
+{"t": 1794119910.1155267, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 50}, "ok": true}
+{"t": 1794119918.0467556, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794119924.019979, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794119925.0274854, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"query": "billing-cron traces errors"}, "ok": false}
+{"t": 1794119927.7561986, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"arguments": {"organizationSlug": "acme", "projectSlug": "billing-cron"}, "name": "find_releases"}, "ok": true}
+{"t": 1794119928.7640195, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"datasourceUid": "P214B5B846CF3925F", "limit": 20, "query": "{ resource.service.name = \"billing-cron\" }"}, "ok": true}
+{"t": 1794119944.2679865, "kind": "call", "tool": "linear_getDocuments", "args": {}, "ok": false}
+{"t": 1794119945.2754061, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794119953.5444794, "kind": "call", "tool": "notion_API-post-search", "args": {}, "ok": true}
+{"t": 1794119954.5514462, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "billing"}, "ok": true}
+{"t": 1794119959.278633, "kind": "call", "tool": "git_status", "args": {}, "ok": false}
+{"t": 1794119960.286453, "kind": "call", "tool": "git_log", "args": {"limit": 20}, "ok": false}
+{"t": 1794119966.7520547, "kind": "call", "tool": "sentry_execute_sentry_tool", "args": {"arguments": {"organizationSlug": "acme", "projectSlugOrId": "billing-cron", "query": "is:resolved"}, "name": "search_issues"}, "ok": true}
+{"t": 1794119967.7610984, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 10, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "billing-cron", "query": "is:ignored"}, "ok": true}
+{"t": 1794119974.6880586, "kind": "call", "tool": "sentry_search_sentry_tools", "args": {"query": "issues"}, "ok": true}
+{"t": 1794119975.6960595, "kind": "call", "tool": "sentry_search_events", "args": {"limit": 10, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "billing-cron", "query": "how many errors in billing-cron"}, "ok": true}
+{"t": 1794119980.5589972, "kind": "call", "tool": "aws_cloudwatch_describe_log_groups", "args": {}, "ok": false}
+{"t": 1794119985.1700265, "kind": "call", "tool": "github_search_repositories", "args": {"query": "billing"}, "ok": true}
+{"t": 1794119986.1801147, "kind": "call", "tool": "github_search_issues", "args": {"query": "billing cron"}, "ok": true}
+{"t": 1794119990.6006532, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 50, "organizationSlug": "acme", "period": "90d", "query": "is:unresolved"}, "ok": true}
+{"t": 1794119991.6076553, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 50, "organizationSlug": "acme", "period": "90d", "query": "level:error"}, "ok": true}
+{"t": 1794120000.6831503, "kind": "call", "tool": "mongodb_list-databases", "args": {}, "ok": false}
+{"t": 1794120001.6920736, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "created >= -90d ORDER BY created DESC", "max_results": 20}, "ok": true}
+{"t": 1794120007.6689045, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "startRfc3339": "now-30d"}, "ok": true}
+{"t": 1794120008.6775084, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "endRfc3339": "now", "limit": 20, "logql": "{job=\"billing-cron\"}", "startRfc3339": "now-30d"}, "ok": true}
+{"t": 1794120012.335135, "kind": "call", "tool": "slack_list_channels", "args": {"limit": 200}, "ok": true}
+{"t": 1794120033.682276, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}
+{"t": 1794120034.6894417, "kind": "call", "tool": "monday_search", "args": {"query": "billing"}, "ok": false}
+{"t": 1794120040.5143716, "kind": "call", "tool": "sentry_search_events", "args": {"limit": 10, "organizationSlug": "acme", "period": "90d", "projectSlugOrId": "billing-cron", "query": "firstSeen:-90d"}, "ok": true}

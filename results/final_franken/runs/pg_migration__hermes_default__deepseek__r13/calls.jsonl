@@ -1,0 +1,15 @@
+{"t": 1794118416.2710361, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name, column_name, data_type from information_schema.columns where table_name ilike '%payment%' order by table_schema, table_name, ordinal_position"}, "ok": true}
+{"t": 1794118419.0734875, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_schema, table_name from information_schema.tables where table_name ilike '%payment%' order by 1,2"}, "ok": true}
+{"t": 1794118420.0827787, "kind": "call", "tool": "postgres_query", "args": {"sql": "select schemaname, tablename, indexname, indexdef from pg_indexes where tablename ilike '%payment%' order by 1,2,3"}, "ok": true}
+{"t": 1794118425.1677115, "kind": "call", "tool": "postgres_query", "args": {"sql": "select current_schema(), current_database()"}, "ok": true}
+{"t": 1794118426.175204, "kind": "call", "tool": "postgres_query", "args": {"sql": "select table_name from information_schema.tables where table_schema not in ('pg_catalog','information_schema')"}, "ok": true}
+{"t": 1794118428.428818, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from payments limit 3"}, "ok": true}
+{"t": 1794118429.4363139, "kind": "call", "tool": "postgres_query", "args": {"sql": "select schemaname, tablename from pg_tables where schemaname not in ('pg_catalog','information_schema') order by 1,2"}, "ok": true}
+{"t": 1794118440.869213, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments-db", "recursive": true}, "ok": false}
+{"t": 1794118441.8773804, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/payments-db CREATE INDEX", "perPage": 20}, "ok": true}
+{"t": 1794118449.338773, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 20, "query": "migration"}, "ok": true}
+{"t": 1794118450.3462362, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "payments database schema migration index"}, "ok": true}
+{"t": 1794118456.9915714, "kind": "call", "tool": "github_search_code", "args": {"perPage": 30, "query": "org:acme filename:*.sql payments"}, "ok": true}
+{"t": 1794118457.9999151, "kind": "call", "tool": "github_search_code", "args": {"perPage": 30, "query": "org:acme \"0041_init\""}, "ok": true}
+{"t": 1794118462.0492332, "kind": "call", "tool": "postgres_query", "args": {"sql": "select * from definitely_not_a_table limit 1"}, "ok": true}
+{"t": 1794118463.0562196, "kind": "call", "tool": "postgres_query", "args": {"sql": "select count(*) as n from payments"}, "ok": true}

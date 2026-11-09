@@ -1,0 +1,2 @@
+{"t": 1794124617.222403, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "refunds-api", "query": "POST /refunds", "period": "24h", "limit": 10}, "ok": true}
+{"t": 1794124620.2158716, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceType": "issue", "organizationSlug": "acme", "resourceId": "REFUNDS-API-1C"}, "ok": true}

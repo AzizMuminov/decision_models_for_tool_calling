@@ -1,0 +1,7 @@
+2026-11-05 05:41:13.331 | INFO     | awslabs.cloudwatch_mcp_server.server:<module>:37 - CloudWatch Logs tools registered successfully
+2026-11-05 05:41:13.334 | INFO     | awslabs.cloudwatch_mcp_server.cloudwatch_metrics.tools:_load_and_index_metadata:93 - Loaded 1179 metric metadata entries
+2026-11-05 05:41:13.335 | INFO     | awslabs.cloudwatch_mcp_server.cloudwatch_metrics.tools:_load_and_index_metadata:117 - Successfully indexed 1179 metric metadata entries
+2026-11-05 05:41:13.335 | INFO     | awslabs.cloudwatch_mcp_server.cloudwatch_metrics.tools:__init__:69 - Loaded 1179 metric metadata entries
+2026-11-05 05:41:13.359 | INFO     | awslabs.cloudwatch_mcp_server.server:<module>:40 - CloudWatch Metrics tools registered successfully
+2026-11-05 05:41:13.369 | INFO     | awslabs.cloudwatch_mcp_server.server:<module>:43 - CloudWatch Alarms tools registered successfully
+2026-11-05 05:41:13.412 | INFO     | awslabs.cloudwatch_mcp_server.server:main:52 - CloudWatch MCP server started

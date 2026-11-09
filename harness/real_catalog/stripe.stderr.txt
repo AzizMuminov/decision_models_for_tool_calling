@@ -1,0 +1,31 @@
+The --tools flag has been removed. Tool permissions are now controlled by your Restricted API Key (RAK). Create a RAK with the desired permissions at https://dashboard.stripe.com/apikeys
+[WARNING] We strongly recommend using rk_* (restricted keys) instead of sk_* keys for better security and granular permissions.
+See: https://docs.stripe.com/keys#create-restricted-api-keys
+
+✅ Stripe MCP Server running on stdio
+HTTP transport error: TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async StreamableHTTPClientTransport.send (/opt/mcp-harvest/node_modules/@stripe/mcp/node_modules/@modelcontextprotocol/sdk/dist/cjs/client/streamableHttp.js:324:30)
+    at async stdioTransport.onmessage (/opt/mcp-harvest/node_modules/@stripe/mcp/dist/index.js:159:7) {
+  [cause]: Error: getaddrinfo ENOTFOUND mcp.stripe.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'mcp.stripe.com'
+  }
+}
+Error forwarding message to server: TypeError: fetch failed
+    at node:internal/deps/undici/undici:14902:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async StreamableHTTPClientTransport.send (/opt/mcp-harvest/node_modules/@stripe/mcp/node_modules/@modelcontextprotocol/sdk/dist/cjs/client/streamableHttp.js:324:30)
+    at async stdioTransport.onmessage (/opt/mcp-harvest/node_modules/@stripe/mcp/dist/index.js:159:7) {
+  [cause]: Error: getaddrinfo ENOTFOUND mcp.stripe.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'mcp.stripe.com'
+  }
+}

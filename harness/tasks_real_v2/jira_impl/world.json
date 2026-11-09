@@ -1,0 +1,33 @@
+[
+ {
+  "tool": "atlassian_jira_get_issue",
+  "match": {
+   "issue_key": "PAY-412"
+  },
+  "response": {
+   "key": "PAY-412",
+   "fields": {
+    "summary": "Mask IBANs in logs",
+    "status": {
+     "name": "In Progress"
+    },
+    "description": "Acceptance criteria:\n* remove spaces\n* keep the 2-letter country code and the last 4 characters\n* replace every other character with `*`\n* function: payments.masking.mask_iban"
+   }
+  }
+ },
+ {
+  "tool": "atlassian_jira_search",
+  "match": {
+   "_any": "412"
+  },
+  "response": {
+   "issues": [
+    {
+     "key": "PAY-412",
+     "summary": "Mask IBANs in logs",
+     "description": "keep the 2-letter country code and the last 4 characters, remove spaces, replace every other character with `*`"
+    }
+   ]
+  }
+ }
+]

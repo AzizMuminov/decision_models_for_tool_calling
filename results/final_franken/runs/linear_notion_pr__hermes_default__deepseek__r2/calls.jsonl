@@ -1,0 +1,24 @@
+{"t": 1794107217.0024884, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-91"}, "ok": true}
+{"t": 1794107218.0157063, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "API guidelines"}, "ok": true}
+{"t": 1794107219.5837448, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "API guidelines"}, "ok": true}
+{"t": 1794107221.753899, "kind": "call", "tool": "notion_API-retrieve-page-markdown", "args": {"page_id": "5e6f-guidelines"}, "ok": true}
+{"t": 1794107224.276449, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "public-api"}, "ok": true}
+{"t": 1794107228.4659364, "kind": "call", "tool": "gitlab_get_project", "args": {"project_id": "acme/public-api"}, "ok": false}
+{"t": 1794107229.4740531, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme/public-api"}, "ok": true}
+{"t": 1794107236.7339888, "kind": "call", "tool": "gitlab_search_repositories", "args": {"query": "public-api"}, "ok": true}
+{"t": 1794107239.9872093, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794107243.8430321, "kind": "call", "tool": "github_search_code", "args": {"query": "deprecation_headers"}, "ok": true}
+{"t": 1794107244.850409, "kind": "call", "tool": "git_status", "args": {}, "ok": false}
+{"t": 1794107255.6814594, "kind": "call", "tool": "git_status", "args": {"path": "/srv/agentbox/work/linear_notion_pr__hermes_default__deepseek__r2/proj"}, "ok": false}
+{"t": 1794107256.6901453, "kind": "call", "tool": "git_clone", "args": {"path": "/srv/agentbox/work/linear_notion_pr__hermes_default__deepseek__r2/clone", "url": "https://github.com/acme/public-api.git"}, "ok": false}
+{"t": 1794107261.1145966, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794107271.6158547, "kind": "call", "tool": "github_create_branch", "args": {"branch": "eng-91", "from_branch": "main", "owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794107274.973377, "kind": "call", "tool": "github_push_files", "args": {"branch": "eng-91", "files": [{"content": "def deprecation_headers(sunset_date: str) -> dict:\n    \"\"\"Return the standard headers for a deprecated endpoint.\n\n    ``sunset_date`` is the HTTP-date the caller supplies and is sent as-is.\n    \"\"\"\n    return {\n        \"Deprecation\": \"true\",\n        \"Sunset\": sunset_date,\n        \"Link\": '<https://developer.acme.example/migrate>; rel=\"deprecation\"',\n    }\n", "path": "api/headers.py"}], "message": "ENG-91: add deprecation headers to v1 endpoints", "owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794107277.0870056, "kind": "call", "tool": "github_create_pull_request", "args": {"base": "main", "body": "Implements `api.headers.deprecation_headers(sunset_date)` per ENG-91 and the Deprecation section of the API guidelines (Notion).\n\nDeprecated endpoints now return:\n- `Deprecation: true`\n- `Sunset: <HTTP-date>` (the sunset date passed in, unchanged)\n- `Link: <https://developer.acme.example/migrate>; rel=\"deprecation\"`\n\nCloses ENG-91.", "head": "eng-91", "owner": "acme", "repo": "public-api", "title": "ENG-91: Add deprecation headers to v1 endpoints"}, "ok": true}
+{"t": 1794107278.692531, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api/headers.py", "ref": "eng-91", "repo": "public-api"}, "ok": true}
+{"t": 1794107279.7001612, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "public-api", "state": "open"}, "ok": true}
+{"t": 1794107283.1381366, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "public-api"}, "ok": true}
+{"t": 1794107284.1455421, "kind": "call", "tool": "github_search_pull_requests", "args": {"owner": "acme", "repo": "public-api"}, "ok": false}
+{"t": 1794107286.798535, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/public-api is:pr head:eng-91"}, "ok": true}
+{"t": 1794107287.807036, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "public-api", "state": "all"}, "ok": true}
+{"t": 1794107294.5132537, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "api", "ref": "main", "repo": "public-api"}, "ok": true}

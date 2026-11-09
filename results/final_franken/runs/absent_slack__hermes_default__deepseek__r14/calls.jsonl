@@ -1,0 +1,34 @@
+{"t": 1794119575.049223, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794119576.0642133, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "repo": "cache", "state": "all", "limit": 50}, "ok": true}
+{"t": 1794119578.261239, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794119579.2692049, "kind": "call", "tool": "github_search_pull_requests", "args": {"query": "repo:acme/cache cache TTL"}, "ok": true}
+{"t": 1794119583.221956, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 100}, "ok": true}
+{"t": 1794119584.2292657, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}
+{"t": 1794119585.236778, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 100}, "ok": true}
+{"t": 1794119586.2475834, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794119591.5293431, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "message_ts": "1793740000.000100"}, "ok": false}
+{"t": 1794119592.542587, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 100}, "ok": false}
+{"t": 1794119598.1179578, "kind": "call", "tool": "slack_get_thread_replies", "args": {"channel_id": "C07PLATF004", "thread_ts": "1793740000.000100"}, "ok": true}
+{"t": 1794119599.125488, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 50}, "ok": false}
+{"t": 1794119603.0597227, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794119604.0670266, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"cache TTL\" ORDER BY updated DESC", "maxResults": 20}, "ok": true}
+{"t": 1794119605.0753508, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794119606.0837893, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794119610.837026, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "cache", "path": "/"}, "ok": true}
+{"t": 1794119615.725803, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "cache", "teamId": "9f1c2e7a-eng", "limit": 50}, "ok": true}
+{"t": 1794119616.7333117, "kind": "call", "tool": "github_search_repositories", "args": {"query": "cache repo:acme/cache"}, "ok": true}
+{"t": 1794119620.0247626, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794119621.0327022, "kind": "call", "tool": "github_search_code", "args": {"query": "CACHE_TTL_S"}, "ok": true}
+{"t": 1794119629.3817801, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "cache"}, "ok": true}
+{"t": 1794119630.3987694, "kind": "call", "tool": "notion_API-post-search", "args": {}, "ok": true}
+{"t": 1794119632.7539048, "kind": "call", "tool": "github_list_issues", "args": {"owner": "acme", "repo": "cache", "perPage": 50}, "ok": true}
+{"t": 1794119633.7625296, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "cache"}, "ok": true}
+{"t": 1794119639.224924, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY updated DESC", "maxResults": 50}, "ok": true}
+{"t": 1794119640.2332993, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme"}, "ok": true}
+{"t": 1794119641.2407942, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "TTL"}, "ok": true}
+{"t": 1794119642.2488732, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "platform"}, "ok": true}
+{"t": 1794119647.3106914, "kind": "call", "tool": "github_search_commits", "args": {"query": "cache TTL repo:acme/cache"}, "ok": true}
+{"t": 1794119649.3475385, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "cache"}, "ok": true}
+{"t": 1794119657.2369657, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 200}, "ok": true}
+{"t": 1794119658.246509, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "cache TTL"}, "ok": true}
+{"t": 1794119659.254526, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}

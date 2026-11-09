@@ -1,0 +1,51 @@
+{"t": 1794106135.1110892, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"regex": ".*(duration|latency|request).*", "limit": 200}, "ok": false}
+{"t": 1794106138.0307107, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794106139.8331366, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 200, "regex": ".*(duration|latency|request).*"}, "ok": true}
+{"t": 1794106142.3272145, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 500}, "ok": true}
+{"t": 1794106145.12043, "kind": "call", "tool": "grafana_search_dashboards", "args": {}, "ok": true}
+{"t": 1794106146.339694, "kind": "call", "tool": "grafana_list_prometheus_label_names", "args": {"datasourceUid": "PBFA97CFB590B2093"}, "ok": true}
+{"t": 1794106153.7072299, "kind": "call", "tool": "aws_cloudwatch_get_promql_label_values", "args": {"label_name": "@resource.service.name"}, "ok": false}
+{"t": 1794106167.2584078, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "expr": "count by (__name__) ({__name__=~\".+\"})", "endTime": "now", "queryType": "instant"}, "ok": false}
+{"t": 1794106168.2656798, "kind": "call", "tool": "grafana_search_tempo_traces", "args": {"datasourceUid": "P214B5B846CF3925F", "query": "{resource.service.name=~\"checkout.*\"}"}, "ok": true}
+{"t": 1794106174.758593, "kind": "call", "tool": "aws_cloudwatch_get_promql_label_values", "args": {"label_name": "__name__"}, "ok": false}
+{"t": 1794106175.76608, "kind": "call", "tool": "aws_cloudwatch_get_promql_labels", "args": {}, "ok": false}
+{"t": 1794106179.2095766, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794106185.321153, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "endRfc3339": "now", "limit": 500, "startRfc3339": "now-6h"}, "ok": true}
+{"t": 1794106187.2991138, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794106188.306269, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794106191.9096663, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "spans", "fields": ["p99(span.duration)", "count()"], "includeExplanation": true, "organizationSlug": "acme", "period": "24h", "projectSlug": "checkout-web", "query": "p99 span duration for checkout-web transactions in production over the last 24 hours"}, "ok": true}
+{"t": 1794106197.0837507, "kind": "call", "tool": "sentry_search_events", "args": {"dataset": "errors", "organizationSlug": "acme", "period": "7d", "projectSlug": "checkout-web", "query": "errors in checkout-web last 7 days"}, "ok": true}
+{"t": 1794106205.4178476, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {}, "ok": false}
+{"t": 1794106209.007147, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list"}, "ok": true}
+{"t": 1794106210.0141404, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme checkout"}, "ok": true}
+{"t": 1794106211.568557, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resource_type": "namespaces"}, "ok": false}
+{"t": 1794106212.5754502, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resource_type": "pods", "all_namespaces": true}, "ok": false}
+{"t": 1794106215.1804712, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "output": "wide", "resourceType": "pods"}, "ok": false}
+{"t": 1794106216.1888983, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"output": "name", "resourceType": "namespaces"}, "ok": false}
+{"t": 1794106220.0157611, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "checkout"}, "ok": true}
+{"t": 1794106221.3661456, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794106224.351316, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 100}, "ok": true}
+{"t": 1794106225.3586426, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 100}, "ok": true}
+{"t": 1794106229.8191714, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794106232.1368835, "kind": "call", "tool": "grafana_list_alert_groups", "args": {}, "ok": true}
+{"t": 1794106233.1814272, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"operation": "list", "rule_limit": 200}, "ok": true}
+{"t": 1794106238.8913944, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "up", "queryType": "instant"}, "ok": false}
+{"t": 1794106239.8989975, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106243.1394658, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"nonexistent-service\"}[5m])))", "queryType": "instant"}, "ok": false}
+{"t": 1794106244.1472194, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.5, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106248.2455294, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(completely_bogus_metric_bucket{job=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106249.253542, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{job=\"payments-api\"}[5m])))", "queryType": "instant"}, "ok": false}
+{"t": 1794106260.9959586, "kind": "call", "tool": "github_search_code", "args": {"query": "SLOW_REQUEST_MS"}, "ok": true}
+{"t": 1794106264.6594582, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "checkout latency p99"}, "ok": true}
+{"t": 1794106265.6680691, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "checkout latency p99"}, "ok": true}
+{"t": 1794106269.1380327, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{service=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106270.1465595, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_server_duration_milliseconds_bucket{service_name=\"checkout\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106276.7631996, "kind": "call", "tool": "grafana_query_prometheus_histogram", "args": {"datasourceUid": "PBFA97CFB590B2093", "labels": "service=\"checkout\"", "metric": "http_request_duration_seconds", "percentile": 99}, "ok": true}
+{"t": 1794106277.7704835, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "checkout", "queryType": "instant"}, "ok": true}
+{"t": 1794106281.702423, "kind": "call", "tool": "grafana_alerting_manage_rules", "args": {"datasource_uid": "PBFA97CFB590B2093", "operation": "list", "rule_limit": 200}, "ok": true}
+{"t": 1794106282.7098923, "kind": "call", "tool": "grafana_list_prometheus_metric_metadata", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100}, "ok": true}
+{"t": 1794106293.7610397, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "avg(http_request_duration_seconds{service=\"checkout\"})", "queryType": "instant"}, "ok": true}
+{"t": 1794106294.7688255, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "sum(rate(http_requests_total{service=\"checkout\"}[5m]))", "queryType": "instant"}, "ok": true}
+{"t": 1794106299.8422656, "kind": "call", "tool": "github_search_repositories", "args": {"query": "alerts"}, "ok": true}
+{"t": 1794106307.4870687, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{service=\"checkout-web\"}[5m])))", "queryType": "instant"}, "ok": true}
+{"t": 1794106308.494922, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket{service=\"checkout\", env=\"production\"}[5m])))", "queryType": "instant"}, "ok": true}

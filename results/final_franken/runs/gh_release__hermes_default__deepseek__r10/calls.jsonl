@@ -1,0 +1,11 @@
+{"t": 1794115534.657417, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ledger-api", "perPage": 100, "fields": ["tag_name", "name", "published_at", "prerelease", "draft"]}, "ok": true}
+{"t": 1794115540.7872236, "kind": "call", "tool": "github_list_releases", "args": {"fields": ["tag_name", "name", "published_at", "prerelease", "draft", "html_url"], "owner": "acme", "repo": "ledger-client"}, "ok": true}
+{"t": 1794115541.9045458, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "ledger"}, "ok": true}
+{"t": 1794115546.9130564, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ledger-api"}, "ok": true}
+{"t": 1794115549.4117436, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ledger in:name org:acme"}, "ok": true}
+{"t": 1794115552.782201, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "repo": "ledger-api", "perPage": 100}, "ok": true}
+{"t": 1794115556.1320488, "kind": "call", "tool": "gitlab_list_projects", "args": {"per_page": 100}, "ok": true}
+{"t": 1794115557.1426747, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "README.md", "repo": "ledger-api"}, "ok": true}
+{"t": 1794115563.7592523, "kind": "call", "tool": "github_get_release_by_tag", "args": {"owner": "acme", "repo": "ledger-api", "tag": "v4.13.0-rc.1"}, "ok": false}
+{"t": 1794115564.7669644, "kind": "call", "tool": "github_get_release_by_tag", "args": {"owner": "acme", "repo": "ledger-api", "tag": "v4.12.1"}, "ok": false}
+{"t": 1794115570.6260629, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "ledger-api"}, "ok": true}

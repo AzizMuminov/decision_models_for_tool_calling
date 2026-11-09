@@ -1,0 +1,2 @@
+{"t": 1794109130.968015, "kind": "call", "tool": "github_search_repositories", "args": {"query": "calendar_util in:name,readme org:acme"}, "ok": true}
+{"t": 1794109131.979737, "kind": "call", "tool": "github_search_code", "args": {"query": "is_leap repo:acme/calendar_util"}, "ok": true}

@@ -1,0 +1,26 @@
+{"t": 1794113472.80637, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "query": "is:unresolved export", "period": "30d", "limit": 20}, "ok": true}
+{"t": 1794113474.717387, "kind": "call", "tool": "sentry_search_issues", "args": {"limit": 25, "organizationSlug": "acme", "period": "14d", "query": "is:unresolved", "sort": "date"}, "ok": true}
+{"t": 1794113475.7288601, "kind": "call", "tool": "mongodb_connect", "args": {"connectionString": "mongodb+srv://export-ro@shop-prod.acme.internal/shop"}, "ok": true}
+{"t": 1794113477.2113771, "kind": "call", "tool": "mongodb_list-collections", "args": {"connectionId": "prod-shop-a1b2"}, "ok": false}
+{"t": 1794113478.2571268, "kind": "call", "tool": "sentry_find_organizations", "args": {}, "ok": true}
+{"t": 1794113479.6998942, "kind": "call", "tool": "mongodb_list-collections", "args": {"connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794113480.7921789, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794113482.7098906, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 3}, "ok": true}
+{"t": 1794113483.7360976, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "limit": 3, "sort": {"_id": -1}}, "ok": true}
+{"t": 1794113488.5408776, "kind": "call", "tool": "mongodb_count", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794113489.7016246, "kind": "call", "tool": "mongodb_find", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "filter": {"$or": [{"customer_email": {"$exists": false}}, {"customer_email": {"$exists": true}}]}, "limit": 100, "projection": {"_id": 1, "customer": 1, "customer_email": 1, "total": 1, "currency": 1, "created_at": 1}}, "ok": true}
+{"t": 1794113492.942997, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 30, "repo": "shop-export"}, "ok": true}
+{"t": 1794113497.6930144, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794113499.5900824, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "shop-export"}, "ok": true}
+{"t": 1794113500.599586, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07DATA0002", "limit": 50}, "ok": true}
+{"t": 1794113506.0136604, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794113507.4758067, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794113517.8768563, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "order schema export"}, "ok": true}
+{"t": 1794113520.9783828, "kind": "call", "tool": "linear_getIssues", "args": {}, "ok": false}
+{"t": 1794113532.241621, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 25}, "ok": false}
+{"t": 1794113535.4675212, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794113539.3721306, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940", "startRfc3339": "now-14d"}, "ok": true}
+{"t": 1794113550.288172, "kind": "call", "tool": "mongodb_list-databases", "args": {"connectionId": "prod-shop-a1b2"}, "ok": true}
+{"t": 1794113552.5548918, "kind": "call", "tool": "mongodb_collection-schema", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop"}, "ok": true}
+{"t": 1794113559.7474196, "kind": "call", "tool": "mongodb_aggregate", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "pipeline": [{"$group": {"_id": {"hasCustomer": {"$type": "$customer"}, "hasEmail": {"$type": "$customer_email"}, "totalType": {"$type": "$total"}, "currencyType": {"$type": "$currency"}}, "count": {"$sum": 1}}}]}, "ok": true}
+{"t": 1794113560.7561076, "kind": "call", "tool": "mongodb_aggregate", "args": {"collection": "orders", "connectionId": "prod-shop-a1b2", "database": "shop", "pipeline": [{"$match": {"customer": {"$exists": true}}}, {"$group": {"_id": {"emailType": {"$type": "$customer.email"}, "amountType": {"$type": "$total.amount"}, "curType": {"$type": "$total.currency"}}, "count": {"$sum": 1}}}]}, "ok": true}

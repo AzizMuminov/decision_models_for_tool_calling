@@ -1,0 +1,22 @@
+{"t": 1794119783.9592843, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list", "showCurrent": true}, "ok": true}
+{"t": 1794119784.970334, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794119787.014546, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "pods", "output": "wide"}, "ok": true}
+{"t": 1794119788.02176, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "resourceType": "deployments", "output": "yaml"}, "ok": true}
+{"t": 1794119792.7780936, "kind": "call", "tool": "kubernetes_kubectl_describe", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "resourceType": "pod"}, "ok": true}
+{"t": 1794119793.7858157, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"limit": 100, "regex": "container_memory.*"}, "ok": false}
+{"t": 1794119799.1706905, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 100, "regex": "container_memory.*"}, "ok": true}
+{"t": 1794119800.92557, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "limit": 200, "regex": ".*"}, "ok": true}
+{"t": 1794119806.3374565, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 20, "logql": "{namespace=\"reports\"}", "queryType": "range", "startTime": "now-2h", "endTime": "now"}, "ok": true}
+{"t": 1794119807.3444703, "kind": "call", "tool": "kubernetes_kubectl_generic", "args": {"args": ["top pod -n reports"], "resourceType": ""}, "ok": false}
+{"t": 1794119810.6141486, "kind": "call", "tool": "grafana_list_incidents", "args": {"status": "active"}, "ok": true}
+{"t": 1794119812.424648, "kind": "call", "tool": "kubernetes_kubectl_generic", "args": {"command": "top", "namespace": "reports", "resourceType": "pods"}, "ok": false}
+{"t": 1794119813.4327567, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"namespace": "reports", "output": "custom", "resourceType": "events"}, "ok": true}
+{"t": 1794119820.3616707, "kind": "call", "tool": "grafana_query_prometheus", "args": {"datasourceUid": "PBFA97CFB590B2093", "endTime": "now", "expr": "max_over_time(container_memory_working_set_bytes{namespace=\"reports\"}[2h])", "queryType": "instant"}, "ok": true}
+{"t": 1794119821.3697362, "kind": "call", "tool": "grafana_search_dashboards", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794119828.7281766, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"name": "report-builder", "namespace": "reports", "output": "yaml", "resourceType": "deployment"}, "ok": true}
+{"t": 1794119829.735555, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "output": "yaml", "resourceType": "pod"}, "ok": true}
+{"t": 1794119833.7246933, "kind": "call", "tool": "memory_search_nodes", "args": {"query": "report-builder"}, "ok": true}
+{"t": 1794119842.7886534, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 100}, "ok": true}
+{"t": 1794119843.800639, "kind": "call", "tool": "aws_eks_get_cloudwatch_metrics", "args": {"cluster_name": "prod-eu-1", "dimensions": {"ClusterName": "prod-eu-1", "Namespace": "reports", "PodName": "report-builder-6b7c9d"}, "metric_name": "memory_rss", "minutes": 120, "namespace": "ContainerInsights", "stat": "Maximum"}, "ok": false}
+{"t": 1794119849.3531287, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"fieldSelector": "involvedObject.name=report-builder-6b7c9d-q8w2e", "namespace": "reports", "output": "wide", "resourceType": "events", "sortBy": ".lastTimestamp"}, "ok": true}
+{"t": 1794119850.3614337, "kind": "call", "tool": "kubernetes_kubectl_logs", "args": {"name": "report-builder-6b7c9d-q8w2e", "namespace": "reports", "previous": true, "resourceType": "pod", "tail": 50, "timestamps": true}, "ok": true}

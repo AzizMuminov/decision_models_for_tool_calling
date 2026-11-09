@@ -1,0 +1,3 @@
+{"t": 1794123895.730585, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "projectSlugOrId": "refunds-api", "query": "POST /refunds", "period": "24h", "sort": "new"}, "ok": true}
+{"t": 1794123901.65146, "kind": "call", "tool": "sentry_get_sentry_resource", "args": {"resourceType": "issue", "organizationSlug": "acme", "resourceId": "REFUNDS-API-1C"}, "ok": true}
+{"t": 1794123906.933118, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "repo": "refunds", "path": "/", "ref": "refs/heads/main", "fields": ["name", "type", "path"]}, "ok": true}

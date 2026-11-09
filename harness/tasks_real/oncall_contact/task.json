@@ -1,0 +1,34 @@
+{
+ "id": "oncall_contact",
+ "category": "single",
+ "prompt": "Set ESCALATION_CONTACT in ops/escalation.py to the e-mail address of whoever is on call right now for the payments team in Grafana OnCall. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [
+  [
+   "grafana_list_oncall_schedules",
+   "grafana_list_oncall_teams"
+  ],
+  [
+   "grafana_get_current_oncall_users",
+   "grafana_get_oncall_shift"
+  ]
+ ],
+ "gold": [
+  [
+   "grafana_list_oncall_schedules",
+   {}
+  ],
+  [
+   "grafana_get_current_oncall_users",
+   {
+    "scheduleId": "SBM7DV7BKFUYU"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "ops/escalation.py",
+  "name": "ESCALATION_CONTACT",
+  "expected": "r.nakamura@acme.example",
+  "original": "payments-oncall@acme.example"
+ }
+}

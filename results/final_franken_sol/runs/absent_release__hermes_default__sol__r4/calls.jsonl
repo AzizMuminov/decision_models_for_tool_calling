@@ -1,0 +1,2 @@
+{"t": 1794124871.0329216, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ghost-sdk"}, "ok": false}
+{"t": 1794124876.962366, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ghost-sdk", "perPage": 5, "fields": ["tag_name", "published_at", "draft", "prerelease"]}, "ok": true}

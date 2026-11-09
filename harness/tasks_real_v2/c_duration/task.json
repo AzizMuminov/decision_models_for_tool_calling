@@ -1,0 +1,9 @@
+{
+ "id": "c_duration",
+ "category": "control",
+ "prompt": "parse_duration in timeutil/duration.py only understands hours. Make tests/test_duration.py pass.",
+ "needs": [],
+ "gold": [],
+ "writes": [],
+ "probe": null
+}

@@ -1,0 +1,6 @@
+{"t": 1794114603.487667, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794114605.6728559, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794114614.733711, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/currency.py", "repo": "payments"}, "ok": true}
+{"t": 1794114617.4410236, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794114619.7957962, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"currency\" ORDER BY created DESC", "max_results": 20}, "ok": true}
+{"t": 1794114626.9780068, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"XTS\" OR text ~ \"validate_currency\"", "max_results": 10}, "ok": true}

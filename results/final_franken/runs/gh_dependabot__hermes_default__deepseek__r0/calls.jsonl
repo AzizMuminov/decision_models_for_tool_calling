@@ -1,0 +1,23 @@
+{"t": 1794104642.851667, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "open", "perPage": 100}, "ok": true}
+{"t": 1794104655.714839, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY AND (summary ~ vulnerability OR summary ~ dependenc OR summary ~ CVE OR labels = security) ORDER BY created DESC", "limit": 20}, "ok": true}
+{"t": 1794104656.7224023, "kind": "call", "tool": "github_list_org_repository_security_advisories", "args": {"org": "acme"}, "ok": true}
+{"t": 1794104658.7178693, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY updated DESC", "limit": 30, "fields": "summary,status,labels,updated,description,issuetype"}, "ok": true}
+{"t": 1794104659.7258437, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "perPage": 100, "repo": "payments", "state": "dismissed"}, "ok": true}
+{"t": 1794104660.7361536, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "perPage": 100, "repo": "payments", "state": "auto_dismissed"}, "ok": true}
+{"t": 1794104663.6486275, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "vulnerability"}, "ok": true}
+{"t": 1794104665.1272807, "kind": "call", "tool": "slack_list_channels", "args": {"limit": 200}, "ok": true}
+{"t": 1794104666.136413, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "security"}, "ok": true}
+{"t": 1794104667.914699, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 50}, "ok": true}
+{"t": 1794104670.5232897, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "payments"}, "ok": false}
+{"t": 1794104671.5304573, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07GENRL005", "limit": 50}, "ok": true}
+{"t": 1794104673.5726628, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "requirements.txt", "repo": "payments"}, "ok": true}
+{"t": 1794104674.5802414, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "payments"}, "ok": true}
+{"t": 1794104681.0750694, "kind": "call", "tool": "github_get_global_security_advisory", "args": {"ghsa_id": "GHSA-pq67-6m6q-mj2v"}, "ok": false}
+{"t": 1794104682.082577, "kind": "call", "tool": "github_get_global_security_advisory", "args": {"ghsa_id": "GHSA-cpwx-vrp4-4pq7"}, "ok": false}
+{"t": 1794104683.0902116, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "vulnerability"}, "ok": true}
+{"t": 1794104684.5909276, "kind": "call", "tool": "github_get_global_security_advisory", "args": {"ghsaId": "GHSA-pq67-6m6q-mj2v"}, "ok": false}
+{"t": 1794104685.598043, "kind": "call", "tool": "github_get_global_security_advisory", "args": {"ghsaId": "GHSA-cpwx-vrp4-4pq7"}, "ok": false}
+{"t": 1794104719.6073296, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "payments"}, "ok": true}
+{"t": 1794104790.1943069, "kind": "call", "tool": "notion_API-post-search", "args": {}, "ok": true}
+{"t": 1794104791.2025993, "kind": "call", "tool": "github_search_code", "args": {"query": "repo:acme/payments"}, "ok": true}
+{"t": 1794104794.1773868, "kind": "call", "tool": "linear_getIssues", "args": {"first": 20}, "ok": false}

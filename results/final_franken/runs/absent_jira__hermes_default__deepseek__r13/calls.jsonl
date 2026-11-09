@@ -1,0 +1,29 @@
+{"t": 1794118588.0378723, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "key = PAY-999", "fields": "*all"}, "ok": true}
+{"t": 1794118591.4593425, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,description,labels,issuetype,project", "jql": "project = PAY ORDER BY created DESC", "limit": 50}, "ok": true}
+{"t": 1794118596.1273515, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"include": "comments,remote_links,changelog", "issue_key": "PAY-999"}, "ok": false}
+{"t": 1794118599.8069, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "PAY-999", "limit": 20}, "ok": true}
+{"t": 1794118600.8151734, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"PAY-999\"", "limit": 20}, "ok": true}
+{"t": 1794118606.2426426, "kind": "call", "tool": "atlassian_jira_get_all_projects", "args": {}, "ok": false}
+{"t": 1794118607.2533653, "kind": "call", "tool": "linear_getTeams", "args": {}, "ok": true}
+{"t": 1794118609.9697042, "kind": "call", "tool": "atlassian_jira_search_projects", "args": {"query": "PAY"}, "ok": true}
+{"t": 1794118610.9771237, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 20, "query": "payment limits"}, "ok": true}
+{"t": 1794118614.201882, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,project,description", "jql": "created >= -365d ORDER BY created DESC", "limit": 50}, "ok": true}
+{"t": 1794118615.2098384, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "query": "999"}, "ok": true}
+{"t": 1794118620.8653476, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,description", "jql": "key = PAY-999", "projects_filter": "PAY"}, "ok": true}
+{"t": 1794118621.872893, "kind": "call", "tool": "atlassian_jira_get_issue", "args": {"issue_key": "PAY-1"}, "ok": false}
+{"t": 1794118631.9888053, "kind": "call", "tool": "atlassian_confluence_search", "args": {"limit": 20, "query": "PAY-999"}, "ok": true}
+{"t": 1794118643.5065644, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "payments/limits.py", "repo": "payments"}, "ok": true}
+{"t": 1794118644.5192747, "kind": "call", "tool": "github_list_issues", "args": {"owner": "acme", "repo": "payments", "state": "all"}, "ok": false}
+{"t": 1794118645.5309386, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794118648.9385548, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PAYENG01", "limit": 100}, "ok": true}
+{"t": 1794118649.959475, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794118653.5426207, "kind": "call", "tool": "github_search_issues", "args": {"query": "PAY-999"}, "ok": true}
+{"t": 1794118654.5507452, "kind": "call", "tool": "github_search_repositories", "args": {"query": "payments"}, "ok": true}
+{"t": 1794118655.5586548, "kind": "call", "tool": "github_list_branches", "args": {"owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794118665.359518, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "PAY-999"}, "ok": true}
+{"t": 1794118666.3678527, "kind": "call", "tool": "notion_API-post-search", "args": {"page_size": 50, "query": "payment"}, "ok": true}
+{"t": 1794118667.37623, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.tables WHERE table_schema='public'"}, "ok": true}
+{"t": 1794118679.350862, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50, "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794118680.3598428, "kind": "call", "tool": "linear_getProjects", "args": {}, "ok": false}
+{"t": 1794118686.4631712, "kind": "call", "tool": "grafana_list_incidents", "args": {"limit": 50}, "ok": true}
+{"t": 1794118687.4705274, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}

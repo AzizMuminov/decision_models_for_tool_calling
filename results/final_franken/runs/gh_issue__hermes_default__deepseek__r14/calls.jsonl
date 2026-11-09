@@ -1,0 +1,8 @@
+{"t": 1794119710.1697724, "kind": "call", "tool": "github_issue_read", "args": {"method": "get", "owner": "acme", "repo": "payments", "issue_number": 301}, "ok": true}
+{"t": 1794119711.1806288, "kind": "call", "tool": "github_issue_read", "args": {"method": "get_comments", "owner": "acme", "repo": "payments", "issue_number": 301, "perPage": 100}, "ok": true}
+{"t": 1794119720.889631, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_labels", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794119721.8973985, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_sub_issues", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794119729.7096157, "kind": "call", "tool": "github_search_pull_requests", "args": {"owner": "acme", "query": "repo:acme/payments 301 in:title,body", "repo": "payments"}, "ok": true}
+{"t": 1794119730.7174218, "kind": "call", "tool": "github_search_code", "args": {"query": "validate_currency repo:acme/payments"}, "ok": true}
+{"t": 1794119736.9891992, "kind": "call", "tool": "github_list_pull_requests", "args": {"owner": "acme", "perPage": 50, "repo": "payments", "state": "all"}, "ok": true}
+{"t": 1794119740.194708, "kind": "call", "tool": "atlassian_jira_search", "args": {"fields": "summary,status,description,updated,issuetype", "jql": "project = PAY AND text ~ \"currency\" ORDER BY updated DESC", "limit": 20}, "ok": true}

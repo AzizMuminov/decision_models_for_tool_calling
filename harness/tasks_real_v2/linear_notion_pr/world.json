@@ -1,0 +1,87 @@
+[
+ {
+  "tool": "linear_getIssueById",
+  "match": {
+   "id": [
+    "ENG-91",
+    "b7"
+   ]
+  },
+  "response": {
+   "id": "b7c1-91",
+   "identifier": "ENG-91",
+   "title": "Add deprecation headers to v1 endpoints",
+   "description": "Implement api.headers.deprecation_headers(sunset_date). Follow the 'API guidelines' page (section Deprecation) in Notion for the exact headers."
+  }
+ },
+ {
+  "tool": "linear_searchIssues",
+  "match": {
+   "_any": [
+    "91",
+    "deprecation"
+   ]
+  },
+  "response": [
+   {
+    "id": "b7c1-91",
+    "identifier": "ENG-91",
+    "title": "Add deprecation headers to v1 endpoints",
+    "description": "Implement api.headers.deprecation_headers(sunset_date). Follow the 'API guidelines' page (section Deprecation) in Notion for the exact headers."
+   }
+  ]
+ },
+ {
+  "tool": "notion_API-post-search",
+  "match": {
+   "query": [
+    "guideline",
+    "api",
+    "deprecation"
+   ]
+  },
+  "response": {
+   "results": [
+    {
+     "object": "page",
+     "id": "5e6f-guidelines",
+     "properties": {
+      "title": {
+       "title": [
+        {
+         "plain_text": "API guidelines"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "tool": "notion_API-retrieve-page-markdown",
+  "match": {
+   "page_id": "5e6f"
+  },
+  "response": "# API guidelines\n\n## Deprecation\nDeprecated endpoints return three headers:\n- `Deprecation: true`\n- `Sunset: <HTTP-date>` (the sunset date passed in)\n- `Link: <https://developer.acme.example/migrate>; rel=\"deprecation\"`\n"
+ },
+ {
+  "tool": "notion_API-get-block-children",
+  "match": {
+   "_any": "5e6f"
+  },
+  "response": {
+   "results": [
+    {
+     "paragraph": {
+      "rich_text": [
+       {
+        "plain_text": "Deprecation: headers Deprecation: true; Sunset: <HTTP-date>; Link: <https://developer.acme.example/migrate>; rel=\"deprecation\""
+       }
+      ]
+     }
+    }
+   ]
+  }
+ }
+]

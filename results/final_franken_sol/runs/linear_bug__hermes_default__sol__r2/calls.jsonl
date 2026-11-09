@@ -1,0 +1,7 @@
+{"t": 1794123775.6090572, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 100}, "ok": false}
+{"t": 1794123778.694437, "kind": "call", "tool": "linear_getIssues", "args": {"limit": 10}, "ok": false}
+{"t": 1794123782.430689, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794123797.5841515, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794123802.4574227, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794123803.872284, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77"}, "ok": true}
+{"t": 1794123806.749226, "kind": "call", "tool": "linear_searchIssues", "args": {"query": "ENG-77", "states": ["In Review"]}, "ok": true}

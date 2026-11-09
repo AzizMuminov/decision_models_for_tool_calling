@@ -1,0 +1,10 @@
+{"t": 1794106931.384213, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "repo": "ledger-api", "fields": ["tag_name", "name", "published_at", "prerelease", "draft"], "perPage": 20}, "ok": true}
+{"t": 1794106934.8858027, "kind": "call", "tool": "gitlab_discover_tools", "args": {}, "ok": false}
+{"t": 1794106935.895963, "kind": "call", "tool": "github_list_tags", "args": {"owner": "acme", "perPage": 30, "repo": "ledger-api"}, "ok": true}
+{"t": 1794106937.7518938, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "ledger"}, "ok": true}
+{"t": 1794106939.3343527, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "perPage": 30, "repo": "ledger-api"}, "ok": true}
+{"t": 1794106940.3424144, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794106943.9445846, "kind": "call", "tool": "github_list_releases", "args": {"owner": "acme", "perPage": 10, "repo": "ledger-api"}, "ok": true}
+{"t": 1794106945.2591941, "kind": "call", "tool": "github_get_latest_release", "args": {"owner": "acme", "repo": "ledger-api"}, "ok": true}
+{"t": 1794106946.2668076, "kind": "call", "tool": "github_search_repositories", "args": {"query": "ledger-api in:name org:acme"}, "ok": true}
+{"t": 1794106953.883102, "kind": "call", "tool": "github_list_releases", "args": {"fields": ["tag_name", "name", "body", "published_at", "prerelease", "draft"], "owner": "acme", "perPage": 5, "repo": "ledger-api"}, "ok": true}

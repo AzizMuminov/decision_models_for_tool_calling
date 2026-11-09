@@ -1,0 +1,12 @@
+{"t": 1794106424.752838, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_schema, table_name FROM information_schema.tables WHERE table_name ILIKE '%pay%' ORDER BY 1,2"}, "ok": true}
+{"t": 1794106427.0256753, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT current_database() AS db, table_schema, table_name FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema') ORDER BY 2,3"}, "ok": true}
+{"t": 1794106428.033709, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT schemaname, tablename, indexname, indexdef FROM pg_indexes WHERE schemaname NOT IN ('pg_catalog','information_schema') ORDER BY 1,2,3"}, "ok": true}
+{"t": 1794106434.9915671, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT 1 AS ok"}, "ok": true}
+{"t": 1794106436.0200024, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT table_name FROM information_schema.columns WHERE column_name = 'merchant_ref'"}, "ok": true}
+{"t": 1794106438.201371, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT c.relname AS table_name, n.nspname AS schema_name FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind = 'r' AND n.nspname = 'public'"}, "ok": true}
+{"t": 1794106439.2110367, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT indexname FROM pg_indexes WHERE tablename = 'payments'"}, "ok": true}
+{"t": 1794106443.0227647, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "payments table schema merchant_ref created_ts"}, "ok": true}
+{"t": 1794106446.8245382, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "recursive": true, "repo": "payments-db"}, "ok": false}
+{"t": 1794106447.8359385, "kind": "call", "tool": "github_search_code", "args": {"fields": ["name", "path", "repository", "text_matches"], "query": "merchant_ref org:acme"}, "ok": true}
+{"t": 1794106450.5979748, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payments LIMIT 1"}, "ok": true}
+{"t": 1794106451.6066198, "kind": "call", "tool": "postgres_query", "args": {"sql": "SELECT * FROM payment LIMIT 1"}, "ok": true}

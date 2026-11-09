@@ -1,0 +1,4 @@
+{"t": 1794106047.6869273, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "repo": "payments", "state": "open", "perPage": 100}, "ok": true}
+{"t": 1794106052.7891164, "kind": "call", "tool": "github_list_dependabot_alerts", "args": {"owner": "acme", "perPage": 100, "repo": "payments", "state": "dismissed"}, "ok": true}
+{"t": 1794106055.0156832, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"affects": "urllib3", "ecosystem": "pip", "type": "reviewed"}, "ok": true}
+{"t": 1794106056.0272436, "kind": "call", "tool": "github_list_global_security_advisories", "args": {"affects": "jinja2", "ecosystem": "pip", "type": "reviewed"}, "ok": true}

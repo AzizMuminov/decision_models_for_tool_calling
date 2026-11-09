@@ -1,0 +1,21 @@
+{"t": 1794113023.7138531, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794113034.947553, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "export/csv_out.py", "repo": "finance-export"}, "ok": true}
+{"t": 1794113035.9544225, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "", "repo": "finance-export"}, "ok": true}
+{"t": 1794113044.5303543, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794113045.537295, "kind": "call", "tool": "linear_getAttachments", "args": {"issueId": "a41e0c9d-77"}, "ok": false}
+{"t": 1794113051.656663, "kind": "call", "tool": "linear_getComments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794113052.664586, "kind": "call", "tool": "linear_getAttachments", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794113060.8103745, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "finance CSV export"}, "ok": true}
+{"t": 1794113061.817627, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "finance CSV export", "page_size": 10}, "ok": true}
+{"t": 1794113067.0383291, "kind": "call", "tool": "github_search_repositories", "args": {"query": "finance-export"}, "ok": true}
+{"t": 1794113069.2067788, "kind": "call", "tool": "linear_getWorkflowStates", "args": {"teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794113077.1828573, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "ENG-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794113078.1422207, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794113079.7382693, "kind": "call", "tool": "linear_updateIssue", "args": {"id": "a41e0c9d-77", "stateId": "st-review-04"}, "ok": true}
+{"t": 1794113081.2736497, "kind": "call", "tool": "linear_getIssueById", "args": {"id": "ENG-77"}, "ok": true}
+{"t": 1794113082.3072937, "kind": "call", "tool": "linear_searchIssues", "args": {"identifier": "ENG-77"}, "ok": true}
+{"t": 1794113087.4740283, "kind": "call", "tool": "linear_getIssueHistory", "args": {"id": "ENG-77"}, "ok": false}
+{"t": 1794113088.4817104, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "states": ["In Review"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794113089.6328218, "kind": "call", "tool": "linear_getIssueHistory", "args": {"issueId": "ENG-77"}, "ok": false}
+{"t": 1794113092.998924, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "states": ["In Progress"], "teamId": "9f1c2e7a-eng"}, "ok": true}
+{"t": 1794113094.0061693, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 10, "query": "Finance CSV export", "teamId": "9f1c2e7a-eng"}, "ok": true}

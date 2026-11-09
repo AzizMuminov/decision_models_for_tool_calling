@@ -1,0 +1,9 @@
+prompt        hit1  hit5  cov5  cov15 all15
+best serves  0.917 0.983 0.827 0.872 0.807
+context      0.908 0.983 0.829 0.875 0.810
+new DM spend $0.072 over 497 calls
+-- held-out
+prompt        hit1  hit5  cov5  cov15 all15
+best serves  nan nan 0.794 0.845 0.796
+context      nan nan 0.803 0.848 0.798
+new DM spend $0.052 over 339 calls

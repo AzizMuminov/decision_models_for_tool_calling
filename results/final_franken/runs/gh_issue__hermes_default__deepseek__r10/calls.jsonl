@@ -1,0 +1,9 @@
+{"t": 1794115772.6657395, "kind": "call", "tool": "gitlab_get_issue", "args": {"issue_iid": "301", "project_id": "acme/payments"}, "ok": false}
+{"t": 1794115773.679221, "kind": "call", "tool": "gitlab_list_issue_discussions", "args": {"issue_iid": "301", "per_page": 100, "project_id": "acme/payments"}, "ok": true}
+{"t": 1794115776.8041015, "kind": "call", "tool": "gitlab_list_issues", "args": {"search": "payments", "per_page": 50}, "ok": true}
+{"t": 1794115781.5276086, "kind": "call", "tool": "github_search_repositories", "args": {"query": "acme/payments"}, "ok": true}
+{"t": 1794115782.535154, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "text ~ \"301\" AND project = PAY", "max_results": 20}, "ok": true}
+{"t": 1794115788.131896, "kind": "call", "tool": "atlassian_jira_search", "args": {"jql": "project = PAY ORDER BY created DESC", "max_results": 50}, "ok": true}
+{"t": 1794115792.9040606, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get", "owner": "acme", "repo": "payments"}, "ok": true}
+{"t": 1794115793.9160051, "kind": "call", "tool": "github_issue_read", "args": {"issue_number": 301, "method": "get_comments", "owner": "acme", "perPage": 100, "repo": "payments"}, "ok": true}
+{"t": 1794115800.4240816, "kind": "call", "tool": "github_get_file_contents", "args": {"owner": "acme", "path": "/", "repo": "payments"}, "ok": true}

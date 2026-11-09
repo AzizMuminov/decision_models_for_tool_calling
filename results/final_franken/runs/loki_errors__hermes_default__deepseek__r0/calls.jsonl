@@ -1,0 +1,48 @@
+{"t": 1794105409.1433525, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 30, "repo": "notifier", "since": "2026-11-05T00:00:00Z"}, "ok": true}
+{"t": 1794105410.156159, "kind": "call", "tool": "sentry_search_issues", "args": {"organizationSlug": "acme", "period": "24h", "projectSlugOrId": "notifier", "query": "is:unresolved", "sort": "freq"}, "ok": true}
+{"t": 1794105413.3631036, "kind": "call", "tool": "grafana_list_datasources", "args": {}, "ok": true}
+{"t": 1794105414.3706944, "kind": "call", "tool": "github_get_repository_tree", "args": {"owner": "acme", "repo": "notifier"}, "ok": false}
+{"t": 1794105415.3802722, "kind": "call", "tool": "github_list_commits", "args": {"owner": "acme", "perPage": 10, "repo": "notifier"}, "ok": true}
+{"t": 1794105418.936479, "kind": "call", "tool": "sentry_find_projects", "args": {"organizationSlug": "acme"}, "ok": true}
+{"t": 1794105419.9438972, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 20, "logql": "{app=\"notifier\"}", "startRfc3339": "now-12h"}, "ok": true}
+{"t": 1794105425.2095015, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme notifier"}, "ok": true}
+{"t": 1794105427.2607126, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{app=\"notifier\"}", "startRfc3339": "now-24h", "direction": "forward"}, "ok": true}
+{"t": 1794105428.9834952, "kind": "call", "tool": "github_search_repositories", "args": {"query": "org:acme"}, "ok": true}
+{"t": 1794105429.9915316, "kind": "call", "tool": "gitlab_list_projects", "args": {}, "ok": true}
+{"t": 1794105432.5491138, "kind": "call", "tool": "github_search_code", "args": {"query": "order_shipped_v2"}, "ok": true}
+{"t": 1794105433.556624, "kind": "call", "tool": "gitlab_search_repositories", "args": {"search": "notifier"}, "ok": true}
+{"t": 1794105436.7089171, "kind": "call", "tool": "github_search_repositories", "args": {"query": "notifier"}, "ok": true}
+{"t": 1794105441.4355345, "kind": "call", "tool": "github_get_me", "args": {}, "ok": true}
+{"t": 1794105442.4500456, "kind": "call", "tool": "github_list_notifications", "args": {}, "ok": true}
+{"t": 1794105443.457891, "kind": "call", "tool": "gitlab_whoami", "args": {}, "ok": false}
+{"t": 1794105444.4652889, "kind": "call", "tool": "grafana_list_incidents", "args": {}, "ok": true}
+{"t": 1794105455.616793, "kind": "call", "tool": "atlassian_confluence_search", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794105456.625076, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "notifier template"}, "ok": true}
+{"t": 1794105457.6328251, "kind": "call", "tool": "slack_list_channels", "args": {}, "ok": true}
+{"t": 1794105459.996747, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07INCID003", "limit": 50}, "ok": true}
+{"t": 1794105461.008772, "kind": "call", "tool": "linear_searchIssues", "args": {"limit": 50}, "ok": true}
+{"t": 1794105463.6401772, "kind": "call", "tool": "slack_get_channel_history", "args": {"channel_id": "C07PLATF004", "limit": 50}, "ok": true}
+{"t": 1794105467.7661135, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093", "regex": "notif.*"}, "ok": true}
+{"t": 1794105468.77389, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"namespace": "default"}, "ok": false}
+{"t": 1794105470.279302, "kind": "call", "tool": "grafana_list_prometheus_metric_names", "args": {"datasourceUid": "PBFA97CFB590B2093"}, "ok": true}
+{"t": 1794105471.2865195, "kind": "call", "tool": "kubernetes_kubectl_context", "args": {"operation": "list"}, "ok": true}
+{"t": 1794105472.775535, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resource_type": "deployments", "all_namespaces": true}, "ok": false}
+{"t": 1794105473.7323272, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"allNamespaces": true, "resourceType": "deployments"}, "ok": false}
+{"t": 1794105477.5672874, "kind": "call", "tool": "filesystem_search_files", "args": {"path": "/srv"}, "ok": false}
+{"t": 1794105480.1347287, "kind": "call", "tool": "filesystem_search_files", "args": {"path": "/srv", "pattern": "**/*notifier*"}, "ok": true}
+{"t": 1794105484.6820066, "kind": "call", "tool": "grafana_list_loki_label_names", "args": {"datasourceUid": "P8E80F9AEF21F6940"}, "ok": true}
+{"t": 1794105485.69001, "kind": "call", "tool": "grafana_list_loki_label_values", "args": {"datasourceUid": "P8E80F9AEF21F6940", "labelName": "app"}, "ok": true}
+{"t": 1794105488.4251742, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "direction": "forward", "limit": 100, "logql": "{app=\"notifier\"}", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794105489.4359546, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 100, "logql": "{app=~\".+\"} |= \"template\"", "startRfc3339": "now-7d"}, "ok": false}
+{"t": 1794105494.2832928, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "pods"}, "ok": false}
+{"t": 1794105495.2943347, "kind": "call", "tool": "notion_API-post-search", "args": {"query": "CHG-2231 OR template OR notifier"}, "ok": true}
+{"t": 1794105498.7209918, "kind": "call", "tool": "github_search_commits", "args": {"query": "CHG-2231"}, "ok": true}
+{"t": 1794105499.72878, "kind": "call", "tool": "github_search_commits", "args": {"query": "order_shipped"}, "ok": true}
+{"t": 1794105500.7373629, "kind": "call", "tool": "gitlab_get_project", "args": {"project_id": "acme/notifier"}, "ok": false}
+{"t": 1794105507.1294222, "kind": "call", "tool": "kubernetes_kubectl_get", "args": {"resourceType": "configmaps"}, "ok": false}
+{"t": 1794105511.3537412, "kind": "call", "tool": "mongodb_find", "args": {"collection": "templates", "database": "shop", "filter": {}}, "ok": false}
+{"t": 1794105512.3989258, "kind": "call", "tool": "mongodb_list-connections", "args": {}, "ok": true}
+{"t": 1794105519.2397006, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{app=\"template-store\"}", "startRfc3339": "now-7d"}, "ok": false}
+{"t": 1794105520.247231, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{app=\"notifier\"} |= \"deploy\"", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794105527.560995, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{app=\"notifier\"} |= \"error\"", "startRfc3339": "now-7d"}, "ok": true}
+{"t": 1794105528.5690484, "kind": "call", "tool": "grafana_query_loki_logs", "args": {"datasourceUid": "P8E80F9AEF21F6940", "limit": 50, "logql": "{app=\"notifier\"} |= \"order_shipped_v3\"", "startRfc3339": "now-7d"}, "ok": true}

@@ -1,0 +1,22 @@
+{
+ "id": "absent_jira",
+ "category": "absent",
+ "prompt": "Implement Jira ticket PAY-999 in payments/limits.py. If the information you need is not available, do not guess: leave the code unchanged and add a comment line containing `TODO: info not found` to the file you would have changed.",
+ "needs": [],
+ "gold": [
+  [
+   "atlassian_jira_get_issue",
+   {
+    "issue_key": "PAY-999"
+   }
+  ]
+ ],
+ "writes": [],
+ "probe": {
+  "file": "payments/limits.py",
+  "name": "DAILY_LIMIT_EUR",
+  "expected": null,
+  "original": 10000,
+  "todo_file": "payments/limits.py"
+ }
+}
